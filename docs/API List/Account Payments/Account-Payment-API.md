@@ -6,9 +6,9 @@ See all [Payment API](https://oc-debitsuccess.portal.azure-api.net/docs/services
 
 
 
-| POSTYellow  Payment | /account/creditcard | 
+| <span style="background-color: #FFF44F"> POST</span>  Payment | /account/creditcard | 
 |  --- |  --- | 
-| GETGreen Payment | /account/creditcard/{ExternalPaymentIdentifier} | 
+| <span style="background-color: #E8F48C"> GET</span> Payment | /account/creditcard/{ExternalPaymentIdentifier} | 
 
 
 ### Create Payment
