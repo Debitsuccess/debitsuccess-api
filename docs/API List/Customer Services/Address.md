@@ -66,8 +66,3 @@ See all [Address API](https://oc-debitsuccess.portal.azure-api.net/docs/services
 }
 ```
 
-
-*****
-
-[[category.storage-team]] 
-[[category.confluence]] 
