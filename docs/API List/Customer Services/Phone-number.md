@@ -1,4 +1,4 @@
-#Phone Number
+# Phone Number
 Phone Number API method can create, update, and delete an email address of an existing customer. Fetch a specific phone number or all phone numbers of a customer. 
 
 
