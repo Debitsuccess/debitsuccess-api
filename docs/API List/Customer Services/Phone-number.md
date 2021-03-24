@@ -8,6 +8,7 @@ See all [Phone Number API](https://oc-debitsuccess.portal.azure-api.net/docs/ser
 
 
 | POSTYellow Phone Number | /customers/{customerId}/phoneNumbers |  
+|  --- |  --- |
 | GETGreen Phone Number | /customers/{customerId}/phoneNumbers/{phoneNumberId} | 
 | GETGreen  Phone Numbers | /customers/{customerId}/phoneNumbers | 
 | PUTBlue Phone Number | /customers/{customerId}/phoneNumbers/{phoneNumberId} | 

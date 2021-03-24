@@ -1,4 +1,4 @@
-#Customer
+# Customer
 
 A customer is anyone who is a members of health and fitness companies, policyholders of insurance, parents of children who attend child care centres. Debitsuccess collects payments from them for the services offered by the businesses. Customer API methods enable the business to execute customer information related to functionalities. Customer API can create, delete, and update personal and contact detail information of a customer. Fetch specific customer information and list all customers’ details. 
 

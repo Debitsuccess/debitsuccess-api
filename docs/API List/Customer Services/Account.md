@@ -1,5 +1,5 @@
 
-## Accounts
+# Accounts
 Account referred to the contract of our client with their customers for the services offered by the client. Within the Account API, you can execute account management functions through the API methods, including:
 
 
