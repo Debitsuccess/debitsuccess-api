@@ -1,3 +1,4 @@
+# One-Off Schedules
 
 ### Endpoints
 See all [One-off Schedule APIs](https://oc-debitsuccess.portal.azure-api.net/docs/services/Mock/operations/5ddddd7330e1bcdcaf336cb8?tags=Schedules-OneOff&pattern=&groupBy=).
@@ -46,9 +47,3 @@ See all [One-off Schedule APIs](https://oc-debitsuccess.portal.azure-api.net/doc
    "externalScheduleId":"S125810"
 }
 ```
-
-
-*****
-
-[[category.storage-team]] 
-[[category.confluence]] 
