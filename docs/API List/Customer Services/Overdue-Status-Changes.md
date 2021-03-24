@@ -1,3 +1,5 @@
+# Overdue Status Change
+
 Retrieve the details of overdue statuses or amount changesbased on the specified date range.
 
 
@@ -69,9 +71,3 @@ See [OverdueStatusChanges API](https://oc-debitsuccess.portal.azure-api.net/docs
        }
 }
 ```
-
-
-*****
-
-[[category.storage-team]] 
-[[category.confluence]] 
