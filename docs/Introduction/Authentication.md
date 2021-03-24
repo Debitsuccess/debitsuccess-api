@@ -1,3 +1,5 @@
+# Authentication 
+
 Debitsuccess supports [client credentials](https://tools.ietf.org/html/rfc6749#section-1.3.4) flow for authentication. After you receive your credentials, Client_IDand Client_Secretfrom us, use the  HTTP POST request to /identity/connect/token to obtain your JWT token also known as API Key. 
 
 OAuth 2.0 Client Credentials Flow![](images/storage/image-20210218-013302.png)

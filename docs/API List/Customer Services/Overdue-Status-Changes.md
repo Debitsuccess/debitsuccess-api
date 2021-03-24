@@ -1,4 +1,4 @@
-Retrievethe details of overdue statuses or amount changesbased on the specified date range.
+Retrieve the details of overdue statuses or amount changesbased on the specified date range.
 
 
 ### Endpoints

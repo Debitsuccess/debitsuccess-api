@@ -1,3 +1,4 @@
+# Change Log
 
 ## Feb 23, 2021
 Implemented a new REST API[Get Payment Token(for Casual Payment)](https://oc-debitsuccess.portal.azure-api.net/docs/services/Mock/operations/6032d38d4c55a6c59ff9de42?&groupBy=tag) that generates and returns a PayNow URL link so that integrators can access the link to make a casual payment for a business account.

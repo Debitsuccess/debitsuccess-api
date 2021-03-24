@@ -1,3 +1,4 @@
+# Introduction 
 Debitsuccess APIs are REST-based with resource-oriented URLs and use HTTP based response codes to indicate API errors. We have grouped our APIs by function, each API contains the resources you will need to integrate into your interface to allow you to access the features for a different area of the Debitsuccess service.
 
 

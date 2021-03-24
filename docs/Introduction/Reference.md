@@ -1,10 +1,11 @@
-
+# Reference 
 ## CountryISOCode
 To specify Debitsuccess supported countries and regions in request body parameters, use three-character ISO 3166-1 alpha-3 country codes.
 
-Click here to view the list of CountryIsoCode
 
-|  **COUNTRY**  |  **ISO CODES**  | 
+
+|  **COUNTRY**  |  **ISO CODES**  |
+|  --- |  --- | 
 | New Zealand | NZL | 
 | Afghanistan | AFG | 
 | Albania | ALB | 
@@ -254,7 +255,8 @@ The Debitsuccess REST APIs accept the following state codes in thestateparameter
 ### AUS State Code
 
 
-| States | Codes | 
+| **States** | **Codes** |
+|  --- |  --- | 
 | New South Wales | NSW | 
 | Queensland | QLD | 
 | South Australia | SA | 
@@ -264,9 +266,10 @@ The Debitsuccess REST APIs accept the following state codes in thestateparameter
 
 
 ### USA State Code
-Click here to view the list of USA State Code
 
-| States | Codes | 
+
+| **States** | **Codes** | 
+|  --- |  --- |
 | Alabama | AL | 
 | Alaska | AK | 
 | Arizona | AZ | 
@@ -322,54 +325,40 @@ Click here to view the list of USA State Code
 ## CountryCode
 The Debitsuccess REST APIs accept the following phone number country codes in theCountryCode parameter for a phone number.
 
-Click here to view the list of phone number country codes
 
 |  **Country**  |  **Country Code**  |  **Extention**  | 
+|  --- |  --- |  --- |
 | Afghanistan | +93 |  | 
 | Albania | +355 |  | 
 | Algeria | +213 |  | 
-| American Samoa | +1 | <ul><li>684
-
-</li></ul> | 
+| American Samoa | +1 | 684 
 | Andorra | +376 |  | 
 | Angola | +244 |  | 
-| Anguilla | +1 | <ul><li>264
-
-</li></ul> | 
+| Anguilla | +1 | 264| 
 | Antarctica | +672 |  | 
-| Antigua and Barbuda | +1 | <ul><li>268
-
-</li></ul> | 
+| Antigua and Barbuda | +1 | 268 | 
 | Argentina | +54 |  | 
 | Armenia | +374 |  | 
 | Aruba | +297 |  | 
 | Australia | +61 |  | 
 | Austria | +43 |  | 
 | Azerbaijan | +994 |  | 
-| Bahamas | +1 | <ul><li>242
-
-</li></ul> | 
+| Bahamas | +1 | 242| 
 | Bahrain | +973 |  | 
 | Bangladesh | +880 |  | 
-| Barbados | +1 | <ul><li>246
-
-</li></ul> | 
+| Barbados | +1 |246 | 
 | Belarus | +375 |  | 
 | Belgium | +32 |  | 
 | Belize | +501 |  | 
 | Benin | +229 |  | 
-| Bermuda | +1 | <ul><li>441
-
-</li></ul> | 
+| Bermuda | +1 | 441 | 
 | Bhutan | +975 |  | 
 | Bolivia | +591 |  | 
 | Bosnia and Herzegovina | +387 |  | 
 | Botswana | +267 |  | 
 | Brazil | +55 |  | 
 | British Indian Ocean Territory | +246 |  | 
-| British Virgin Islands | +1 | <ul><li>284
-
-</li></ul> | 
+| British Virgin Islands | +1 | 284| 
 | Brunei | +673 |  | 
 | Bulgaria | +359 |  | 
 | Burkina Faso | +226 |  | 
@@ -378,9 +367,7 @@ Click here to view the list of phone number country codes
 | Cameroon | +237 |  | 
 | Canada | +1 |  | 
 | Cape Verde | +238 |  | 
-| Cayman Islands | +1 | <ul><li>345
-
-</li></ul> | 
+| Cayman Islands | +1 | 345| 
 | Central African Republic | +236 |  | 
 | Chad | +235 |  | 
 | Chile | +56 |  | 
@@ -399,12 +386,8 @@ Click here to view the list of phone number country codes
 | Democratic Republic of the Congo | +243 |  | 
 | Denmark | +45 |  | 
 | Djibouti | +253 |  | 
-| Dominica | +1 | <ul><li>767
-
-</li></ul> | 
-| Dominican Republic | +1 | <ul><li>809, -829, -849
-
-</li></ul> | 
+| Dominica | +1 |767 | 
+| Dominican Republic | +1 | 809, -829, -849 | 
 | East Timor | +670 |  | 
 | Ecuador | +593 |  | 
 | Egypt | +20 |  | 
@@ -427,16 +410,10 @@ Click here to view the list of phone number country codes
 | Gibraltar | +350 |  | 
 | Greece | +30 |  | 
 | Greenland | +299 |  | 
-| Grenada | +1 | <ul><li>473
-
-</li></ul> | 
-| Guam | +1 | <ul><li>671
-
-</li></ul> | 
+| Grenada | +1 | 473| 
+| Guam | +1 | 671 | 
 | Guatemala | +502 |  | 
-| Guernsey | +44 | <ul><li>1481
-
-</li></ul> | 
+| Guernsey | +44 | 1481 | 
 | Guinea | +224 |  | 
 | Guinea-Bissau | +245 |  | 
 | Guyana | +592 |  | 
@@ -450,19 +427,13 @@ Click here to view the list of phone number country codes
 | Iran | +98 |  | 
 | Iraq | +964 |  | 
 | Ireland | +353 |  | 
-| Isle of Man | +44 | <ul><li>1624
-
-</li></ul> | 
+| Isle of Man | +44 |1624| 
 | Israel | +972 |  | 
 | Italy | +39 |  | 
 | Ivory Coast | +225 |  | 
-| Jamaica | +1 | <ul><li>876
-
-</li></ul> | 
+| Jamaica | +1 | 876 | 
 | Japan | +81 |  | 
-| Jersey | +44 | <ul><li>1534
-
-</li></ul> | 
+| Jersey | +44 | 1534 | 
 | Jordan | +962 |  | 
 | Kazakhstan | +7 |  | 
 | Kenya | +254 |  | 
@@ -497,9 +468,7 @@ Click here to view the list of phone number country codes
 | Monaco | +377 |  | 
 | Mongolia | +976 |  | 
 | Montenegro | +382 |  | 
-| Montserrat | +1 | <ul><li>664
-
-</li></ul> | 
+| Montserrat | +1 | 664| 
 | Morocco | +212 |  | 
 | Mozambique | +258 |  | 
 | Myanmar | +95 |  | 
@@ -515,9 +484,7 @@ Click here to view the list of phone number country codes
 | Nigeria | +234 |  | 
 | Niue | +683 |  | 
 | North Korea | +850 |  | 
-| Northern Mariana Islands | +1 | <ul><li>670
-
-</li></ul> | 
+| Northern Mariana Islands | +1 | 670 | 
 | Norway | +47 |  | 
 | Oman | +968 |  | 
 | Pakistan | +92 |  | 
@@ -531,9 +498,7 @@ Click here to view the list of phone number country codes
 | Pitcairn | +64 |  | 
 | Poland | +48 |  | 
 | Portugal | +351 |  | 
-| Puerto Rico | +1 | <ul><li>787, -939
-
-</li></ul> | 
+| Puerto Rico | +1 | 787, -939 | 
 | Qatar | +974 |  | 
 | Republic of the Congo | +242 |  | 
 | Reunion | +262 |  | 
@@ -542,17 +507,11 @@ Click here to view the list of phone number country codes
 | Rwanda | +250 |  | 
 | Saint Barthelemy | +590 |  | 
 | Saint Helena | +290 |  | 
-| Saint Kitts and Nevis | +1 | <ul><li>869
-
-</li></ul> | 
-| Saint Lucia | +1 | <ul><li>758
-
-</li></ul> | 
+| Saint Kitts and Nevis | +1 | 869 | 
+| Saint Lucia | +1 |758 | 
 | Saint Martin | +590 |  | 
 | Saint Pierre and Miquelon | +508 |  | 
-| Saint Vincent and the Grenadines | +1 | <ul><li>784
-
-</li></ul> | 
+| Saint Vincent and the Grenadines | +1 | 784 | 
 | Samoa | +685 |  | 
 | San Marino | +378 |  | 
 | Sao Tome and Principe | +239 |  | 
@@ -562,9 +521,7 @@ Click here to view the list of phone number country codes
 | Seychelles | +248 |  | 
 | Sierra Leone | +232 |  | 
 | Singapore | +65 |  | 
-| Sint Maarten | +1 | <ul><li>721
-
-</li></ul> | 
+| Sint Maarten | +1 | 721 | 
 | Slovakia | +421 |  | 
 | Slovenia | +386 |  | 
 | Solomon Islands | +677 |  | 
@@ -588,19 +545,13 @@ Click here to view the list of phone number country codes
 | Togo | +228 |  | 
 | Tokelau | +690 |  | 
 | Tonga | +676 |  | 
-| Trinidad and Tobago | +1 | <ul><li>868
-
-</li></ul> | 
+| Trinidad and Tobago | +1 | 868 | 
 | Tunisia | +216 |  | 
 | Turkey | +90 |  | 
 | Turkmenistan | +993 |  | 
-| Turks and Caicos Islands | +1 | <ul><li>649
-
-</li></ul> | 
+| Turks and Caicos Islands | +1 | 649 | 
 | Tuvalu | +688 |  | 
-| U.S. Virgin Islands | +1 | <ul><li>340
-
-</li></ul> | 
+| U.S. Virgin Islands | +1 | 340 | 
 | Uganda | +256 |  | 
 | Ukraine | +380 |  | 
 | United Arab Emirates | +971 |  | 
@@ -656,9 +607,7 @@ Click here to view the list of phone number country codes
 | 30 | FV | Facility Variation Fee | True | 
 
 
-## 
-
-PaymentMethodType
+## PaymentMethodType
 
 
 |  **Code**  |  **Description**  | 
@@ -693,9 +642,7 @@ PaymentMethodType
 | 3 | No Est Fee | 
 
 
-## 
-
-PaymentErrorCode
+## PaymentErrorCode
 
 
 |  **Code**  |  **Description**  | 
@@ -712,14 +659,3 @@ PaymentErrorCode
 | LC | Lost / Stolen Card | 
 
 
-
-On this page:
-
-
-
-
-
-*****
-
-[[category.storage-team]] 
-[[category.confluence]] 

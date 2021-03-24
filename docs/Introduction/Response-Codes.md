@@ -1,3 +1,5 @@
+# HTTP Response 
+
 The service uses conventional HTTP response codes to indicate the success or failure of an API request. In general, codes in the 2xx range indicate success, codes in the 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted, a request validation failed, etc.), and some codes in the 5xx range indicate an error with APIs servers.
 
 The API returns errors in JSON format in the following structure:
