@@ -1,3 +1,4 @@
+# Phone Number
 Phone Number API method can create, update, and delete an email address of an existing customer. Fetch a specific phone number or all phone numbers of a customer. 
 
 
@@ -6,8 +7,7 @@ See all [Phone Number API](https://oc-debitsuccess.portal.azure-api.net/docs/ser
 
 
 
-| POSTYellow Phone Number | /customers/{customerId}/phoneNumbers | 
-|  --- |  --- | 
+| POSTYellow Phone Number | /customers/{customerId}/phoneNumbers |  
 | GETGreen Phone Number | /customers/{customerId}/phoneNumbers/{phoneNumberId} | 
 | GETGreen  Phone Numbers | /customers/{customerId}/phoneNumbers | 
 | PUTBlue Phone Number | /customers/{customerId}/phoneNumbers/{phoneNumberId} | 
@@ -61,9 +61,3 @@ See all [Phone Number API](https://oc-debitsuccess.portal.azure-api.net/docs/ser
 
 
 
-
-
-*****
-
-[[category.storage-team]] 
-[[category.confluence]] 

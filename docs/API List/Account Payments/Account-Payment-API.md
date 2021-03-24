@@ -1,3 +1,4 @@
+# Payment
 The Account Payment API provides an interface for businesses (Facility Accounts) to accept payment for an account.As a result of a successful (authorized) payment, RecBatch, Docket, Trans and Payment will be created. A one-off PaySchedule will be created if required.
 
 
@@ -70,9 +71,3 @@ See all [Payment API](https://oc-debitsuccess.portal.azure-api.net/docs/services
 ```
 
 
-
-
-*****
-
-[[category.storage-team]] 
-[[category.confluence]] 

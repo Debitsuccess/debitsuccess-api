@@ -1,3 +1,5 @@
+# Address
+
 Address API method can create, update, and delete address of an existing customer. Fetch a specific address or all addresses of a customer. 
 
 
@@ -64,8 +66,3 @@ See all [Address API](https://oc-debitsuccess.portal.azure-api.net/docs/services
 }
 ```
 
-
-*****
-
-[[category.storage-team]] 
-[[category.confluence]] 

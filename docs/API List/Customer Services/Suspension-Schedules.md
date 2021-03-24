@@ -1,6 +1,4 @@
-
-
-
+# Suspension Schedules 
 
 
 ### Endpoints
@@ -9,7 +7,6 @@ See all [Suspension Schedule APIs](https://oc-debitsuccess.portal.azure-api.net/
 
 
 | POSTYellow Schedule (Suspension) | /accounts/{accountId}/suspensionSchedules | 
-|  --- |  --- | 
 | GETGreen Schedule (Suspension) | /accounts/{accountId}/suspensionSchedules/{scheduleId} | 
 | GETGreen Schedules (Suspension) | /accounts/{accountId}/suspensionSchedules | 
 | PATCH Schedule (Suspension) | /accounts/{accountId}/suspensionSchedules/{scheduleId} | 
@@ -60,5 +57,3 @@ See all [Suspension Schedule APIs](https://oc-debitsuccess.portal.azure-api.net/
 
 *****
 
-[[category.storage-team]] 
-[[category.confluence]] 

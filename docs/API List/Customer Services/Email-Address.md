@@ -1,3 +1,5 @@
+# Email Address
+
 Email address API method can create, update, and delete email address of an existing customer. Fetch a specific email address or all email addresses of a customer.
 
 
@@ -52,8 +54,3 @@ See all [Email address API](https://oc-debitsuccess.portal.azure-api.net/docs/se
 }
 ```
 
-
-*****
-
-[[category.storage-team]] 
-[[category.confluence]] 
