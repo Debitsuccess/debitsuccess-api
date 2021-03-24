@@ -1,6 +1,4 @@
-
-
-
+# Suspension Schedules 
 
 
 ### Endpoints
@@ -60,5 +58,3 @@ See all [Suspension Schedule APIs](https://oc-debitsuccess.portal.azure-api.net/
 
 *****
 
-[[category.storage-team]] 
-[[category.confluence]] 
