@@ -1,3 +1,5 @@
+#Businesses
+
 Retrieves a list of business(es) (also known as Facility) assigned to the client ID that is used for authenticating with the Debitsuccess authentication server. Multiple businesses can be assigned to a single client ID.
 
 
@@ -124,8 +126,3 @@ SupportedPaymentMethods
 
 ```
 
-
-*****
-
-[[category.storage-team]] 
-[[category.confluence]] 
