@@ -267,6 +267,3 @@ On this page:
 
 
 *****
-
-[[category.storage-team]] 
-[[category.confluence]] 

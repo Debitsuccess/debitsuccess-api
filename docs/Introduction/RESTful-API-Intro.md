@@ -56,5 +56,3 @@ Debitsuccess is building a RESTful API suite as an alternative for the services 
 
 *****
 
-[[category.storage-team]] 
-[[category.confluence]] 

@@ -35,19 +35,9 @@ See all [customer APIs](https://oc-debitsuccess.portal.azure-api.net/docs/servic
 |  **Parameter**  |  **Format**  |  **Description**  | 
 |  --- |  --- |  --- | 
 | CustomerId | string(10) | Unique identifier associated with the Customer. | 
-| Business<ul><li>BusinessId
-
-</li><li>Name
-
-</li></ul> | <ul><li>string(10)
-
-</li><li>string(50)
-
-</li></ul> | <ul><li>Unique identifier associated with the Facility
-
-</li><li>Name associated with the Facility
-
-</li></ul> | 
+| **Business** |  |  |
+| - BusinessId |  string(10)   |  Unique identifier associated with the Facility |
+| - Name| string(50)| Name associated with the Facility | 
 | CustomerType | Enum ( Individual, Business) | Indicate the type of customer, i.e. Individual or Business | 
 | Title | string(10) | Title used to address the Customer. E.g. Mr, Dr, Ms | 
 | FirstName | string(40) | Given name/first name associated with the Customer. | 
@@ -76,4 +66,8 @@ See all [customer APIs](https://oc-debitsuccess.portal.azure-api.net/docs/servic
 }
 ```
 
+
+
+
+*****
 
