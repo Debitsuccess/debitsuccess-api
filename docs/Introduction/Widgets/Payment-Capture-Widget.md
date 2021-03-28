@@ -11,7 +11,9 @@ The [Create PaymentMethod](https://oc-debitsuccess.portal.azure-api.net/docs/ser
 
 
 
+```json
 <script src="https://oc.debitsuccess.com/dswidget/dsPaymentFormWidget.js"></script>
+```
 
  2. In your javascript code, you need to initiate a new instance of  _DsPaymentFormWidget_ and pass the following parameters:
 
@@ -39,9 +41,8 @@ var dsWidget = new DsPaymentFormWidget(
 ```
  3. Initiate the widget.
 
-noteIt is recommend to initiate the widget after the DOM content is loaded.
 
-It is recommend to initiate the widget after the DOM content is loaded.
+> It is recommend to initiate the widget after the DOM content is loaded.
 
 
 ```js
