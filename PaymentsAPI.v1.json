@@ -18,7 +18,7 @@
       "name": "Account Payments"
     },
     {
-      "name": "Business Collected Payments"
+      "name": "BusinessCollectedPayment"
     },
     {
       "name": "Casual Payments"
@@ -485,7 +485,7 @@
         }
       }
     },
-    "/businessCollectedPayments/": {
+    "/businessCollectedPayments": {
       "post": {
         "tags": [
           "BusinessCollectedPayment"
@@ -865,10 +865,11 @@
             }
           }
         }
-      }
-    },
-    "/businessCollectedPayments": {
+      },
       "get": {
+        "tags": [
+          "BusinessCollectedPayment"
+        ],
         "summary": "Get Business Collected Payments",
         "description": "Retrieves business collected paymetns based on the query parameters provided.",
         "operationId": "5e530fdb2d8bf4cfa9148db9",
@@ -1262,7 +1263,7 @@
               "example": {
                 "externalPaymentIdentifier": "RTY67UJK-VDFR-GT56-VD56-GFGGBDRTGR44",
                 "dateTimeOfReversal": "2020-03-01T00:00:00.0000000+00:00",
-                "description": "reversal payment collected at business"
+                "description": "payment reversal"
               }
             }
           }
@@ -3769,6 +3770,21 @@
           }
         }
       },
+      "ValidationRules" : {
+        "type" : "object",
+        "properties" : {
+          "regex" : {
+            "type" : "string",
+            "description" : "Regex value that can be used to validate card number.",
+            "example" : "^(4)"
+          },
+          "purpose" : {
+            "type" : "string",
+            "description" : "Defines the purpose of the regex value. In this example, the corresponding regex can be used to determine whether a card number is visa card type.",
+            "example" : "CardType"
+          }
+        }
+      }
     },
     "responses": {
       "Success-Casual-Payment-Response-Ok": {
