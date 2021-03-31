@@ -2,7 +2,7 @@ Debitsuccess is building a RESTful API suite as an alternative for the services 
 
 
 
-![](images/storage/image-20200902-212547.png)
+![](../assets/images/image-20200902-212547.png)
 
 
 

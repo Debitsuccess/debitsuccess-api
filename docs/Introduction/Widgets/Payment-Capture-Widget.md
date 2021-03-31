@@ -444,5 +444,3 @@ falsefalselabel = "testing" and space = currentSpace ( )On this page:
 
 *****
 
-[[category.storage-team]] 
-[[category.confluence]] 

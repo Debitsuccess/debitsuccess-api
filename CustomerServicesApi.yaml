@@ -8,7 +8,7 @@ info:
 servers:
   - url: 'https://oc-test.debitsuccess.com/CustomerServices/v1.0'
 tags:
- enum:
+ name:
   - Businesses
   - Customers
   - BusinessAccounts
@@ -23,7 +23,6 @@ tags:
   - Payment History
   - Terms and Conditons
   - PaymentToken
- type: string
   
 paths:
   /customers:

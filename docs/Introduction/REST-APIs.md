@@ -33,5 +33,3 @@ Debitsuccess APIs are REST-based with resource-oriented URLs and use HTTP based 
 
 *****
 
-[[category.storage-team]] 
-[[category.confluence]] 

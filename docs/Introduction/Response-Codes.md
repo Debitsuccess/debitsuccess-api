@@ -30,5 +30,3 @@ The API returns errors in JSON format in the following structure:
 
 *****
 
-[[category.storage-team]] 
-[[category.confluence]] 
