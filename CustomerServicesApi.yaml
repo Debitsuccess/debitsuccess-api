@@ -8,8 +8,22 @@ info:
 servers:
   - url: 'https://oc-test.debitsuccess.com/CustomerServices/v1.0'
 tags:
+ enum:
   - Businesses
-  - customers
+  - Customers
+  - BusinessAccounts
+  - Accounts
+  - Schedules-Suspension
+  - Schedules-Recurring
+  - Schedules-OneOff
+  - Addresses
+  - PhoneNumbers
+  - EmailAddresses
+  - OverdueStatusChanges
+  - Payment History
+  - Terms and Conditons
+  - PaymentToken
+ type: string
   
 paths:
   /customers:
@@ -82,7 +96,7 @@ paths:
                   emailId: '9999999'
                   emailName: John
                   emailAddress: john.doe@debitsuccess.com
-                  isPrimary: true
+                  isPrimary: 'true'
                 phoneNumber:
                   phoneNumberId: '7777777'
                   phoneName: John
@@ -90,7 +104,7 @@ paths:
                   areaCode: '09'
                   phoneNumber: 264 5555
                   phoneType: home
-                  isPrimary: true
+                  isPrimary: 'true'
         '400':
           description: 'Bad Request - Request failed due to validation errors, the response lists the field in the request that did not pass the validation. The client can directly show these errors to the end users.'
           headers:
@@ -106,21 +120,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -246,21 +260,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -284,21 +298,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -335,7 +349,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -448,7 +462,7 @@ paths:
                     externalReference: xyz12545
                 responseMetadata:
                   nextCursor: TmV4dEl0ZW1JZDox
-                  hasNext: true
+                  hasNext: 'true'
         '401':
           description: |
             Unauthorized - Occurs when the authorization token provided is either expired or invalid.
@@ -465,21 +479,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -509,14 +523,14 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -557,7 +571,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -582,7 +596,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -597,7 +611,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -635,7 +649,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -708,21 +722,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -746,21 +760,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -783,21 +797,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -861,7 +875,7 @@ paths:
               example:
                 businessAccountId: DSFit1
                 name: Northshore - Debitsuccess 24/7 Fitness
-                active: 'true'
+                active: true
                 penaltyFee:
                   amount: 10
                   payer: Facility Pays
@@ -894,21 +908,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -933,7 +947,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -941,7 +955,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: |
@@ -949,7 +963,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -974,7 +988,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -982,14 +996,14 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -1143,21 +1157,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -1181,21 +1195,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -1218,21 +1232,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -1307,7 +1321,7 @@ paths:
                     name: Clubware 24/7 Fitness
                 responseMetadata:
                   nextCursor: TmV4dEl0ZW1JZDoz
-                  hasNext: true
+                  hasNext: 'true'
         '401':
           description: |
             Unauthorized - Occurs when the authorization token provided is either expired or invalid.
@@ -1326,21 +1340,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -1364,21 +1378,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -1401,21 +1415,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -1506,21 +1520,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -1544,21 +1558,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -1582,7 +1596,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -1590,7 +1604,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: |
@@ -1598,7 +1612,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -1623,7 +1637,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -1631,14 +1645,14 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -1661,7 +1675,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -1669,14 +1683,14 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -1731,7 +1745,7 @@ paths:
               firstName: John
               middleName: smith
               lastName: doe
-              gender: Male
+              gender: male
               dateOfBirth: '2019-01-01T00:00:00.0000000+00:00'
       responses:
         '200':
@@ -1749,21 +1763,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -1784,21 +1798,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -1864,21 +1878,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -1902,21 +1916,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -1939,21 +1953,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -1976,21 +1990,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -2055,7 +2069,7 @@ paths:
               waiveEstFee: true
               alignEstFeeWithSchedule: false
               accountStartDate: '2019-12-31T00:00:00.0000000+00:00'
-              contractAmount: 900
+              contractAmount: '900'
               paymentMethodToken: frtg67yu-yht5-6756-234r-tghy6u7ytrre
               recurringSchedules:
                 - recurringScheduleStartDate: '2020-01-31T00:00:00.0000000+00:00'
@@ -2067,7 +2081,7 @@ paths:
                 - recurringScheduleStartDate: '2020-07-31T00:00:00.0000000+00:00'
                   installment: 100
                   frequency: monthly
-                  numberOfPayments: null
+                  numberOfPayments: 0
                   externalScheduleId: R125811
                   scheduleDescription: Recurring schedule Jul-Dec
       responses:
@@ -2092,21 +2106,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -2232,21 +2246,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -2270,21 +2284,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -2307,21 +2321,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -2489,21 +2503,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -2528,7 +2542,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -2536,7 +2550,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: |
@@ -2544,7 +2558,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -2569,7 +2583,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -2577,14 +2591,14 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -2657,8 +2671,8 @@ paths:
                 nextBillingDate: '2019-11-31'
                 lastBillingDateTime: '2019-10-31T01:59:59.0000000+00:00'
                 overdueStatus: 1
-                overdueAmountPayment: '999.90'
-                overdueAmountFee: '99.90'
+                overdueAmountPayment: 999.90
+                overdueAmountFee: 99.90
                 lastReversalReason: ''
                 closeReason: ''
                 suspended: false
@@ -2697,21 +2711,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -2735,21 +2749,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -2773,7 +2787,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -2781,7 +2795,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: |
@@ -2789,7 +2803,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -2814,7 +2828,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -2822,14 +2836,14 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -2940,21 +2954,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -2984,21 +2998,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -3022,14 +3036,14 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
@@ -3059,21 +3073,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -3096,21 +3110,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -3197,21 +3211,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -3249,21 +3263,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -3287,14 +3301,14 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
@@ -3324,21 +3338,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -3361,21 +3375,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -3463,21 +3477,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -3509,21 +3523,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -3547,21 +3561,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -3585,7 +3599,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -3593,7 +3607,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: |
@@ -3601,7 +3615,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -3626,7 +3640,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -3634,14 +3648,14 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -3730,21 +3744,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -3768,21 +3782,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -3806,7 +3820,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -3814,7 +3828,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: |
@@ -3822,7 +3836,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -3847,7 +3861,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -3855,14 +3869,14 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -3958,21 +3972,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -4020,21 +4034,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -4058,14 +4072,14 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
@@ -4095,21 +4109,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -4132,21 +4146,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -4241,21 +4255,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -4279,21 +4293,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -4317,7 +4331,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -4325,7 +4339,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: |
@@ -4333,7 +4347,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -4358,7 +4372,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -4366,14 +4380,14 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -4475,21 +4489,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -4557,21 +4571,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -4618,21 +4632,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -4655,21 +4669,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -4757,7 +4771,7 @@ paths:
                     accountId: AILL056H6
                     accountExternalId: ABC12345
                     recurringScheduleStartDate: '2021-01-31T00:00:00.0000000+00:00'
-                    recurringScheduleEndDate: null
+                    recurringScheduleEndDate: 'null'
                     installment: 30
                     frequency: weekly
                     scheduleDescription: Recurring schedule Jan-Jun
@@ -4783,21 +4797,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -4822,7 +4836,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -4830,7 +4844,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: |
@@ -4838,7 +4852,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -4863,7 +4877,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -4871,14 +4885,14 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -4969,21 +4983,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -5017,21 +5031,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -5055,21 +5069,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -5093,7 +5107,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -5101,7 +5115,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: |
@@ -5109,7 +5123,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -5134,7 +5148,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -5142,14 +5156,14 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -5244,21 +5258,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -5282,21 +5296,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -5320,7 +5334,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -5328,7 +5342,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: |
@@ -5336,7 +5350,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -5361,7 +5375,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -5369,14 +5383,14 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -5485,21 +5499,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -5573,21 +5587,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -5611,21 +5625,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '137703266'
+                  - 137703266
                 type: integer
           content:
             application/json:
@@ -5648,21 +5662,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -5685,21 +5699,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -5794,21 +5808,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -5862,21 +5876,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -5900,21 +5914,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -5937,21 +5951,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -6059,21 +6073,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -6098,7 +6112,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -6106,7 +6120,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: |
@@ -6114,7 +6128,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -6139,7 +6153,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -6147,14 +6161,14 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -6256,21 +6270,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -6328,21 +6342,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -6368,21 +6382,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -6405,21 +6419,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -6536,21 +6550,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -6575,7 +6589,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -6583,7 +6597,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: |
@@ -6591,7 +6605,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -6616,7 +6630,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -6624,14 +6638,14 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -6718,21 +6732,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -6760,21 +6774,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -6798,21 +6812,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -6836,7 +6850,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -6844,7 +6858,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: |
@@ -6852,7 +6866,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -6877,7 +6891,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -6885,14 +6899,14 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -6988,21 +7002,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -7026,21 +7040,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -7064,7 +7078,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -7072,7 +7086,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: |
@@ -7080,7 +7094,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -7105,7 +7119,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -7113,14 +7127,14 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -7233,21 +7247,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -7311,21 +7325,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -7349,21 +7363,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -7386,21 +7400,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -7423,21 +7437,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -7543,21 +7557,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -7617,21 +7631,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -7655,21 +7669,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -7692,21 +7706,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -7729,21 +7743,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -7836,21 +7850,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -7874,21 +7888,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -7912,7 +7926,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -7920,7 +7934,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: |
@@ -7928,7 +7942,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -7953,7 +7967,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -7961,14 +7975,14 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -7991,7 +8005,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -7999,14 +8013,14 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -8085,21 +8099,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -8127,21 +8141,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -8165,21 +8179,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -8203,7 +8217,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -8211,7 +8225,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: |
@@ -8219,7 +8233,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -8244,7 +8258,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -8252,14 +8266,14 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -8351,21 +8365,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -8391,21 +8405,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -8451,21 +8465,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -8489,21 +8503,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -8553,7 +8567,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: |
@@ -8561,7 +8575,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: |
@@ -8569,7 +8583,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
                 default: 1377013266
           content:
@@ -8660,21 +8674,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -8698,21 +8712,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -8736,7 +8750,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -8744,7 +8758,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: |
@@ -8752,7 +8766,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -8777,7 +8791,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -8785,14 +8799,14 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -8878,21 +8892,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -8920,21 +8934,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -8958,21 +8972,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -8996,7 +9010,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -9004,7 +9018,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: |
@@ -9012,7 +9026,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -9037,7 +9051,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -9045,14 +9059,14 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -9165,21 +9179,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -9204,7 +9218,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -9212,7 +9226,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: |
@@ -9220,7 +9234,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -9245,7 +9259,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -9253,14 +9267,14 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -9367,21 +9381,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -9406,7 +9420,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -9414,7 +9428,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: |
@@ -9422,7 +9436,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -9447,7 +9461,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -9455,14 +9469,14 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -9551,21 +9565,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -9603,21 +9617,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -9641,21 +9655,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -9678,21 +9692,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -9759,7 +9773,7 @@ paths:
               countryCode: '+64'
               areaCode: '09'
               phoneNumber: 264 5555
-              phoneType: home
+              phoneType: Home
               isPrimary: true
       responses:
         '201':
@@ -9791,21 +9805,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -9855,21 +9869,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -9893,21 +9907,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -9930,21 +9944,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -10059,21 +10073,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -10098,7 +10112,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -10106,7 +10120,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: |
@@ -10114,7 +10128,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -10139,7 +10153,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -10147,14 +10161,14 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -10252,21 +10266,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -10290,21 +10304,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -10328,21 +10342,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -10365,21 +10379,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -10525,21 +10539,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -10563,21 +10577,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -10600,21 +10614,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -10778,21 +10792,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -10816,21 +10830,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -10853,21 +10867,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -10960,21 +10974,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -10998,21 +11012,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -11044,7 +11058,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -11052,7 +11066,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: |
@@ -11060,7 +11074,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -11085,7 +11099,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -11093,14 +11107,14 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -11192,21 +11206,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -11230,21 +11244,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -11268,7 +11282,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -11276,7 +11290,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: |
@@ -11284,7 +11298,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -11309,7 +11323,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -11317,14 +11331,14 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -11423,21 +11437,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -11501,21 +11515,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -11540,7 +11554,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: |
@@ -11548,7 +11562,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: |
@@ -11556,7 +11570,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
         '422':
           description: Unprocessable Entity - Occurs when the resource provided is not supported
@@ -11573,21 +11587,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -11610,21 +11624,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -11647,21 +11661,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -11780,21 +11794,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -11818,21 +11832,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -11856,7 +11870,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -11864,7 +11878,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: |
@@ -11872,7 +11886,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -11897,7 +11911,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -11905,14 +11919,14 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -11995,21 +12009,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -12037,21 +12051,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -12087,21 +12101,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -12125,21 +12139,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -12162,21 +12176,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -12260,21 +12274,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -12299,7 +12313,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -12307,7 +12321,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: |
@@ -12315,7 +12329,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -12340,7 +12354,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             "X-RateLimit-Remaining\t":
               description: |
@@ -12348,14 +12362,14 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             "X-RateLimit-Reset\t":
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -12450,21 +12464,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -12488,21 +12502,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -12527,7 +12541,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: |
@@ -12535,7 +12549,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: |
@@ -12543,7 +12557,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
         '422':
           description: Unprocessable Entity - Occurs when the resource provided is not supported
@@ -12560,21 +12574,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -12597,21 +12611,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -12634,21 +12648,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -12741,21 +12755,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -12805,21 +12819,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -12844,7 +12858,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: |
@@ -12852,7 +12866,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: |
@@ -12860,7 +12874,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
         '422':
           description: Unprocessable Entity - Occurs when the resource provided is not supported
@@ -12877,21 +12891,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -12914,21 +12928,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -12951,21 +12965,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -12997,7 +13011,7 @@ paths:
           schema:
             enum:
               - DEA234
-            type: String
+            type: string
         - name: Authorization
           in: header
           description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
@@ -13058,21 +13072,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -13096,21 +13110,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -13135,7 +13149,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: |
@@ -13143,7 +13157,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: |
@@ -13151,7 +13165,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
         '422':
           description: Unprocessable Entity - Occurs when the resource provided is not supported
@@ -13168,21 +13182,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -13205,21 +13219,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
@@ -13242,21 +13256,21 @@ paths:
               required: true
               schema:
                 enum:
-                  - '60'
+                  - 60
                 type: integer
             X-RateLimit-Remaining:
               description: The number of requests remaining in the current rate limit window.
               required: true
               schema:
                 enum:
-                  - '10'
+                  - 10
                 type: integer
             X-RateLimit-Reset:
               description: The time at which the current rate limit window resets in UTC epoch seconds.
               required: true
               schema:
                 enum:
-                  - '1377013266'
+                  - 1377013266
                 type: integer
           content:
             application/json:
