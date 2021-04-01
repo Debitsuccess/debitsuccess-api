@@ -55,10 +55,10 @@ Debitsuccess is building a RESTful API suite as an alternative for the services 
 
 
 *****
-![](../assets/images/image-20210218-013302.png)
+
 ![](../assets/images/image-20200910-002102.png)
 ![](../assets/images/image-20210218-001546.png)
 ![](../assets/images/image-20210218-001631.png)
-![](../assets/images/user-plus-solid.png)
-![](../assets/images/user-cog-solid.jpg)
-![](../assets/images/file-invoice-dollar-solid.png)
+
+
+

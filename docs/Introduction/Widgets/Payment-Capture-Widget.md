@@ -151,7 +151,8 @@ Debitsuccess Payment Capture widget supports CSS style customization and labels 
 
 
 
-| AUS and NZ Credit Card Details Capture Form | NZ Bank Account Details Capture Form | AUS Bank Account Details Capture Form | 
+| AUS and NZ Credit Card Details Capture Form ![](../assets/images/image-20200910-002102.png) | NZ Bank Account Details Capture Form ![](../assets/images/image-20210218-001546.png) | AUS Bank Account Details Capture Form ![](../assets/images/image-20210218-001631.png) | 
+
 
 CSS styles customizationFor style customization, Debitsuccess accepts the following CSS properties:
 
