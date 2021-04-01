@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: Customer Services API
-  description: TEST Manage customer details, payment schedules, account information, view payment history, and much more.
+  description: Manage customer details, payment schedules, account information, view payment history, and much more.
   contact:
     email: TestAPI.Support@debitsuccess.com
   version: V1.0

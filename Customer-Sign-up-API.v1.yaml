@@ -3,7 +3,7 @@ info:
   title: Customer Sign up API
   description: | 
     ---
-    ## Overview TEST
+    ## Overview
     The online management gateway API allow for the creation of account templates. The account templates are used to signup new customer via Debitsuccess Online management gateway web application.
 
     ## Web Application
