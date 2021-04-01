@@ -8,22 +8,20 @@ info:
 servers:
   - url: 'https://oc-test.debitsuccess.com/CustomerServices/v1.0'
 tags:
- name:
-  - Businesses
-  - Customers
-  - BusinessAccounts
-  - Accounts
-  - Schedules-Suspension
-  - Schedules-Recurring
-  - Schedules-OneOff
-  - Addresses
-  - PhoneNumbers
-  - EmailAddresses
-  - OverdueStatusChanges
-  - Payment History
-  - Terms and Conditons
-  - PaymentToken
-  
+- name: Customers
+- name: BusinessAccounts
+- name: Accounts
+- name: Schedules-Suspension
+- name: Schedules-Recurring
+- name: Schedules-OneOff
+- name: Addresses
+- name: PhoneNumbers
+- name: EmailAddresses
+- name: OverdueStatusChanges
+- name: Payment History
+- name: Terms and Conditions
+- name: PaymentToken
+- name: Businesses
 paths:
   /customers:
     post:
@@ -3049,7 +3047,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '137703266'
+                  - 137703266
                 type: integer
           content:
             application/json:
@@ -3314,7 +3312,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '137703266'
+                  - 137703266
                 type: integer
           content:
             application/json:
@@ -4085,7 +4083,7 @@ paths:
               required: true
               schema:
                 enum:
-                  - '137703266'
+                  - 137703266
                 type: integer
           content:
             application/json:
@@ -9081,7 +9079,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  '/customers/{customerId}/phoneNumbers/':
+  '/customers/{customerId}/phoneNumbers':
     get:
       tags:
         - PhoneNumbers
@@ -12208,7 +12206,7 @@ paths:
   '/businessAccounts/{businessAccountId}/termsAndConditions':
     get:
       tags:
-        - Terms and Conditons
+        - Terms and Conditions
       summary: Get Terms and Conditions
       description: Retrieves Terms and Condition associated to the business account(FacilityAccount) based on the businessAccount ID provided.
       operationId: 5e7146127151f8d56912df7c
