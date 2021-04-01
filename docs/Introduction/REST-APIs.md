@@ -3,7 +3,7 @@ Debitsuccess APIs are REST-based with resource-oriented URLs and use HTTP based 
 
 
 
-| ![](../assets/images/user-plus-solid.svg)
+| 
 ## [[Customer Sign up API|Customer-Sign-up]]
  | 
 |  --- | 
@@ -11,17 +11,18 @@ Debitsuccess APIs are REST-based with resource-oriented URLs and use HTTP based 
 
 
 
+***
 
 
 
-
-| ![](../assets/images/user-cog-solid.svg)[[Customer Services API|Customer-Services]] | 
+| 
+## [[Customer Services API|Customer-Services]] | 
 |  --- | 
 | Manage customer details, payment schedules, account information, view payment history, and much more. **Host URL:** [https://oc-test.debitsuccess.com/CustomerServices/v1.0](https://oc-test.debitsuccess.com/CustomerServices/v1.0) **Resources** [[Customer Services|Customer-Services]] | 
 
+***
 
-
-| ![](../assets/images/file-invoice-dollar-solid.svg)
+| 
 ## [[Account Payment API|Account-Payment-and-Fees]]
  | 
 |  --- | 
