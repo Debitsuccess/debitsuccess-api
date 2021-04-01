@@ -9287,6 +9287,257 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
+    post:
+      tags:
+        - PhoneNumbers
+      summary: Add Phone Number
+      description: Adds phone number to an existing customer.
+      operationId: 5ddde18fb48942b2d52c7a8e
+      parameters:
+        - name: customerId
+          in: path
+          description: Unique identifier associated to the customer whom the phone number is created for
+          required: true
+          schema:
+            enum:
+              - '1234567'
+            type: string
+        - name: Authorization
+          in: header
+          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          required: true
+          schema:
+            type: string
+        - name: X-Mock-Code
+          in: header
+          description: Http Status code of the supported mocked responses.
+          required: true
+          schema:
+            enum:
+              - '201'
+              - '400'
+              - '401'
+              - '403'
+              - '429'
+              - '500'
+              - '503'
+            type: string
+            default: '201'
+      requestBody:
+        description: |-
+          If "isPrimary" is set to "true", when this phone number successfully added, all other existing phone numbers belong to the customer will have their "isPrimary" field set to "false". 
+
+          Refer to the supporting documentation (https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1257414195/Library) for the accepted values for countryCode.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddPhoneNumberRequest'
+            example:
+              phoneName: john
+              countryCode: '+64'
+              areaCode: '09'
+              phoneNumber: 264 5555
+              phoneType: Home
+              isPrimary: true
+      responses:
+        '201':
+          description: Customer phone number successfully created for the customer ID provided.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/201AddPhoneNumber'
+              example:
+                phoneNumberId: '9999999'
+                phoneName: john
+                countryCode: '+64'
+                areaCode: '09'
+                phoneNumber: 264 5555
+                phoneType: home
+                isPrimary: true
+        '400':
+          description: 'Bad Request - Request failed due to validation errors, the response lists the field in the request that did not pass the validation. The client can directly show these errors to the end users.'
+          headers:
+            X-Notification:
+              description: This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.
+              required: true
+              schema:
+                enum:
+                  - 'Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00'
+                type: string
+            X-RateLimit-Limit:
+              description: The maximum number of requests you're permitted to make per hour.
+              required: true
+              schema:
+                enum:
+                  - 60
+                type: integer
+            X-RateLimit-Remaining:
+              description: The number of requests remaining in the current rate limit window.
+              required: true
+              schema:
+                enum:
+                  - 10
+                type: integer
+            X-RateLimit-Reset:
+              description: The time at which the current rate limit window resets in UTC epoch seconds.
+              required: true
+              schema:
+                enum:
+                  - 1377013266
+                type: integer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400AddPhoneNumber'
+              example:
+                errorCode: validation
+                message: Unable to process request due to validation errors.
+                errors:
+                  - field: phoneName
+                    message: PhoneName is required.
+                  - field: phoneName
+                    message: PhoneName must not exceed 50 characters.
+                  - field: countryCode
+                    message: CountryCode is required.
+                  - field: countryCode
+                    message: CountryCode must not exceed 4 characters.
+                  - field: areaCode
+                    message: AreaCode must not exceed 4 characters.
+                  - field: phoneNumber
+                    message: PhoneNumber is required.
+                  - field: phoneNumber
+                    message: PhoneNumber provided is invalid.
+                  - field: phoneNumber
+                    message: PhoneNumber must not exceed 75 characters.
+                  - field: phoneNumber
+                    message: PhoneNumber provided already exists.
+                  - field: phoneType
+                    message: PhoneType is required.
+                  - field: phoneType
+                    message: PhoneType is invalid.
+        '401':
+          description: |
+            Unauthorized - Occurs when the authorization token provided is either expired or invalid.
+        '403':
+          description: Forbidden - Occurs when the client does not have sufficient claims to access this endpoint. Or when the identity server client does not have access to the business this request is being made for. see - List of claims required for this request see - Additional errorCodes returned
+          headers:
+            X-Notification:
+              description: This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.
+              required: true
+              schema:
+                enum:
+                  - 'Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00'
+                type: string
+            X-RateLimit-Limit:
+              description: The maximum number of requests you're permitted to make per hour.
+              required: true
+              schema:
+                enum:
+                  - 60
+                type: integer
+            X-RateLimit-Remaining:
+              description: The number of requests remaining in the current rate limit window.
+              required: true
+              schema:
+                enum:
+                  - 10
+                type: integer
+            X-RateLimit-Reset:
+              description: The time at which the current rate limit window resets in UTC epoch seconds.
+              required: true
+              schema:
+                enum:
+                  - 1377013266
+                type: integer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403BusinessAccessDenied'
+              example:
+                errorCode: access_denied
+                message: Unable to process this request as you do not have access to the customer associated to this request.
+        '429':
+          description: Too Many Requests - Occurs when user has sent too many requests in a given amount of time.
+          headers:
+            X-Notification:
+              description: This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.
+              required: true
+              schema:
+                enum:
+                  - 'Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00'
+                type: string
+            X-RateLimit-Limit:
+              description: The maximum number of requests you're permitted to make per hour.
+              required: true
+              schema:
+                enum:
+                  - 60
+                type: integer
+            X-RateLimit-Remaining:
+              description: The number of requests remaining in the current rate limit window.
+              required: true
+              schema:
+                enum:
+                  - 10
+                type: integer
+            X-RateLimit-Reset:
+              description: The time at which the current rate limit window resets in UTC epoch seconds.
+              required: true
+              schema:
+                enum:
+                  - 1377013266
+                type: integer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/429TooManyRequests'
+              example:
+                message: You have exceeded the maximum limit of request allowed. Please try your request again in a moment.
+        '500':
+          description: Internal Server Error - Something went wrong on our end (These are rare).
+          headers:
+            X-Notification:
+              description: This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.
+              required: true
+              schema:
+                enum:
+                  - 'Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00'
+                type: string
+            X-RateLimit-Limit:
+              description: The maximum number of requests you're permitted to make per hour.
+              required: true
+              schema:
+                enum:
+                  - 60
+                type: integer
+            X-RateLimit-Remaining:
+              description: The number of requests remaining in the current rate limit window.
+              required: true
+              schema:
+                enum:
+                  - 10
+                type: integer
+            X-RateLimit-Reset:
+              description: The time at which the current rate limit window resets in UTC epoch seconds.
+              required: true
+              schema:
+                enum:
+                  - 1377013266
+                type: integer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500InternalServerError'
+              example:
+                message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
+        '503':
+          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/503ServiceUnavailable'
+              example:
+                message: The API is currently unavailable due to a scheduled outage – please try again soon.
   '/customers/{customerId}/emailAddresses':
     get:
       tags:
@@ -9596,258 +9847,6 @@ paths:
                     message: EmailAddress must not exceed 75 characters.
                   - field: emailAddress
                     message: EmailAddress provided already exists.
-        '401':
-          description: |
-            Unauthorized - Occurs when the authorization token provided is either expired or invalid.
-        '403':
-          description: Forbidden - Occurs when the client does not have sufficient claims to access this endpoint. Or when the identity server client does not have access to the business this request is being made for. see - List of claims required for this request see - Additional errorCodes returned
-          headers:
-            X-Notification:
-              description: This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.
-              required: true
-              schema:
-                enum:
-                  - 'Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00'
-                type: string
-            X-RateLimit-Limit:
-              description: The maximum number of requests you're permitted to make per hour.
-              required: true
-              schema:
-                enum:
-                  - 60
-                type: integer
-            X-RateLimit-Remaining:
-              description: The number of requests remaining in the current rate limit window.
-              required: true
-              schema:
-                enum:
-                  - 10
-                type: integer
-            X-RateLimit-Reset:
-              description: The time at which the current rate limit window resets in UTC epoch seconds.
-              required: true
-              schema:
-                enum:
-                  - 1377013266
-                type: integer
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/403BusinessAccessDenied'
-              example:
-                errorCode: access_denied
-                message: Unable to process this request as you do not have access to the customer associated to this request.
-        '429':
-          description: Too Many Requests - Occurs when user has sent too many requests in a given amount of time.
-          headers:
-            X-Notification:
-              description: This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.
-              required: true
-              schema:
-                enum:
-                  - 'Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00'
-                type: string
-            X-RateLimit-Limit:
-              description: The maximum number of requests you're permitted to make per hour.
-              required: true
-              schema:
-                enum:
-                  - 60
-                type: integer
-            X-RateLimit-Remaining:
-              description: The number of requests remaining in the current rate limit window.
-              required: true
-              schema:
-                enum:
-                  - 10
-                type: integer
-            X-RateLimit-Reset:
-              description: The time at which the current rate limit window resets in UTC epoch seconds.
-              required: true
-              schema:
-                enum:
-                  - 1377013266
-                type: integer
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/429TooManyRequests'
-              example:
-                message: You have exceeded the maximum limit of request allowed. Please try your request again in a moment.
-        '500':
-          description: Internal Server Error - Something went wrong on our end (These are rare).
-          headers:
-            X-Notification:
-              description: This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.
-              required: true
-              schema:
-                enum:
-                  - 'Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00'
-                type: string
-            X-RateLimit-Limit:
-              description: The maximum number of requests you're permitted to make per hour.
-              required: true
-              schema:
-                enum:
-                  - 60
-                type: integer
-            X-RateLimit-Remaining:
-              description: The number of requests remaining in the current rate limit window.
-              required: true
-              schema:
-                enum:
-                  - 10
-                type: integer
-            X-RateLimit-Reset:
-              description: The time at which the current rate limit window resets in UTC epoch seconds.
-              required: true
-              schema:
-                enum:
-                  - 1377013266
-                type: integer
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/500InternalServerError'
-              example:
-                message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  '/customers/{customerId}/phoneNumbers':
-    post:
-      tags:
-        - PhoneNumbers
-      summary: Add Phone Number
-      description: Adds phone number to an existing customer.
-      operationId: 5ddde18fb48942b2d52c7a8e
-      parameters:
-        - name: customerId
-          in: path
-          description: Unique identifier associated to the customer whom the phone number is created for
-          required: true
-          schema:
-            enum:
-              - '1234567'
-            type: string
-        - name: Authorization
-          in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
-          required: true
-          schema:
-            type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '201'
-              - '400'
-              - '401'
-              - '403'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '201'
-      requestBody:
-        description: |-
-          If "isPrimary" is set to "true", when this phone number successfully added, all other existing phone numbers belong to the customer will have their "isPrimary" field set to "false". 
-
-          Refer to the supporting documentation (https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1257414195/Library) for the accepted values for countryCode.
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AddPhoneNumberRequest'
-            example:
-              phoneName: john
-              countryCode: '+64'
-              areaCode: '09'
-              phoneNumber: 264 5555
-              phoneType: Home
-              isPrimary: true
-      responses:
-        '201':
-          description: Customer phone number successfully created for the customer ID provided.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/201AddPhoneNumber'
-              example:
-                phoneNumberId: '9999999'
-                phoneName: john
-                countryCode: '+64'
-                areaCode: '09'
-                phoneNumber: 264 5555
-                phoneType: home
-                isPrimary: true
-        '400':
-          description: 'Bad Request - Request failed due to validation errors, the response lists the field in the request that did not pass the validation. The client can directly show these errors to the end users.'
-          headers:
-            X-Notification:
-              description: This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.
-              required: true
-              schema:
-                enum:
-                  - 'Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00'
-                type: string
-            X-RateLimit-Limit:
-              description: The maximum number of requests you're permitted to make per hour.
-              required: true
-              schema:
-                enum:
-                  - 60
-                type: integer
-            X-RateLimit-Remaining:
-              description: The number of requests remaining in the current rate limit window.
-              required: true
-              schema:
-                enum:
-                  - 10
-                type: integer
-            X-RateLimit-Reset:
-              description: The time at which the current rate limit window resets in UTC epoch seconds.
-              required: true
-              schema:
-                enum:
-                  - 1377013266
-                type: integer
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/400AddPhoneNumber'
-              example:
-                errorCode: validation
-                message: Unable to process request due to validation errors.
-                errors:
-                  - field: phoneName
-                    message: PhoneName is required.
-                  - field: phoneName
-                    message: PhoneName must not exceed 50 characters.
-                  - field: countryCode
-                    message: CountryCode is required.
-                  - field: countryCode
-                    message: CountryCode must not exceed 4 characters.
-                  - field: areaCode
-                    message: AreaCode must not exceed 4 characters.
-                  - field: phoneNumber
-                    message: PhoneNumber is required.
-                  - field: phoneNumber
-                    message: PhoneNumber provided is invalid.
-                  - field: phoneNumber
-                    message: PhoneNumber must not exceed 75 characters.
-                  - field: phoneNumber
-                    message: PhoneNumber provided already exists.
-                  - field: phoneType
-                    message: PhoneType is required.
-                  - field: phoneType
-                    message: PhoneType is invalid.
         '401':
           description: |
             Unauthorized - Occurs when the authorization token provided is either expired or invalid.
