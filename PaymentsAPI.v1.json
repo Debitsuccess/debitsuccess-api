@@ -15,10 +15,12 @@
   ],
   "tags": [
     {
-      "name": "Account Payments"
+      "name": "Account Payments",
+      "description":"The Account Payment API provides an interface for businesses to accept payment for an account."
     },
     {
-      "name": "BusinessCollectedPayment"
+      "name": "BusinessCollectedPayment",
+      "description": "The Business Collected Payment API collected allows facilities to collect payments at clubs and sync the attempts down to Debitsuccess. This allows Debitsuccess to update the balance of the account so that the same payment is not collected automatically. Currently, there are two functions that are supported by the new REST API for payment collected feature. These are:Record Payment Collected Transaction - allows facilities to send payments that are collected at clubs. Reverse / Refund Payment Collected Transaction - allows facilities to reverse an old payment collected transaction. It is useful if a payment collected required were sent in an error."
     },
     {
       "name": "Casual Payments"
