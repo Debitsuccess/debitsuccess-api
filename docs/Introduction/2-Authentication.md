@@ -21,8 +21,6 @@ OAuth 2.0 Client Credentials Flow ![](../assets/images/image-20210218-013302.png
 
 
 
-
-
 To integrate your web server application with the Debitsuccess Identity Server, follow the below steps:
 
 
@@ -58,9 +56,7 @@ Request Parameters
 | Client_ID | Required | ########-####-####-####-############where # is alphanumeric | Unique identifier for a client provided by Debitsuccess. | 
 | Client_Secret | Required | 64 bit | Client secret key provided by Debitsuccess. | 
 | Grant_Type | Required | stringclient_credentials | Denotes the flow you are using. Always use client_credentials | 
-| scope | Optional | Space-separated string | The name of the API that access token will be generated for.If the scope is not provided by Debitsuccess, you can ignore this field in the request body. Also if the scope is not provided the token will contain all available scopes for this client_id.
-
- | 
+| scope | Optional | Space-separated string | The name of the API that access token will be generated for.If the scope is not provided by Debitsuccess, you can ignore this field in the request body. Also if the scope is not provided the token will contain all available scopes for this client_id.| 
 
 
 
@@ -78,7 +74,9 @@ client_secret=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 Scope: CasualCreditCard
 ```
-Response 200- Successful RequestIn exchange for these credentials, the Debitsuccess authorization server issues access tokens called bearer tokens that you use for authorization when you make REST API requests. A bearer token enables you to complete actions on behalf of, and with the approval of, the resource owner.
+Response 200- Successful Request
+
+In exchange for these credentials, the Debitsuccess authorization server issues access tokens called bearer tokens that you use for authorization when you make REST API requests. A bearer token enables you to complete actions on behalf of, and with the approval of, the resource owner.
 
 
 
@@ -86,9 +84,7 @@ Response 200- Successful RequestIn exchange for these credentials, the Debitsucc
 |  --- |  --- |  --- | 
 | Access_Token | sample:"eyJhbGciOiJSUzI1NiIsImtpZCI6IkE4ODFDQzdBNDM4MEUyRDM5N0EwQjNGMERGNDFGOTg1MDYzRkU1RkIiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJxSUhNZWtPQTR0T1hvTFB3MzBINWhRA” | It represents the authorization of a specific application to access specific parts of user data and uniquely identifies the client login session. **JWT Token validation**  _JSON Web Token (JWT) is an open standardthat defines a compact and self-contained way for securely transmitting information between parties as a JSON object._  _This information can be verified and trusted because it is digitally signed. JWTs can be signed using a secret (with theHMACalgorithm) or a public/private key pair usingRSA._ We will be using RSA to sign the token. RS256 (RSA Signature with SHA-256) is an asymmetric algorithm, and it uses a public/private key pair: the identity server provider has a private (secret) key used to generate the signature, and the consumer of the JWT gets a public key to validate the signature. Since the public key, as opposed to the private key, doesn't need to be kept secured, the identity server makes it easily available for consumers to obtain from the [https://oc-test.debitsuccess.com/identity/.well-known/openid-configuration/jwks](https://oc-test.debitsuccess.com/identity/.well-known/openid-configuration/jwks) URL.To read more about JWT tokens please visit[https://jwt.io/introduction/](https://jwt.io/introduction/)  | 
 | Expires_In | Integer in seconds, example 1800, 3600 | Represents the number of seconds that the access token will be valid. | 
-| Token_Type | "Bearer" | A bearer token means that the bearer of the access token can access authorized resources without further identification.The access token must always be appended with the term “Bearer” when you call any Debitsuccess REST API. E.g. Bearer \[access_token]
-
- | 
+| Token_Type | "Bearer" | A bearer token means that the bearer of the access token can access authorized resources without further identification.The access token must always be appended with the term “Bearer” when you call any Debitsuccess REST API. E.g. Bearer \[access_token]| 
 
 
 ```json
@@ -108,7 +104,9 @@ Response 200- Successful RequestIn exchange for these credentials, the Debitsucc
 
 }
 ```
-Error message 400- Bad Request, Request validation errorThe response message will vary depending on the cause.
+Error message 400- Bad Request, Request validation error
+
+The response message will vary depending on the cause.
 
 
 ```
