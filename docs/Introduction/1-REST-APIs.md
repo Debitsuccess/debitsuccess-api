@@ -3,7 +3,7 @@ Debitsuccess APIs are REST-based with resource-oriented URLs and use HTTP based 
 
 ***
 
- ![](https://drive.google.com/file/d/1wPPYU8jy4qL02sUMw4plbrFeC_uTDF_E/view?usp=sharing) 
+ ![](https://drive.google.com/file/d/1wPPYU8jy4qL02sUMw4plbrFeC_uTDF_E/view) 
 ## [Customer Sign up API]
  | 
 |  --- | 
@@ -14,8 +14,7 @@ Debitsuccess APIs are REST-based with resource-oriented URLs and use HTTP based 
 ***
 
 
-
- ![](https://drive.google.com/file/d/1gmkI7FnAhla_QJXDPIksTD10vdrS_hU3/view?usp=sharing)
+ ![](https://drive.google.com/file/d/1gmkI7FnAhla_QJXDPIksTD10vdrS_hU3/view)
 ## [Customer Services API]  
  | 
 |  --- | 
@@ -23,7 +22,7 @@ Debitsuccess APIs are REST-based with resource-oriented URLs and use HTTP based 
 
 ***
 
- ![](https://drive.google.com/file/d/1JayBpSpqPi6tTsozcnd2D7KesIjHALd6/view?usp=sharing)
+ ![](https://drive.google.com/file/d/1JayBpSpqPi6tTsozcnd2D7KesIjHALd6/view)
 ## [Account Payment API]
  | 
 |  --- | 
