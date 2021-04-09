@@ -1,36 +1,59 @@
 # Introduction 
 Debitsuccess APIs are REST-based with resource-oriented URLs and use HTTP based response codes to indicate API errors. We have grouped our APIs by function, each API contains the resources you will need to integrate into your interface to allow you to access the features for a different area of the Debitsuccess service.
 
-***
 
- ![](https://drive.google.com/uc?export=view&id=1wPPYU8jy4qL02sUMw4plbrFeC_uTDF_E) 
-## [Customer Sign up API]
- | 
-|  --- | 
-| Onboard new customers using account templates. **Host URL:** [https://oc-test.debitsuccess.com/DirectEntry/api/v1.0](https://oc.debitsuccess.com/DirectEntry/api/v1.0) **Resources**  | 
+<!--
+type: tab
+title: Customer Sign-up API
+-->
+
+## Customer Sign-up API
+
+![](https://drive.google.com/uc?export=view&id=1wPPYU8jy4qL02sUMw4plbrFeC_uTDF_E) 
+
+Use this API to Sign up new customers.
+
+**Host URL:** https://oc-test.debitsuccess.com/DirectEntry/api/v1.0
+**Resources:**
+
+- [Getting Started](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1301282979/Customer+Sign-up)
+- [API Reference](https://debitsuccess.stoplight.io/docs/debitsuccess-api/Customer-Sign-up-API.v1.yaml)
+- [Try out API](https://debitsuccess.stoplight.io/docs/debitsuccess-api/Customer-Sign-up-API.v1.yaml/paths/~1accounttemplates/post)
+
+<!--
+type: tab
+title: Customer Services API
+-->
+
+## Customer Services API
+
+![](https://drive.google.com/uc?export=view&id=1gmkI7FnAhla_QJXDPIksTD10vdrS_hU3)
+
+Use this API to manage customer account, customer details, schedules get payment history etc.
+
+**Host URL:** https://oc-test.debitsuccess.com/payments/v1.0
+**Resources:** 
+
+- [Getting Started](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1709736204/Customer+Services)
+- [API Reference](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml)
+- [Try out API](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1customers/post)
+
+<!--
+type: tab
+title: Payments API
+-->
+
+## Payments API
+![](https://drive.google.com/uc?export=view&id=1JayBpSpqPi6tTsozcnd2D7KesIjHALd6)
+
+Use this API to Process casual payments, set up direct debits, capture new payment details, process real-time payment, and collect payments at clubs.
+
+**Host URL:** https://oc-test.debitsuccess.com/payments/v1.0
+**Resources:**  
 
 
+- [Getting Started](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1709082493/Payments)
+- [API Reference](https://debitsuccess.stoplight.io/docs/debitsuccess-api/PaymentsAPI.v1.json)
+- [Try out API](https://debitsuccess.stoplight.io/docs/debitsuccess-api/PaymentsAPI.v1.json/paths/~1account~1creditcard/post)
 
-***
-
-
- ![](https://drive.google.com/uc?export=view&id=1gmkI7FnAhla_QJXDPIksTD10vdrS_hU3)
-## [Customer Services API]  
- | 
-|  --- | 
-| Manage customer details, payment schedules, account information, view payment history, and much more. **Host URL:** [https://oc-test.debitsuccess.com/CustomerServices/v1.0](https://oc-test.debitsuccess.com/CustomerServices/v1.0) **Resources** [Customer Services] | 
-
-***
-
- ![](https://drive.google.com/uc?export=view&id=1JayBpSpqPi6tTsozcnd2D7KesIjHALd6)
-## [Account Payment API]
- | 
-|  --- | 
-| Process casual payments, set up direct debits, capture new payment details, process real-time payment, and collect payments at clubs. **Host URL:** [https://oc-test.debitsuccess.com/payments/v1.0](https://oc-test.debitsuccess.com/payments/v1.0) **Resources** [Account Payment and Fees] | 
-
-
-
-
-
-*****
-
+<!-- type: tab-end -->
