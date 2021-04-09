@@ -60,3 +60,6 @@ Use this API to Process casual payments, set up direct debits, capture new payme
 - [Try out API](https://debitsuccess.stoplight.io/docs/debitsuccess-api/PaymentsAPI.v1.json/paths/~1account~1creditcard/post)
 
 <!-- type: tab-end -->
+
+*****
+

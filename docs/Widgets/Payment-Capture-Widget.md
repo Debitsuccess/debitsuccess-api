@@ -150,8 +150,33 @@ dsWidget.createBankCaptureForm("bank-container", "AUS", styles, customBankLabels
 Debitsuccess Payment Capture widget supports CSS style customization and labels text replacement. By default, the Payment Capture forms are displayed as below:
 
 
+<!--
+type: tab
+title: AUS and NZ Credit Card Details Capture Form
+-->
 
-| AUS and NZ Credit Card Details Capture Form ![](../assets/images/image-20200910-002102.png) | NZ Bank Account Details Capture Form ![](../assets/images/image-20210218-001546.png) | AUS Bank Account Details Capture Form ![](../assets/images/image-20210218-001631.png) | 
+ ![](https://drive.google.com/uc?export=view&id=1xthBX73Jhr9rIBBltqccnB26kko9S6vv) 
+
+
+
+<!--
+type: tab
+title: NZ Bank Account Details Capture Form
+-->
+
+![](https://drive.google.com/uc?export=view&id=1In38dCAZgBz0J_muhGCnESH4i8IAWVp8)
+
+
+<!--
+type: tab
+title: AUS Bank Account Details Capture Form
+-->
+
+![](https://drive.google.com/uc?export=view&id=1sV1cQWQD3oOYdCngPnrQzPsfbAWEvPPo)
+
+
+<!-- type: tab-end -->
+
 
 
 CSS styles customizationFor style customization, Debitsuccess accepts the following CSS properties:
