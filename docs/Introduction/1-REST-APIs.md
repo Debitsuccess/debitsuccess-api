@@ -7,7 +7,6 @@ type: tab
 title: Customer Sign-up API
 -->
 
-## Customer Sign-up API
 
 ![](https://drive.google.com/uc?export=view&id=1wPPYU8jy4qL02sUMw4plbrFeC_uTDF_E) 
 
@@ -26,8 +25,6 @@ type: tab
 title: Customer Services API
 -->
 
-## Customer Services API
-
 ![](https://drive.google.com/uc?export=view&id=1gmkI7FnAhla_QJXDPIksTD10vdrS_hU3)
 
 Use this API to manage customer account, customer details, schedules get payment history etc.
@@ -45,7 +42,6 @@ type: tab
 title: Payments API
 -->
 
-## Payments API
 ![](https://drive.google.com/uc?export=view&id=1JayBpSpqPi6tTsozcnd2D7KesIjHALd6)
 
 Use this API to Process casual payments, set up direct debits, capture new payment details, process real-time payment, and collect payments at clubs.
