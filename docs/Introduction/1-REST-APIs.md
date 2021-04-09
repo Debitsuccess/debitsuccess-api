@@ -3,7 +3,7 @@ Debitsuccess APIs are REST-based with resource-oriented URLs and use HTTP based 
 
 ***
 
- ![](https://drive.google.com/file/d/1wPPYU8jy4qL02sUMw4plbrFeC_uTDF_E/view) 
+ ![](hhttps://drive.google.com/uc?export=view&id=1wPPYU8jy4qL02sUMw4plbrFeC_uTDF_E) 
 ## [Customer Sign up API]
  | 
 |  --- | 
