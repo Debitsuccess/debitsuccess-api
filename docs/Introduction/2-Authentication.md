@@ -83,7 +83,7 @@ In exchange for these credentials, the Debitsuccess authorization server issues 
 
 |  **Output Parameter**  |  **Format**  |  **Remark**  | 
 |  --- |  --- |  --- | 
-| Access_Token | sample:"eyJhbGciOiJSUzI1NiIsImtpZCI6IkE4ODFDQzdBNDM4MEUyRDM5N0EwQjNGMERGNDFGOTg1MDYzRkU1RkIiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJxSUhNZWtPQTR0T1hvTFB3MzBINWhRA” | It represents the authorization of a specific application to access specific parts of user data and uniquely identifies the client login session. **JWT Token validation**  _JSON Web Token (JWT) is an open standardthat defines a compact and self-contained way for securely transmitting information between parties as a JSON object._  _This information can be verified and trusted because it is digitally signed. JWTs can be signed using a secret (with theHMACalgorithm) or a public/private key pair usingRSA._ We will be using RSA to sign the token. RS256 (RSA Signature with SHA-256) is an asymmetric algorithm, and it uses a public/private key pair: the identity server provider has a private (secret) key used to generate the signature, and the consumer of the JWT gets a public key to validate the signature. Since the public key, as opposed to the private key, doesn't need to be kept secured, the identity server makes it easily available for consumers to obtain from the [https://oc-test.debitsuccess.com/identity/.well-known/openid-configuration/jwks](https://oc-test.debitsuccess.com/identity/.well-known/openid-configuration/jwks) URL.To read more about JWT tokens please visit[https://jwt.io/introduction/](https://jwt.io/introduction/)  | 
+| Access_Token | sample:"eyJhbGciOiJSUzI1NiIsImtpZCI6IkE4ODFDQzdBNDM4MEUyRDM5N0EwQjNGMERGNDFGOTg1MDYzRkU1RkIiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJxSUhNZWtPQTR0T1hvTFB3MzBINWhRA” | It represents the authorization of a specific application to access specific parts of user data and uniquely identifies the client login session.  | 
 | Expires_In | Integer in seconds, example 1800, 3600 | Represents the number of seconds that the access token will be valid. | 
 | Token_Type | "Bearer" | A bearer token means that the bearer of the access token can access authorized resources without further identification.The access token must always be appended with the term “Bearer” when you call any Debitsuccess REST API. E.g. Bearer \[access_token]| 
 
@@ -139,13 +139,11 @@ K3QsDwjYlgwAWUBH7IxKDJCAXXqf4PqZY53jr1tjMDBgINRsl0iCjG83X9pvzf0pa9i5bLfFHmDLgagG
 ```
 
 
-On this page
+*******
 
-
+**JWT Token validation**  _JSON Web Token (JWT) is an open standardthat defines a compact and self-contained way for securely transmitting information between parties as a JSON object._  _This information can be verified and trusted because it is digitally signed. JWTs can be signed using a secret (with theHMACalgorithm) or a public/private key pair usingRSA._ We will be using RSA to sign the token. RS256 (RSA Signature with SHA-256) is an asymmetric algorithm, and it uses a public/private key pair: the identity server provider has a private (secret) key used to generate the signature, and the consumer of the JWT gets a public key to validate the signature. Since the public key, as opposed to the private key, doesn't need to be kept secured, the identity server makes it easily available for consumers to obtain from the [https://oc-test.debitsuccess.com/identity/.well-known/openid-configuration/jwks](https://oc-test.debitsuccess.com/identity/.well-known/openid-configuration/jwks) URL.To read more about JWT tokens please visit[https://jwt.io/introduction/](https://jwt.io/introduction/)
 
 
 
 *****
 
-[[category.storage-team]] 
-[[category.confluence]] 
