@@ -14,6 +14,7 @@ title: Customer Sign-up API
 Use this API to Sign up new customers.
 
 **Host URL:** https://oc-test.debitsuccess.com/DirectEntry/api/v1.0
+
 **Resources:**
 
 - [Getting Started](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1301282979/Customer+Sign-up)
@@ -32,6 +33,7 @@ title: Customer Services API
 Use this API to manage customer account, customer details, schedules get payment history etc.
 
 **Host URL:** https://oc-test.debitsuccess.com/payments/v1.0
+
 **Resources:** 
 
 - [Getting Started](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1709736204/Customer+Services)
@@ -49,6 +51,7 @@ title: Payments API
 Use this API to Process casual payments, set up direct debits, capture new payment details, process real-time payment, and collect payments at clubs.
 
 **Host URL:** https://oc-test.debitsuccess.com/payments/v1.0
+
 **Resources:**  
 
 
