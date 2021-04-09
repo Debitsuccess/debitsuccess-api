@@ -38,7 +38,9 @@ Customer REST API is now available in the production environment. [Customer API]
 ## Upcoming APIs and Features
 Debitsuccess is always improving how we deliver our service.As part of delivering updated features, we may make some changes that impact how some of our existing APIs return data.
 
-Please note that these features are in is in our roadmap but we do not have a definite ETA.
+<!-- theme: success -->
+
+> Please note that these features are in is in our roadmap but we do not have a definite ETA.
 
 
 * A new Realtime Payment Widget will be available soon to which allows you to securely make real-time payments to businesses. Integration partners can embed this widget into their website and customize it to match their product theme.
