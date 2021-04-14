@@ -2656,40 +2656,41 @@ paths:
               schema:
                 $ref: '#/components/schemas/200GetAccount'
               example:
-                accountId: DSFIT11000
-                accountExternalId: ABC12345
-                customerId: '1234567'
-                businessAccountId: DSFIT1
-                termType: months
-                term: 24
-                accountCode: DSFit Account Code 1
-                accountNotes: New account
-                fixedTerm: true
-                nextBillingDate: '2019-11-31'
-                lastBillingDateTime: '2019-10-31T01:59:59.0000000+00:00'
-                overdueStatus: 1
-                overdueAmountPayment: 999.90
-                overdueAmountFee: 99.90
-                lastReversalReason: ''
+                accountId: A921888898193
+                accountExternalId: MOS17267
+                customerId: '1259490'
+                businessAccountId: A9218
+                termType: Months
+                term: 6
+                accountCode: ''
+                accountNotes: ''
+                fixedTerm: false
+                nextBillingDate: '2020-11-01'
+                lastBillingDateTime: '2020-03-02T00:13:48.940Z'
+                overdueStatus: 2
+                overdueAmountPayment: 146.9
+                overdueAmountFee: 7.5
+                lastReversalReason: Lost / Stolen Card
                 closeReason: ''
                 suspended: false
                 paymentStopped: true
-                paymentStopEndDate: '2019-11-30T00:00:00.0000000+00:00'
-                catchUpAmount: 50.0
-                catchUpEndDate: '2019-12-31T00:00:00.0000000+00:00'
+                paymentStopEndDate: ''
+                catchUpAmount: 0
+                catchUpEndDate: ''
                 paymentInAdvanceAmount: 0
-                paymentInAdvanceEnddate: ''
-                accountStartDate: '2018-12-31T00:00:00.0000000+00:00'
-                accountLoadedDateTime: '2018-10-31T01:59:59.0000000+00:00'
-                AccountCloseDateTime: ''
-                lastUpdatedDateTime: '2019-10-31T12:59:59.0000000+00:00'
-                accruedContractAmount: 999.9
-                originalContractAmount: 999.9
-                outstandingRecurringAmount: 99.9
-                outandingOneOffAmount: 25
-                outstandingFeeAmount: 9.9
-                projectedFinishDate: '2020-12-31T00:00:00.0000000+00:00'
-                paymentMethodToken: frtg67yu-yht5-6756-234r-tghy6u7ygesh
+                paymentInAdvanceEndDate: ''
+                accountStartDate: '2019-05-31'
+                accountCloseDateTime: ''
+                accountLoadedDateTime: '2019-05-29T12:00:00.000Z'
+                lastUpdatedDateTime: '2020-10-26T19:21:22.643Z'
+                accruedContractAmount: 881.4
+                originalContractAmount: 440.7
+                outstandingRecurringAmount: 220.35
+                outstandingOneOffAmount: 0
+                outstandingFeeAmount: 7.5
+                projectedFinishDate: ''
+                paymentMethodToken: 6BC50933-E43F-425E-AAB4-0B41A2627242
+                collectionStopReason: Invalid Account
         '401':
           description: |
             Unauthorized - Occurs when the authorization token provided is either expired or invalid.
