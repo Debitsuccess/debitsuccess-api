@@ -2482,6 +2482,81 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/200GetAccounts'
+              example:
+                accounts:
+                - accountId: A921888898193
+                  accountExternalId: MOS17267
+                  customerId: 1259490
+                  businessAccountId: A9218
+                  termType: Months
+                  term: 6
+                  accountCode: ''
+                  accountNotes: ''
+                  fixedTerm: false
+                  nextBillingDate: '2020-11-01'
+                  lastBillingDateTime: '2020-03-02T00:13:48.940Z'
+                  overdueStatus: 2
+                  overdueAmountPayment: 146.9
+                  overdueAmountFee: 7.5
+                  lastReversalReason: Lost / Stolen Card
+                  closeReason: ''
+                  suspended: false
+                  paymentStopped: true
+                  paymentStopEndDate: ''
+                  catchUpAmount: 0
+                  catchUpEndDate: ''
+                  paymentInAdvanceAmount: 0
+                  paymentInAdvanceEndDate: ''
+                  accountStartDate: '2019-05-31'
+                  accountCloseDateTime: ''
+                  accountLoadedDateTime: '2019-05-29T12:00:00.000Z'
+                  lastUpdatedDateTime: '2020-10-26T19:21:22.643Z'
+                  accruedContractAmount: 881.4
+                  originalContractAmount: 440.7
+                  outstandingRecurringAmount: 220.35
+                  outstandingOneOffAmount: 0
+                  outstandingFeeAmount: 7.5
+                  projectedFinishDate: ''
+                  paymentMethodToken: 6BC50933-E43F-425E-AAB4-0B41A2627242
+                  collectionStopReason: Invalid Account
+                - accountId: A921888897986
+                  accountExternalId: MOS17656
+                  customerId: 1704286
+                  businessAccountId: A9218
+                  termType: Months
+                  term: 0
+                  accountCode: ''
+                  accountNotes: ''
+                  fixedTerm: false
+                  nextBillingDate: '2020-11-01'
+                  lastBillingDateTime: '2020-03-02T00:13:48.940Z'
+                  overdueStatus: 0
+                  overdueAmountPayment: 69.95
+                  overdueAmountFee: 0
+                  lastReversalReason: ''
+                  closeReason: ''
+                  suspended: false
+                  paymentStopped: true
+                  paymentStopEndDate: ''
+                  catchUpAmount: 0
+                  catchUpEndDate: ''
+                  paymentInAdvanceAmount: 0
+                  paymentInAdvanceEndDate: ''
+                  accountStartDate: '2019-11-13'
+                  accountCloseDateTime: ''
+                  accountLoadedDateTime: '2019-11-11T11:00:00.000Z'
+                  lastUpdatedDateTime: '2020-10-26T19:21:22.643Z'
+                  accruedContractAmount: 419.7
+                  originalContractAmount: 0
+                  outstandingRecurringAmount: 139.9
+                  outstandingOneOffAmount: 0
+                  outstandingFeeAmount: 0
+                  projectedFinishDate: ''
+                  paymentMethodToken: 9457A037-F055-4071-B46F-D8F1E1331933
+                  collectionStopReason: ''
+                responseMetadata:
+                  nextCursor: NjM1MDkz
+                  hasNext: true
         '401':
           description: |
             Unauthorized - Occurs when the authorization token provided is either expired or invalid.
