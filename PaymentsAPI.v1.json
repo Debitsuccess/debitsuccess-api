@@ -1853,7 +1853,7 @@
     "/webpay/creditcard": {
       "post": {
         "tags": [
-          "Casual Payments"
+          "WebPay Payments"
         ],
         "description": "This endpoint processes credit card casual payments. Casual payments are recorded at the business level (Facility Account). The details of the customer making the payments are not recorded.",
         "operationId": "postwebpay",
@@ -2005,7 +2005,7 @@
     "/webpay/creditcard/{ExternalPaymentIdentifier}": {
       "get": {
         "tags": [
-          "Casual Payments"
+          "WebPay Payments"
         ],
         "description": "This endpoint can be used to retrieve the payment status for all the casual payments submitted via the Post endpoint.\n",
         "operationId": "getwebpay",
