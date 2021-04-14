@@ -234,7 +234,7 @@
         }
       }
     },
-    "/account/creditcard/{ExternalPaymentIdentifier}": {
+    "/account/creditcard/{externalPaymentIdentifier}": {
       "get": {
         "tags": [
           "Account Payments"
@@ -244,7 +244,7 @@
         "operationId": "5e9794d822413af58fe09f49",
         "parameters": [
           {
-            "name": "ExternalPaymentIdentifier",
+            "name": "externalPaymentIdentifier",
             "in": "path",
             "description": "\nThe external identifier which was used to make the payment.",
             "required": true,
@@ -2002,7 +2002,7 @@
         }
       }
     },
-    "/webpay/creditcard/{ExternalPaymentIdentifier}": {
+    "/webpay/creditcard/{externalPaymentIdentifier}": {
       "get": {
         "tags": [
           "WebPay Payments"
@@ -2011,7 +2011,7 @@
         "operationId": "getwebpay",
         "parameters": [
           {
-            "name": "ExternalPaymentIdentifier",
+            "name": "externalPaymentIdentifier",
             "in": "path",
             "description": "External Payment Identifier reference used to identify the payment.",
             "required": true,
@@ -2257,7 +2257,7 @@
         }
       }
     },
-    "/casual/creditcard/{ExternalPaymentIdentifier}":{
+    "/casual/creditcard/{externalPaymentIdentifier}":{
       "get": {
         "tags": [
           "Casual Payments"
@@ -2266,7 +2266,7 @@
         "operationId": "getCasualPayments",
         "parameters": [
           {
-            "name": "ExternalPaymentIdentifier",
+            "name": "externalPaymentIdentifier",
             "in": "path",
             "description": "External Payment Identifier reference used to identify the payment.",
             "required": true,
