@@ -2088,6 +2088,54 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/201CreateAccount'
+              example:
+                customerId: '1234567'
+                businessAccountId: DSFIT1
+                accountExternalId: 100200300ABCD
+                accountCode: AC1234567890
+                termType: months
+                term: 12
+                accountNotes: New fixed term account.
+                fixedTerm: true
+                nextBillingDate: '2020-12-31'
+                lastBillingDateTime: ''
+                overdueStatus: 0
+                overdueAmountPayment: 0
+                overdueAmountFee: 0
+                lastReversalReason: ''
+                closeReason: ''
+                suspended: false
+                paymentStopped: false
+                paymentStopEndDate: ''
+                catchUpAmount: 0
+                catchUpEndDate: ''
+                paymentInAdvanceAmount: 0
+                paymentInAdvanceEnddate: ''
+                waiveEstFee: true
+                accountStartDate: '2019-12-31'
+                accountLoadedDateTime: '2020-12-31T01:59:59.000Z'
+                AccountCloseDateTime: ''
+                lastUpdatedDateTime: '2020-12-31T12:59:59.000Z'
+                accruedContractAmount: 999.9
+                originalContractAmount: 999.9
+                outstandingRecurringAmount: 50
+                outandingOneOffAmount: 0
+                outstandingFeeAmount: 9.9
+                projectedFinishDate: '2021-12-31'
+                paymentMethodToken: frtg67yu-yht5-6756-234r-tghy6u7ytrre
+                recurringSchedules:
+                - recurringScheduleStartDate: '2020-01-31'
+                  installment: 50
+                  frequency: monthly
+                  numberOfPayments: 6
+                  externalScheduleId: R125810
+                  scheduleDescription: Recurring schedule Jan-Jun
+                - recurringScheduleStartDate: '2020-07-31'
+                  installment: 100
+                  frequency: monthly
+                  numberOfPayments:
+                  externalScheduleId: R125811
+                  scheduleDescription: Recurring schedule Jul-Dec
         '400':
           description: 'Bad Request - Request failed due to validation errors, the response lists the field in the request that did not pass the validation. The client can directly show these errors to the end users.'
           headers:
@@ -2486,7 +2534,7 @@ paths:
                 accounts:
                 - accountId: A921888898193
                   accountExternalId: MOS17267
-                  customerId: 1259490
+                  customerId: '1259490'
                   businessAccountId: A9218
                   termType: Months
                   term: 6
@@ -2515,13 +2563,13 @@ paths:
                   originalContractAmount: 440.7
                   outstandingRecurringAmount: 220.35
                   outstandingOneOffAmount: 0
-                  outstandingFeeAmount: 7.5
+                  outstandingFeeAmount: 7
                   projectedFinishDate: ''
                   paymentMethodToken: 6BC50933-E43F-425E-AAB4-0B41A2627242
                   collectionStopReason: Invalid Account
                 - accountId: A921888897986
                   accountExternalId: MOS17656
-                  customerId: 1704286
+                  customerId: '1704286'
                   businessAccountId: A9218
                   termType: Months
                   term: 0
