@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Payments API",
-    "description": "Debitsuccess Payments API provides an interface for all Real-time payments.\n\n## Payment Channels\n* **Casual Payments**  - Type of payments that are made directly to the business (Facility Accounts). The customer that is making the payment is not recorded.\n* **Account Payments** - Type of payments that are recorded against the business customers. Debitsuccess maintains a history of all customers that have/had subscription payments. \n* **WebPay Payments** -  Debitsuccess Webpay API provides an interface for Webpay integration. This API supports posting credit card payments for customers who have their BPay CRN registered with Debitsuccess.\n* **Point of Sale** - Point of sale payments are the payments made by Customers directly at the facility. \n* **Payment Method Configuration** - The Debitsuccess PayMethod Configuration API provides an interface to retrieve the Pay method types configured for particular businesses. Pay method types consist of credit card types and bank account.\n\n## Test Envrionment\n\n[https://oc-test.debitsuccess.com/{Api Endpoint}](https://oc-test.debitsuccess.com/Payments/v1.0/casual/creditcard) \n\n## Authentication \n Please visit [Debitsuccess Identity Service](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/986809101/Authentication) \n\n## Immutable Requests\nThe API supports immutable requests across all endpoints that are used to create payments. This immutability is enforced by using a unique ExternalPaymentIdentifier + Identity Server Client Id. \n For example, if a request to create a payment fails due to a declined transaction or unknown server error. The API will reject subsequent requests with the same ExternalPaymentIdentifier and for the same Identity server client. \n\n The immutability prevents integration partners from accidentally performing the same payment request twice preventing potential double billing issues. \n\n How you create unique ExternalPaymentIdentifier is up to you, but we suggest using business ID + a V4 UUIDs or another appropriately random string together to generate a unique ExternalPaymentIdentifier. \n\n **Important:** It is recommended to save the ExternalPaymentIdentifier to fetch the payment information using the GET operations of the Casual Payment API.  \n\n\n### Response\n\n  This API uses conventional HTTP response codes to indicate the success or failure of an \n  API request. In general, codes in the 2xx range indicate success, codes in the 4xx range indicate \n  an error that failed given the information provided (e.g., a required parameter was omitted, a \n  request validation failed, etc.), and some codes in the 5xx range indicate an error with API's\n  servers.\n  \n  Following is a list of supported http codes in this API.\n  - 200 Ok - Get\n  \n    Returned by Get endpoint to indicate that the request was successful. \n  \n  - 201 Created - Post\n  \n    Returned by http post method to indicate that a payment resource has been created. The response \n    will contain the payment status code. \n  \n  - 202 Accepted - Post\n  \n    This message indicates that a payment has been accepted for processing. But the processing has not\n    been completed. The request might or might not eventually be acted upon, as it might be disallowed\n    when processing actually takes place. In this scenario, the client must poll the URL returned in \n    the \"location\" header of the response to retrieve the payment status code. The client must retry \n    retrieving the status code for 5 times. If the status code still is \n    processing after retrying. Client should contact Debitsuccess support. Client should not ignore this error and resubmit another payment. Doing so could potentially double bill the customer.\n  \n  - 400 Bad Request - Post\n    \n    Throughout the API the http code 400 is used when the request was \n    unacceptable, often due to missing a required field or validation errors based on the data\n    provided in the request body. The validation errors can be dispelled to the end user. \n  \n  - 422 Unprocessable Entity - Post\n    \n    Returned when the client application or the facility account is not configured for real time \n    casual payments. All facility accounts must be configured with the payment gateways before \n    they can process any type of payments. In the event this error occurs the integration partner must\n    contact Debitsuccess to review/configure the facility accounts.\n    \n  - 401 Unauthorized - Get/Post\n    \n    Occurs when an Unauthorized request is made to a secure endpoint. A valid access token is expected\n    by all the secured endpoints via a ```Authorization``` header. See [Debitsuccess Identity Service](https://app.swaggerhub.com/apis/debitsuccess/DebitsuccessIdentity/1.0.0) for more \n    information in obtaining valid JWT tokens. The client must retry the request by obtaining a valid access token from the identity service.\n\n  - 403 Forbidden - Get/Post\n  \n    This indicates that the authenticated request does not have sufficient claims for an endpoint. \n   \n  - 409 Conflict - Post\n    \n    The request could not be completed due to a conflict with the external payment identifier.\n    \n  - 429 Too Many Requests - Get\n    \n    Occurs with rate limit is hit by the client.\n  \n  - 500  Internal Server Error\n  \n    Typically occurs when something goes wrong on API back end (These are rare).\n  \n  - 503 Service Unavailable\n  \n    Occurs when the API is currently unavailable typically due to a scheduled outage. \n\n### Response Headers\n  \n   The following additional headers are added to specific response message.\n   \n  - location - returned in 201 and 202. The value of this header contains the URL that can be used to retrieve the payment status.\n  \n  - x-correlation-id - included in all response messages. This is used internal in Debitsuccess to track the path of the real-time payment request. The API consumer is expected to provide correlation id for all support requests.   \n  \n### Response Simulation\n  \n  **NZ/AU**: The following cards can be used to generate different types of status for testing purpose.\n  \n  - Status - authorized\n    \n    **Card Type**: Visa | **Card Number**: 4111111111111111 | **Expiry Date**: 04/35\n  \n  - Status - declined \n    \n    **Card Type**: Visa | **Card Number**: 4999999999999236 | **Expiry Date**: 04/35\n  \n  - Status - declined_insufficient_funds \n  \n    **Card Type**: MasterCard | **Card Number**: 5431111111111228 | **Expiry Date**: 04/35\n    \n  - Status - declined_card_expired \n  \n    **Card Type**: Visa | **Card Number**: 4999999999999996 | **Expiry Date**: 04/10\n  \n  - Status - not_submitted \n  \n    **Card Type**: Visa | **Card Number**: 4999999999999202 | **Expiry Date**: 04/35\n\n",
+    "description": "Debitsuccess Payments API provides an interface for all Real-time payments.\n\n## Payment Channels\n* **Casual Payments**  - Type of payments that are made directly to the business (Facility Accounts). The customer that is making the payment is not recorded.\n* **Account Payments** - Type of payments that are recorded against the business customers. Debitsuccess maintains a history of all customers that have/had subscription payments. \n* **WebPay Payments** -  Debitsuccess Webpay API provides an interface for Webpay integration. This API supports posting credit card payments for customers who have their BPay CRN registered with Debitsuccess.\n* **Payment Method Configuration** - The Debitsuccess PayMethod Configuration API provides an interface to retrieve the Pay method types configured for particular businesses. Pay method types consist of credit card types and bank account.\n\n## Test Envrionment\n\n[https://oc-test.debitsuccess.com/{Api Endpoint}](https://oc-test.debitsuccess.com/Payments/v1.0/casual/creditcard) \n\n## Authentication \n Please visit [Debitsuccess Identity Service](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/986809101/Authentication) \n\n## Immutable Requests\nThe API supports immutable requests across all endpoints that are used to create payments. This immutability is enforced by using a unique ExternalPaymentIdentifier + Identity Server Client Id. \n For example, if a request to create a payment fails due to a declined transaction or unknown server error. The API will reject subsequent requests with the same ExternalPaymentIdentifier and for the same Identity server client. \n\n The immutability prevents integration partners from accidentally performing the same payment request twice preventing potential double billing issues. \n\n How you create unique ExternalPaymentIdentifier is up to you, but we suggest using business ID + a V4 UUIDs or another appropriately random string together to generate a unique ExternalPaymentIdentifier. \n\n **Important:** It is recommended to save the ExternalPaymentIdentifier to fetch the payment information using the GET operations of the Casual Payment API.  \n\n\n### Response\n\n  This API uses conventional HTTP response codes to indicate the success or failure of an \n  API request. In general, codes in the 2xx range indicate success, codes in the 4xx range indicate \n  an error that failed given the information provided (e.g., a required parameter was omitted, a \n  request validation failed, etc.), and some codes in the 5xx range indicate an error with API's\n  servers.\n  \n  Following is a list of supported http codes in this API.\n  - 200 Ok - Get\n  \n    Returned by Get endpoint to indicate that the request was successful. \n  \n  - 201 Created - Post\n  \n    Returned by http post method to indicate that a payment resource has been created. The response \n    will contain the payment status code. \n  \n  - 202 Accepted - Post\n  \n    This message indicates that a payment has been accepted for processing. But the processing has not\n    been completed. The request might or might not eventually be acted upon, as it might be disallowed\n    when processing actually takes place. In this scenario, the client must poll the URL returned in \n    the \"location\" header of the response to retrieve the payment status code. The client must retry \n    retrieving the status code for 5 times. If the status code still is \n    processing after retrying. Client should contact Debitsuccess support. Client should not ignore this error and resubmit another payment. Doing so could potentially double bill the customer.\n  \n  - 400 Bad Request - Post\n    \n    Throughout the API the http code 400 is used when the request was \n    unacceptable, often due to missing a required field or validation errors based on the data\n    provided in the request body. The validation errors can be dispelled to the end user. \n  \n  - 422 Unprocessable Entity - Post\n    \n    Returned when the client application or the facility account is not configured for real time \n    casual payments. All facility accounts must be configured with the payment gateways before \n    they can process any type of payments. In the event this error occurs the integration partner must\n    contact Debitsuccess to review/configure the facility accounts.\n    \n  - 401 Unauthorized - Get/Post\n    \n    Occurs when an Unauthorized request is made to a secure endpoint. A valid access token is expected\n    by all the secured endpoints via a ```Authorization``` header. See [Debitsuccess Identity Service](https://app.swaggerhub.com/apis/debitsuccess/DebitsuccessIdentity/1.0.0) for more \n    information in obtaining valid JWT tokens. The client must retry the request by obtaining a valid access token from the identity service.\n\n  - 403 Forbidden - Get/Post\n  \n    This indicates that the authenticated request does not have sufficient claims for an endpoint. \n   \n  - 409 Conflict - Post\n    \n    The request could not be completed due to a conflict with the external payment identifier.\n    \n  - 429 Too Many Requests - Get\n    \n    Occurs with rate limit is hit by the client.\n  \n  - 500  Internal Server Error\n  \n    Typically occurs when something goes wrong on API back end (These are rare).\n  \n  - 503 Service Unavailable\n  \n    Occurs when the API is currently unavailable typically due to a scheduled outage. \n\n### Response Headers\n  \n   The following additional headers are added to specific response message.\n   \n  - location - returned in 201 and 202. The value of this header contains the URL that can be used to retrieve the payment status.\n  \n  - x-correlation-id - included in all response messages. This is used internal in Debitsuccess to track the path of the real-time payment request. The API consumer is expected to provide correlation id for all support requests.   \n  \n### Response Simulation\n  \n  **NZ/AU**: The following cards can be used to generate different types of status for testing purpose.\n  \n  - Status - authorized\n    \n    **Card Type**: Visa | **Card Number**: 4111111111111111 | **Expiry Date**: 04/35\n  \n  - Status - declined \n    \n    **Card Type**: Visa | **Card Number**: 4999999999999236 | **Expiry Date**: 04/35\n  \n  - Status - declined_insufficient_funds \n  \n    **Card Type**: MasterCard | **Card Number**: 5431111111111228 | **Expiry Date**: 04/35\n    \n  - Status - declined_card_expired \n  \n    **Card Type**: Visa | **Card Number**: 4999999999999996 | **Expiry Date**: 04/10\n  \n  - Status - not_submitted \n  \n    **Card Type**: Visa | **Card Number**: 4999999999999202 | **Expiry Date**: 04/35\n\n",
     "contact": {
       "email": "TestAPI.Support@debitsuccess.com"
     },
@@ -27,9 +27,6 @@
     },
     {
       "name": "Pay Method Configuration"
-    },
-    {
-      "name": "Point of Sale"
     },
     {
       "name": "WebPay"
@@ -1851,106 +1848,6 @@
       }
     },
     "/webpay/creditcard": {
-      "get": {
-        "tags": [
-          "Casual Payments"
-        ],
-        "description": "This endpoint can be used to retrieve the payment status for all the casual payments submitted via the Post endpoint.\n",
-        "parameters": [
-          {
-            "name": "externalPaymentIdentifier",
-            "in": "path",
-            "description": "External Payment Identifier reference used to identify the payment.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "authorization",
-            "in": "header",
-            "description": "JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service ](https://app.swaggerhub.com/apis/debitsuccess/DebitsuccessIdentity/1.0.0) on how to generate the authorization token.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "The payment request was successful. see - [List of responses](https://debitsuccess.atlassian.net/wiki/spaces/RIDE/pages/500433563/RealTimePayment+API+Overview#RealTimePaymentAPIOverview-Http200)",
-            "headers": {
-              "x-correlation-id": {
-                "$ref": "#/components/headers/x-correlation-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CasualPaymentResponseSuccess"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized - Occurs when the authorization token provided is either expired or invalid.",
-            "headers": {
-              "x-correlation-id": {
-                "$ref": "#/components/headers/x-correlation-id"
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden - Occurs when the client does not have sufficient claims to access this endpoint. Or when the identity server client does not have access to the business this request is being made for. see - [ List of claims required for this request](https://debitsuccess.atlassian.net/wiki/spaces/RIDE/pages/500433563/RealTimePayment+API+Overview#RealTimePaymentAPIOverview-ApiResources) see - [ Additional errorCodes returned](https://debitsuccess.atlassian.net/wiki/spaces/RIDE/pages/500433563/RealTimePayment+API+Overview#RealTimePaymentAPIOverview-ApiResources)",
-            "headers": {
-              "x-correlation-id": {
-                "$ref": "#/components/headers/x-correlation-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PermissionErrorList"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found - The requested resource could not be found",
-            "headers": {
-              "x-correlation-id": {
-                "$ref": "#/components/headers/x-correlation-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Not-Found"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error - Something went wrong on our end (These are rare).",
-            "headers": {
-              "x-correlation-id": {
-                "$ref": "#/components/headers/x-correlation-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ServerError"
-                }
-              }
-            }
-          }
-        }
-      },
       "post": {
         "tags": [
           "Casual Payments"
@@ -2101,7 +1998,7 @@
         }
       }
     },
-    "/casual/creditcard": {
+    "/webpay/creditcard/{ExternalPaymentIdentifier}": {
       "get": {
         "tags": [
           "Casual Payments"
@@ -2109,7 +2006,7 @@
         "description": "This endpoint can be used to retrieve the payment status for all the casual payments submitted via the Post endpoint.\n",
         "parameters": [
           {
-            "name": "externalPaymentIdentifier",
+            "name": "ExternalPaymentIdentifier",
             "in": "path",
             "description": "External Payment Identifier reference used to identify the payment.",
             "required": true,
@@ -2122,7 +2019,7 @@
           {
             "name": "authorization",
             "in": "header",
-            "description": "JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/986809101/Authentication) on how to generate the authorization token.",
+            "description": "JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service ](https://app.swaggerhub.com/apis/debitsuccess/DebitsuccessIdentity/1.0.0) on how to generate the authorization token.",
             "required": true,
             "style": "simple",
             "explode": false,
@@ -2201,7 +2098,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/casual/creditcard": {
       "post": {
         "tags": [
           "Casual Payments"
@@ -2352,15 +2251,15 @@
         }
       }
     },
-    "/casual/pos": {
+    "/casual/creditcard/{ExternalPaymentIdentifier}":{
       "get": {
         "tags": [
-          "Point of Sale"
+          "Casual Payments"
         ],
-        "description": "This endpoint can be used to retrieve the point of sale transaction that was submitted via the POS Post endpoint.\n",
+        "description": "This endpoint can be used to retrieve the payment status for all the casual payments submitted via the Post endpoint.\n",
         "parameters": [
           {
-            "name": "externalPaymentIdentifier",
+            "name": "ExternalPaymentIdentifier",
             "in": "path",
             "description": "External Payment Identifier reference used to identify the payment.",
             "required": true,
@@ -2373,7 +2272,7 @@
           {
             "name": "authorization",
             "in": "header",
-            "description": "JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service ](https://app.swaggerhub.com/apis/debitsuccess/DebitsuccessIdentity/1.0.0) on how to generate the authorization token.",
+            "description": "JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/986809101/Authentication) on how to generate the authorization token.",
             "required": true,
             "style": "simple",
             "explode": false,
@@ -2384,7 +2283,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieves the POS transaction that was reordered under the specified externalPaymentIdentifier.",
+            "description": "The payment request was successful. see - [List of responses](https://debitsuccess.atlassian.net/wiki/spaces/RIDE/pages/500433563/RealTimePayment+API+Overview#RealTimePaymentAPIOverview-Http200)",
             "headers": {
               "x-correlation-id": {
                 "$ref": "#/components/headers/x-correlation-id"
@@ -2393,7 +2292,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/inline_response_200"
+                  "$ref": "#/components/schemas/CasualPaymentResponseSuccess"
                 }
               }
             }
@@ -2407,7 +2306,7 @@
             }
           },
           "403": {
-            "description": "Forbidden - Occurs when the client does not have sufficient claims to access this endpoints. see - [ List of claims required for this request.](https://debitsuccess.atlassian.net/wiki/spaces/RIDE/pages/676069415/Point+of+Sale+Payment+API+Overview#PointofSalePaymentAPIOverview-Http403)",
+            "description": "Forbidden - Occurs when the client does not have sufficient claims to access this endpoint. Or when the identity server client does not have access to the business this request is being made for. see - [ List of claims required for this request](https://debitsuccess.atlassian.net/wiki/spaces/RIDE/pages/500433563/RealTimePayment+API+Overview#RealTimePaymentAPIOverview-ApiResources) see - [ Additional errorCodes returned](https://debitsuccess.atlassian.net/wiki/spaces/RIDE/pages/500433563/RealTimePayment+API+Overview#RealTimePaymentAPIOverview-ApiResources)",
             "headers": {
               "x-correlation-id": {
                 "$ref": "#/components/headers/x-correlation-id"
@@ -2422,15 +2321,7 @@
             }
           },
           "404": {
-            "description": "Not Found - Occurs when a transactions matching the externalPaymentIdentifier  cannot be found.",
-            "headers": {
-              "x-correlation-id": {
-                "$ref": "#/components/headers/x-correlation-id"
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error - Something went wrong on our end (These are rare).",
+            "description": "Not Found - The requested resource could not be found",
             "headers": {
               "x-correlation-id": {
                 "$ref": "#/components/headers/x-correlation-id"
@@ -2439,333 +2330,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ServerError"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Point of Sale"
-        ],
-        "description": "Used for syncing payment transactions with Debitsuccess that are collected via CRM's.",
-        "parameters": [
-          {
-            "name": "authorization",
-            "in": "header",
-            "description": "JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service ](https://app.swaggerhub.com/apis/debitsuccess/DebitsuccessIdentity/1.0.0) on how to generate the authorization token.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/body"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "returns the resource that was created.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/inline_response_201"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request - Request failed due to validation errors, the response lists the field in the request that did not pass the validation. see- [List of validation errors](https://debitsuccess.atlassian.net/wiki/spaces/RIDE/pages/676069415/Point+of+Sale+Payment+API+Overview#PointofSalePaymentAPIOverview-Http400)",
-            "headers": {
-              "x-correlation-id": {
-                "$ref": "#/components/headers/x-correlation-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ValidationErrorList"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized - Occurs when the authorization token provided is either expired or invalid.",
-            "headers": {
-              "x-correlation-id": {
-                "$ref": "#/components/headers/x-correlation-id"
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden - Occurs when the client does not have sufficient claims to access this endpoints. see - [ List of claims required for this request.](https://debitsuccess.atlassian.net/wiki/spaces/RIDE/pages/676069415/Point+of+Sale+Payment+API+Overview#PointofSalePaymentAPIOverview-ApiResources)",
-            "headers": {
-              "x-correlation-id": {
-                "$ref": "#/components/headers/x-correlation-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PermissionErrorList"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "The request could not be completed due to a conflict with the current state of the target resource.",
-            "headers": {
-              "x-correlation-id": {
-                "$ref": "#/components/headers/x-correlation-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Conflict"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Entity - this can occur if the business is not configured correctly in Debitsuccess database.  see - [for all possible responses](https://debitsuccess.atlassian.net/wiki/spaces/RIDE/pages/676069415/Point+of+Sale+Payment+API+Overview#PointofSalePaymentAPIOverview-Http422)",
-            "headers": {
-              "x-correlation-id": {
-                "$ref": "#/components/headers/x-correlation-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UnprocessableEntitySchema"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error - Something went wrong on our end (These are rare).",
-            "headers": {
-              "x-correlation-id": {
-                "$ref": "#/components/headers/x-correlation-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ServerError"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/casual/pos/reversals": {
-      "get": {
-        "tags": [
-          "Point of Sale"
-        ],
-        "description": "Used to retrieve the point of sale reversal transaction that was submitted via the POS reversal Post endpoint.\n",
-        "parameters": [
-          {
-            "name": "externalPaymentIdentifier",
-            "in": "path",
-            "description": "External Payment Identifier reference used to identify the payment.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "authorization",
-            "in": "header",
-            "description": "JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service ](https://app.swaggerhub.com/apis/debitsuccess/DebitsuccessIdentity/1.0.0) on how to generate the authorization token.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "returns the resource that was created.",
-            "headers": {
-              "x-correlation-id": {
-                "$ref": "#/components/headers/x-correlation-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/inline_response_200_1"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized - Occurs when the authorization token provided is either expired or invalid.",
-            "headers": {
-              "x-correlation-id": {
-                "$ref": "#/components/headers/x-correlation-id"
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden - Occurs when the client does not have sufficient claims to access this endpoints. see - [ List of claims required for this request.](https://debitsuccess.atlassian.net/wiki/spaces/RIDE/pages/676069415/Point+of+Sale+Payment+API+Overview#PointofSalePaymentAPIOverview-ApiResources)",
-            "headers": {
-              "x-correlation-id": {
-                "$ref": "#/components/headers/x-correlation-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PermissionErrorList"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found - Occurs when a transactions matching the externalPaymentIdentifier  cannot be found.",
-            "headers": {
-              "x-correlation-id": {
-                "$ref": "#/components/headers/x-correlation-id"
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error - Something went wrong on our end (These are rare).",
-            "headers": {
-              "x-correlation-id": {
-                "$ref": "#/components/headers/x-correlation-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ServerError"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Point of Sale"
-        ],
-        "description": "Used for syncing reversed transactions with Debitsuccess.",
-        "parameters": [
-          {
-            "name": "authorization",
-            "in": "header",
-            "description": "JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service ](https://app.swaggerhub.com/apis/debitsuccess/DebitsuccessIdentity/1.0.0) on how to generate the authorization token.",
-            "required": true,
-            "style": "simple",
-            "explode": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/body_1"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "returns the resource that was created.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/inline_response_201_1"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request - Request failed due to validation errors, the response lists the field in the request that did not pass the validation. see- [List of validation errors](https://debitsuccess.atlassian.net/wiki/spaces/RIDE/pages/676069415/Point+of+Sale+Payment+API+Overview#PointofSalePaymentAPIOverview-Http400.1)",
-            "headers": {
-              "x-correlation-id": {
-                "$ref": "#/components/headers/x-correlation-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ValidationErrorList"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized - Occurs when the authorization token provided is either expired or invalid.",
-            "headers": {
-              "x-correlation-id": {
-                "$ref": "#/components/headers/x-correlation-id"
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden - Occurs when the client does not have sufficient claims to access this endpoints. see - [ List of claims required for this request.](https://debitsuccess.atlassian.net/wiki/spaces/RIDE/pages/676069415/Point+of+Sale+Payment+API+Overview#PointofSalePaymentAPIOverview-ApiResources)",
-            "headers": {
-              "x-correlation-id": {
-                "$ref": "#/components/headers/x-correlation-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PermissionErrorList"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "The request could not be completed due to a conflict with the current state of the target resource.",
-            "headers": {
-              "x-correlation-id": {
-                "$ref": "#/components/headers/x-correlation-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Conflict"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Entity - this can occur if the business is not configured correctly in Debitsuccess database.  see - [for all possible responses](https://debitsuccess.atlassian.net/wiki/spaces/RIDE/pages/676069415/Point+of+Sale+Payment+API+Overview#PointofSalePaymentAPIOverview-Http422.1)",
-            "headers": {
-              "x-correlation-id": {
-                "$ref": "#/components/headers/x-correlation-id"
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UnprocessableEntitySchema"
+                  "$ref": "#/components/schemas/Not-Found"
                 }
               }
             }

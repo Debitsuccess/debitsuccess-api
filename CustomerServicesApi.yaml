@@ -11403,7 +11403,7 @@ paths:
               paymentMethodType: CreditCard
               number: '4111111111111111111'
               cardType: visa
-              cardExpiryDate: '2021-11-22T00:00:00.0000000+00:00'
+              cardExpiryDate: 11/21
       responses:
         '201':
           description: Payment method created successfully
@@ -11417,7 +11417,7 @@ paths:
                 paymentMethodType: CreditCard
                 number: '**** 1111'
                 cardType: visa
-                cardExpiryDate: '2021-11-22T00:00:00.0000000+00:00'
+                cardExpiryDate: 11/21
         '400':
           description: 'Bad Request - Request failed due to validation errors, the response lists the field in the request that did not pass the validation. The client can directly show these errors to the end users.'
           headers:
@@ -12434,7 +12434,7 @@ paths:
               paymentMethodType: CreditCard
               number: '4111111111111111111'
               cardType: visa
-              cardExpiryDate: '2021-11-22T00:00:00.0000000+00:00'
+              cardExpiryDate: 11/21
       responses:
         '201':
           description: Payment method created successfully under the specified business account
@@ -13593,7 +13593,7 @@ components:
               - state
               - city
               - postcode
-              - countryCode
+              - countryISOCode
               - addressType
               - isPrimary
             type: object
@@ -13810,66 +13810,6 @@ components:
           type: string
         isPrimary:
           type: boolean
-    201CreateCustomerBusiness:
-      type: object
-      properties:
-        customerId:
-          type: string
-        businessId:
-          type: string
-        name:
-          type: string
-        address:
-          type: object
-          properties:
-            addressId:
-              type: string
-            addressLine1:
-              type: string
-            addressLine2:
-              type: string
-            suburb:
-              type: string
-            postcode:
-              type: string
-            city:
-              type: string
-            state:
-              type: string
-            countryISOCode:
-              type: string
-            addressType:
-              type: string
-            isPrimary:
-              type: boolean
-        emailAddress:
-          type: object
-          properties:
-            emailId:
-              type: string
-            emailName:
-              type: string
-            emailAddress:
-              type: string
-            isPrimary:
-              type: string
-        phoneNumber:
-          type: object
-          properties:
-            phoneNumberId:
-              type: string
-            phoneName:
-              type: string
-            countryISOCode:
-              type: string
-            areaCode:
-              type: string
-            phoneNumber:
-              type: string
-            phoneType:
-              type: string
-            isPrimary:
-              type: string
     AddEmailAddressRequest:
       type: object
       properties:
@@ -13885,82 +13825,6 @@ components:
             - false
           type: boolean
           description: Flag to set an email to be preferred as primary email
-    CreateCustomerBusinessRequest:
-      type: object
-      properties:
-        businessId:
-          type: string
-          description: Unique identifier associated to the Business
-        name:
-          maxLength: 40
-          type: string
-        address:
-          type: object
-          properties:
-            addressLine1:
-              maxLength: 60
-              type: string
-            addressLine2:
-              maxLength: 60
-              type: string
-            suburb:
-              maxLength: 60
-              type: string
-            postcode:
-              maxLength: 10
-              type: string
-            state:
-              maxLength: 3
-              type: string
-            city:
-              maxLength: 60
-              type: string
-            countryISOCode:
-              maxLength: 3
-              minLength: 3
-              type: string
-              description: '3 characters Country ISO Code. For example, NZL, AUS, USA, SGP.'
-            addressType:
-              enum:
-                - business
-                - home
-                - physical
-                - postal
-                - legal
-              type: string
-        emailAddress:
-          type: object
-          properties:
-            emailName:
-              maxLength: 50
-              type: string
-            emailAddress:
-              maxLength: 75
-              type: string
-        phoneNumber:
-          type: object
-          properties:
-            phoneName:
-              maxLength: 50
-              type: string
-            countryCode:
-              maxLength: 4
-              type: string
-              description: 'For example, +61, +64, +1'
-            areaCode:
-              maxLength: 4
-              type: string
-            phoneNumber:
-              maxLength: 75
-              type: string
-            phoneType:
-              enum:
-                - emergency
-                - fax
-                - home
-                - mobile
-                - work
-              type: string
     200GetRecurringSchedule:
       type: object
       properties:
@@ -14384,46 +14248,6 @@ components:
                 type: string
               message:
                 type: string
-    201CreatePayment:
-      type: object
-      properties:
-        status:
-          type: string
-        externalPaymentIdentifier:
-          type: string
-    400CreatePayment:
-      type: object
-      properties:
-        errorCode:
-          type: string
-        message:
-          type: string
-        errors:
-          type: array
-          items:
-            required:
-              - field
-              - message
-            type: object
-            properties:
-              field:
-                type: string
-              message:
-                type: string
-    422CreatePayment:
-      type: object
-      properties:
-        errorCode:
-          type: string
-        message:
-          type: string
-    202CreatePayment:
-      type: object
-      properties:
-        status:
-          type: string
-        message:
-          type: string
     403AccessDenied:
       type: object
       properties:
@@ -14431,45 +14255,6 @@ components:
           type: string
         message:
           type: string
-    CreatePaymentRequest:
-      type: object
-      properties:
-        accountId:
-          maxLength: 15
-          type: string
-          description: Unique Identifier associated to the Account that make this payment
-        externalPaymentIdentifier:
-          maxLength: 50
-          type: string
-          description: External payment identifier (contains alpha-numeric and '-') associated to this payment. Must be unique per client
-        accountHolderName:
-          type: string
-          description: 'Account holder name. Only contains alpha numeric, space and apostrophe. Required if cardType is not Token'
-        cardNumber:
-          type: string
-          description: Card number. Only contains numeric.  Required if cardType is not Token
-        cvc:
-          type: string
-          description: Card verification code. Only contains numeric. Required if cardType is not Token
-        cardType:
-          type: string
-          description: 'Enum: Visa, MasterCard, Token, Amex'
-        expiryDate:
-          type: string
-          description: Expiry date (MM/YY) of credit card used. Required if cardType is not Token
-        token:
-          type: string
-          description: Unique string value associated with PayMethod
-        amount:
-          type: number
-          description: payment amount. Numeric 2 decimal points
-        paymentDescription:
-          type: string
-          description: Description of the payment
-        createOneOffCharge:
-          type: boolean
-          description: 'If true, a One-Off pay schedule will be created'
-          default: false
     201CreateSuspensionSchedule:
       type: object
       properties:
@@ -14696,109 +14481,6 @@ components:
         externalScheduleId:
           type: string
           description: External identifier of the suspension schedule
-    201CreateBusinessCollectedPayment:
-      type: object
-      properties:
-        accountId:
-          type: string
-        externalPaymentIdentifier:
-          type: string
-    400CreateBusinessCollectedPayment:
-      type: object
-      properties:
-        errorCode:
-          type: string
-        message:
-          type: string
-        errors:
-          type: array
-          items:
-            required:
-              - field
-              - message
-            type: object
-            properties:
-              field:
-                type: string
-              message:
-                type: string
-    200GetBusinessCollectedPayment:
-      type: object
-      properties:
-        businessCollectedPayments:
-          type: array
-          items:
-            required:
-              - businessAccountId
-              - accountId
-              - accountExternalId
-              - externalTransactionIdentifier
-              - amount
-              - dateTimeOfPayment
-              - description
-            type: object
-            properties:
-              businessAccountId:
-                type: string
-              accountId:
-                type: string
-              accountExternalId:
-                type: string
-              externalTransactionIdentifier:
-                type: string
-              amount:
-                type: string
-              dateTimeOfPayment:
-                type: string
-              description:
-                type: string
-        responseMetadata:
-          type: object
-          properties:
-            nextCursor:
-              type: string
-            hasNext:
-              type: boolean
-    400DeleteBusinessCollectedPayment:
-      type: object
-      properties:
-        errorCode:
-          type: string
-        message:
-          type: string
-        errors:
-          type: array
-          items:
-            required:
-              - field
-              - message
-            type: object
-            properties:
-              field:
-                type: string
-              message:
-                type: string
-    CreateBusinessCollectedPaymentRequest:
-      type: object
-      properties:
-        accountId:
-          maxLength: 15
-          type: string
-          description: Unique identifier associated to the account of the business collected payment to be created
-        externalTransactionIdentifier:
-          maxLength: 50
-          type: string
-          description: Must be unique per facility account. Also note that this identifier will be required in order to reverse this payment. Only contains alphanumeric and hyphen
-        amount:
-          type: number
-          description: Amount of payment collected at business. This field must be greater than 0.00
-        dateTimeOfPayment:
-          type: string
-          description: Date time when this payment is collected in UTC
-        description:
-          maxLength: 30
-          type: string
-          description: Description of the payment
     CreatePaymentMethodRequest:
       type: object
       properties:
@@ -14940,13 +14622,6 @@ components:
       properties:
         message:
           type: string
-    403Operation_Denied:
-      type: object
-      properties:
-        errorCode:
-          type: string
-        message:
-          type: string
     200GetTermsAndConditions:
       type: object
       properties:
@@ -14958,38 +14633,6 @@ components:
           type: string
         termsHTML:
           type: string
-    201DeleteBusinessCollectedPayment:
-      type: object
-      properties:
-        accountId:
-          type: string
-        externalPaymentIdentifier:
-          type: string
-        originalExternalPaymentIdentifier:
-          type: string
-    201ReverseBusinessCollectedPayment:
-      type: object
-      properties:
-        externalPaymentIdentifier:
-          type: string
-        dateTimeOfReversal:
-          type: string
-        description:
-          type: string
-    ReverseBusinessCollectedPaymentRequest:
-      type: object
-      properties:
-        externalPaymentIdentifier:
-          maxLength: 50
-          type: string
-          description: Unique identifier associated to the reversal transaction. Only contains alphanumeric and hyphen
-        dateTimeOfReversal:
-          type: string
-          description: Date time when this payment is reversed/deleted in UTC
-        description:
-          maxLength: 30
-          type: string
-          description: Description of the payment reversal/deletion
     400CreateAccount:
       type: object
       properties:
@@ -15009,26 +14652,6 @@ components:
                 type: string
               message:
                 type: string
-    409CreatePayment:
-      type: object
-      properties:
-        type:
-          type: string
-        properties:
-          type: object
-          properties:
-            message:
-              type: object
-              properties:
-                type:
-                  type: string
-    200GetPayment:
-      type: object
-      properties:
-        status:
-          type: string
-        externalPaymentIdentifier:
-          type: string
     200GetPayments:
       type: object
       properties:
@@ -15244,11 +14867,6 @@ components:
           type: string
         contractAmount:
           type: number
-    422GetPayment:
-      type: object
-      properties:
-        message:
-          type: string
     400closeAccount:
       type: object
       properties:
@@ -16031,6 +15649,3 @@ components:
       type: apiKey
       name: subscription-key
       in: query
-security:
-  - apiKeyHeader: []
-  - apiKeyQuery: []

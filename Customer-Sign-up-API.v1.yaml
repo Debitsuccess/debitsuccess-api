@@ -63,6 +63,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/inline_response_401'
+  /accounttemplates/{accountTemplateId}:
     delete:
       tags:
         - Account Template
