@@ -39,6 +39,7 @@ paths:
       description: |
         Creates an account template that can later be used on Debitsuccess Online 
         Management Getaway to sign up new customers. **Note** - The **customerdetails** field in the request must be sent as base64 encoded string of Json object.
+      operationId: postAccountTemplate
       requestBody:
         content:
           application/json:
@@ -68,6 +69,7 @@ paths:
       tags:
         - Account Template
       description: Allows for the deletion of account templates.
+      operationId: deleteAccountTemplate
       parameters:
         - name: accountTemplateId
           in: path
@@ -109,6 +111,7 @@ paths:
       tags:
         - Account Template
       description: Used to determine whether this api is online.
+      operationId: diagnostics
       parameters:
         - name: authorization
           in: header

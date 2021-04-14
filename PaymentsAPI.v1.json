@@ -1578,6 +1578,7 @@
           "Pay Method Configuration"
         ],
         "description": "This endpoint retrieves all active paymethod types for the particular business identified by either businessId (Contract Prefix) or Debitsuccess internal facility Id parameter. Note, you must provide at least one parameter (bussinessId or facilityId)in the request.\n",
+        "operationId": "getpaymethodconfigurations",
         "parameters": [
           {
             "name": "bussinessId",
@@ -1664,6 +1665,7 @@
           "Pay Method Configuration"
         ],
         "description": "This endpoint retrieves the paymethod configuration information based on the paymethod type provided in the request path. \n",
+        "operationId": "getpaymethodconfig",
         "parameters": [
           {
             "name": "paymethodtype",
@@ -1752,6 +1754,7 @@
           "Pay Method Configuration"
         ],
         "description": "This endpoint retrieves the mapping between Debitsuccess card type and a payment processor (Vantiv, Dps) the payment processor specific card type are used when submitting a payment request. Example - DS card type = AM - Vantiv card type = AX\n",
+        "operationId": "getpaymentprocessorcardtypes",
         "parameters": [
           {
             "name": "processorname",
@@ -1853,6 +1856,7 @@
           "Casual Payments"
         ],
         "description": "This endpoint processes credit card casual payments. Casual payments are recorded at the business level (Facility Account). The details of the customer making the payments are not recorded.",
+        "operationId": "postwebpay",
         "parameters": [
           {
             "name": "authorization",
@@ -2004,6 +2008,7 @@
           "Casual Payments"
         ],
         "description": "This endpoint can be used to retrieve the payment status for all the casual payments submitted via the Post endpoint.\n",
+        "operationId": "getwebpay",
         "parameters": [
           {
             "name": "ExternalPaymentIdentifier",
@@ -2106,6 +2111,7 @@
           "Casual Payments"
         ],
         "description": "This endpoint processes credit card casual payments. Casual payments are recorded at business level (Facility Account). The details of the customer making the payments are not recorded.",
+        "operationId": "postCasualPayments",
         "parameters": [
           {
             "name": "authorization",
@@ -2257,6 +2263,7 @@
           "Casual Payments"
         ],
         "description": "This endpoint can be used to retrieve the payment status for all the casual payments submitted via the Post endpoint.\n",
+        "operationId": "getCasualPayments",
         "parameters": [
           {
             "name": "ExternalPaymentIdentifier",
