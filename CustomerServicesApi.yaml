@@ -1,13 +1,36 @@
 openapi: 3.0.1
 info:
   title: Customer Services API
-  description: Manage customer details, payment schedules, account information, view payment history, and much more.
+  description: | 
+    ---
+    ## Overview
+    The Customer Services API has end points that allows you to manage customer details, payment schedules, account information, view payment history, and much more.
+   
+    ## Customer Services API
+    **Test Environment**
+
+    https://oc-test.debitsuccess.com/CustomerServices/v1.0
+
+    **Live Environment**
+
+    https://oc.debitsuccess.com/CustomerServices/v1.0
+
+    ## Authentication 
+    Please visit [Debitsuccess Identity Service](../Introduction/2-Authentication.md) 
+    ---
+    ## Endpoints
+    
+    GET [/accounts](../CustomerServicesApi.yaml/paths/~1customers/get) 
+    Retrieves a list of all customers 
+    ---
+    
+
+
   contact:
     email: TestAPI.Support@debitsuccess.com
   version: V1.0
 servers:
   - url: 'https://oc-test.debitsuccess.com/CustomerServices/v1.0'
-  - url: 'https://oc.debitsuccess.com/CustomerServices/v1.0'
 tags:
 - name: Customers
 - name: BusinessAccounts
@@ -24,11 +47,11 @@ tags:
 - name: PaymentToken
 - name: Businesses
 paths:
-  /customers:
+  '/customers':
     post:
       tags:
         - Customers
-      summary: 'Create Customer '
+      summary: 'Create Customer'
       description: Creates a customer that can be used to create and manage multiple billing accounts across businesses.
       operationId: customers
       parameters:
@@ -1017,7 +1040,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  /businessAccounts:
+  '/businessAccounts':
     get:
       tags:
         - BusinessAccounts
@@ -1260,7 +1283,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  /businesses:
+  '/businesses':
     get:
       tags:
         - Businesses
@@ -2018,7 +2041,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  /accounts:
+  '/accounts':
     post:
       tags:
         - Accounts
@@ -10530,7 +10553,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  /overdueStatusChanges:
+  '/overdueStatusChanges':
     get:
       tags:
         - OverdueStatusChanges
@@ -10765,7 +10788,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  /payments:
+  '/payments':
     get:
       tags:
         - Payment History
