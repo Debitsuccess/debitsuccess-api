@@ -11,6 +11,9 @@
   "servers": [
     {
       "url": "https://oc-test.debitsuccess.com/payments/v1.0"
+    },
+    {
+      "url": "https://oc.debitsuccess.com/payments/v1.0"
     }
   ],
   "tags": [
