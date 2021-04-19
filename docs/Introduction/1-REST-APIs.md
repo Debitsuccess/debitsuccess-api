@@ -55,14 +55,14 @@ Use this API to Process casual payments, set up direct debits, capture new payme
 - [API Reference](https://debitsuccess.stoplight.io/docs/debitsuccess-api/PaymentsAPI.v1.json)
 - [Try out API](https://debitsuccess.stoplight.io/docs/debitsuccess-api/PaymentsAPI.v1.json/paths/~1account~1creditcard/post)
 
-<!-- type: tab-end -->
+<!--
 type: tab
 title: Widgets
 -->
 
 ![](https://drive.google.com/uc?export=view&id=1VrjRQqDmjB5tNIJZL9kgfODk8XvEECmP)
 
-The below widgets that can be embeded into your website and customize it to match your product theme. 
+The below widgets that can be embeded into your website and customized it to match your product theme. 
 
 
 - [Payment Method Capture Widget](../docs/Widgets/Payment-Capture-Widget.md)

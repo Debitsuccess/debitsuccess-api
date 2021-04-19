@@ -83,7 +83,7 @@ In exchange for these credentials, the Debitsuccess authorization server issues 
 
 |  **Output Parameter**  |  **Format**  |  **Remark**  | 
 |  --- |  --- |  --- | 
-| Access_Token | sample:"eyJhbGciOiJSUzI1NiIsImtpZCI6IkE4ODFDQzdBNDM4MEUyRDM5N0EwQjNGMERGNDFGOTg1MDYzRkU1RkIiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJxSUhNZWtPQTR0T1hvTFB3MzBINWhRA” | It represents the authorization of a specific application to access specific parts of user data and uniquely identifies the client login session.  | 
+| Access_Token | sample:     "eyJhbGciOiJSUzI1NiIsImtpZCI6IkE4ODFDQzdBNDM4MEUyRDM5N0EwQjNGMERGNDF GOTg1MDYzRkU1RkIiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJxSUhNZWtPQTR0T1hvTFB3MzBINWhRA” | It represents the authorization of a specific application to access specific parts of user data and uniquely identifies the client login session.  | 
 | Expires_In | Integer in seconds, example 1800, 3600 | Represents the number of seconds that the access token will be valid. | 
 | Token_Type | "Bearer" | A bearer token means that the bearer of the access token can access authorized resources without further identification.The access token must always be appended with the term “Bearer” when you call any Debitsuccess REST API. E.g. Bearer \[access_token]| 
 
