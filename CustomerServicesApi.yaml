@@ -19,9 +19,24 @@ info:
     Please visit [Debitsuccess Identity Service](../Introduction/2-Authentication.md) 
     
     ## Endpoints
-    |  **Method**  |  **Endpoint**  |  **Remark**  | 
-    |  --- |  --- |  --- |
-    | GET | [/accounts](../CustomerServicesApi.yaml/paths/~1customers/get) | Retrieves a list of all customers |
+    |    |    |
+    |  --- | --- |
+    | **GET**  [/customers](../CustomerServicesApi.yaml/paths/~1customers/get)  | Retrieves a list of all customers|
+    | POST /customers  | Creates a customer |
+    |    |    |
+    |    |    |
+    |    |    |
+    |    |    |
+    |    |    |
+    |    |    |
+    |    |    |
+    | POST /accounts  |  | 
+    | POST  /accounts/{accountId}/cancellation  |  | 
+    | GET /accounts/{accountId}  |  | 
+    | GET  /accounts |  | 
+    | PUT  /accounts/{accountId} |  | 
+    | PATCH /accounts/{accountId} |  | 
+    
     
 
 
@@ -46,7 +61,7 @@ tags:
 - name: PaymentToken
 - name: Businesses
 paths:
-  '/customers':
+  /customers:
     post:
       tags:
         - Customers
@@ -677,7 +692,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  '/businesses/{businessId}':
+  /businesses/{businessId}:
     get:
       tags:
         - Businesses
@@ -847,7 +862,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  '/businessAccounts/{businessAccountId}':
+  /businessAccounts/{businessAccountId}:
     get:
       tags:
         - BusinessAccounts
@@ -1039,7 +1054,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  '/businessAccounts':
+  /businessAccounts:
     get:
       tags:
         - BusinessAccounts
@@ -1282,7 +1297,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  '/businesses':
+  /businesses:
     get:
       tags:
         - Businesses
@@ -1465,7 +1480,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  '/customers/{customerId}':
+  /customers/{customerId}:
     get:
       tags:
         - Customers
@@ -2040,7 +2055,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  '/accounts':
+  /accounts:
     post:
       tags:
         - Accounts
@@ -2757,7 +2772,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  '/accounts/{accountId}':
+  /accounts/{accountId}:
     get:
       tags:
         - Accounts
@@ -3549,7 +3564,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  '/accounts/{accountId}/close':
+  /accounts/{accountId}/close:
     post:
       tags:
         - Accounts
@@ -3815,7 +3830,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  '/accounts/{accountId}/suspensionSchedules/{scheduleId}':
+  /accounts/{accountId}/suspensionSchedules/{scheduleId}:
     delete:
       tags:
         - Schedules-Suspension
@@ -4547,7 +4562,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  '/accounts/{accountId}/recurringSchedules':
+  /accounts/{accountId}/recurringSchedules:
     post:
       tags:
         - Schedules-Recurring
@@ -5052,7 +5067,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  '/accounts/{accountId}/recurringSchedules/{scheduleId}':
+  /accounts/{accountId}/recurringSchedules/{scheduleId}:
     delete:
       tags:
         - Schedules-Recurring
@@ -5550,7 +5565,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  '/accounts/{accountId}/scheduleRecurrings/{scheduleId}':
+  /accounts/{accountId}/scheduleRecurrings/{scheduleId}:
     put:
       tags:
         - Schedules-Recurring
@@ -5873,7 +5888,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  '/accounts/{accountId}/oneOffSchedules':
+  /accounts/{accountId}/oneOffSchedules:
     post:
       tags:
         - Schedules-OneOff
@@ -6328,7 +6343,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  '/customers/{customerId}/addresses':
+  /customers/{customerId}/addresses:
     post:
       tags:
         - Addresses
@@ -6805,7 +6820,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  '/customers/{customerId}/addresses/{addressId}':
+  /customers/{customerId}/addresses/{addressId}:
     delete:
       tags:
         - Addresses
@@ -7611,7 +7626,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  '/customers/{customerId}/phoneNumbers/{phoneNumberId}':
+  /customers/{customerId}/phoneNumbers/{phoneNumberId}:
     put:
       tags:
         - PhoneNumbers
@@ -8433,7 +8448,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  '/customers/{customerId}/emailAddresses/{emailAddressId}':
+  /customers/{customerId}/emailAddresses/{emailAddressId}:
     put:
       tags:
         - EmailAddresses
@@ -9226,7 +9241,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  '/customers/{customerId}/phoneNumbers':
+  /customers/{customerId}/phoneNumbers:
     get:
       tags:
         - PhoneNumbers
@@ -9685,7 +9700,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  '/customers/{customerId}/emailAddresses':
+  /customers/{customerId}/emailAddresses:
     get:
       tags:
         - EmailAddresses
@@ -10117,7 +10132,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  '/accounts/{accountId}/suspensionSchedules':
+  /accounts/{accountId}/suspensionSchedules:
     get:
       tags:
         - Schedules-Suspension
@@ -10552,7 +10567,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  '/overdueStatusChanges':
+  /overdueStatusChanges:
     get:
       tags:
         - OverdueStatusChanges
@@ -10787,7 +10802,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  '/payments':
+  /payments:
     get:
       tags:
         - Payment History
@@ -11040,7 +11055,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  '/accounts/{accountId}/oneOffSchedules/{scheduleId}':
+  /accounts/{accountId}/oneOffSchedules/{scheduleId}:
     delete:
       tags:
         - Schedules-OneOff
@@ -11497,7 +11512,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  '/customers/{customerId}/paymentMethods':
+  /customers/{customerId}/paymentMethods:
     post:
       summary: Create PaymentMethod
       description: |-
@@ -12349,7 +12364,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  '/businessAccounts/{businessAccountId}/termsAndConditions':
+  /businessAccounts/{businessAccountId}/termsAndConditions:
     get:
       tags:
         - Terms and Conditions
@@ -12528,7 +12543,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  '/businessAccounts/{businessAccountId}/paymentMethods':
+  /businessAccounts/{businessAccountId}/paymentMethods:
     post:
       summary: Create PaymentMethod (for Business Account)
       description: |-
@@ -12821,7 +12836,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  '/accounts/{accountId}/paymentTokens':
+  /accounts/{accountId}/paymentTokens:
     post:
       tags:
         - PaymentToken
@@ -13138,7 +13153,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  '/businessAccounts/{businessAccountId}/paymentTokens':
+  /businessAccounts/{businessAccountId}/paymentTokens:
     post:
       tags:
         - PaymentToken
