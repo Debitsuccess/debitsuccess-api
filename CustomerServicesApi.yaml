@@ -2,11 +2,11 @@ openapi: 3.0.1
 info:
   title: Customer Services API
   description: | 
-    ---
+    
     ## Overview
     The Customer Services API has end points that allows you to manage customer details, payment schedules, account information, view payment history, and much more.
-   
-    ## Customer Services API
+    
+    ## Environments
     **Test Environment**
 
     https://oc-test.debitsuccess.com/CustomerServices/v1.0
@@ -17,12 +17,11 @@ info:
 
     ## Authentication 
     Please visit [Debitsuccess Identity Service](../Introduction/2-Authentication.md) 
-    ---
-    ## Endpoints
     
-    GET [/accounts](../CustomerServicesApi.yaml/paths/~1customers/get) 
-    Retrieves a list of all customers 
-    ---
+    ## Endpoints
+    |  **Method**  |  **Endpoint**  |  **Remark**  | 
+    |  --- |  --- |  --- |
+    | GET | [/accounts](../CustomerServicesApi.yaml/paths/~1customers/get) | Retrieves a list of all customers |
     
 
 
