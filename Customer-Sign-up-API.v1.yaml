@@ -28,8 +28,8 @@ info:
     email: TestAPI.Support@debitsuccess.com
   version: v1.0
 servers:
-  - url: Test 'https://oc-test.debitsuccess.com/DirectEntry/api/v1.0'
-  - url: Live 'https://oc.debitsuccess.com/DirectEntry/api/v1.0'
+  - url: 'https://oc-test.debitsuccess.com/DirectEntry/api/v1.0'
+  - url: 'https://oc.debitsuccess.com/DirectEntry/api/v1.0'
 tags:
   - name: Account Template
 paths:
