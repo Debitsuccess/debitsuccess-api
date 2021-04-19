@@ -23,7 +23,7 @@ info:
     https://oc.debitsuccess.com/DirectEntry/api/v1.0/accounttemplates
 
     ## Authentication 
-    Please visit [Debitsuccess Identity Service](https://app.swaggerhub.com/apis/debitsuccess/DebitsuccessIdentity/1.0.0) 
+    Please visit [Debitsuccess Identity Service](../Introduction/2-Authentication.md) 
   contact:
     email: TestAPI.Support@debitsuccess.com
   version: v1.0

@@ -65,8 +65,8 @@ title: Widgets
 The below widgets that can be embeded into your website and customized it to match your product theme. 
 
 
-- [Payment Method Capture Widget](../docs/Widgets/Payment-Capture-Widget.md)
-- [Realtime Payment Widget](../docs/Widgets/Real-time-payment-widget.md)
+- [Payment Method Capture Widget](../Widgets/Payment-Capture-Widget.md)
+- [Realtime Payment Widget](../Widgets/Real-time-payment-widget.md)
 
 <!-- type: tab-end -->
 
