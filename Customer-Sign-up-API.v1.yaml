@@ -4,16 +4,7 @@ info:
   description: | 
     ---
     ## Overview
-    The online management gateway API allow for the creation of account templates. The account templates are used to signup new customer via Debitsuccess Online management gateway web application.
-
-    ## Web Application
-    Online management gateway Web application
-
-    **Test Envrionment**
-    https://oc-test.debitsuccess.com/DirectEntry/DirectDebitRequest/Form?templateid=
-
-    **Live Envrionment**
-    https://oc.debitsuccess.com/DirectEntry/DirectDebitRequest/Form?templateid=
+    The online management gateway API allow for the creation of account templates. This is where you will create a payment plan for your customers to complete. You can create multiple account templates for each type of contract that you have. The account templates are used to signup new customer via Debitsuccess Online management gateway web application.
 
     ## Online Management Gateway API
     **Test Environment**
@@ -22,8 +13,23 @@ info:
     **Live Environment**
     https://oc.debitsuccess.com/DirectEntry/api/v1.0/
 
+    ## Web Application
+    Online management gateway web application can be launched by using the below link and appending the account template ID at the end of the link. 
+
+    **Test Envrionment**
+    https://oc-test.debitsuccess.com/DirectEntry/DirectDebitRequest/Form?templateid={accountTemplateId}
+
+    **Live Envrionment**
+    https://oc.debitsuccess.com/DirectEntry/DirectDebitRequest/Form?templateid={accountTemplateId}
+
     ## Authentication 
     Please visit [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) 
+
+    ## Endpoints
+    |  Endpoints  | Supported Methods   | Purpose |
+    |  --- | --- | --- |
+    | [Account Templates](../CustomerServicesApi.yaml/paths/~1customers/get)| <span style="background-color:skyblue; color:white">  POST</span> <span style="background-color:red; color:white"> DELETE</span> | Create or delete an account template that can later be used on Debitsuccess Online Management Getaway to sign up new customers.   |
+    | [Diagnostics Ping](../CustomerServicesApi.yaml/paths/~1businessAccounts/get) | <span style="background-color:lightgreen; color:white"> GET</span>  | Used to determine whether this api is online. |
   contact:
     email: TestAPI.Support@debitsuccess.com
   version: v1.0
