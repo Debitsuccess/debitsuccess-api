@@ -5,17 +5,18 @@ info:
     Debitsuccess Payments API provides an interface for all Real-time
     payments.\n\n
 
+
 ## Endpoints
 | Endpoints  | Supported Methods | Purpose |
-|  --- | --- | --- |
-|[Casual Payments]()| <span style="background-color:lightgreen; color:white"> GET</span> <span style="background-color:skyblue; color:white">  POST</span> <span style="background-color:orange; color:white"> PUT</span> <span style="background-color:orange; color:white"> PATCH</span>  | Type of payments that are made directly to the business (Facility Accounts). The customer that is making the payment is not recorded. |
+| --- | --- | --- |
+|[Casual Payments]() | <span style="background-color:lightgreen; color:white"> GET</span> <span style="background-color:skyblue; color:white">  POST</span> <span style="background-color:orange; color:white"> PUT</span> <span style="background-color:orange; color:white"> PATCH</span>  | Type of payments that are made directly to the business (Facility Accounts). The customer that is making the payment is not recorded. |
 |[Account Payments]() | <span style="background-color:lightgreen; color:white"> GET</span>  |Type of payments that are recorded against the business customers. Debitsuccess maintains a history of all customers that have/had subscription payments. |
 |[Business Collected Payments]() | <span style="background-color:lightgreen; color:white"> GET</span> <span style="background-color:skyblue; color:white">  POST</span> <span style="background-color:orange; color:white"> PUT</span> <span style="background-color:orange; color:white"> PATCH</span> |The Business Collected Payment API collected allows facilities to collect payments at clubs and sync the attempts down to Debitsuccess. This allows Debitsuccess to update the balance of the account so that the same payment is not collected automatically. Currently, there are two functions that are supported by the new REST API for payment collected feature. These are: Record Payment Collected Transaction - allows facilities to send payments that are collected at clubs. Reverse / Refund Payment Collected Transaction - allows facilities to reverse an old payment collected transaction. It is useful if a payment collected required were sent in an error. |
 |[WebPay Payments]()  | <span style="background-color:lightgreen; color:white"> GET</span> <span style="background-color:skyblue; color:white">  POST</span> <span style="background-color:orange; color:white"> PATCH</span> <span style="background-color:red; color:white"> DELETE</span> | Debitsuccess Webpay API provides an interface for Webpay integration. This API supports posting credit card payments for customers who have their BPay CRN registered with Debitsuccess.|
 |[Payment Method Configuration]()  | <span style="background-color:lightgreen; color:white"> GET</span> <span style="background-color:skyblue; color:white">  POST</span>  <span style="background-color:red; color:white"> DELETE</span>  | he Debitsuccess PayMethod Configuration API provides an interface to retrieve the Pay method types configured for particular businesses. Pay method types consist of credit card types and bank account.|
   
 
-    ** Test Envrionment** \n https://oc-test.debitsuccess.com/Payments/v1.0 \n 
+    **Test Envrionment** \n https://oc-test.debitsuccess.com/Payments/v1.0 \n 
     **Live Envrionment** \n https://oc.debitsuccess.com/Payments/v1.0 \n## Authentication
     \n Please visit [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md)
     \n\n
