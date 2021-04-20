@@ -9,27 +9,26 @@ info:
     ## Web Application
     Online management gateway Web application
 
-    **Test Envrionment**\
+    **Test Envrionment**
     https://oc-test.debitsuccess.com/DirectEntry/DirectDebitRequest/Form?templateid=
 
-    **Live Envrionment**\
+    **Live Envrionment**
     https://oc.debitsuccess.com/DirectEntry/DirectDebitRequest/Form?templateid=
 
     ## Online Management Gateway API
-    **Test Environment**\
-    https://oc-test.debitsuccess.com/DirectEntry/api/v1.0/accounttemplates
+    **Test Environment**
+    https://oc-test.debitsuccess.com/DirectEntry/api/v1.0/
 
-    **Live Environment**\
-    https://oc.debitsuccess.com/DirectEntry/api/v1.0/accounttemplates
+    **Live Environment**
+    https://oc.debitsuccess.com/DirectEntry/api/v1.0/
 
     ## Authentication 
-    Please visit [Debitsuccess Identity Service](../Introduction/2-Authentication.md) 
+    Please visit [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) 
   contact:
     email: TestAPI.Support@debitsuccess.com
   version: v1.0
 servers:
   - url: 'https://oc-test.debitsuccess.com/DirectEntry/api/v1.0'
-  - url: 'https://oc.debitsuccess.com/DirectEntry/api/v1.0'
 tags:
   - name: Account Template
 paths:

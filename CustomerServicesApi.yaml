@@ -16,30 +16,25 @@ info:
     https://oc.debitsuccess.com/CustomerServices/v1.0
 
     ## Authentication 
-    Please visit [Debitsuccess Identity Service](../Introduction/2-Authentication.md) 
+    Please visit [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) 
     
     ## Endpoints
-    |    |    |
-    |  --- | --- |
-    | **GET**  [/customers](../CustomerServicesApi.yaml/paths/~1customers/get)  | Retrieves a list of all customers|
-    | POST /customers  | Creates a customer |
-    |    |    |
-    |    |    |
-    |    |    |
-    |    |    |
-    |    |    |
-    |    |    |
-    |    |    |
-    | POST /accounts  |  | 
-    | POST  /accounts/{accountId}/cancellation  |  | 
-    | GET /accounts/{accountId}  |  | 
-    | GET  /accounts |  | 
-    | PUT  /accounts/{accountId} |  | 
-    | PATCH /accounts/{accountId} |  | 
-    
-    
-
-
+    |  Endpoints  | Supported Methods   |Purpose |
+    |  --- | --- | --- |
+    | [Customers](../CustomerServicesApi.yaml/paths/~1customers/get)| <span style="background-color:lightgreen; color:white"> GET</span> <span style="background-color:skyblue; color:white">  POST</span> <span style="background-color:orange; color:white"> PUT</span> <span style="background-color:orange; color:white"> PATCH</span>  |  Customer API can create, delete, and update the personal information of a customer. Fetch specific customer information and list all customers’ details.  |
+    | [Business Accounts](../CustomerServicesApi.yaml/paths/~1businessAccounts/get) | <span style="background-color:lightgreen; color:white"> GET</span>  |Retrieves a list of Business Account(s) (also known as FacilityAccounts) based on the business ID provided. If none provided, all Business Accounts assigned to the client derived from the authentication token will be returned. |
+    | [Accounts](../CustomerServicesApi.yaml/paths/~1accounts/get) | <span style="background-color:lightgreen; color:white"> GET</span> <span style="background-color:skyblue; color:white">  POST</span> <span style="background-color:orange; color:white"> PUT</span> <span style="background-color:orange; color:white"> PATCH</span> | An Account is referred to the contract with your customers for the services you offer. Within the Account API, you can execute account management functions through the API methods, including: <ul><li> Get information about an account and amount. </li><li>Create an account with a payment schedule. </li><li> Adjust the contract amount and change the terms of an account.  </li><li>Update default payment method for an existing account. </li><li>Get a list all accounts within a business based on various search criteria.</li><li>Close an account.</li></ul>|
+    | [Suspension Schedules](../CustomerServicesApi.yaml/paths/~1accounts~1%7BaccountId%7D~1suspensionSchedules/get)  | <span style="background-color:lightgreen; color:white"> GET</span> <span style="background-color:skyblue; color:white">  POST</span> <span style="background-color:orange; color:white"> PATCH</span> <span style="background-color:red; color:white"> DELETE</span> | An account is suspended when the regular payments on an account are on hold due to a customer going on holiday or medical reasons. Suspensions can be indefinite – no end date of suspension. For more information see [Suspend an account](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1299022463/Suspend+an+account). Using the Suspension Schedule API, set up, retrieve, edit or delete a suspension schedule for an account.     |
+    | [Recurring schedule](../CustomerServicesApi.yaml/paths/~1accounts~1%7BaccountId%7D~1recurringSchedules/get)  | <span style="background-color:lightgreen; color:white"> GET</span> <span style="background-color:skyblue; color:white">  POST</span>  <span style="background-color:red; color:white"> DELETE</span>  | Create, retrieve, and delete an recurring schedule for an account.  |
+    | [One-off Schedules](../CustomerServicesApi.yaml/paths/~1accounts~1%7BaccountId%7D~1oneOffSchedules/get)   | <span style="background-color:lightgreen; color:white"> GET</span> <span style="background-color:skyblue; color:white">  POST</span>  <span style="background-color:red; color:white"> DELETE</span>  |  Create, retrieve, and delete an one-off schedule for an account.  |
+    | [Addresses](../CustomerServicesApi.yaml/paths/~1customers~1%7BcustomerId%7D~1addresses/get)    | <span style="background-color:lightgreen; color:white"> GET</span> <span style="background-color:skyblue; color:white">  POST</span> <span style="background-color:orange; color:white"> PUT</span> <span style="background-color:red; color:white"> DELETE</span> | Address API method can create, update, and delete address of an existing customer. Fetch a specific address or all addresses of a customer. |
+    | [Phone numbers](../CustomerServicesApi.yaml/paths/~1customers~1%7BcustomerId%7D~1phoneNumbers/get)  | <span style="background-color:lightgreen; color:white"> GET</span> <span style="background-color:skyblue; color:white">  POST</span> <span style="background-color:orange; color:white"> PUT</span> <span style="background-color:red; color:white"> DELETE</span>   | Phone Number API method can create, update, and delete an email address of an existing customer. Fetch a specific phone number or all phone numbers of a customer. |
+    | [Email addresses](../CustomerServicesApi.yaml/paths/~1customers~1%7BcustomerId%7D~1emailAddresses/get)  | <span style="background-color:lightgreen; color:white"> GET</span> <span style="background-color:skyblue; color:white">  POST</span> <span style="background-color:orange; color:white"> PUT</span> <span style="background-color:red; color:white"> DELETE</span>  | Email address API method can create, update, and delete email address of an existing customer. Fetch a specific email address or all email addresses of a customer. |
+    | [Overdue status changes](../CustomerServicesApi.yaml/paths/~1overdueStatusChanges/get)  | <span style="background-color:lightgreen; color:white"> GET</span>   | Retrieve the details of overdue statuses or amount changes based on the specified date range. |
+    | [Payment History](../CustomerServicesApi.yaml/paths/~1payments/get)  | <span style="background-color:lightgreen; color:white"> GET</span>   | Retrieves the payment history for by the specified customer or business account.  |
+    | [Terms and Condition](../CustomerServicesApi.yaml/paths/~1businessAccounts~1%7BbusinessAccountId%7D~1termsAndConditions/get)  |  <span style="background-color:lightgreen; color:white"> GET</span>  | Retrieves the terms and conditions associated with the BusinessAccountId.  |
+    | [PaymentTokens](../CustomerServicesApi.yaml/paths/~1accounts~1%7BaccountId%7D~1paymentTokens/post) |  <span style="background-color:skyblue; color:white">  POST</span>   |The payment token APIs allow integrators to generate a unique link for the Debitsuccess [Paynow UI](https://paynow.debitsuccess.com/(S(zevyqenvd1zj4qdgcidlomer))/), then when the customer is redirected to the link it allows them to process a real time credit card payment either for a specified Debitsuccess account (account payment) or for a specified business (casual payment). <ul><li> **Note**: The unique link is valid for 10 minutes and can only be used once. After 10 minutes the customer can complete the payment if they have opened the link but they will get an error if they try to open the link after that time.</li></ul>  |
+    | [Businesses](../CustomerServicesApi.yaml/paths/~1businesses/get)  | <span style="background-color:lightgreen; color:white"> GET</span>  | Retrieves a list of businesses (Facility DS domain) assigned to the client ID that is used for authenticating with the Debitsuccess authentication server. Multiple businesses can be assigned to a single client ID.  |
   contact:
     email: TestAPI.Support@debitsuccess.com
   version: V1.0
