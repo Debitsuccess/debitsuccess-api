@@ -28,8 +28,8 @@ info:
     ## Endpoints
     |  Endpoints  | Supported Methods   | Purpose |
     |  --- | --- | --- |
-    | [Account Templates](../CustomerServicesApi.yaml/paths/~1customers/get)| <span style="background-color:skyblue; color:white">  POST</span> <span style="background-color:red; color:white"> DELETE</span> | Create or delete an account template that can later be used on Debitsuccess Online Management Getaway to sign up new customers.   |
-    | [Diagnostics Ping](../CustomerServicesApi.yaml/paths/~1businessAccounts/get) | <span style="background-color:lightgreen; color:white"> GET</span>  | Used to determine whether this api is online. |
+    | [Account Templates](../Customer-Sign-up-API.v1.yaml/paths/~1accounttemplates/post)| <span style="background-color:skyblue; color:white">  POST</span> <span style="background-color:red; color:white"> DELETE</span> | Create or delete an account template that can later be used on Debitsuccess Online Management Getaway to sign up new customers. |
+    | [Diagnostics Ping](../Customer-Sign-up-API.v1.yaml/paths/~1diagnostics~1ping/get) | <span style="background-color:lightgreen; color:white"> GET</span>  | Determine whether this API is online. |
   contact:
     email: TestAPI.Support@debitsuccess.com
   version: v1.0
@@ -268,6 +268,34 @@ components:
           example: eba09c3c-3f67-11e8-b467-0ed5f89f718b
         customerDetails:
           $ref: '#/components/schemas/CustomerDetails'
+      example:
+       name: 1 month membership $10
+       paymentOption: '1'
+       term: '1'
+       termType: M
+       isTerm: false
+       accountCode: Sale 3209
+       totalAmount: 10
+       overrideEstFee: false
+       ddrTemplate: '10.00'
+       businessId: TST4
+       isCustomFrequency: false
+       installment: 10
+       allowableFrequencies: WK,FN,MN
+       defaultFrequency: WK
+       billingFee: 10
+       additionalOneOffPayment: 0
+       joiningFeeIsFirstInstalment: false
+       contractStartDate: string
+       firstPaymentDateMin: 0
+       benefits: benefit
+       description: Account template for 2017.1 sales
+       specialConditions: specialConditions
+       templateEndDate: 12/12/2018
+       promoCode: Promocode
+       isProRata: false
+       AllowMinors: false
+       externalAccountReferenceNo: eba09c3c-3f67-11e8-b467-0ed5f89f718b
     CustomerDetails:
       required:
         - dob
@@ -342,6 +370,23 @@ components:
         emergencyContactName:
           type: string
           example: John Doe
+      example:
+        firstName: John
+        lastName: Doe
+        dob: '1991-12-19'
+        gender: 1
+        driversLicenseOrMedicareNumber: SD9999
+        streetAddress: 5 The warehouse road
+        suburb: NorthCote
+        postcode: '5685'
+        city: Auckland
+        state: Auck
+        email: John.Doe@gmail.com
+        phoneHome: '09-1111111'
+        phoneWork: '094213422'
+        phoneMobile: '021324223'
+        phoneEmergency: '233341221'
+        emergencyContactName: John Doe
     inline_response_200:
       type: object
       properties:
