@@ -12,9 +12,6 @@ The API returns errors in JSON format in the following structure:
 }
 ```
 
-
-
-
 |  **Response Code**  |  **Response Code Description**  |  **Error Code**  |  **Message**  | 
 |  --- |  --- |  --- |  --- | 
 | 200 | OK |  |  | 

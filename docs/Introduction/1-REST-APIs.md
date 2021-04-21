@@ -16,7 +16,7 @@ Use this API to Sign up new customers.
 
 **Resources:**
 
-- [Getting Started](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1301282979/Customer+Sign-up)
+- [Getting Started](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/984778280/Quick+Start)
 - [API Reference](https://debitsuccess.stoplight.io/docs/debitsuccess-api/Customer-Sign-up-API.v1.yaml)
 - [Try out API](https://debitsuccess.stoplight.io/docs/debitsuccess-api/Customer-Sign-up-API.v1.yaml/paths/~1accounttemplates/post)
 
@@ -33,7 +33,7 @@ Use this API to manage customer account, customer details, schedules get payment
 
 **Resources:** 
 
-- [Getting Started](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1709736204/Customer+Services)
+- [Getting Started](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/984778280/Quick+Start)
 - [API Reference](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml)
 - [Try out API](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1customers/post)
 
@@ -51,7 +51,7 @@ Use this API to Process casual payments, set up direct debits, capture new payme
 **Resources:**  
 
 
-- [Getting Started](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1709082493/Payments)
+- [Getting Started](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/984778280/Quick+Start)
 - [API Reference](https://debitsuccess.stoplight.io/docs/debitsuccess-api/PaymentsAPI.v1.json)
 - [Try out API](https://debitsuccess.stoplight.io/docs/debitsuccess-api/PaymentsAPI.v1.json/paths/~1account~1creditcard/post)
 
@@ -62,7 +62,7 @@ title: Widgets
 
 ![](https://drive.google.com/uc?export=view&id=1VrjRQqDmjB5tNIJZL9kgfODk8XvEECmP)
 
-The below widgets that can be embeded into your website and customized it to match your product theme. 
+Easily embed these widgets into your website and customize it to match your product theme. 
 
 
 - [Payment Method Capture Widget](../Widgets/Payment-Capture-Widget.md)
