@@ -1,6 +1,6 @@
 # Authentication 
 
-Debitsuccess supports [client credentials](https://tools.ietf.org/html/rfc6749#section-1.3.4) flow for authentication. After you receive your credentials, Client_IDand Client_Secretfrom us, use the  HTTP POST request to /identity/connect/token to obtain your JWT token also known as API Key. 
+Debitsuccess supports [client credentials](https://tools.ietf.org/html/rfc6749#section-1.3.4) flow for authentication. After you receive your credentials, `Client_ID` and `Client_Secret` from us, use the  HTTP POST request to /identity/connect/token to obtain your JWT token also known as API Key. 
 
 ## OAuth 2.0 Client Credentials Flow 
 ![](https://drive.google.com/uc?export=view&id=1CbINB1zSVaIgocEuRkcNFnsyp3_S6F38)
@@ -143,7 +143,7 @@ K3QsDwjYlgwAWUBH7IxKDJCAXXqf4PqZY53jr1tjMDBgINRsl0iCjG83X9pvzf0pa9i5bLfFHmDLgagG
 
 *******
 
-**JWT Token validation**  _JSON Web Token (JWT) is an open standardthat defines a compact and self-contained way for securely transmitting information between parties as a JSON object._  _This information can be verified and trusted because it is digitally signed. JWTs can be signed using a secret (with theHMACalgorithm) or a public/private key pair usingRSA._ We will be using RSA to sign the token. RS256 (RSA Signature with SHA-256) is an asymmetric algorithm, and it uses a public/private key pair: the identity server provider has a private (secret) key used to generate the signature, and the consumer of the JWT gets a public key to validate the signature. Since the public key, as opposed to the private key, doesn't need to be kept secured, the identity server makes it easily available for consumers to obtain from the [https://oc-test.debitsuccess.com/identity/.well-known/openid-configuration/jwks](https://oc-test.debitsuccess.com/identity/.well-known/openid-configuration/jwks) URL.To read more about JWT tokens please visit[https://jwt.io/introduction/](https://jwt.io/introduction/)
+**JWT Token validation**  _JSON Web Token (JWT) is an open standard that defines a compact and self-contained way for securely transmitting information between parties as a JSON object._  This information can be verified and trusted because it is digitally signed. JWTs can be signed using a secret (with theHMACalgorithm) or a public/private key pair usingRSA._ We will be using RSA to sign the token. RS256 (RSA Signature with SHA-256) is an asymmetric algorithm, and it uses a public/private key pair: the identity server provider has a private (secret) key used to generate the signature, and the consumer of the JWT gets a public key to validate the signature. Since the public key, as opposed to the private key, doesn't need to be kept secured, the identity server makes it easily available for consumers to obtain from the [https://oc-test.debitsuccess.com/identity/.well-known/openid-configuration/jwks](https://oc-test.debitsuccess.com/identity/.well-known/openid-configuration/jwks) URL.To read more about JWT tokens please visit [https://jwt.io/introduction/](https://jwt.io/introduction/)
 
 
 

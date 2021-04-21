@@ -531,5 +531,3 @@ Can be used to override the establishment fee payer in case it is set to busines
 
 *****
 
-[[category.storage-team]] 
-[[category.confluence]] 

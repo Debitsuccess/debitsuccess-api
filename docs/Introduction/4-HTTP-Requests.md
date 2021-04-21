@@ -260,10 +260,4 @@ The dateTimes in input parameters should always be in UTC. The dateTimes returne
 ### datefields
 Use theyyyy-MM-ddformats to specifydatefields in local timezone, not UTC.
 
-On this page:
-
-
-
-
-
 *****
