@@ -2417,6 +2417,17 @@
             "description": "A unique external payment identifier. Note, this is unique across all Debitsuccess customers. The Api consumer is responsible for generating unique identifier",
             "example": "b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
           }
+        },
+        "example": {
+         "cardHolderName": "John Doe",
+          "cardNumber": "4111111111111111",
+          "cvc": "321",
+          "cardType": "Visa",
+          "expiryDate": "02/19",
+          "amount": 10.25,
+          "paymentDescription": "Soft Drink",
+          "businessId": "abc",
+          "externalPaymentIdentifier": "b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
         }
       },
       "CasualPaymentResponseSuccess": {
@@ -2430,6 +2441,10 @@
             "type": "string",
             "example": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
           }
+        },
+        "example": {
+         "status": "authorised",
+         "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
         }
       },
       "CasualPaymentResponseAccepted": {
@@ -2444,6 +2459,10 @@
             "description": "ExternalPaymentIdentifier - The first half of the ExternalPaymentIdentifier identifies the business id.",
             "example": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
           }
+        },
+        "example": {
+         "status": "Processing",
+         "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
         }
       },
       "CasualPaymentResponsePaymentRequired": {
@@ -2476,6 +2495,10 @@
             "description": "User friendly response message from Payment gateway.",
             "example": "Cannot find business that matches the business id provided."
           }
+        },
+        "example":{
+         "errorCode": "business_id",
+         "message": "Cannot find business that matches the business id provided."
         }
       },
       "PermissionError": {
@@ -2494,7 +2517,10 @@
             "type": "string",
             "example": "Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment."
           }
-        }
+        },
+        "example": {
+          "message": "Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment."
+         }
       },
       "Not-Found": {
         "type": "object",
@@ -2503,6 +2529,9 @@
             "type": "string",
             "example": "The requested resource could not be found."
           }
+        },
+        "example":{
+         "message": "The requested resource could not be found."
         }
       },
       "Conflict": {
@@ -2516,6 +2545,10 @@
             "type": "string",
             "example": "The external payment identifier provided has already been used."
           }
+        },
+        "example":{
+         "errorCode": "external_payment_identifier",
+         "message": "The external payment identifier provided has already been used."
         }
       },
       "ValidationError": {
@@ -2549,7 +2582,17 @@
               "$ref": "#/components/schemas/ValidationError"
             }
           }
-        }
+        },
+        "example": {
+         "message": "invalid request",
+         "errorCode": "validation",
+         "errors": [
+          {
+           "field": "amount",
+           "message": "amount is required"
+          }
+        ]
+      }
       },
       "PermissionErrorList": {
         "type": "object",
@@ -2568,7 +2611,16 @@
               "$ref": "#/components/schemas/PermissionError"
             }
           }
-        }
+        },
+        "example": {
+         "errorCode": "required_claims",
+         "message": "Unable to process this request due to insufficient client claims.",
+         "errors": [
+         {
+          "claim": "The name of the claim required."
+          }
+         ]
+       }
       },
       "inline_response_200": {
         "type": "object",
@@ -3300,7 +3352,21 @@
               "$ref" : "#/components/schemas/ValidationRules"
             }
           }
-        }
+        },
+        "example": {
+         "methodType": "CC",
+         "methodSubType": "VI",
+         "networkName": "Visa",
+         "creditAllowed": true,
+         "debitAllowed": true,
+         "prepaidAllowed": false,
+         "validationRules": [
+         {
+         "regex": "^(4)",
+         "purpose": "CardType"
+         }
+       ]
+        } 
       },
       "PayMethodResponse" : {
         "type" : "object",
@@ -3327,7 +3393,18 @@
               "$ref" : "#/components/schemas/ValidationRules"
             }
           }
-        }
+        },
+        "example" : {
+         "methodType": "CC",
+        "methodSubType": "VI",
+        "networkName": "Visa",
+         "validationRules": [
+         {
+          "regex": "^(4)",
+          "purpose": "CardType"
+         }
+       ]
+      }
       },
       "PaymentProcessor" : {
         "type" : "object",
@@ -3342,7 +3419,11 @@
             "description" : "Name of the payment processor.",
             "example" : "Vantiv"
           }
-        }
+        },
+        "example": {
+         "PaymentProcessorCardType": "AX",
+         "PaymentProcessorName": "Vantiv"
+         }
       },
       "ValidationRules" : {
         "type" : "object",
