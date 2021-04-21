@@ -26,7 +26,7 @@ To integrate your web server application with the Debitsuccess Identity Server, 
 
 
 ### Prerequisites
-Ensure that you have yourclient_id andclient secret provided by our Debitsuccess team handy. You may request credentials by contacting our [account management team](https://www.debitsuccess.co.nz/). This client ID is unique to your application.
+Ensure that you have your `client_id` and `client secret` provided by our Debitsuccess team handy. You may request credentials by contacting our [account management team](https://www.debitsuccess.co.nz/). This `client ID` is unique to your application.
 
 To check whether the identity server is up and running navigate to the configuration endpoint.
 
@@ -37,16 +37,16 @@ To check whether the identity server is up and running navigate to the configura
 To receive an access token, the client POSTs an API call to Debitsuccess Identity Server, with the values for the client ID and client secret. In addition, the parameter grant_type=client_credentials must be passed as a query parameter.
 
 Request Parameters
-* Method:POST
+* Method: <span style="background-color:skyblue; color:white">  POST</span>
 
 
 * URL: https://oc-test.debitsuccess.com/identity/connect/token
 
 
-* Content-Type:application/x-www-form-urlencoded
+* Content-Type: application/x-www-form-urlencoded
 
 
-* Response Type:json
+* Response Type: json
 
 
 
@@ -75,7 +75,7 @@ client_secret=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 Scope: CasualCreditCard
 ```
-Response 200- Successful Request
+**Response 200- Successful Request**
 
 In exchange for these credentials, the Debitsuccess authorization server issues access tokens called bearer tokens that you use for authorization when you make REST API requests. A bearer token enables you to complete actions on behalf of, and with the approval of, the resource owner.
 
@@ -105,12 +105,12 @@ In exchange for these credentials, the Debitsuccess authorization server issues 
 
 }
 ```
-Error message 400- Bad Request, Request validation error
+**Error message 400- Bad Request, Request validation error**
 
 The response message will vary depending on the cause.
 
 
-```
+```json
 {
 error	string
 example: unsupported_grant_type,invalid_scope,invalid_client.
@@ -118,11 +118,13 @@ The error response can include any value that is discribed in the example.
 
 }
 ```
- **2. Call an API with the access token** The token lives for the configured time in the authorization server, when the token expires the API should respond with a401telling the client to get a new token.
+ ### 2. Call an API with the access token
+ 
+ The token lives for the configured time in the authorization server, when the token expires the API should respond with a401telling the client to get a new token.
 
 To call the API, the token should be added to the request in theAuthorizationheader on the form as shown in the below example:
 
-Request format
+**Request format**
 
 
 ```json
