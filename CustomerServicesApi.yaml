@@ -101,7 +101,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/201CreateCustomer'
               example:
-                customerId: '1234567'
                 businessId: '3333333'
                 customerType: Individual
                 title: Mr
@@ -109,32 +108,26 @@ paths:
                 middleName: smith
                 lastName: doe
                 gender: male
-                dateOfBirth: '2019-01-01T00:00:00.0000000+00:00'
+                dateOfBirth: '2019-01-01'
                 externalReference: abc1453
                 address:
-                  addressId: '8888888'
                   addressLine1: 5 The warehouse way
                   addressLine2: Northcote
                   suburb: Northcote
                   postcode: '1062'
-                  city: ''
                   state: ''
+                  city: ''
                   countryISOCode: NZL
                   addressType: postal
-                  isPrimary: true
                 emailAddress:
-                  emailId: '9999999'
-                  emailName: John
+                  emailName: john
                   emailAddress: john.doe@debitsuccess.com
-                  isPrimary: 'true'
                 phoneNumber:
-                  phoneNumberId: '7777777'
                   phoneName: John
-                  countryCode: '+64'
+                  countryCode: "+64"
                   areaCode: '09'
                   phoneNumber: 264 5555
                   phoneType: home
-                  isPrimary: 'true'
         '400':
           description: 'Bad Request - Request failed due to validation errors, the response lists the field in the request that did not pass the validation. The client can directly show these errors to the end users.'
           headers:
