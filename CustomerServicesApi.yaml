@@ -7,19 +7,15 @@ info:
     The Customer Services API has end points that allows you to manage customer details, payment schedules, account information, view payment history, and much more.
     
     ## Environments
-    **Test Environment**
+    **Test Environment**    https://oc-test.debitsuccess.com/CustomerServices/v1.0
 
-    https://oc-test.debitsuccess.com/CustomerServices/v1.0
-
-    **Live Environment**
-
-    https://oc.debitsuccess.com/CustomerServices/v1.0
+    **Live Environment**    https://oc.debitsuccess.com/CustomerServices/v1.0
 
     ## Authentication 
     Please visit [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) 
     
-    ## Endpoints
-    |  Endpoints  | Supported Methods   |Purpose |
+    ## Resources
+    |  Resources  | Supported Methods   |Purpose |
     |  --- | --- | --- |
     | [Customers](../CustomerServicesApi.yaml/paths/~1customers/get)| <span style="background-color:lightgreen; color:white"> GET</span> <span style="background-color:skyblue; color:white">  POST</span> <span style="background-color:orange; color:white"> PUT</span> <span style="background-color:orange; color:white"> PATCH</span>  |  Customer API can create, delete, and update the personal information of a customer. Fetch specific customer information and list all customers’ details.  |
     | [Business Accounts](../CustomerServicesApi.yaml/paths/~1businessAccounts/get) | <span style="background-color:lightgreen; color:white"> GET</span>  |Retrieves a list of Business Account(s) (also known as FacilityAccounts) based on the business ID provided. If none provided, all Business Accounts assigned to the client derived from the authentication token will be returned. |

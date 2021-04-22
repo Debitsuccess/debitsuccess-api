@@ -25,8 +25,8 @@ info:
     ## Authentication 
     Please visit [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) 
 
-    ## Endpoints
-    |  Endpoints  | Supported Methods   | Purpose |
+    ## Resources 
+    |  Resources  | Supported Methods   | Purpose |
     |  --- | --- | --- |
     | [Account Templates](../Customer-Sign-up-API.v1.yaml/paths/~1accounttemplates/post)| <span style="background-color:skyblue; color:white">  POST</span> <span style="background-color:red; color:white"> DELETE</span> | Create or delete an account template that can later be used on Debitsuccess Online Management Getaway to sign up new customers. |
     | [Diagnostics Ping](../Customer-Sign-up-API.v1.yaml/paths/~1diagnostics~1ping/get) | <span style="background-color:lightgreen; color:white"> GET</span>  | Determine whether this API is online. |
