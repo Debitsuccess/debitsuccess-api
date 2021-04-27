@@ -1,13 +1,13 @@
-# Payment Capture Widget
+# Payment Method Capture Widget
 
-The Payment Capture Widget allows you to securely capture payment details (credit card and bank account) by embedding it in your website and save payment details in Debitsuccess systems. This widget triggers the internal [Create PaymentMethod](https://oc-debitsuccess.portal.azure-api.net/docs/services/Mock/operations/5e4317913b44f651f411dc64?&groupBy=tag) API to create the payment method into Debitsuccess.
+The Payment Method Capture Widget allows you to securely capture payment details (credit card and bank account) by embedding it in your website and save payment details in Debitsuccess systems. This widget triggers the internal [Create PaymentMethod](https://oc-debitsuccess.portal.azure-api.net/docs/services/Mock/operations/5e4317913b44f651f411dc64?&groupBy=tag) API to create the payment method into Debitsuccess.
 
 
 >
 The [Create PaymentMethod](https://oc-debitsuccess.portal.azure-api.net/docs/services/Mock/operations/5e4317913b44f651f411dc64?&groupBy=tag) API is intended for internal use only. If you decide to capture credit cards yourself and pass them through the API then you would be required to be PCI certified as opposed to doing a PCI self-assessment.
 
 
-## Adding payment capture widget
+## Adding Payment Method Capture widget
 
 1. Add a link to DS javascript library on the page where the widget will be used, like
 
@@ -148,8 +148,8 @@ If you want to add a form for capturing bank account information to your page yo
 dsWidget.createBankCaptureForm("bank-container", "AUS", styles, customBankLabels, 450);
 ```
 
-## Customing the payment capture widget
-Debitsuccess Payment Capture widget supports CSS style customization and labels text replacement. By default, the Payment Capture forms are displayed as below:
+## Customing the Payment Method Capture widget
+Debitsuccess Payment Method Capture widget supports CSS style customization and labels text replacement. By default, the Payment Method Capture forms are displayed as below:
 
 
 <!--
@@ -236,7 +236,7 @@ dsWidget.createCardCaptureForm(
 ```
 
 ## Events
-The Payment Capture widget emits javascript events for communicating with a parent website. All the events have a property  _type_  describes what event it is.
+The Payment Method Capture widget emits javascript events for communicating with a parent website. All the events have a property  _type_  describes what event it is.
 
 
 ### Subscribing to events
