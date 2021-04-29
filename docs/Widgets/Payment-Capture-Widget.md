@@ -9,7 +9,7 @@ The [Create PaymentMethod](https://oc-debitsuccess.portal.azure-api.net/docs/ser
 
 ## Adding Payment Method Capture widget
 
-1. Add a link to DS javascript library on the page where the widget will be used, like
+1. Add a link to Debitsuccess javascript library on the page where the widget will be used, like
 
 
 
@@ -24,10 +24,10 @@ The [Create PaymentMethod](https://oc-debitsuccess.portal.azure-api.net/docs/ser
 |  **Parameter**  |  **Required**  |  **Description**  | 
 |  --- |  --- |  --- | 
 |  _authToken_  |  | get this token from [Debitsuccess Identity Server](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/986809101/Authentication) using your  _client secret_  and  _client ID_  | 
-|  _businessAccountId_  |  | a unique identifier (string, DS contract prefix) of the business customer belongs to | 
+|  _businessAccountId_  |  | a unique identifier (string, Debitsuccess contract prefix) of the business customer belongs to | 
 | customerId  | Optional | a unique identifier (integer) of the customer the payment method will be captured for | 
 |  _domain_  | Optional | describes the environment the widget will be used against, possible values:  **OC-Test** https://oc-test.debitsuccess.com  **OC-Production** https://oc.debitsuccess.com | 
-|  _accountId_  | Optional | a unique identifier (string, DS account reference) of the account a new payment method should be attached to | 
+|  _accountId_  | Optional | a unique identifier (string, Debitsuccess account reference) of the account a new payment method should be attached to | 
 
 
 ```js
