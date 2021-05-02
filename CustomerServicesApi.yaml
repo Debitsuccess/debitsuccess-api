@@ -15137,7 +15137,7 @@ components:
             - true
             - false
           type: boolean
-          description: 'Flag to stop account payment. Notes: amount owing will continue to accrue while payments are stopped'
+          description: 'Flag to stop account payment. Notes: amount owing will continue to accure while payments are stopped'
         paymentStoppedEndDate:
           type: string
           description: 'YYYY-MM-DD, Set the date (local time) when the payment stopped order will end. PaymentStoppedEndDate is not allowed to be updated together with accountStartDate'
