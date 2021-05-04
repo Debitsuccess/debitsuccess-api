@@ -2465,10 +2465,34 @@
           "status": "authorised",
           "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
         },
-        "x-internal": true,
+        "x-internal": false,
         "x-examples": {
           "example-1": {
             "status": "authorised",
+            "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+          },
+          "example-2": {
+            "status": "declined",
+            "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+          },
+          "example-3": {
+            "status": "declined_insufficient_funds",
+            "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+          },
+          "example-4": {
+            "status": "declined_card_expired",
+            "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+          },
+          "example-5": {
+            "status": "not_submitted",
+            "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+          },
+          "example-6": {
+            "status": "declined_do_not_honour",
+            "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+          },
+          "example-7": {
+            "status": "declined_refer_to_card_issuer",
             "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
           }
         }
