@@ -1563,9 +1563,7 @@
 		},
 		"/paymethods": {
 			"get": {
-				"tags": [
-					"Pay Method Configuration"
-				],
+				"tags": [				],
 				"description": "This endpoint retrieves all active paymethod types for the particular business identified by either businessId (Contract Prefix) or Debitsuccess internal facility Id parameter. Note, you must provide at least one parameter (bussinessId or facilityId)in the request.\n",
 				"operationId": "getpaymethodconfigurations",
 				"parameters": [{
@@ -1737,9 +1735,7 @@
 		},
 		"/paymentprocessorcardtypes": {
 			"get": {
-				"tags": [
-					"Pay Method Configuration"
-				],
+				"tags": [ ],
 				"description": "This endpoint retrieves the mapping between Debitsuccess card type and a payment processor (Vantiv, Dps) the payment processor specific card type are used when submitting a payment request. Example - DS card type = AM - Vantiv card type = AX\n",
 				"operationId": "getpaymentprocessorcardtypes",
 				"parameters": [{
