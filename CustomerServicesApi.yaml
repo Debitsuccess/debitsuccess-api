@@ -2421,7 +2421,7 @@ paths:
     get:
       tags:
         - Accounts
-      summary: 'Get Accounts '
+      summary: 'Get Accounts'
       description: |
         Retrieves list of accounts based on queries parameters provided. This API is used to retrieve:
 
@@ -10893,7 +10893,7 @@ paths:
                     paymentDateTime: '2019-01-01T08:11:55.0000000+00:00'
                     paymentDescription: Payment Desc ABC
                     paymentCode: Payment
-                    paymentErrorCode: InsufficientFunds
+                    paymentErrorCode: Insufficient Funds
                     paymentMethod: DD
                     paymentId: '1234'
                     externalPaymentIdentifier: '9999'
