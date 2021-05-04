@@ -106,6 +106,20 @@
                 "example": {
                   "status": "authorised",
                   "externalPaymentIdentifier": "b97d9688-1a07-4b35-ae54-28e32870f7cd"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": "string",
+                      "externalPaymentIdentifier": "string"
+                    }
+                  },
+                  "example-2": {
+                    "value": {
+                      "status": "string",
+                      "externalPaymentIdentifier": "string"
+                    }
+                  }
                 }
               }
             }
@@ -3104,6 +3118,21 @@
             "type": "boolean",
             "description": "If true, a One-Off pay schedule will be created",
             "default": false
+          }
+        },
+        "x-examples": {
+          "example-1": {
+            "accountId": "string",
+            "externalPaymentIdentifier": "string",
+            "accountHolderName": "string",
+            "cardNumber": "string",
+            "cvc": "string",
+            "cardType": "string",
+            "expiryDate": "string",
+            "token": "string",
+            "amount": 0,
+            "paymentDescription": "string",
+            "createOneOffCharge": false
           }
         }
       },
