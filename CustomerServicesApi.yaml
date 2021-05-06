@@ -50,6 +50,7 @@ tags:
   - name: Terms and Conditions
   - name: PaymentToken
   - name: Businesses
+  - name: Payment Status
 paths:
   /customers:
     post:
@@ -445,8 +446,7 @@ paths:
       responses:
         '200':
           description: |-
-            Successful response with all customers assigned to the the business ID provided,
-            or if no business ID provided. all customers assigned to the client derived from the authorization token will be returned.
+            Successful response with all customers assigned to the the business ID provided, or if no business ID provided, all customers assigned to the client derived from the authorization token will be returned.
             NOTE: Only Customer Individual will be returned.
           content:
             application/json:
@@ -13428,6 +13428,77 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
+  '/businesses/{businessID}/paymentstatuses':
+    parameters:
+      - schema:
+          type: string
+        name: businessID
+        in: path
+        required: true
+        description: Unique identifier associated to the business to be extracted.
+    get:
+      summary: Get Payment Status
+      tags:
+        - Payment Status
+      operationId: get-businesses-businessID-paymentstatuses
+      description: Returns the schedule with payment status found in between the date range provided in the request.
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: BusinessAccountId
+          description: 'ContractPrefix, if not provided, records from all facility accounts associated to the user will be extracted'
+        - schema:
+            type: string
+          in: query
+          name: AccountId
+          description: Unique identifier associated to the account
+        - schema:
+            enum:
+             - Unattempted
+             - Pending
+             - Retry
+             - Failed
+             - Cleared
+             - Settled
+             - Unbillable
+             - CreditControl
+            type: string
+          in: query
+          name: Status
+          description: 'Status of the payment'
+        - schema:
+            type: string
+          in: query
+          name: StartDateTime
+          description: 'From datetime or date - range in UTC used to filter payment status records to be extracted. For example, 2020-06-23T00:00:00.000Z.  If StartDateTime is not provided or has invalid format then it will be ignored. if timezone not provided (i.e. only date yyyy-mm-dd is provided than default time is 00:00.00.000)'
+        - schema:
+            type: string
+          in: query
+          name: EndDateTime
+          description: 'To datetime or date - range in UTC used to filter payment status records to be extracted. For example, 2020-06-23T00:00:00.000Z. If timezone not provided (i.e. only date yyyy-mm-dd is provided than default time is 23:59.59.999)  if EndDateTime is not provided or has wrong format, it will be defaulted to today date and now time'
+        - schema:
+            type: string
+          in: query
+          name: 'nextCursor '
+          description: Indicate the position of the next record to be fetched into the list. Default to retrieve from the first record if not provided.
+        - schema:
+            type: string
+          in: query
+          name: Limit
+          description: Indicate the number of records to be fetched into the list. Default to maximum value of 50 if not provided or value provided is greater than 50.
+        - schema:
+            type: string
+          in: header
+          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          name: Authorization
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200GetPaymentStatus'
 components:
   schemas:
     400AddAddress:
@@ -14855,6 +14926,26 @@ components:
               type: string
             hasNext:
               type: boolean
+      x-examples:
+        example-1:
+          transactions:
+            - businessAccountId: string
+              accountId: string
+              accountExternalId: string
+              batchNumber: string
+              paymentAmount: string
+              paymentDateTime: string
+              paymentDescription: string
+              paymentCode: string
+              paymentErrorCode: string
+              paymentMethod: string
+              paymentId: string
+              externalPaymentIdentifier: string
+              reversedPaymentId: string
+              retryCount: 0
+          responseMetadata:
+            nextCursor: string
+            hasNext: true
     200UpdateCustomer:
       type: object
       properties:
@@ -15830,6 +15921,103 @@ components:
         paymentFormURL:
           type: string
           description: URL where customer can make a payment. It will have the token appended
+    200GetPaymentStatus:
+      description: ''
+      type: object
+      properties:
+        paymentStatuses:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            required:
+              - businessAccountId
+              - accountId
+              - description
+              - externalIdentifier
+              - installment
+              - paymentStatus
+              - scheduleId
+              - startDate
+              - statusDateTime
+              - errorCode
+            properties:
+              businessAccountId:
+                type: string
+                minLength: 1
+              accountId:
+                type: string
+                minLength: 1
+              description:
+                type: string
+                minLength: 1
+              externalIdentifier:
+                type: string
+                minLength: 1
+              installment:
+                type: number
+              paymentStatus:
+                type: string
+                minLength: 1
+              scheduleId:
+                type: number
+              startDate:
+                type: string
+                minLength: 1
+              statusDateTime:
+                type: string
+                minLength: 1
+              errorCode:
+                type: string
+        responseMetadata:
+          type: object
+          properties:
+            nextCursor:
+              type: string
+              minLength: 1
+            hasNext:
+              type: boolean
+          required:
+            - nextCursor
+            - hasNext
+      required:
+        - paymentStatuses
+        - responseMetadata
+      example:
+          paymentStatuses:
+            - businessAccountId: QP91F
+              accountId: QP91F888950
+              description: bae9e492-99e4-4578-8f32-1ae452c59cf9
+              externalIdentifier: bae9e492-99e4-4578-8f32-1ae452c59cf9
+              installment: 555.24
+              paymentStatus: CreditControl
+              scheduleId: 66292844
+              startDate: '2020-03-27'
+              statusDateTime: '2020-03-27T04:30:40.070Z'
+              errorCode: ''
+            - businessAccountId: QP91F
+              accountId: QP91F888950
+              description: bae9e492-99e4-4578-8f32-1ae452c59cf9
+              externalIdentifier: bae9e492-99e4-4578-8f32-1ae452c59cf9
+              installment: 555.24
+              paymentStatus: Failed
+              scheduleId: 66292844
+              startDate: '2020-03-27'
+              statusDateTime: '2020-03-27T04:59:29.000Z'
+              errorCode: Insufficient Funds
+            - businessAccountId: QP91F
+              accountId: QP91F888956
+              description: 99347f65-cdaf-4d59-9926-a0f15bf96555
+              externalIdentifier: 99347f65-cdaf-4d59-9926-a0f15bf96555
+              installment: 365
+              paymentStatus: Pending
+              scheduleId: 64674481
+              startDate: '2020-03-20'
+              statusDateTime: '2020-03-20T05:19:14.143Z'
+              errorCode: ''
+          responseMetadata:
+            nextCursor: Mjg1MjE=
+            hasNext: true
   securitySchemes:
     apiKeyHeader:
       type: apiKey
