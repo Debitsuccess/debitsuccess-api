@@ -72,3 +72,11 @@ Easily embed these widgets into your website and customize it to match your prod
 
 *****
 
+### Quick Links
+- [Getting Started](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/984778280/Quick+Start)
+- [Payment Methods Supported](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1274544134/Payment+Methods+Supported)
+- [Understanding the Basics](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1048150917/Understanding+the+Basics)
+- [Compliance Requirements](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1227850540/Compliance+Requirements)
+- [Create customer accounts for testing](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1549369452/Create+customer+accounts+for+testing)
+- [Data for Test Environment](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/989890688/Data+for+Test+Environment)
+- [Statuses in Debitsuccess Systems](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1492877598/Statuses+in+Debitsuccess+Systems)
