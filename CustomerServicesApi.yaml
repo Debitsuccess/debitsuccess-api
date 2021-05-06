@@ -1,11 +1,10 @@
 openapi: 3.0.1
 info:
   title: Customer Services API
-  description: | 
-    
+  description: |
     ## Overview
     The Customer Services API has end points that allows you to manage customer details, payment schedules, account information, view payment history, and much more.
-    
+
     ## Environments
     **Test Environment**    https://oc-test.debitsuccess.com/CustomerServices/v1.0
 
@@ -13,7 +12,7 @@ info:
 
     ## Authentication 
     Please visit [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) 
-    
+
     ## Resources
     |  Resources  | Supported Methods   |Purpose |
     |  --- | --- | --- |
@@ -37,26 +36,26 @@ info:
 servers:
   - url: 'https://oc-test.debitsuccess.com/CustomerServices/v1.0'
 tags:
-- name: Customers
-- name: BusinessAccounts
-- name: Accounts
-- name: Schedules-Suspension
-- name: Schedules-Recurring
-- name: Schedules-OneOff
-- name: Addresses
-- name: PhoneNumbers
-- name: EmailAddresses
-- name: OverdueStatusChanges
-- name: Payment History
-- name: Terms and Conditions
-- name: PaymentToken
-- name: Businesses
+  - name: Customers
+  - name: BusinessAccounts
+  - name: Accounts
+  - name: Schedules-Suspension
+  - name: Schedules-Recurring
+  - name: Schedules-OneOff
+  - name: Addresses
+  - name: PhoneNumbers
+  - name: EmailAddresses
+  - name: OverdueStatusChanges
+  - name: Payment History
+  - name: Terms and Conditions
+  - name: PaymentToken
+  - name: Businesses
 paths:
   /customers:
     post:
       tags:
         - Customers
-      summary: 'Create Customer'
+      summary: Create Customer
       description: Creates a customer that can be used to create and manage multiple billing accounts across businesses.
       operationId: customers
       parameters:
@@ -120,7 +119,7 @@ paths:
                   emailAddress: john.doe@debitsuccess.com
                 phoneNumber:
                   phoneName: John
-                  countryCode: "+64"
+                  countryCode: '+64'
                   areaCode: '09'
                   phoneNumber: 264 5555
                   phoneType: home
@@ -676,7 +675,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  /businesses/{businessId}:
+  '/businesses/{businessId}':
     get:
       tags:
         - Businesses
@@ -846,7 +845,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  /businessAccounts/{businessAccountId}:
+  '/businessAccounts/{businessAccountId}':
     get:
       tags:
         - BusinessAccounts
@@ -1464,7 +1463,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  /customers/{customerId}:
+  '/customers/{customerId}':
     get:
       tags:
         - Customers
@@ -2111,8 +2110,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/201CreateAccount'
               example:
-                customerId: '1234567'
+                accountId: CWAUS999999
                 businessAccountId: DSFIT1
+                customerId: '1234567'
                 accountExternalId: 100200300ABCD
                 accountCode: AC1234567890
                 termType: months
@@ -2146,18 +2146,18 @@ paths:
                 projectedFinishDate: '2021-12-31'
                 paymentMethodToken: frtg67yu-yht5-6756-234r-tghy6u7ytrre
                 recurringSchedules:
-                - recurringScheduleStartDate: '2020-01-31'
-                  installment: 50
-                  frequency: monthly
-                  numberOfPayments: 6
-                  externalScheduleId: R125810
-                  scheduleDescription: Recurring schedule Jan-Jun
-                - recurringScheduleStartDate: '2020-07-31'
-                  installment: 100
-                  frequency: monthly
-                  numberOfPayments:
-                  externalScheduleId: R125811
-                  scheduleDescription: Recurring schedule Jul-Dec
+                  - recurringScheduleStartDate: '2020-01-31'
+                    installment: 50
+                    frequency: monthly
+                    numberOfPayments: 6
+                    externalScheduleId: R125810
+                    scheduleDescription: Recurring schedule Jan-Jun
+                  - recurringScheduleStartDate: '2020-07-31'
+                    installment: 100
+                    frequency: monthly
+                    numberOfPayments: null
+                    externalScheduleId: R125811
+                    scheduleDescription: Recurring schedule Jul-Dec
         '400':
           description: 'Bad Request - Request failed due to validation errors, the response lists the field in the request that did not pass the validation. The client can directly show these errors to the end users.'
           headers:
@@ -2421,7 +2421,7 @@ paths:
     get:
       tags:
         - Accounts
-      summary: 'Get Accounts '
+      summary: Get Accounts
       description: |
         Retrieves list of accounts based on queries parameters provided. This API is used to retrieve:
 
@@ -2554,76 +2554,76 @@ paths:
                 $ref: '#/components/schemas/200GetAccounts'
               example:
                 accounts:
-                - accountId: A921888898193
-                  accountExternalId: MOS17267
-                  customerId: '1259490'
-                  businessAccountId: A9218
-                  termType: Months
-                  term: 6
-                  accountCode: ''
-                  accountNotes: ''
-                  fixedTerm: false
-                  nextBillingDate: '2020-11-01'
-                  lastBillingDateTime: '2020-03-02T00:13:48.940Z'
-                  overdueStatus: 2
-                  overdueAmountPayment: 146.9
-                  overdueAmountFee: 7.5
-                  lastReversalReason: Lost / Stolen Card
-                  closeReason: ''
-                  suspended: false
-                  paymentStopped: true
-                  paymentStopEndDate: ''
-                  catchUpAmount: 0
-                  catchUpEndDate: ''
-                  paymentInAdvanceAmount: 0
-                  paymentInAdvanceEndDate: ''
-                  accountStartDate: '2019-05-31'
-                  accountCloseDateTime: ''
-                  accountLoadedDateTime: '2019-05-29T12:00:00.000Z'
-                  lastUpdatedDateTime: '2020-10-26T19:21:22.643Z'
-                  accruedContractAmount: 881.4
-                  originalContractAmount: 440.7
-                  outstandingRecurringAmount: 220.35
-                  outstandingOneOffAmount: 0
-                  outstandingFeeAmount: 7
-                  projectedFinishDate: ''
-                  paymentMethodToken: 6BC50933-E43F-425E-AAB4-0B41A2627242
-                  collectionStopReason: Invalid Account
-                - accountId: A921888897986
-                  accountExternalId: MOS17656
-                  customerId: '1704286'
-                  businessAccountId: A9218
-                  termType: Months
-                  term: 0
-                  accountCode: ''
-                  accountNotes: ''
-                  fixedTerm: false
-                  nextBillingDate: '2020-11-01'
-                  lastBillingDateTime: '2020-03-02T00:13:48.940Z'
-                  overdueStatus: 0
-                  overdueAmountPayment: 69.95
-                  overdueAmountFee: 0
-                  lastReversalReason: ''
-                  closeReason: ''
-                  suspended: false
-                  paymentStopped: true
-                  paymentStopEndDate: ''
-                  catchUpAmount: 0
-                  catchUpEndDate: ''
-                  paymentInAdvanceAmount: 0
-                  paymentInAdvanceEndDate: ''
-                  accountStartDate: '2019-11-13'
-                  accountCloseDateTime: ''
-                  accountLoadedDateTime: '2019-11-11T11:00:00.000Z'
-                  lastUpdatedDateTime: '2020-10-26T19:21:22.643Z'
-                  accruedContractAmount: 419.7
-                  originalContractAmount: 0
-                  outstandingRecurringAmount: 139.9
-                  outstandingOneOffAmount: 0
-                  outstandingFeeAmount: 0
-                  projectedFinishDate: ''
-                  paymentMethodToken: 9457A037-F055-4071-B46F-D8F1E1331933
-                  collectionStopReason: ''
+                  - accountId: A921888898193
+                    accountExternalId: MOS17267
+                    customerId: '1259490'
+                    businessAccountId: A9218
+                    termType: Months
+                    term: 6
+                    accountCode: ''
+                    accountNotes: ''
+                    fixedTerm: false
+                    nextBillingDate: '2020-11-01'
+                    lastBillingDateTime: '2020-03-02T00:13:48.940Z'
+                    overdueStatus: 2
+                    overdueAmountPayment: 146.9
+                    overdueAmountFee: 7.5
+                    lastReversalReason: Lost / Stolen Card
+                    closeReason: ''
+                    suspended: false
+                    paymentStopped: true
+                    paymentStopEndDate: ''
+                    catchUpAmount: 0
+                    catchUpEndDate: ''
+                    paymentInAdvanceAmount: 0
+                    paymentInAdvanceEndDate: ''
+                    accountStartDate: '2019-05-31'
+                    accountCloseDateTime: ''
+                    accountLoadedDateTime: '2019-05-29T12:00:00.000Z'
+                    lastUpdatedDateTime: '2020-10-26T19:21:22.643Z'
+                    accruedContractAmount: 881.4
+                    originalContractAmount: 440.7
+                    outstandingRecurringAmount: 220.35
+                    outstandingOneOffAmount: 0
+                    outstandingFeeAmount: 7
+                    projectedFinishDate: ''
+                    paymentMethodToken: 6BC50933-E43F-425E-AAB4-0B41A2627242
+                    collectionStopReason: Invalid Account
+                  - accountId: A921888897986
+                    accountExternalId: MOS17656
+                    customerId: '1704286'
+                    businessAccountId: A9218
+                    termType: Months
+                    term: 0
+                    accountCode: ''
+                    accountNotes: ''
+                    fixedTerm: false
+                    nextBillingDate: '2020-11-01'
+                    lastBillingDateTime: '2020-03-02T00:13:48.940Z'
+                    overdueStatus: 0
+                    overdueAmountPayment: 69.95
+                    overdueAmountFee: 0
+                    lastReversalReason: ''
+                    closeReason: ''
+                    suspended: false
+                    paymentStopped: true
+                    paymentStopEndDate: ''
+                    catchUpAmount: 0
+                    catchUpEndDate: ''
+                    paymentInAdvanceAmount: 0
+                    paymentInAdvanceEndDate: ''
+                    accountStartDate: '2019-11-13'
+                    accountCloseDateTime: ''
+                    accountLoadedDateTime: '2019-11-11T11:00:00.000Z'
+                    lastUpdatedDateTime: '2020-10-26T19:21:22.643Z'
+                    accruedContractAmount: 419.7
+                    originalContractAmount: 0
+                    outstandingRecurringAmount: 139.9
+                    outstandingOneOffAmount: 0
+                    outstandingFeeAmount: 0
+                    projectedFinishDate: ''
+                    paymentMethodToken: 9457A037-F055-4071-B46F-D8F1E1331933
+                    collectionStopReason: ''
                 responseMetadata:
                   nextCursor: NjM1MDkz
                   hasNext: true
@@ -2756,7 +2756,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  /accounts/{accountId}:
+  '/accounts/{accountId}':
     get:
       tags:
         - Accounts
@@ -3548,7 +3548,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  /accounts/{accountId}/close:
+  '/accounts/{accountId}/close':
     post:
       tags:
         - Accounts
@@ -3814,7 +3814,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  /accounts/{accountId}/suspensionSchedules/{scheduleId}:
+  '/accounts/{accountId}/suspensionSchedules/{scheduleId}':
     delete:
       tags:
         - Schedules-Suspension
@@ -4546,7 +4546,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  /accounts/{accountId}/recurringSchedules:
+  '/accounts/{accountId}/recurringSchedules':
     post:
       tags:
         - Schedules-Recurring
@@ -5051,7 +5051,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  /accounts/{accountId}/recurringSchedules/{scheduleId}:
+  '/accounts/{accountId}/recurringSchedules/{scheduleId}':
     delete:
       tags:
         - Schedules-Recurring
@@ -5549,7 +5549,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  /accounts/{accountId}/scheduleRecurrings/{scheduleId}:
+  '/accounts/{accountId}/scheduleRecurrings/{scheduleId}':
     put:
       tags:
         - Schedules-Recurring
@@ -5872,7 +5872,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  /accounts/{accountId}/oneOffSchedules:
+  '/accounts/{accountId}/oneOffSchedules':
     post:
       tags:
         - Schedules-OneOff
@@ -6327,7 +6327,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  /customers/{customerId}/addresses:
+  '/customers/{customerId}/addresses':
     post:
       tags:
         - Addresses
@@ -6804,7 +6804,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  /customers/{customerId}/addresses/{addressId}:
+  '/customers/{customerId}/addresses/{addressId}':
     delete:
       tags:
         - Addresses
@@ -7610,7 +7610,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  /customers/{customerId}/phoneNumbers/{phoneNumberId}:
+  '/customers/{customerId}/phoneNumbers/{phoneNumberId}':
     put:
       tags:
         - PhoneNumbers
@@ -8432,7 +8432,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  /customers/{customerId}/emailAddresses/{emailAddressId}:
+  '/customers/{customerId}/emailAddresses/{emailAddressId}':
     put:
       tags:
         - EmailAddresses
@@ -9225,7 +9225,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  /customers/{customerId}/phoneNumbers:
+  '/customers/{customerId}/phoneNumbers':
     get:
       tags:
         - PhoneNumbers
@@ -9684,7 +9684,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  /customers/{customerId}/emailAddresses:
+  '/customers/{customerId}/emailAddresses':
     get:
       tags:
         - EmailAddresses
@@ -10116,7 +10116,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  /accounts/{accountId}/suspensionSchedules:
+  '/accounts/{accountId}/suspensionSchedules':
     get:
       tags:
         - Schedules-Suspension
@@ -10893,7 +10893,7 @@ paths:
                     paymentDateTime: '2019-01-01T08:11:55.0000000+00:00'
                     paymentDescription: Payment Desc ABC
                     paymentCode: Payment
-                    paymentErrorCode: InsufficientFunds
+                    paymentErrorCode: Insufficient Funds
                     paymentMethod: DD
                     paymentId: '1234'
                     externalPaymentIdentifier: '9999'
@@ -11039,7 +11039,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  /accounts/{accountId}/oneOffSchedules/{scheduleId}:
+  '/accounts/{accountId}/oneOffSchedules/{scheduleId}':
     delete:
       tags:
         - Schedules-OneOff
@@ -11496,7 +11496,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  /customers/{customerId}/paymentMethods:
+  '/customers/{customerId}/paymentMethods':
     post:
       summary: Create PaymentMethod
       description: |-
@@ -12348,7 +12348,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  /businessAccounts/{businessAccountId}/termsAndConditions:
+  '/businessAccounts/{businessAccountId}/termsAndConditions':
     get:
       tags:
         - Terms and Conditions
@@ -12527,7 +12527,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  /businessAccounts/{businessAccountId}/paymentMethods:
+  '/businessAccounts/{businessAccountId}/paymentMethods':
     post:
       summary: Create PaymentMethod (for Business Account)
       description: |-
@@ -12820,7 +12820,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  /accounts/{accountId}/paymentTokens:
+  '/accounts/{accountId}/paymentTokens':
     post:
       tags:
         - PaymentToken
@@ -13137,7 +13137,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  /businessAccounts/{businessAccountId}/paymentTokens:
+  '/businessAccounts/{businessAccountId}/paymentTokens':
     post:
       tags:
         - PaymentToken
@@ -15283,6 +15283,44 @@ components:
           type: string
           description: PaymentMethod must be associated to the provided CustomerId.
         recurringSchedule: {}
+      x-examples:
+        example-1:
+          accountId: string
+          accountExternalId: string
+          customerId: string
+          businessAccountId: string
+          accountCode: string
+          termType: string
+          term: 0
+          accountNotes: string
+          fixedTerm: true
+          nextBillingDate: string
+          lastBillingDateTime: string
+          overdueStatus: 0
+          overdueAmountPayment: 0
+          overdueAmountFee: 0
+          lastReversalReason: string
+          closeReason: string
+          suspended: true
+          paymentStopped: true
+          paymentStopEndDate: string
+          catchUpAmount: 0
+          catchUpEndDate: string
+          paymentInAdvanceAmount: 0
+          paymentInAdvanceEnddate: string
+          waiveEstFee: true
+          accountStartDate: string
+          accountLoadedDateTime: string
+          accountCloseDateTime: string
+          lastUpdatedDateTime: string
+          accruedContractAmount: 0
+          originalContractAmount: 0
+          outstandingRecurringAmount: 0
+          outandingOneOffAmount: 0
+          outstandingFeeAmount: 0
+          projectedFinishDate: string
+          paymentMethodToken: string
+          recurringSchedule: null
     CreateAccountRequest:
       type: object
       properties:
@@ -15612,6 +15650,9 @@ components:
         paymentMethodToken:
           type: string
           description: PaymentMethod must be associated to the provided CustomerId.
+        collectionStopReason:
+          type: string
+          description: Reason for DD stop
     200GetAccounts:
       type: object
       properties:
@@ -15694,6 +15735,9 @@ components:
               paymentMethodToken:
                 type: string
                 description: PaymentMethod must be associated to the provided CustomerId.
+              collectionStopReason:
+                type: string
+                description: Reason for DD stop
         responseMetadata:
           type: object
           properties:
