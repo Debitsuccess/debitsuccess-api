@@ -13,6 +13,10 @@
       "url": "https://oc-test.debitsuccess.com/payments/v1.0"
     }
   ],
+  "externalDocs":  {
+    "description": "Developer Documentation",
+    "url": "https://debitsuccess.atlassian.net/wiki/spaces/DDE/overview"
+    },
   "tags": [
     {
       "name": "Account Payments",
