@@ -107,11 +107,13 @@
                 "schema": {
                   "$ref": "#/components/schemas/201CreatePayment"
                 },
-                "example": {
-                  "status": "authorised",
-                  "externalPaymentIdentifier": "b97d9688-1a07-4b35-ae54-28e32870f7cd"
-                },
                 "examples": {
+                  "example": {
+                    "value": {
+                      "status": "authorised",
+                      "externalPaymentIdentifier": "b97d9688-1a07-4b35-ae54-28e32870f7cd"
+                    }
+                  },
                   "example-1": {
                     "value": {
                       "status": "string",
