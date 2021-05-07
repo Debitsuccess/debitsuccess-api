@@ -3117,6 +3117,78 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/400UpdateAccount'
+              examples:
+                example:
+                  value:
+                    errorCode: validation
+                    message: Unable to process request due to validation errors.
+                    errors:
+                      - field: accountExternalId
+                        message: AccountExternalId is required.
+                      - field: accountExternalId
+                        message: AccountExternalId must not exceed 50 characters.
+                      - field: accountExternalId
+                        message: The accountExternalId is not unique and has been used for an account previously. Please retry with a different accountExternalId.
+                      - field: termType
+                        message: TermType is required.
+                      - field: termType
+                        message: TermType is invalid.
+                      - field: termType
+                        message: TermType is not allowed to be updated for a fixed term account.
+                      - field: termType
+                        message: TermType is not allowed to be updated after the minimum term has passed.
+                      - field: termType
+                        message: TermType is invalid as the calculated ContractAmount must not be less than the amount should have paid.
+                      - field: term
+                        message: Term is not allowed to be updated for a fixed term account.
+                      - field: term
+                        message: Term is not allowed to be updated after the minimum term has passed.
+                      - field: term
+                        message: Term is required.
+                      - field: term
+                        message: Term must be greater than or equal to zero.
+                      - field: term
+                        message: Term is invalid as the calculated ContractAmount must not be less than the amount should have paid.
+                      - field: accountCode
+                        message: AccountCode is invalid.
+                      - field: accountCode
+                        message: AccountCode must not exceed 100 characters.
+                      - field: fixedTerm
+                        message: FixedTerm is required.
+                      - field: fixedTerm
+                        message: Updating fixed term account to ongoing is not allowed.
+                      - field: fixedTerm
+                        message: FixedTerm is not allowed to be updated after the minimum term has passed.
+                      - field: accountStartDate
+                        message: AccountStartDate is required.
+                      - field: accountStartDate
+                        message: AccountStartDate is invalid. Expected format is YYYY-MM-DD.
+                      - field: accountStartDate
+                        message: AccountStartDate must not be a date in the past.
+                      - field: accountStartDate
+                        message: AccountStartDate is not allowed to be updated once it passed the current date.
+                      - field: paymentStopped
+                        message: PaymentStopped is required.
+                      - field: paymentStoppedEndDate
+                        message: PaymentStoppedEndDate is not required if paymentStopped is false.
+                      - field: paymentStoppedEndDate
+                        message: PaymentStoppedEndDate is invalid. Expected format is YYYY-MM-DD.
+                      - field: paymentStoppedEndDate
+                        message: PaymentStoppedEndDate must not be a date in the past.
+                      - field: paymentStoppedEndDate
+                        message: PaymentStoppedEndDate is not allowed to be updated together with accountStartDate.
+                      - field: contractAmount
+                        message: ContractAmount is not allowed to be updated after the minimum term has passed.
+                      - field: contractAmount
+                        message: ContractAmount provided is greater than the total value of the account schedules.
+                      - field: contractAmount
+                        message: ContractAmount is invalid.
+                      - field: contractAmount
+                        message: ContractAmount must not less than the amount should have paid.
+                      - field: contractAmount
+                        message: ContractAmount must be greater than or equal to $1.
+                      - field: paymentStopped
+                        message: PaymentStopped is only allowed to be updated to false for Account with Manual Payment Stop as CollectionStopReason.
         '401':
           description: |
             Unauthorized - Occurs when the authorization token provided is either expired or invalid.
@@ -3161,9 +3233,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
-              example:
-                errorCode: access_denied
-                message: Unable to process this request as you do not have access to the customer associated to this request.
+              examples:
+                example:
+                  value:
+                    errorCode: access_denied
+                    message: Unable to process this request as you do not have access to the customer associated to this request.
+                example-1:
+                  value:
+                    errorCode: access_denied
+                    message: Unable to process this request as the account is not active.
         '404':
           description: Not Found - Occurs when the resource provided is not found
           headers:
@@ -3429,6 +3507,11 @@ paths:
               example:
                 errorCode: access_denied
                 message: Unable to process this request as you do not have access to the customer associated to this request.
+              examples:
+                example-1:
+                  value:
+                    errorCode: access_denied
+                    message: Unable to process this request as the account is not active.
         '404':
           description: Not Found - Occurs when the resource provided is not found
           headers:
@@ -3605,6 +3688,7 @@ paths:
                 $ref: '#/components/schemas/200DeletedOK'
               example:
                 message: Account successfully closed
+              examples: {}
         '400':
           description: 'Bad Request - Request failed due to validation errors, the response lists the field in the request that did not pass the validation. The client can directly show these errors to the end users.'
           headers:
@@ -3689,6 +3773,11 @@ paths:
               example:
                 errorCode: access_denied
                 message: Unable to process this request as you do not have access to the customer associated to this request.
+              examples:
+                example-1:
+                  value:
+                    errorCode: access_denied
+                    message: Unable to process this request as the account is not active.
         '404':
           description: Not Found - Occurs when the resource provided is not found
           headers:
@@ -3910,6 +3999,11 @@ paths:
               example:
                 errorCode: customer_access_denied
                 message: Unable to process this request as you do not have access to the customer associated to this request.
+              examples:
+                example-1:
+                  value:
+                    errorCode: access_denied
+                    message: Unable to process this request as scheduleId must be a future schedule.
         '404':
           description: Not Found - Occurs when the resource provided is not found
           headers:
@@ -4200,6 +4294,11 @@ paths:
               example:
                 errorCode: access_denied
                 message: Unable to process this request as you do not have access to the customer associated to this request.
+              examples:
+                example-1:
+                  value:
+                    errorCode: access_denied
+                    message: Unable to process this request as the account is not active.
         '404':
           description: Not Found - Occurs when the resource provided is not found
           headers:
@@ -4737,6 +4836,11 @@ paths:
               example:
                 errorCode: access_denied
                 message: Unable to process this request as you do not have access to the customer associated to this request.
+              examples:
+                example-1:
+                  value:
+                    errorCode: access_denied
+                    message: Unable to process this request as the account is not active.
         '404':
           description: Not Found - Occurs when the resource provided is not found
           headers:
@@ -5197,6 +5301,23 @@ paths:
               example:
                 errorCode: access_denied
                 message: Unable to process this request as you do not have access to the customer associated to this request.
+              examples:
+                example-1:
+                  value:
+                    errorCode: access_denied
+                    message: Unable to process this request as the account is not active.
+                example-2:
+                  value:
+                    errorCode: access_denied
+                    message: Unable to process this request as scheduleId must be a future schedule.
+                example-3:
+                  value:
+                    errorCode: access_denied
+                    message: Unable to process this request as the account associated to this schedule must have at least 1 active schedule.
+                example-4:
+                  value:
+                    errorCode: access_denied
+                    message: Unable to process this request as only the last schedule is allowed to be deleted.
         '404':
           description: Not Found - Occurs when the resource provided is not found
           headers:
@@ -5552,7 +5673,7 @@ paths:
   '/accounts/{accountId}/scheduleRecurrings/{scheduleId}':
     put:
       tags:
-        - Schedules-Recurring
+        -  
       summary: DO NOT USE - Update Schedule (Recurring)
       description: Updates existing recurring schedule details of an account based on the query parameters provided.
       operationId: 5ddb3c9f2e24240b5236e6a5
@@ -6042,6 +6163,15 @@ paths:
               example:
                 errorCode: customer_access_denied
                 message: Unable to process this request as you do not have access to the customer associated to this request.
+              examples:
+                example-1:
+                  value:
+                    errorCode: customer_access_denied
+                    message: Unable to process this request as the account is not active.
+                example-2:
+                  value:
+                    errorCode: access_denied
+                    message: Unable to process this request as the account is currently set to stop on payments.
         '429':
           description: Too Many Requests - Occurs when user has sent too many requests in a given amount of time.
           headers:
@@ -6506,10 +6636,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/403ForbiddenClaims'
               example:
-                errorCode: resource_access_denied
-                message: Unable to process this request due to insufficient client claims.
-                errors:
-                  - claim: The name of the claim required.
+                errorCode: access_denied
+                message: Unable to process this request as you do not have access to the customer associated to this request.
         '429':
           description: Too Many Requests - Occurs when user has sent too many requests in a given amount of time.
           headers:
@@ -8667,7 +8795,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/404NotFound'
               example:
-                message: ''
+                message: The resource provided could not be found
         '429':
           description: Too Many Requests - Occurs when user has sent too many requests in a given amount of time.
           headers:
@@ -10469,6 +10597,15 @@ paths:
               example:
                 errorCode: customer_access_denied
                 message: Unable to process this request as you do not have access to the customer associated to this request.
+              examples:
+                example-1:
+                  value:
+                    errorCode: access_denied
+                    message: Unable to process this request as the account is not active.
+                example-2:
+                  value:
+                    errorCode: access_denied
+                    message: Unable to process this request as the account does not have any active recurring payment schedule.
         '429':
           description: Too Many Requests - Occurs when user has sent too many requests in a given amount of time.
           headers:
@@ -11139,6 +11276,19 @@ paths:
               example:
                 errorCode: access_denied
                 message: Unable to process this request as you do not have access to the customer associated to this request.
+              examples:
+                example-1:
+                  value:
+                    errorCode: access_denied
+                    message: Unable to process this request as the account is not active.
+                example-2:
+                  value:
+                    errorCode: access_denied
+                    message: Unable to process this request as scheduleId must be a future schedule.
+                example-3:
+                  value:
+                    errorCode: access_denied
+                    message: Unable to process this request as the cut-off time has passed for today.
         '404':
           description: Not Found - Occurs when the resource provided is not found
           headers:
@@ -13441,7 +13591,7 @@ paths:
       tags:
         - Payment Status
       operationId: get-businesses-businessID-paymentstatuses
-      description: Returns the schedule with payment status found in between the date range provided in the request.
+      description: Returns payment  statuses for Gateway Accounts based on the input parameters provided.
       parameters:
         - schema:
             type: string
@@ -13455,18 +13605,18 @@ paths:
           description: Unique identifier associated to the account
         - schema:
             enum:
-             - Unattempted
-             - Pending
-             - Retry
-             - Failed
-             - Cleared
-             - Settled
-             - Unbillable
-             - CreditControl
+              - Unattempted
+              - Pending
+              - Retry
+              - Failed
+              - Cleared
+              - Settled
+              - Unbillable
+              - CreditControl
             type: string
           in: query
           name: Status
-          description: 'Status of the payment'
+          description: Status of the payment
         - schema:
             type: string
           in: query
@@ -13492,6 +13642,21 @@ paths:
           in: header
           description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
           name: Authorization
+        - schema:
+            enum:
+              - '200'
+              - '401'
+              - '403'
+              - '404'
+              - '429'
+              - '500'
+              - '503'
+            type: string
+            default: '200'
+          name: X-Mock-Code
+          in: header
+          description: Http Status code of the supported mocked responses.
+          required: true
       responses:
         '200':
           description: OK
@@ -13499,6 +13664,200 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/200GetPaymentStatus'
+        '401':
+          description: |
+            Unauthorized - Occurs when the authorization token provided is either expired or invalid.
+          headers:
+            X-Notification:
+              description: This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.
+              required: true
+              schema:
+                enum:
+                  - 'Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00'
+                type: string
+            X-RateLimit-Limit:
+              description: The maximum number of requests you're permitted to make per hour
+              required: true
+              schema:
+                enum:
+                  - 60
+                type: integer
+            X-RateLimit-Remaining:
+              description: The number of requests remaining in the current rate limit window.
+              required: true
+              schema:
+                enum:
+                  - 10
+                type: integer
+            X-RateLimit-Reset:
+              description: The time at which the current rate limit window resets in UTC epoch seconds
+              required: true
+              schema:
+                enum:
+                  - 1377013266
+                type: integer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401Unauthorised'
+              example:
+                message: Authorization has been denied for this request.
+        '403':
+          description: Forbidden - Occurs when the client does not have sufficient claims to access this endpoint. Or when the identity server client does not have access to the business this request is being made for. see - List of claims required for this request see - Additional errorCodes returned
+          headers:
+            X-Notification:
+              description: This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.
+              required: true
+              schema:
+                enum:
+                  - 'Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00'
+                type: string
+            X-RateLimit-Limit:
+              description: The maximum number of requests you're permitted to make per hour.
+              required: true
+              schema:
+                enum:
+                  - 60
+                type: integer
+            X-RateLimit-Remaining:
+              description: The number of requests remaining in the current rate limit window.
+              required: true
+              schema:
+                enum:
+                  - 10
+                type: integer
+            X-RateLimit-Reset:
+              description: The time at which the current rate limit window resets in UTC epoch seconds.
+              required: true
+              schema:
+                enum:
+                  - 1377013266
+                type: integer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403BusinessAccessDenied'
+              example:
+                errorCode: access_denied
+                message: Unable to process this request as you do not have access to the business associated to this request.
+        '429':
+          description: Too Many Requests - Occurs when user has sent too many requests in a given amount of time.
+          headers:
+            X-Notification:
+              description: This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.
+              required: true
+              schema:
+                enum:
+                  - 'Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00'
+                type: string
+            X-RateLimit-Limit:
+              description: |
+                The maximum number of requests you're permitted to make per hour.
+              required: true
+              schema:
+                enum:
+                  - 60
+                type: integer
+            "X-RateLimit-Remaining\t":
+              description: |
+                The number of requests remaining in the current rate limit window.
+              required: true
+              schema:
+                enum:
+                  - 10
+                type: integer
+            "X-RateLimit-Reset\t":
+              description: |
+                The time at which the current rate limit window resets in UTC epoch seconds.
+              required: true
+              schema:
+                enum:
+                  - 1377013266
+                type: integer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/429TooManyRequests'
+              example:
+                message: You have exceeded the maximum limit of request allowed. Please try your request again in a moment.
+        '500':
+          description: Internal Server Error - Something went wrong on our end (These are rare).
+          headers:
+            X-Notification:
+              description: |
+                This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.
+              required: true
+              schema:
+                enum:
+                  - 'Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00'
+                type: string
+            "X-RateLimit-Limit\t":
+              description: |
+                The maximum number of requests you're permitted to make per hour.
+              required: true
+              schema:
+                enum:
+                  - 60
+                type: integer
+            "X-RateLimit-Remaining\t":
+              description: |
+                The number of requests remaining in the current rate limit window.
+              required: true
+              schema:
+                enum:
+                  - 10
+                type: integer
+            "X-RateLimit-Reset\t":
+              description: The time at which the current rate limit window resets in UTC epoch seconds.
+              required: true
+              schema:
+                enum:
+                  - 1377013266
+                type: integer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500InternalServerError'
+              example:
+                message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
+        '503':
+          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
+          headers:
+            "X-Notification\t":
+              description: This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.
+              required: true
+              schema:
+                enum:
+                  - 'Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00'
+                type: string
+            "X-RateLimit-Limit\t":
+              description: The maximum number of requests you're permitted to make per hour.
+              required: true
+              schema:
+                enum:
+                  - 60
+                type: integer
+            "X-RateLimit-Remaining\t":
+              description: |
+                The number of requests remaining in the current rate limit window.
+              required: true
+              schema:
+                enum:
+                  - 10
+                type: integer
+            "X-RateLimit-Reset\t":
+              description: The time at which the current rate limit window resets in UTC epoch seconds.
+              required: true
+              schema:
+                enum:
+                  - 1377013266
+                type: integer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/503ServiceUnavailable'
+              example:
+                message: The API is currently unavailable due to a scheduled outage – please try again soon.
 components:
   schemas:
     400AddAddress:
@@ -13541,6 +13900,7 @@ components:
             properties:
               claim:
                 type: string
+      x-examples: {}
     403BusinessAccessDenied:
       type: object
       properties:
@@ -14264,6 +14624,7 @@ components:
                 type: string
               message:
                 type: string
+      x-examples: {}
     201CreateCustomer:
       type: object
       properties:
@@ -15984,40 +16345,40 @@ components:
         - paymentStatuses
         - responseMetadata
       example:
-          paymentStatuses:
-            - businessAccountId: QP91F
-              accountId: QP91F888950
-              description: bae9e492-99e4-4578-8f32-1ae452c59cf9
-              externalIdentifier: bae9e492-99e4-4578-8f32-1ae452c59cf9
-              installment: 555.24
-              paymentStatus: CreditControl
-              scheduleId: 66292844
-              startDate: '2020-03-27'
-              statusDateTime: '2020-03-27T04:30:40.070Z'
-              errorCode: ''
-            - businessAccountId: QP91F
-              accountId: QP91F888950
-              description: bae9e492-99e4-4578-8f32-1ae452c59cf9
-              externalIdentifier: bae9e492-99e4-4578-8f32-1ae452c59cf9
-              installment: 555.24
-              paymentStatus: Failed
-              scheduleId: 66292844
-              startDate: '2020-03-27'
-              statusDateTime: '2020-03-27T04:59:29.000Z'
-              errorCode: Insufficient Funds
-            - businessAccountId: QP91F
-              accountId: QP91F888956
-              description: 99347f65-cdaf-4d59-9926-a0f15bf96555
-              externalIdentifier: 99347f65-cdaf-4d59-9926-a0f15bf96555
-              installment: 365
-              paymentStatus: Pending
-              scheduleId: 64674481
-              startDate: '2020-03-20'
-              statusDateTime: '2020-03-20T05:19:14.143Z'
-              errorCode: ''
-          responseMetadata:
-            nextCursor: Mjg1MjE=
-            hasNext: true
+        paymentStatuses:
+          - businessAccountId: QP91F
+            accountId: QP91F888950
+            description: bae9e492-99e4-4578-8f32-1ae452c59cf9
+            externalIdentifier: bae9e492-99e4-4578-8f32-1ae452c59cf9
+            installment: 555.24
+            paymentStatus: CreditControl
+            scheduleId: 66292844
+            startDate: '2020-03-27'
+            statusDateTime: '2020-03-27T04:30:40.070Z'
+            errorCode: ''
+          - businessAccountId: QP91F
+            accountId: QP91F888950
+            description: bae9e492-99e4-4578-8f32-1ae452c59cf9
+            externalIdentifier: bae9e492-99e4-4578-8f32-1ae452c59cf9
+            installment: 555.24
+            paymentStatus: Failed
+            scheduleId: 66292844
+            startDate: '2020-03-27'
+            statusDateTime: '2020-03-27T04:59:29.000Z'
+            errorCode: Insufficient Funds
+          - businessAccountId: QP91F
+            accountId: QP91F888956
+            description: 99347f65-cdaf-4d59-9926-a0f15bf96555
+            externalIdentifier: 99347f65-cdaf-4d59-9926-a0f15bf96555
+            installment: 365
+            paymentStatus: Pending
+            scheduleId: 64674481
+            startDate: '2020-03-20'
+            statusDateTime: '2020-03-20T05:19:14.143Z'
+            errorCode: ''
+        responseMetadata:
+          nextCursor: Mjg1MjE=
+          hasNext: true
   securitySchemes:
     apiKeyHeader:
       type: apiKey
