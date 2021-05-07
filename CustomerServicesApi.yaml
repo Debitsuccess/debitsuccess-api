@@ -3504,10 +3504,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
-              example:
-                errorCode: access_denied
-                message: Unable to process this request as you do not have access to the customer associated to this request.
               examples:
+                example:
+                  value:
+                    errorCode: access_denied
+                    message: Unable to process this request as you do not have access to the customer associated to this request.
                 example-1:
                   value:
                     errorCode: access_denied
@@ -3688,7 +3689,6 @@ paths:
                 $ref: '#/components/schemas/200DeletedOK'
               example:
                 message: Account successfully closed
-              examples: {}
         '400':
           description: 'Bad Request - Request failed due to validation errors, the response lists the field in the request that did not pass the validation. The client can directly show these errors to the end users.'
           headers:
@@ -3770,10 +3770,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/403ForbiddenClaims'
-              example:
-                errorCode: access_denied
-                message: Unable to process this request as you do not have access to the customer associated to this request.
               examples:
+                example:
+                  value:
+                    errorCode: access_denied
+                    message: Unable to process this request as you do not have access to the customer associated to this request.
                 example-1:
                   value:
                     errorCode: access_denied
@@ -3996,10 +3997,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
-              example:
-                errorCode: customer_access_denied
-                message: Unable to process this request as you do not have access to the customer associated to this request.
               examples:
+                example:
+                  value:
+                    errorCode: customer_access_denied
+                    message: Unable to process this request as you do not have access to the customer associated to this request.
                 example-1:
                   value:
                     errorCode: access_denied
@@ -4291,10 +4293,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
-              example:
-                errorCode: access_denied
-                message: Unable to process this request as you do not have access to the customer associated to this request.
               examples:
+                example:
+                  value:
+                    errorCode: access_denied
+                    message: Unable to process this request as you do not have access to the customer associated to this request.
                 example-1:
                   value:
                     errorCode: access_denied
@@ -4833,10 +4836,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
-              example:
-                errorCode: access_denied
-                message: Unable to process this request as you do not have access to the customer associated to this request.
               examples:
+                example:
+                  value:
+                    errorCode: access_denied
+                    message: Unable to process this request as you do not have access to the customer associated to this request.
                 example-1:
                   value:
                     errorCode: access_denied
@@ -5298,10 +5302,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/403AccessDenied'
-              example:
-                errorCode: access_denied
-                message: Unable to process this request as you do not have access to the customer associated to this request.
               examples:
+                example:
+                 value:
+                  errorCode: access_denied
+                  message: Unable to process this request as you do not have access to the customer associated to this request.
                 example-1:
                   value:
                     errorCode: access_denied
@@ -5672,8 +5677,6 @@ paths:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
   '/accounts/{accountId}/scheduleRecurrings/{scheduleId}':
     put:
-      tags:
-        -  
       summary: DO NOT USE - Update Schedule (Recurring)
       description: Updates existing recurring schedule details of an account based on the query parameters provided.
       operationId: 5ddb3c9f2e24240b5236e6a5
@@ -6160,10 +6163,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
-              example:
-                errorCode: customer_access_denied
-                message: Unable to process this request as you do not have access to the customer associated to this request.
               examples:
+                example:
+                  value:
+                    errorCode: customer_access_denied
+                    message: Unable to process this request as you do not have access to the customer associated to this request.
                 example-1:
                   value:
                     errorCode: customer_access_denied
@@ -10594,10 +10598,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
-              example:
-                errorCode: customer_access_denied
-                message: Unable to process this request as you do not have access to the customer associated to this request.
               examples:
+                example:
+                  value:
+                    errorCode: customer_access_denied
+                    message: Unable to process this request as you do not have access to the customer associated to this request.
                 example-1:
                   value:
                     errorCode: access_denied
@@ -11273,10 +11278,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
-              example:
-                errorCode: access_denied
-                message: Unable to process this request as you do not have access to the customer associated to this request.
               examples:
+                example:
+                  value:
+                    errorCode: access_denied
+                    message: Unable to process this request as you do not have access to the customer associated to this request.
                 example-1:
                   value:
                     errorCode: access_denied
