@@ -30,6 +30,8 @@ info:
     | [Terms and Condition](../CustomerServicesApi.yaml/paths/~1businessAccounts~1%7BbusinessAccountId%7D~1termsAndConditions/get)  |  <span style="background-color:lightgreen; color:white"> GET</span>  | Retrieves the terms and conditions associated with the BusinessAccountId.  |
     | [PaymentTokens](../CustomerServicesApi.yaml/paths/~1accounts~1%7BaccountId%7D~1paymentTokens/post) |  <span style="background-color:skyblue; color:white">  POST</span>   |The payment token APIs allow integrators to generate a unique link for the Debitsuccess [Paynow UI](https://paynow.debitsuccess.com/(S(zevyqenvd1zj4qdgcidlomer))/), then when the customer is redirected to the link it allows them to process a real time credit card payment either for a specified Debitsuccess account (account payment) or for a specified business (casual payment). <ul><li> **Note**: The unique link is valid for 10 minutes and can only be used once. After 10 minutes the customer can complete the payment if they have opened the link but they will get an error if they try to open the link after that time.</li></ul>  |
     | [Businesses](../CustomerServicesApi.yaml/paths/~1businesses/get)  | <span style="background-color:lightgreen; color:white"> GET</span>  | Retrieves a list of businesses (Facility DS domain) assigned to the client ID that is used for authenticating with the Debitsuccess authentication server. Multiple businesses can be assigned to a single client ID.  |
+    | [Payment Status](../CustomerServicesApi.yaml/paths/~1businesses~1%7BbusinessID%7D~1paymentstatuses/get)  | <span style="background-color:lightgreen; color:white"> GET</span>  | Returns payment statuses for Gateway Accounts based on the input parameters provided.  |
+    | [Payment Methods](../CustomerServicesApi.yaml/paths/~1customers~1%7BcustomerId%7D~1paymentMethods/get)  | <span style="background-color:lightgreen; color:white"> GET</span>  | Retrieves payment method based on customer ID or account ID provided in the query path.  |
   contact:
     email: TestAPI.Support@debitsuccess.com
   version: V1.0
@@ -51,6 +53,7 @@ tags:
   - name: PaymentToken
   - name: Businesses
   - name: Payment Status
+  - name: Payment Methods 
 paths:
   /customers:
     post:
@@ -5677,7 +5680,7 @@ paths:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
   '/accounts/{accountId}/scheduleRecurrings/{scheduleId}':
     put:
-      summary: DO NOT USE - Update Schedule (Recurring)
+      summary: INTERNAL API - Update Schedule (Recurring)
       description: Updates existing recurring schedule details of an account based on the query parameters provided.
       operationId: 5ddb3c9f2e24240b5236e6a5
       parameters:
@@ -11654,7 +11657,7 @@ paths:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
   '/customers/{customerId}/paymentMethods':
     post:
-      summary: Create PaymentMethod
+      summary: INTERNAL API - Create PaymentMethod
       description: |-
         Create a payment method for an existing customer or account.
 
@@ -11990,11 +11993,11 @@ paths:
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
     get:
+      tags:
+        - Payment Methods
       summary: Get PaymentMethods
       description: |-
         Retrieves payment method based on customer ID or account ID provided in the query path. 
-
-        IMPORTANT: This API is intended for internal use only.
       operationId: 5e4455583fd65825b0b555dc
       parameters:
         - name: customerId
@@ -12685,7 +12688,7 @@ paths:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
   '/businessAccounts/{businessAccountId}/paymentMethods':
     post:
-      summary: Create PaymentMethod (for Business Account)
+      summary: INTERNAL API - Create PaymentMethod (for Business Account)
       description: |-
         Create a temporary payment method at business account level before customer creation. 
 
@@ -15821,13 +15824,13 @@ components:
             - true
             - false
           type: boolean
-          default: 'false'
+          default: false
         alignEstFeeWithSchedule:
           enum:
             - true
             - false
           type: boolean
-          default: 'false'
+          default: false
         accountStartDate:
           type: string
           description: 'YYYY-MM-DD, Determine the date (in UTC) when the account will start.'
