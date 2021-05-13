@@ -707,9 +707,6 @@
         }
       },
       "get": {
-        "tags": [
-          " "
-        ],
         "summary": "Get Business Collected Payments",
         "description": "Retrieves business collected paymetns based on the query parameters provided.",
         "operationId": "5e530fdb2d8bf4cfa9148db9",
