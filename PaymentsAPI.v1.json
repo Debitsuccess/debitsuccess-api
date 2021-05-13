@@ -2278,8 +2278,8 @@
               }
             }
           },
-          "404": {
-            "description": "Not Found - The requested resource could not be found",
+          "422": {
+            "description": "Not Found - The requested resource could not be found. Occurs when External Identifier provided does not exist.",
             "headers": {
               "x-correlation-id": {
                 "$ref": "#/components/headers/x-correlation-id"
@@ -2289,6 +2289,14 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Not-Found"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "errorCode": "external_payment_identifier",
+                      "message": "The requested resource could not be found."
+                    }
+                  }
                 }
               }
             }
@@ -2497,13 +2505,12 @@
       "Not-Found": {
         "type": "object",
         "properties": {
+          "errorCode": {
+            "type": "string"
+          },
           "message": {
-            "type": "string",
-            "example": "The requested resource could not be found."
+            "type": "string"
           }
-        },
-        "example": {
-          "message": "The requested resource could not be found."
         }
       },
       "Conflict": {
