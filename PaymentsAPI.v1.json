@@ -42,7 +42,7 @@
         "tags": [
           "Account Payments"
         ],
-        "summary": "Create Payment",
+        "summary": "Create Account Payment",
         "description": "Make a payment for an existing account",
         "operationId": "5e324afe57963486220555b5",
         "parameters": [
@@ -285,8 +285,8 @@
         "tags": [
           "Account Payments"
         ],
-        "summary": "Get Payment Status",
-        "description": "Retrieves the status of a real time account payment based on external payment identifier provided in the query path. ",
+        "summary": "Get Account Payment Status",
+        "description": "Retrieves the status of a real time account payment based on external payment identifier provided in the query path. \n",
         "operationId": "5e9794d822413af58fe09f49",
         "parameters": [
           {
@@ -338,50 +338,58 @@
                 "examples": {
                   "example": {
                     "value": {
-                      "status": "authorised",
-                      "externalPaymentIdentifier": "b97d9688-1a07-4b35-ae54-28e32870f7cd"
-                    }
-                  },
-                  "example-1": {
-                    "value": {
-                      "status": "declined",
-                      "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+                      "status": "authorized",
+                      "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc",
+                      "transactionNumber": "<CcReceipt.txnRef>"
                     }
                   },
                   "example-2": {
                     "value": {
-                      "status": "declined_insufficient_funds",
-                      "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+                      "status": "declined",
+                      "externalPaymentIdentifier": "b97d9688-1a07-4b35-ae54-28e32870f7cd",
+                      "transactionNumber": "<CcReceipt.txnRef>"
                     }
                   },
                   "example-3": {
                     "value": {
-                      "status": "declined_card_expired",
-                      "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+                      "status": "declined_insufficient_funds",
+                      "externalPaymentIdentifier": "b97d9688-1a07-4b35-ae54-28e32870f7cd",
+                      "transactionNumber": "<CcReceipt.txnRef>"
                     }
                   },
                   "example-4": {
                     "value": {
-                      "status": "not_submitted",
-                      "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+                      "status": "declined_card_expired",
+                      "externalPaymentIdentifier": "b97d9688-1a07-4b35-ae54-28e32870f7cd",
+                      "transactionNumber": "<CcReceipt.txnRef>"
                     }
                   },
                   "example-5": {
                     "value": {
-                      "status": "declined_do_not_honour",
-                      "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+                      "status": "not_submitted",
+                      "externalPaymentIdentifier": "b97d9688-1a07-4b35-ae54-28e32870f7cd",
+                      "transactionNumber": "<CcReceipt.txnRef>"
                     }
                   },
                   "example-6": {
                     "value": {
-                      "status": "declined_refer_to_card_issuer",
-                      "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+                      "status": "declined_do_not_honour",
+                      "externalPaymentIdentifier": "b97d9688-1a07-4b35-ae54-28e32870f7cd",
+                      "transactionNumber": "<CcReceipt.txnRef>"
                     }
                   },
                   "example-7": {
                     "value": {
+                      "status": "declined_refer_to_card_issuer",
+                      "externalPaymentIdentifier": "b97d9688-1a07-4b35-ae54-28e32870f7cd",
+                      "transactionNumber": "<CcReceipt.txnRef>"
+                    }
+                  },
+                  "example-8": {
+                    "value": {
                       "status": "processing",
-                      "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+                      "externalPaymentIdentifier": "b97d9688-1a07-4b35-ae54-28e32870f7cd",
+                      "transactionNumber": "<CcReceipt.txnRef>"
                     }
                   }
                 }
@@ -393,48 +401,7 @@
           },
           "403": {
             "description": "Forbidden - Occurs the client does not have access to the endpoint.",
-            "headers": {
-              "X-Notification": {
-                "description": "This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    "Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00"
-                  ],
-                  "type": "string"
-                }
-              },
-              "X-RateLimit-Limit": {
-                "description": "The maximum number of requests you're permitted to make per hour.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    60
-                  ],
-                  "type": "integer"
-                }
-              },
-              "X-RateLimit-Remaining": {
-                "description": "The number of requests remaining in the current rate limit window.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    10
-                  ],
-                  "type": "integer"
-                }
-              },
-              "X-RateLimit-Reset": {
-                "description": "The time at which the current rate limit window resets in UTC epoch seconds.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    1377013266
-                  ],
-                  "type": "integer"
-                }
-              }
-            },
+            "headers": {},
             "content": {
               "application/json": {
                 "schema": {
@@ -451,49 +418,8 @@
             }
           },
           "404": {
-            "description": "Not Found - Occurs when the resource provided is not found. Or when ExternalPaymentIdentifier length is more than 50 characters. Or when ExternalPaymentIdentifier is not provided.",
-            "headers": {
-              "X-Notification": {
-                "description": "This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    "Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00"
-                  ],
-                  "type": "string"
-                }
-              },
-              "X-RateLimit-Limit": {
-                "description": "The maximum number of requests you're permitted to make per hour.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    60
-                  ],
-                  "type": "integer"
-                }
-              },
-              "X-RateLimit-Remaining": {
-                "description": "The number of requests remaining in the current rate limit window.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    10
-                  ],
-                  "type": "integer"
-                }
-              },
-              "X-RateLimit-Reset": {
-                "description": "The time at which the current rate limit window resets in UTC epoch seconds.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    1377013266
-                  ],
-                  "type": "integer"
-                }
-              }
-            },
+            "description": "Not Found - Occurs when the resource provided is not found. ",
+            "headers": {},
             "content": {
               "application/json": {
                 "schema": {
@@ -506,7 +432,7 @@
             }
           },
           "422": {
-            "description": "Unprocessable Entity - Occurs when merchant details don’t exist or don’t contain 'PaymentsProcessor' field key.",
+            "description": "Unprocessable Entity - Occurs when the client application or the facility account is not configured appropriately for payment",
             "content": {
               "application/json": {
                 "schema": {
@@ -514,12 +440,19 @@
                 },
                 "example": {
                   "message": "Cannot find valid merchant details configured. Please contact Debitsuccess."
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "message": "Cannot find business that matches the business id provided."
+                    }
+                  }
                 }
               }
             }
           },
           "500": {
-            "description": "Internal Server Error - When the post request to DPS is not successful.",
+            "description": "Internal Server Error - Something went wrong on our end (These are rare).",
             "headers": {
               "X-Notification": {
                 "description": "This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.\n\n",
@@ -593,26 +526,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "X-Mock-Code",
-            "in": "header",
-            "description": "Http Status code of the supported mocked responses.",
-            "required": true,
-            "schema": {
-              "enum": [
-                "201",
-                "400",
-                "401",
-                "403",
-                "404",
-                "429",
-                "500",
-                "503"
-              ],
-              "type": "string",
-              "default": "201"
-            }
           }
         ],
         "requestBody": {
@@ -649,48 +562,7 @@
           },
           "400": {
             "description": "Bad Request - Request failed due to validation errors, the response lists the field in the request that did not pass the validation. The client can directly show these errors to the end users.",
-            "headers": {
-              "X-Notification": {
-                "description": "This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    "Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00"
-                  ],
-                  "type": "string"
-                }
-              },
-              "X-RateLimit-Limit": {
-                "description": "The maximum number of requests you're permitted to make per hour.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    60
-                  ],
-                  "type": "integer"
-                }
-              },
-              "X-RateLimit-Remaining": {
-                "description": "The number of requests remaining in the current rate limit window.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    10
-                  ],
-                  "type": "integer"
-                }
-              },
-              "X-RateLimit-Reset": {
-                "description": "The time at which the current rate limit window resets in UTC epoch seconds.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    1377013266
-                  ],
-                  "type": "integer"
-                }
-              }
-            },
+            "headers": {},
             "content": {
               "application/json": {
                 "schema": {
@@ -778,48 +650,7 @@
           },
           "403": {
             "description": "Forbidden - Occurs when the client does not have sufficient claims to access this endpoint. Or when the identity server client does not have access to the business this request is being made for. see - List of claims required for this request see - Additional errorCodes returned",
-            "headers": {
-              "X-Notification": {
-                "description": "This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    "Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00"
-                  ],
-                  "type": "string"
-                }
-              },
-              "X-RateLimit-Limit": {
-                "description": "The maximum number of requests you're permitted to make per hour.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    60
-                  ],
-                  "type": "integer"
-                }
-              },
-              "X-RateLimit-Remaining": {
-                "description": "The number of requests remaining in the current rate limit window.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    10
-                  ],
-                  "type": "integer"
-                }
-              },
-              "X-RateLimit-Reset": {
-                "description": "The time at which the current rate limit window resets in UTC epoch seconds.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    1377013266
-                  ],
-                  "type": "integer"
-                }
-              }
-            },
+            "headers": {},
             "content": {
               "application/json": {
                 "schema": {
@@ -834,48 +665,7 @@
           },
           "429": {
             "description": "Too Many Requests - Occurs when user has sent too many requests in a given amount of time.",
-            "headers": {
-              "X-Notification": {
-                "description": "This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    "Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00"
-                  ],
-                  "type": "string"
-                }
-              },
-              "X-RateLimit-Limit": {
-                "description": "The maximum number of requests you're permitted to make per hour.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    60
-                  ],
-                  "type": "integer"
-                }
-              },
-              "X-RateLimit-Remaining": {
-                "description": "The number of requests remaining in the current rate limit window.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    10
-                  ],
-                  "type": "integer"
-                }
-              },
-              "X-RateLimit-Reset": {
-                "description": "The time at which the current rate limit window resets in UTC epoch seconds.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    1377013266
-                  ],
-                  "type": "integer"
-                }
-              }
-            },
+            "headers": {},
             "content": {
               "application/json": {
                 "schema": {
@@ -889,48 +679,7 @@
           },
           "500": {
             "description": "Internal Server Error - Something went wrong on our end (These are rare).",
-            "headers": {
-              "X-Notification": {
-                "description": "This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    "Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00"
-                  ],
-                  "type": "string"
-                }
-              },
-              "X-RateLimit-Limit": {
-                "description": "The maximum number of requests you're permitted to make per hour.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    60
-                  ],
-                  "type": "integer"
-                }
-              },
-              "X-RateLimit-Remaining": {
-                "description": "The number of requests remaining in the current rate limit window.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    10
-                  ],
-                  "type": "integer"
-                }
-              },
-              "X-RateLimit-Reset": {
-                "description": "The time at which the current rate limit window resets in UTC epoch seconds.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    1377013266
-                  ],
-                  "type": "integer"
-                }
-              }
-            },
+            "headers": {},
             "content": {
               "application/json": {
                 "schema": {
@@ -959,7 +708,7 @@
       },
       "get": {
         "tags": [
-          "BusinessCollectedPayment"
+          " "
         ],
         "summary": "Get Business Collected Payments",
         "description": "Retrieves business collected paymetns based on the query parameters provided.",
@@ -1293,7 +1042,8 @@
               }
             }
           }
-        }
+        },
+        "x-internal": false
       }
     },
     "/businessCollectedPayments/{originalExternalPaymentIdentifier}/reverse": {
@@ -1377,48 +1127,7 @@
           },
           "400": {
             "description": "Bad Request - Request failed due to validation errors, the response lists the field in the request that did not pass the validation. The client can directly show these errors to the end users.",
-            "headers": {
-              "X-Notification": {
-                "description": "This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    "Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00"
-                  ],
-                  "type": "string"
-                }
-              },
-              "X-RateLimit-Limit": {
-                "description": "The maximum number of requests you're permitted to make per hour.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    60
-                  ],
-                  "type": "integer"
-                }
-              },
-              "X-RateLimit-Remaining": {
-                "description": "The number of requests remaining in the current rate limit window.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    10
-                  ],
-                  "type": "integer"
-                }
-              },
-              "X-RateLimit-Reset": {
-                "description": "The time at which the current rate limit window resets in UTC epoch seconds.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    1377013266
-                  ],
-                  "type": "integer"
-                }
-              }
-            },
+            "headers": {},
             "content": {
               "application/json": {
                 "schema": {
@@ -1470,48 +1179,7 @@
           },
           "403": {
             "description": "Forbidden - Occurs when the client does not have sufficient claims to access this endpoint. Or when the identity server client does not have access to the business this request is being made for. see - List of claims required for this request see - Additional errorCodes returned",
-            "headers": {
-              "X-Notification": {
-                "description": "This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    "Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00"
-                  ],
-                  "type": "string"
-                }
-              },
-              "X-RateLimit-Limit": {
-                "description": "The maximum number of requests you're permitted to make per hour.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    60
-                  ],
-                  "type": "integer"
-                }
-              },
-              "X-RateLimit-Remaining": {
-                "description": "The number of requests remaining in the current rate limit window.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    10
-                  ],
-                  "type": "integer"
-                }
-              },
-              "X-RateLimit-Reset": {
-                "description": "The time at which the current rate limit window resets in UTC epoch seconds.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    1377013266
-                  ],
-                  "type": "integer"
-                }
-              }
-            },
+            "headers": {},
             "content": {
               "application/json": {
                 "schema": {
@@ -1540,48 +1208,7 @@
           },
           "429": {
             "description": "Too Many Requests - Occurs when user has sent too many requests in a given amount of time.",
-            "headers": {
-              "X-Notification": {
-                "description": "This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    "Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00"
-                  ],
-                  "type": "string"
-                }
-              },
-              "X-RateLimit-Limit": {
-                "description": "The maximum number of requests you're permitted to make per hour.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    60
-                  ],
-                  "type": "integer"
-                }
-              },
-              "X-RateLimit-Remaining": {
-                "description": "The number of requests remaining in the current rate limit window.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    10
-                  ],
-                  "type": "integer"
-                }
-              },
-              "X-RateLimit-Reset": {
-                "description": "The time at which the current rate limit window resets in UTC epoch seconds.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    1377013266
-                  ],
-                  "type": "integer"
-                }
-              }
-            },
+            "headers": {},
             "content": {
               "application/json": {
                 "schema": {
@@ -1595,48 +1222,7 @@
           },
           "500": {
             "description": "Internal Server Error - Something went wrong on our end (These are rare).",
-            "headers": {
-              "X-Notification": {
-                "description": "This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    "Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00"
-                  ],
-                  "type": "string"
-                }
-              },
-              "X-RateLimit-Limit": {
-                "description": "The maximum number of requests you're permitted to make per hour.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    60
-                  ],
-                  "type": "integer"
-                }
-              },
-              "X-RateLimit-Remaining": {
-                "description": "The number of requests remaining in the current rate limit window.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    10
-                  ],
-                  "type": "integer"
-                }
-              },
-              "X-RateLimit-Reset": {
-                "description": "The time at which the current rate limit window resets in UTC epoch seconds.",
-                "required": true,
-                "schema": {
-                  "enum": [
-                    1377013266
-                  ],
-                  "type": "integer"
-                }
-              }
-            },
+            "headers": {},
             "content": {
               "application/json": {
                 "schema": {
@@ -2212,7 +1798,8 @@
               }
             }
           }
-        }
+        },
+        "summary": "Get Web Payment Status"
       }
     },
     "/casual/creditcard": {
@@ -2613,7 +2200,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The payment request was successful. see - [List of responses](https://debitsuccess.atlassian.net/wiki/spaces/RIDE/pages/500433563/RealTimePayment+API+Overview#RealTimePaymentAPIOverview-Http200)",
+            "description": "The payment request was successful.",
             "headers": {
               "x-correlation-id": {
                 "$ref": "#/components/headers/x-correlation-id"
@@ -2623,6 +2210,50 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/CasualPaymentResponseSuccess"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": "declined",
+                      "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+                    }
+                  },
+                  "example-2": {
+                    "value": {
+                      "status": "declined_insufficient_funds",
+                      "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+                    }
+                  },
+                  "example-3": {
+                    "value": {
+                      "status": "declined_card_expired",
+                      "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+                    }
+                  },
+                  "example-4": {
+                    "value": {
+                      "status": "not_submitted",
+                      "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+                    }
+                  },
+                  "example-5": {
+                    "value": {
+                      "status": "declined_do_not_honour",
+                      "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+                    }
+                  },
+                  "example-6": {
+                    "value": {
+                      "status": "declined_refer_to_card_issuer",
+                      "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+                    }
+                  },
+                  "example-7": {
+                    "value": {
+                      "status": "processing",
+                      "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+                    }
+                  }
                 }
               }
             }
@@ -2680,7 +2311,8 @@
               }
             }
           }
-        }
+        },
+        "summary": "Get Casual Payment Status"
       }
     }
   },
@@ -3454,8 +3086,13 @@
           },
           "externalPaymentIdentifier": {
             "type": "string"
+          },
+          "transactionNumber": {
+            "type": "string",
+            "description": "transaction receipt number"
           }
-        }
+        },
+        "x-examples": {}
       },
       "403ForbiddenClaims": {
         "type": "object",
