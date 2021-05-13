@@ -2,36 +2,36 @@
 
 
 ##  Mar 23, 2021
-The RestAPI [GET Account(s)](../CustomerServicesApi.yaml/paths/~1accounts/get) is enhanced to return the DD Stop reason field in the API Response. If the account status ‘PaymentStopped’ is set to true and has a CollectionStopReason assigned, then it will be shown in the GET Account(s) API response CollectionStopReason field, else an empty string will be returned.
+The RestAPI [GET Account(s)](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1accounts/get) is enhanced to return the DD Stop reason field in the API Response. If the account status ‘PaymentStopped’ is set to true and has a CollectionStopReason assigned, then it will be shown in the GET Account(s) API response CollectionStopReason field, else an empty string will be returned.
 
 ## Mar 16, 2010
 
-Introduced a new field Active as an input parameter for [GET BusinessAccounts](../CustomerServicesApi.yaml/paths/~1businessAccounts/get). This field will act as a filter to allow users to retrieve Active or non-Active Business Accounts. Leaving this field as Null/empty will retrieve all Business Accounts.
+Introduced a new field Active as an input parameter for [GET BusinessAccounts](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1businessAccounts/get). This field will act as a filter to allow users to retrieve Active or non-Active Business Accounts. Leaving this field as Null/empty will retrieve all Business Accounts.
 
 ## Feb 23, 2021
-Implemented a new REST API[Get Payment Token(for Casual Payment)](../CustomerServicesApi.yaml/paths/~1businessAccounts~1%7BbusinessAccountId%7D~1paymentTokens/post) that generates and returns a PayNow URL link so that integrators can access the link to make a casual payment for a business account.
+Implemented a new REST API[Get Payment Token(for Casual Payment)](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1businessAccounts~1%7BbusinessAccountId%7D~1paymentTokens/post) that generates and returns a PayNow URL link so that integrators can access the link to make a casual payment for a business account.
 
 
 ## Feb 11, 2021
-A new REST API [Get PaymentToken (for Account Payment)](../CustomerServicesApi.yaml/paths/~1accounts~1%7BaccountId%7D~1paymentTokens/post) has been implemented to generate and return a PayNow URL link so that integrators can access the link to make payment to an account.
+A new REST API [Get PaymentToken (for Account Payment)](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1accounts~1%7BaccountId%7D~1paymentTokens/post) has been implemented to generate and return a PayNow URL link so that integrators can access the link to make payment to an account.
 
 
 ## Jan 26, 2021
 
-* The [GET Account(s)](../CustomerServicesApi.yaml/paths/~1accounts/get) response message now includes AccountNotes and PaymentMethodToken to be consistent with the POST Account API response.
+* The [GET Account(s)](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1accounts/get) response message now includes AccountNotes and PaymentMethodToken to be consistent with the POST Account API response.
 
 
-* The [POST Account](../CustomerServicesApi.yaml/paths/~1accounts/post) response message has been updated with additional 23 fields similar to response for GET Account.
+* The [POST Account](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1accounts/post) response message has been updated with additional 23 fields similar to response for GET Account.
 
 
 
 ## Oct 29, 2020
 
-All [Debitsuccess REST APIs](../docs/Introduction/1-REST-APIs.md) are now available in the production environment. Please contact us to obtain your credentials before using it on production. 
+All [Debitsuccess REST APIs](../Introduction/1-REST-APIs.md) are now available in the production environment. Please contact us to obtain your credentials before using it on production. 
 
 ## Oct 22, 2020
 
-Customer Services REST API is now available in the production environment. [Customer API](../CustomerServicesApi.yaml) allows the integrator to create, delete, and update the personal and contact detail information of a customer. Fetch specific customer information and list all customers’ details. 
+Customer Services REST API is now available in the production environment. [Customer API](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml) allows the integrator to create, delete, and update the personal and contact detail information of a customer. Fetch specific customer information and list all customers’ details. 
 
 ******
 
@@ -43,9 +43,9 @@ Debitsuccess is always improving how we deliver our service.As part of deliverin
 > Please note that these features are in our roadmap but we do not have a definite ETA.
 
 
-* A new Realtime Payment Widget will be available soon to which allows you to securely make real-time payments to businesses. Integration partners can embed this widget into their website and customize it to match their product theme.
+* A new [Realtime Payment Widget](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Widgets/Real-time-payment-widget.md) will be available soon to which allows you to securely make real-time payments to businesses. Integration partners can embed this widget into their website and customize it to match their product theme.
 
-* New endpoint for customer services API will be introduced to retrieve payment statuses for Gateway Accounts.
+* New endpoint for customer services API will be introduced to retrieve [payment statuses](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1businesses~1%7BbusinessID%7D~1paymentstatuses/get) for Gateway Accounts.
 
 
 

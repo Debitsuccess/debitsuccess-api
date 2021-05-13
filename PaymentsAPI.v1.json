@@ -2292,7 +2292,8 @@
               }
             }
           }
-        }
+        },
+        "summary": "Create Casual Payments"
       }
     },
     "/casual/creditcard/{externalPaymentIdentifier}": {

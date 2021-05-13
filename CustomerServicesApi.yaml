@@ -53,7 +53,7 @@ tags:
   - name: PaymentToken
   - name: Businesses
   - name: Payment Status
-  - name: Payment Methods 
+  - name: Payment Methods
 paths:
   /customers:
     post:
@@ -5307,9 +5307,9 @@ paths:
                 $ref: '#/components/schemas/403AccessDenied'
               examples:
                 example:
-                 value:
-                  errorCode: access_denied
-                  message: Unable to process this request as you do not have access to the customer associated to this request.
+                  value:
+                    errorCode: access_denied
+                    message: Unable to process this request as you do not have access to the customer associated to this request.
                 example-1:
                   value:
                     errorCode: access_denied
@@ -5999,6 +5999,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
+      x-internal: true
   '/accounts/{accountId}/oneOffSchedules':
     post:
       tags:
@@ -11992,12 +11993,12 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
+      x-internal: true
     get:
       tags:
         - Payment Methods
       summary: Get PaymentMethods
-      description: |-
-        Retrieves payment method based on customer ID or account ID provided in the query path. 
+      description: 'Retrieves payment method based on customer ID or account ID provided in the query path. '
       operationId: 5e4455583fd65825b0b555dc
       parameters:
         - name: customerId
@@ -12979,6 +12980,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
+      x-internal: true
   '/accounts/{accountId}/paymentTokens':
     post:
       tags:
