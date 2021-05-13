@@ -90,7 +90,7 @@
                 "cardNumber": "4111111111111111111",
                 "cvc": "123",
                 "cardType": "visa",
-                "expiryDate": "2021-11-22T00:00:00.0000000+00:00",
+                "expiryDate": "11/2021",
                 "token": "",
                 "amount": 55.5,
                 "paymentDescription": "Payment of $55.50 for testing",
@@ -101,7 +101,7 @@
         },
         "responses": {
           "201": {
-            "description": "Payment created (when the payment is authorized or denied",
+            "description": "Payment created (when the payment is authorized or denied)",
             "content": {
               "application/json": {
                 "schema": {
@@ -111,19 +111,8 @@
                   "example": {
                     "value": {
                       "status": "authorised",
-                      "externalPaymentIdentifier": "b97d9688-1a07-4b35-ae54-28e32870f7cd"
-                    }
-                  },
-                  "example-1": {
-                    "value": {
-                      "status": "string",
-                      "externalPaymentIdentifier": "string"
-                    }
-                  },
-                  "example-2": {
-                    "value": {
-                      "status": "string",
-                      "externalPaymentIdentifier": "string"
+                      "externalPaymentIdentifier": "b97d9688-1a07-4b35-ae54-28e32870f7cd",
+                      "transactionNumber": "<CcReceipt.txnRef>"
                     }
                   }
                 }
@@ -150,6 +139,32 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/400CreatePayment"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "errorCode": "validation",
+                      "message": "Invalid request",
+                      "errors": [
+                        {
+                          "field": "AccountId",
+                          "message": "AccountId is required."
+                        }
+                      ]
+                    }
+                  },
+                  "example-2": {
+                    "value": {
+                      "errorCode": "validation",
+                      "message": "Invalid request",
+                      "errors": [
+                        {
+                          "field": "ExternalPaymentIdentifier",
+                          "message": "ExternalPaymentIdentifier is required."
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -167,6 +182,17 @@
                 "example": {
                   "errorCode": "business_permission",
                   "message": "Unable to process this request due to insufficient business permission."
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "errorCode": "required_scopes",
+                      "message": "Unable to process this request due to insufficient client scopes.",
+                      "requiredScopes": [
+                        "AccountCreditCard"
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -259,7 +285,7 @@
         "tags": [
           "Account Payments"
         ],
-        "summary": "Get Payment",
+        "summary": "Get Payment Status",
         "description": "Retrieves the status of a real time account payment based on external payment identifier provided in the query path. ",
         "operationId": "5e9794d822413af58fe09f49",
         "parameters": [
@@ -309,9 +335,55 @@
                 "schema": {
                   "$ref": "#/components/schemas/200GetPayment"
                 },
-                "example": {
-                  "status": "authorised",
-                  "externalPaymentIdentifier": "b97d9688-1a07-4b35-ae54-28e32870f7cd"
+                "examples": {
+                  "example": {
+                    "value": {
+                      "status": "authorised",
+                      "externalPaymentIdentifier": "b97d9688-1a07-4b35-ae54-28e32870f7cd"
+                    }
+                  },
+                  "example-1": {
+                    "value": {
+                      "status": "declined",
+                      "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+                    }
+                  },
+                  "example-2": {
+                    "value": {
+                      "status": "declined_insufficient_funds",
+                      "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+                    }
+                  },
+                  "example-3": {
+                    "value": {
+                      "status": "declined_card_expired",
+                      "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+                    }
+                  },
+                  "example-4": {
+                    "value": {
+                      "status": "not_submitted",
+                      "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+                    }
+                  },
+                  "example-5": {
+                    "value": {
+                      "status": "declined_do_not_honour",
+                      "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+                    }
+                  },
+                  "example-6": {
+                    "value": {
+                      "status": "declined_refer_to_card_issuer",
+                      "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+                    }
+                  },
+                  "example-7": {
+                    "value": {
+                      "status": "processing",
+                      "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+                    }
+                  }
                 }
               }
             }
@@ -2187,6 +2259,50 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/CasualPaymentResponseSuccess"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": "authorised",
+                      "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+                    }
+                  },
+                  "example-2": {
+                    "value": {
+                      "status": "declined",
+                      "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+                    }
+                  },
+                  "example-3": {
+                    "value": {
+                      "status": "declined_insufficient_funds",
+                      "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+                    }
+                  },
+                  "example-4": {
+                    "value": {
+                      "status": "declined_card_expired",
+                      "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+                    }
+                  },
+                  "example-5": {
+                    "value": {
+                      "status": "not_submitted",
+                      "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+                    }
+                  },
+                  "example-6": {
+                    "value": {
+                      "status": "declined_do_not_honour",
+                      "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+                    }
+                  },
+                  "example-7": {
+                    "value": {
+                      "status": "declined_refer_to_card_issuer",
+                      "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+                    }
+                  }
                 }
               }
             }
@@ -2210,7 +2326,7 @@
             }
           },
           "400": {
-            "description": "Bad Request - Request failed due to validation errors, the response lists the field in the request that did not pass the validation. The client can directly show these errors to the end users. see- [List of validation errors](https://debitsuccess.atlassian.net/wiki/spaces/RIDE/pages/500433563/RealTimePayment+API+Overview#RealTimePaymentAPIOverview-Http400)",
+            "description": "Bad Request - Request failed due to validation errors, the response lists the field in the request that did not pass the validation. The client can directly show these errors to the end users.",
             "headers": {
               "x-correlation-id": {
                 "$ref": "#/components/headers/x-correlation-id"
@@ -2220,6 +2336,110 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ValidationErrorList"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "field": "CardHolderName",
+                      "message": "'CardHolderName' should not be empty."
+                    }
+                  },
+                  "example-2": {
+                    "value": {
+                      "field": "CardHolderName",
+                      "message": "The length of 'CardHolderName' must be 50 characters or fewer. You entered <> characters."
+                    }
+                  },
+                  "example-3": {
+                    "value": {
+                      "field": "PaymentDescription",
+                      "message": "The length of 'PaymentDescription' must be 40 characters or fewer. You entered <> characters."
+                    }
+                  },
+                  "example-4": {
+                    "value": {
+                      "field": "CardType",
+                      "message": "'CardType' should not be empty."
+                    }
+                  },
+                  "example-5": {
+                    "value": {
+                      "field": "CardType",
+                      "message": "Invalid CardType"
+                    }
+                  },
+                  "example-6": {
+                    "value": {
+                      "field": "CardNumber",
+                      "message": "'CardNumber' should not be empty."
+                    }
+                  },
+                  "example-7": {
+                    "value": {
+                      "field": "CardNumber",
+                      "message": "Invalid card number"
+                    }
+                  },
+                  "example-8": {
+                    "value": {
+                      "field": "Cvc",
+                      "message": "'Cvc' should not be empty."
+                    }
+                  },
+                  "example-9": {
+                    "value": {
+                      "field": "Cvc",
+                      "message": "Invalid CVC number"
+                    }
+                  },
+                  "example-10": {
+                    "value": {
+                      "field": "ExpiryDate",
+                      "message": "'ExpiryDate' should not be empty."
+                    }
+                  },
+                  "example-11": {
+                    "value": {
+                      "field": "ExpiryDate",
+                      "message": "Invalid ExpiryDate Format. Please use MM/yy."
+                    }
+                  },
+                  "example-12": {
+                    "value": {
+                      "field": "Amount",
+                      "message": "Amount should not be empty."
+                    }
+                  },
+                  "example-13": {
+                    "value": {
+                      "field": "Amount",
+                      "message": "Card payment amount must be greater than or equal to $1 and less than your configured maximum value"
+                    }
+                  },
+                  "example-14": {
+                    "value": {
+                      "field": "BusinessId",
+                      "message": "'BusinessId' should not be empty."
+                    }
+                  },
+                  "example-15": {
+                    "value": {
+                      "field": "BusinessId",
+                      "message": "'The length of 'BusinessId' must be 6 characters or fewer. You entered <> characters."
+                    }
+                  },
+                  "example-16": {
+                    "value": {
+                      "field": "ExternalPaymentIdentifier",
+                      "message": "'ExternalPaymentIdentifier' should not be empty."
+                    }
+                  },
+                  "example-17": {
+                    "value": {
+                      "field": "ExternalPaymentIdentifier",
+                      "message": "The length of 'ExternalPaymentIdentifier' must be 50 characters or fewer. You entered <> characters."
+                    }
+                  }
                 }
               }
             }
@@ -2243,12 +2463,42 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/PermissionErrorList"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "errorCode": "required_claims",
+                      "message": "Unable to process this request due to insufficient client claims.",
+                      "errors": [
+                        {
+                          "claim": "The name of the claim required."
+                        }
+                      ]
+                    }
+                  },
+                  "example-2": {
+                    "value": {
+                      "errorCode": "required_scopes",
+                      "message": "Unable to process this request due to insufficient client scopes.",
+                      "errors": [
+                        {
+                          "claim": "The name of the scope required."
+                        }
+                      ]
+                    }
+                  },
+                  "example-3": {
+                    "value": {
+                      "errorCode": "business_permission",
+                      "message": "Unable to process this request due to insufficient business permission."
+                    }
+                  }
                 }
               }
             }
           },
           "409": {
-            "description": "The request could not be completed due to a conflict with the current state of the target resource.",
+            "description": "The request could not be completed due to a conflict with the external payment identifier",
             "headers": {
               "x-correlation-id": {
                 "$ref": "#/components/headers/x-correlation-id"
@@ -2258,12 +2508,20 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Conflict"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "errorCode": "external_payment_identifier",
+                      "message": "The external payment identifier provided has already been used."
+                    }
+                  }
                 }
               }
             }
           },
           "422": {
-            "description": "Payment processing failed. see - [for all possible responses](https://debitsuccess.atlassian.net/wiki/spaces/RIDE/pages/500433563/RealTimePayment+API+Overview#RealTimePaymentAPIOverview-Http422)",
+            "description": "Unprocessable Entity - Occurs when the client application or the facility account is not configured appropriately for payment",
             "headers": {
               "x-correlation-id": {
                 "$ref": "#/components/headers/x-correlation-id"
@@ -2273,6 +2531,32 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/UnprocessableEntitySchema"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "errorCode": "legal_address",
+                      "message": "No Legal Address found on file. Please contact Debitsuccess."
+                    }
+                  },
+                  "example-2": {
+                    "value": {
+                      "errorCode": "merchant_details",
+                      "message": "Cannot find valid merchant details configured. Please contact Debitsuccess."
+                    }
+                  },
+                  "example-3": {
+                    "value": {
+                      "errorCode": "business_commission",
+                      "message": "Cannot find commission details configured for this business. Please contact Debitsuccess."
+                    }
+                  },
+                  "example-4": {
+                    "value": {
+                      "errorCode": "card_not_accepted",
+                      "message": "The selected payment method is not supported by this business."
+                    }
+                  }
                 }
               }
             }
@@ -2490,31 +2774,19 @@
         "x-examples": {
           "example-1": {
             "status": "authorised",
-            "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+            "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc",
+            "value": {
+              "status": "declined",
+              "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+            }
           },
           "example-2": {
             "status": "declined",
-            "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
-          },
-          "example-3": {
-            "status": "declined_insufficient_funds",
-            "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
-          },
-          "example-4": {
-            "status": "declined_card_expired",
-            "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
-          },
-          "example-5": {
-            "status": "not_submitted",
-            "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
-          },
-          "example-6": {
-            "status": "declined_do_not_honour",
-            "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
-          },
-          "example-7": {
-            "status": "declined_refer_to_card_issuer",
-            "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+            "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc",
+            "value": {
+              "status": "declined_insufficient_funds",
+              "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
+            }
           }
         }
       },
@@ -2663,6 +2935,20 @@
               "message": "amount is required"
             }
           ]
+        },
+        "x-examples": {
+          "example-1": {
+            "value": {
+              "message": "invalid request",
+              "errorCode": "validation",
+              "errors": [
+                {
+                  "field": "amount",
+                  "message": "amount is required"
+                }
+              ]
+            }
+          }
         }
       },
       "PermissionErrorList": {
@@ -2985,6 +3271,10 @@
           },
           "externalPaymentIdentifier": {
             "type": "string"
+          },
+          "transactionNumber": {
+            "type": "string",
+            "description": "Recipt number"
           }
         }
       },
@@ -3078,6 +3368,7 @@
       },
       "CreatePaymentRequest": {
         "type": "object",
+        "x-examples": {},
         "properties": {
           "accountId": {
             "maxLength": 15,
@@ -3107,7 +3398,7 @@
           },
           "expiryDate": {
             "type": "string",
-            "description": "Expiry date (MM/YY) of credit card used. Required if cardType is not Token"
+            "description": "Expiry date (MM/yyyy) of credit card used. Required if cardType is not Token"
           },
           "token": {
             "type": "string",
@@ -3123,23 +3414,8 @@
           },
           "createOneOffCharge": {
             "type": "boolean",
-            "description": "If true, a One-Off pay schedule will be created",
+            "description": "If true, a One-Off pay schedule will be created. Gateway account must have createOneOffCharge=true",
             "default": false
-          }
-        },
-        "x-examples": {
-          "example-1": {
-            "accountId": "string",
-            "externalPaymentIdentifier": "string",
-            "accountHolderName": "string",
-            "cardNumber": "string",
-            "cvc": "string",
-            "cardType": "string",
-            "expiryDate": "string",
-            "token": "string",
-            "amount": 0,
-            "paymentDescription": "string",
-            "createOneOffCharge": false
           }
         }
       },
@@ -3213,7 +3489,8 @@
           "message": {
             "type": "string"
           }
-        }
+        },
+        "x-examples": {}
       },
       "CreateBusinessCollectedPaymentRequest": {
         "type": "object",
