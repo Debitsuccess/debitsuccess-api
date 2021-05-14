@@ -11033,7 +11033,6 @@ paths:
                 payments:
                   - businessAccountId: DSFit1
                     accountId: AILL056H6
-                    accountExternalId: ABC12345
                     batchNumber: '12345'
                     paymentAmount: '10.00'
                     paymentDateTime: '2019-01-01T08:11:55.0000000+00:00'
@@ -11047,7 +11046,6 @@ paths:
                     retryCount: 1
                   - businessAccountId: DSFit1
                     accountId: AILL056H8
-                    accountExternalId: ABC12345
                     batchNumber: '23456'
                     paymentAmount: '30.00'
                     paymentDateTime: '2019-01-01T08:11:55.0000000+00:00'
@@ -15243,31 +15241,16 @@ components:
                 type: string
     200GetPayments:
       type: object
+      x-examples: {}
       properties:
         transactions:
           type: array
           items:
-            required:
-              - businessAccountId
-              - accountId
-              - batchNumber
-              - paymentAmount
-              - paymentDate
-              - paymentDescription
-              - paymentCode
-              - paymentErrorCode
-              - paymentType
-              - paymentId
-              - externalPaymentIdentifier
-              - reversedPaymentId
-              - retryCount
             type: object
             properties:
               businessAccountId:
                 type: string
               accountId:
-                type: string
-              accountExternalId:
                 type: string
               batchNumber:
                 type: string
@@ -15291,6 +15274,18 @@ components:
                 type: string
               retryCount:
                 type: integer
+            required:
+              - businessAccountId
+              - accountId
+              - batchNumber
+              - paymentAmount
+              - paymentDescription
+              - paymentCode
+              - paymentErrorCode
+              - paymentId
+              - externalPaymentIdentifier
+              - reversedPaymentId
+              - retryCount
         responseMetadata:
           type: object
           properties:
@@ -15298,26 +15293,7 @@ components:
               type: string
             hasNext:
               type: boolean
-      x-examples:
-        example-1:
-          transactions:
-            - businessAccountId: string
-              accountId: string
-              accountExternalId: string
-              batchNumber: string
-              paymentAmount: string
-              paymentDateTime: string
-              paymentDescription: string
-              paymentCode: string
-              paymentErrorCode: string
-              paymentMethod: string
-              paymentId: string
-              externalPaymentIdentifier: string
-              reversedPaymentId: string
-              retryCount: 0
-          responseMetadata:
-            nextCursor: string
-            hasNext: true
+      title: ''
     200UpdateCustomer:
       type: object
       properties:
