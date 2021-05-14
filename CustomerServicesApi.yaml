@@ -10936,7 +10936,7 @@ paths:
     get:
       tags:
         - Payment History
-      summary: Get Payments
+      summary: Get Payment History
       description: Retrieves payment records based on the query parameters provided.
       operationId: 5e17882a16aec12fe3399d74
       parameters:
