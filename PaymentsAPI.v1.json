@@ -1253,7 +1253,7 @@
         "tags": [
           "Pay Method Configuration"
         ],
-        "description": "This endpoint retrieves all active paymethod types for the particular business identified by either businessId (Contract Prefix) or Debitsuccess internal facility Id parameter. Note, you must provide at least one parameter (bussinessId or facilityId)in the request.\n",
+        "description": "This endpoint retrieves all active paymethod types for the particular business identified by either businessId (Contract Prefix) or Debitsuccess internal facility Id parameter. Note, you must provide at least one parameter (bussinessId or facilityId) in the request.\n",
         "operationId": "getpaymethodconfigurations",
         "parameters": [
           {
@@ -1360,7 +1360,7 @@
         "tags": [
           "Pay Method Configuration"
         ],
-        "description": "This endpoint retrieves the paymethod configuration information based on the paymethod type provided in the request path. \n",
+        "description": "This endpoint retrieves the paymethod configuration information for the business based on the paymethod type provided in the request path. \n",
         "operationId": "getpaymethodconfig",
         "parameters": [
           {

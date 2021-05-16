@@ -11996,7 +11996,7 @@ paths:
       tags:
         - Payment Methods
       summary: Get PaymentMethods
-      description: 'Retrieves payment method based on customer ID or account ID provided in the query path. '
+      description: 'Retrieves payment methods for a customer based on customer ID or account ID provided in the query path. '
       operationId: 5e4455583fd65825b0b555dc
       parameters:
         - name: customerId
