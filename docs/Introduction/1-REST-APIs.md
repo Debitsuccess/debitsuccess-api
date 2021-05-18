@@ -74,7 +74,6 @@ Easily embed these widgets into your website and customize it to match your prod
 
 ### Quick Links
 - [Getting Started](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/984778280/Quick+Start)
-- [Payment Methods Supported](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1274544134/Payment+Methods+Supported)
 - [Understanding the Basics](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1048150917/Understanding+the+Basics)
 - [Use Cases](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/986156090/Use+Cases)
 - [SOAP Web Services](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/984777730/SOAP+Web+Services)
@@ -82,3 +81,9 @@ Easily embed these widgets into your website and customize it to match your prod
 - [Create customer accounts for testing](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1549369452/Create+customer+accounts+for+testing)
 - [Data for Test Environment](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/989890688/Data+for+Test+Environment)
 - [Statuses in Debitsuccess Systems](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1492877598/Statuses+in+Debitsuccess+Systems)
+
+### Something missing?
+
+If you find issues with the documentation or have suggestions on how to improve the documentation or for new feature requests, please [file an issue](https://github.com/chitra-borker/debitsuccess-api/issues) for us.
+
+
