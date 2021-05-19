@@ -1,11 +1,17 @@
 # Change Log
 
+## May 20, 2021 
+
+* Introduced a new endpoint for customer services API that will retrieve customer [payment schedule statuses](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1businesses~1%7BbusinessID%7D~1paymentstatuses/get) and other details for Gateway Model accounts.
+* Implemented multilevel permission checks for [GET Payment History](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1payments/get) endpoints by filter off all records that the client do not have access to.
+* Fix to stop 'Overdue' mail if Account has a new schedule created (via POST Account/POST Schedule) to start immediately but after the billing has completed. This is to prevent the customer from being sent the email for overdue.
+
 ## May 11, 2021
 
 The [Realtime Payment Widget](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Widgets/Real-time-payment-widget.md) allows you to securely make real-time payments to businesses (Casual Payments). Integration partners can embed this widget into their website and customize it to match their product theme. Widget is essentially an iframe to capture credit card details and use Debitsuccess [Payments API](https://debitsuccess.stoplight.io/docs/debitsuccess-api/PaymentsAPI.v1.json) to make payments. 
 
 ##  Mar 23, 2021
-The RestAPI [GET Account(s)](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1accounts/get) is enhanced to return the DD Stop reason field in the API Response. If the account status ‘PaymentStopped’ is set to true and has a CollectionStopReason assigned, then it will be shown in the GET Account(s) API response CollectionStopReason field, else an empty string will be returned.
+The RestAPI [GET Account(s)](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1accounts/get) is enhanced to return the DD Stop reason field in the API Response. If the account status ‘PaymentStopped’ is set to true and has a `CollectionStopReason` assigned, then it will be shown in the GET Account(s) API response CollectionStopReason field, else an empty string will be returned.
 
 ## Mar 16, 2010
 
@@ -44,8 +50,6 @@ Debitsuccess is always improving how we deliver our service.As part of deliverin
 <!-- theme: success -->
 
 > Please note that these features are in our roadmap but we do not have a definite ETA.
-
-* New endpoint for customer services API will be introduced to retrieve [payment statuses](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1businesses~1%7BbusinessID%7D~1paymentstatuses/get) for Gateway Accounts.
 
 * New endpoint for customer services API will be introduced to transfer an account from one business account to another.
 
