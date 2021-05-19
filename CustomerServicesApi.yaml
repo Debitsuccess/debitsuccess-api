@@ -99,34 +99,36 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/201CreateCustomer'
-              example:
-                businessId: '3333333'
-                customerType: Individual
-                title: Mr
-                firstName: John
-                middleName: smith
-                lastName: doe
-                gender: male
-                dateOfBirth: '2019-01-01'
-                externalReference: abc1453
-                address:
-                  addressLine1: 5 The warehouse way
-                  addressLine2: Northcote
-                  suburb: Northcote
-                  postcode: '1062'
-                  state: ''
-                  city: ''
-                  countryISOCode: NZL
-                  addressType: postal
-                emailAddress:
-                  emailName: john
-                  emailAddress: john.doe@debitsuccess.com
-                phoneNumber:
-                  phoneName: John
-                  countryCode: '+64'
-                  areaCode: '09'
-                  phoneNumber: 264 5555
-                  phoneType: home
+              examples:
+                example-1:
+                  value:
+                    businessId: '3333333'
+                    customerType: Individual
+                    title: Mr
+                    firstName: John
+                    middleName: smith
+                    lastName: doe
+                    gender: male
+                    dateOfBirth: '2019-01-01'
+                    externalReference: abc1453
+                    address:
+                      addressLine1: 5 The warehouse way
+                      addressLine2: Northcote
+                      suburb: Northcote
+                      postcode: '1062'
+                      state: ''
+                      city: ''
+                      countryISOCode: NZL
+                      addressType: postal
+                    emailAddress:
+                      emailName: john
+                      emailAddress: john.doe@debitsuccess.com
+                    phoneNumber:
+                      phoneName: John
+                      countryCode: '+64'
+                      areaCode: '09'
+                      phoneNumber: 264 5555
+                      phoneType: home
         '400':
           description: 'Bad Request - Request failed due to validation errors, the response lists the field in the request that did not pass the validation. The client can directly show these errors to the end users.'
           headers:
@@ -14706,6 +14708,36 @@ components:
               type: string
             isPrimary:
               type: string
+      x-examples:
+        example-1:
+          value:
+            businessId: '3333333'
+            customerType: Individual
+            title: Mr
+            firstName: John
+            middleName: smith
+            lastName: doe
+            gender: male
+            dateOfBirth: '2019-01-01'
+            externalReference: abc1453
+            address:
+              addressLine1: 5 The warehouse way
+              addressLine2: Northcote
+              suburb: Northcote
+              postcode: '1062'
+              state: ''
+              city: ''
+              countryISOCode: NZL
+              addressType: postal
+            emailAddress:
+              emailName: john
+              emailAddress: john.doe@debitsuccess.com
+            phoneNumber:
+              phoneName: John
+              countryCode: '+64'
+              areaCode: '09'
+              phoneNumber: 264 5555
+              phoneType: home
     400CreateCustomer:
       type: object
       properties:
