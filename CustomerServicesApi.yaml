@@ -1843,6 +1843,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/200UpdateCustomer'
+              examples:
+                example-1:
+                  value:
+                    customerId: '1234567'
+                    businessId: '3333333'
+                    customerType: Individual
+                    title: Mr
+                    firstName: John
+                    middleName: smith
+                    lastName: doe
+                    gender: Male
+                    dateOfBirth: '2019-01-01'
         '400':
           description: 'Bad Request - Request failed due to validation errors, the response lists the field in the request that did not pass the validation. The client can directly show these errors to the end users.'
           headers:
@@ -4910,6 +4922,52 @@ paths:
               required: true
               schema:
                 type: integer
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                    minLength: 1
+                  message:
+                    type: string
+                    minLength: 1
+                  errors:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      required:
+                        - field
+                        - message
+                      properties:
+                        field:
+                          type: string
+                          minLength: 1
+                        message:
+                          type: string
+                          minLength: 1
+                required:
+                  - errorCode
+                  - message
+                  - errors
+                x-examples:
+                  example-1:
+                    errorCode: validation
+                    message: Unable to process request due to validation errors.
+                    errors:
+                      - field: addressId
+                        message: Deletion of Primary address is not allowed.
+              examples:
+                example-1:
+                  value:
+                    errorCode: validation
+                    message: Unable to process request due to validation errors.
+                    errors:
+                      - field: addressId
+                        message: Deletion of Primary address is not allowed.
         '429':
           description: Too Many Requests - Occurs when user has sent too many requests in a given amount of time.
           headers:
@@ -7074,6 +7132,43 @@ paths:
                 errors:
                   - field: addressId
                     message: Deletion of Primary address is not allowed.
+              examples: {}
+              schema:
+                description: ''
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                    minLength: 1
+                  message:
+                    type: string
+                    minLength: 1
+                  errors:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      required:
+                        - field
+                        - message
+                      properties:
+                        field:
+                          type: string
+                          minLength: 1
+                        message:
+                          type: string
+                          minLength: 1
+                required:
+                  - errorCode
+                  - message
+                  - errors
+                x-examples:
+                  example-1:
+                    errorCode: validation
+                    message: Unable to process request due to validation errors.
+                    errors:
+                      - field: addressId
+                        message: Deletion of Primary address is not allowed.
         '401':
           description: |
             Unauthorized - Occurs when the authorization token provided is either expired or invalid.
@@ -8441,6 +8536,44 @@ paths:
                 errors:
                   - field: phoneNumberId
                     message: Deletion of Primary phone number is not allowed.
+              examples:
+                example-1: {}
+              schema:
+                description: ''
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                    minLength: 1
+                  message:
+                    type: string
+                    minLength: 1
+                  errors:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      required:
+                        - field
+                        - message
+                      properties:
+                        field:
+                          type: string
+                          minLength: 1
+                        message:
+                          type: string
+                          minLength: 1
+                required:
+                  - errorCode
+                  - message
+                  - errors
+                x-examples:
+                  example-1:
+                    errorCode: validation
+                    message: Unable to process request due to validation errors.
+                    errors:
+                      - field: phoneNumberId
+                        message: Deletion of Primary phone number is not allowed.
         '401':
           description: |
             Unauthorized - Occurs when the authorization token provided is either expired or invalid.
@@ -9234,6 +9367,42 @@ paths:
                 errors:
                   - field: emailAddresses.emailAddressId
                     message: Deletion of Primary email address is not allowed.
+              schema:
+                description: ''
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                    minLength: 1
+                  message:
+                    type: string
+                    minLength: 1
+                  errors:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      required:
+                        - field
+                        - message
+                      properties:
+                        field:
+                          type: string
+                          minLength: 1
+                        message:
+                          type: string
+                          minLength: 1
+                required:
+                  - errorCode
+                  - message
+                  - errors
+                x-examples:
+                  example-1:
+                    errorCode: validation
+                    message: Unable to process request due to validation errors.
+                    errors:
+                      - field: emailAddresses.emailAddressId
+                        message: Deletion of Primary email address is not allowed.
         '401':
           description: |
             Unauthorized - Occurs when the authorization token provided is either expired or invalid.
@@ -10603,6 +10772,50 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/400CreateSuspensionSchedule'
+              examples:
+                example-1:
+                  value:
+                    errorCode: validation
+                    message: Unable to process request due to validation errors.
+                    errors:
+                      - field: minumumEffectiveDate
+                        message: MinumumEffectiveDate is required.
+                      - field: minumumEffectiveDate
+                        message: MinumumEffectiveDate is invalid.
+                      - field: minumumEffectiveDate
+                        message: MinumumEffectiveDate must not be in the past.
+                      - field: minumumEffectiveDate
+                        message: MinumumEffectiveDate must not be prior to AccountStartDate.
+                      - field: minumumEffectiveDate
+                        message: Suspension schedule must not overlap with another existing suspension schedule.
+                      - field: minumumEffectiveDate
+                        message: MinimumEffectiveDate provided has no pay-schedule that can be suspended.
+                      - field: minumumEffectiveDate
+                        message: MinumumEffectiveDate must not more than 10 years from now for an on-going account.
+                      - field: suspensionScheduleEndDate
+                        message: SuspensionScheduleEndDate is invalid.
+                      - field: suspensionScheduleEndDate
+                        message: SuspensionScheduleEndDate must not be prior to minumumEffectiveDate.
+                      - field: suspensionScheduleEndDate
+                        message: SuspensionScheduleEndDate must not be in the past.
+                      - field: suspensionFee
+                        message: SuspensionFee is invalid.
+                      - field: suspensionFee
+                        message: SuspensionFee must be $0.00 OR between $1.00 and (maxAmount).
+                      - field: frequency
+                        message: Frequency is required if suspensionFee is provided.
+                      - field: frequency
+                        message: Frequency is invalid.
+                      - field: frequency
+                        message: Frequency is not required if SuspensionFee is $0.00 or not provided.
+                      - field: numberOfPayments
+                        message: NumberOfPayments must be between 1 and <maxNumberPayment> (both inclusive).
+                      - field: numberOfPayments
+                        message: NumberOfPayments is not required if suspensionScheduleEndDate is provided.
+                      - field: scheduleDescription
+                        message: ScheduleDescription must not exceed 50 characters.
+                      - field: externalScheduleId
+                        message: ExternalScheduleId must not exceed 50 characters.
         '401':
           description: |
             Unauthorized - Occurs when the authorization token provided is either expired or invalid.
