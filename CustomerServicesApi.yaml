@@ -14814,33 +14814,66 @@ components:
           type: string
           description: External identifier of the recurring schedule
     200GetBusinessAccounts:
+      description: ''
       type: object
+      x-examples: {}
       properties:
         businessAccounts:
           type: array
+          uniqueItems: true
+          minItems: 1
           items:
-            required:
-              - businessAccountId
-              - name
-              - business
             type: object
             properties:
               businessAccountId:
                 type: string
+                minLength: 1
               name:
                 type: string
+                minLength: 1
+              penaltyFee:
+                type: object
+                properties:
+                  amount:
+                    type: number
+                  payer:
+                    type: string
+                    minLength: 1
+              establishmentFee:
+                type: object
+                properties:
+                  amount:
+                    type: number
+                  percent:
+                    type: number
+                  payer:
+                    type: string
+                    minLength: 1
+              supportedPaymentMethods:
+                type: array
+                uniqueItems: true
+                minItems: 1
+                items:
+                  type: object
+                  properties:
+                    paymentMethodType:
+                      type: string
+                      minLength: 1
               business:
                 type: object
                 properties:
                   businessId:
                     type: string
+                    minLength: 1
                   name:
                     type: string
+                    minLength: 1
         responseMetadata:
           type: object
           properties:
             nextCursor:
               type: string
+              minLength: 1
             hasNext:
               type: boolean
     201CreateRecurringSchedule:
@@ -16438,22 +16471,55 @@ components:
             hasNext:
               type: boolean
     200GetBusinessAccount:
+      description: ''
       type: object
+      x-examples: {}
       properties:
         businessAccountId:
           type: string
+          minLength: 1
         name:
           type: string
+          minLength: 1
         active:
           type: boolean
-          description: Flag to indicate if the businessAccount is Active.
+        penaltyFee:
+          type: object
+          properties:
+            amount:
+              type: number
+            payer:
+              type: string
+              minLength: 1
+        establishmentFee:
+          type: object
+          properties:
+            amount:
+              type: number
+            percent:
+              type: number
+            payer:
+              type: string
+              minLength: 1
+        supportedPaymentMethods:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            type: object
+            properties:
+              paymentMethodType:
+                type: string
+                minLength: 1
         business:
           type: object
           properties:
             businessId:
               type: string
+              minLength: 1
             name:
               type: string
+              minLength: 1
     400PatchCustomer:
       type: object
       properties:
