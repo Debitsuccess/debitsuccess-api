@@ -157,7 +157,7 @@ paths:
                       emailId: '9999999'
                       emailName: John
                       emailAddress: john.doe@debitsuccess.com
-                      isPrimary: true
+                      isPrimary: 'true'
                     phoneNumber:
                       phoneNumberId: '7777777'
                       phoneName: John
@@ -7132,7 +7132,6 @@ paths:
                 errors:
                   - field: addressId
                     message: Deletion of Primary address is not allowed.
-              examples: {}
               schema:
                 description: ''
                 type: object
@@ -7889,7 +7888,7 @@ paths:
         Updates existing phone number of a customer based on the customer ID and phoneNumber ID provided.
 
         >
-        Note: If a customer has a Guarantor and the guarantor has a mobile number, then the guarantor’s mobile number will always be the preferred phone number. Any attempt to update other non-guarantor phone numbers to preferred will be ignored.
+        Note: If a customer has a Guarantor and the guarantor has a mobile number, then the guarantor’s mobile number will always be the preferred phone number. Any attempt to update other non-guarantor phone numbers to primary number (isPrimary=true) will be ignored.
       operationId: 5ddddd7330e1bcdcaf336cb8
       parameters:
         - name: customerId
@@ -8540,8 +8539,6 @@ paths:
                 errors:
                   - field: phoneNumberId
                     message: Deletion of Primary phone number is not allowed.
-              examples:
-                example-1: {}
               schema:
                 description: ''
                 type: object
@@ -8753,7 +8750,7 @@ paths:
         Updates existing email address of a customer based on the customer ID and email ID provided.
 
         >
-        Note: If a customer has a Guarantor and the guarantor has an email address, then the guarantor’s email address will always be the preferred email address. Any attempt to update other non-guarantor email address to preferred will be ignored.
+        Note: If a customer has a Guarantor and the guarantor has an email address, then the guarantor’s email address will always be the preferred email address. Any attempt to update other non-guarantor email address to primary email address (isPrimary=true) will be ignored.
       operationId: 5ddddd9b5cfbcb04e6dcdf02
       parameters:
         - name: customerId
@@ -11052,19 +11049,19 @@ paths:
                     accountId: AILL056H6
                     AccountExternalId: ABC123
                     fromOverdueStatus: 0
-                    fromOverdueAmount: '0.00'
+                    fromOverdueAmount: 0.00
                     fromOverdueStatusChangeDateTime: '2019-01-01T08:11:55.0000000+00:00'
                     toOverdueStatus: 1
-                    toOverdueAmount: '10.00'
+                    toOverdueAmount: 10.00
                     toOverdueStatusChangeDateTime: '2019-01-02T08:11:55.0000000+00:00'
                   - businessAccountId: DSFit1
                     accountId: AILL056H8
                     AccountExternalId: ABC122
                     fromOverdueStatus: 1
-                    fromOverdueAmount: '100.00'
+                    fromOverdueAmount: 100.00
                     fromOverdueStatusChangeDateTime: '2019-01-01T08:11:55.0000000+00:00'
                     toOverdueStatus: 0
-                    toOverdueAmount: '0.00'
+                    toOverdueAmount: 0.00
                     toOverdueStatusChangeDateTime: '2019-01-02T08:11:55.0000000+00:00'
                 responseMetadata:
                   nextCursor: TmV4dEl0ZW1JZDoz
@@ -11294,7 +11291,7 @@ paths:
                   - businessAccountId: DSFit1
                     accountId: AILL056H6
                     batchNumber: '12345'
-                    paymentAmount: '10.00'
+                    paymentAmount: 10.00
                     paymentDateTime: '2019-01-01T08:11:55.0000000+00:00'
                     paymentDescription: Payment Desc ABC
                     paymentCode: Payment
@@ -11307,7 +11304,7 @@ paths:
                   - businessAccountId: DSFit1
                     accountId: AILL056H8
                     batchNumber: '23456'
-                    paymentAmount: '30.00'
+                    paymentAmount: 30.00
                     paymentDateTime: '2019-01-01T08:11:55.0000000+00:00'
                     paymentDescription: Payment Desc ABC
                     paymentCode: Payment
