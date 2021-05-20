@@ -7885,7 +7885,11 @@ paths:
       tags:
         - PhoneNumbers
       summary: Update Phone Number
-      description: Updates existing phone number of a customer based on the customer ID and phoneNumber ID provided.
+      description: |-
+        Updates existing phone number of a customer based on the customer ID and phoneNumber ID provided.
+
+        >
+        Note: If a customer has a Guarantor and the guarantor has a mobile number, then the guarantor’s mobile number will always be the preferred phone number. Any attempt to update other non-guarantor phone numbers to preferred will be ignored.
       operationId: 5ddddd7330e1bcdcaf336cb8
       parameters:
         - name: customerId
@@ -8745,7 +8749,11 @@ paths:
       tags:
         - EmailAddresses
       summary: Update Email Address
-      description: Updates existing email address. of a customer based on the customer ID and email ID provided.
+      description: |-
+        Updates existing email address of a customer based on the customer ID and email ID provided.
+
+        >
+        Note: If a customer has a Guarantor and the guarantor has an email address, then the guarantor’s email address will always be the preferred email address. Any attempt to update other non-guarantor email address to preferred will be ignored.
       operationId: 5ddddd9b5cfbcb04e6dcdf02
       parameters:
         - name: customerId
