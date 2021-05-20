@@ -14290,9 +14290,6 @@ components:
         businesses:
           type: array
           items:
-            required:
-              - businessId
-              - name
             type: object
             properties:
               businessId:
@@ -14449,17 +14446,6 @@ components:
         addresses:
           type: array
           items:
-            required:
-              - addressId
-              - addressLine1
-              - addressLine2
-              - suburb
-              - state
-              - city
-              - postcode
-              - countryISOCode
-              - addressType
-              - isPrimary
             type: object
             properties:
               addressId:
@@ -14570,11 +14556,6 @@ components:
         emailAddresses:
           type: array
           items:
-            required:
-              - emailAddressId
-              - emailName
-              - emailAddress
-              - isPrimary
             type: object
             properties:
               emailAddressId:
@@ -14615,14 +14596,6 @@ components:
         phoneNumbers:
           type: array
           items:
-            required:
-              - phoneNumberId
-              - phoneName
-              - countryCode
-              - areaCode
-              - phoneType
-              - phoneNumber
-              - isPrimary
             type: object
             properties:
               phoneNumberId:
@@ -14733,16 +14706,6 @@ components:
         recurringSchedules:
           type: array
           items:
-            required:
-              - scheduleId
-              - accountId
-              - accountExternalId
-              - recurringScheduleStartDate
-              - recurringScheduleEndDate
-              - installment
-              - frequency
-              - scheduleDescription
-              - externalScheduleId
             type: object
             properties:
               scheduleId:
@@ -14947,6 +14910,7 @@ components:
       x-examples: {}
     201CreateCustomer:
       type: object
+      x-examples: {}
       properties:
         customerId:
           type: string
@@ -14968,6 +14932,11 @@ components:
           type: string
         address:
           type: object
+          required:
+            - addressLine1
+            - postcode
+            - countryISOCode
+            - addressType
           properties:
             addressId:
               type: string
@@ -15000,6 +14969,8 @@ components:
               type: string
             isPrimary:
               type: string
+          required:
+            - emailAddress
         phoneNumber:
           type: object
           properties:
@@ -15017,7 +14988,15 @@ components:
               type: string
             isPrimary:
               type: string
-      x-examples: {}
+          required:
+            - phoneName
+            - countryCode
+            - phoneNumber
+            - phoneType
+      required:
+        - businessId
+        - customerType
+        - firstName
     400CreateCustomer:
       type: object
       properties:
@@ -15043,15 +15022,6 @@ components:
         customers:
           type: array
           items:
-            required:
-              - customerId
-              - business
-              - title
-              - firstName
-              - middleName
-              - lastName
-              - gender
-              - dateOfBirth
             type: object
             properties:
               customerId:
@@ -15200,16 +15170,6 @@ components:
         suspensionSchedules:
           type: array
           items:
-            required:
-              - scheduleId
-              - accountId
-              - accountExternalId
-              - suspensionScheduleStartDate
-              - suspensionScheduleEndDate
-              - suspensionFee
-              - frequency
-              - scheduleDescription
-              - externalScheduleId
             type: object
             properties:
               scheduleId:
@@ -15252,16 +15212,6 @@ components:
         overdueStatusChangeHistories:
           type: array
           items:
-            required:
-              - businessAccountId
-              - accountId
-              - accountExternalId
-              - fromOverdueStatus
-              - fromOverdueAmount
-              - fromOverdueStatusChangeDate
-              - toOverdueStatus
-              - toOverdueAmount
-              - toOverdueStatusChangeDate
             type: object
             properties:
               businessAccountId:
@@ -15483,13 +15433,6 @@ components:
         oneOffSchedules:
           type: array
           items:
-            required:
-              - scheduleId
-              - accountId
-              - dueDate
-              - amount
-              - scheduleDescription
-              - externalScheduleId
             type: object
             properties:
               scheduleId:
@@ -15554,6 +15497,7 @@ components:
     200GetPayments:
       type: object
       x-examples: {}
+      title: ''
       properties:
         transactions:
           type: array
@@ -15586,18 +15530,6 @@ components:
                 type: string
               retryCount:
                 type: integer
-            required:
-              - businessAccountId
-              - accountId
-              - batchNumber
-              - paymentAmount
-              - paymentDescription
-              - paymentCode
-              - paymentErrorCode
-              - paymentId
-              - externalPaymentIdentifier
-              - reversedPaymentId
-              - retryCount
         responseMetadata:
           type: object
           properties:
@@ -15605,7 +15537,6 @@ components:
               type: string
             hasNext:
               type: boolean
-      title: ''
     200UpdateCustomer:
       type: object
       properties:
@@ -16617,23 +16548,48 @@ components:
     200GetPaymentStatus:
       description: ''
       type: object
+      example:
+        paymentStatuses:
+          - businessAccountId: QP91F
+            accountId: QP91F888950
+            description: bae9e492-99e4-4578-8f32-1ae452c59cf9
+            externalIdentifier: bae9e492-99e4-4578-8f32-1ae452c59cf9
+            installment: 555.24
+            paymentStatus: CreditControl
+            scheduleId: 66292844
+            startDate: '2020-03-27'
+            statusDateTime: '2020-03-27T04:30:40.070Z'
+            errorCode: ''
+          - businessAccountId: QP91F
+            accountId: QP91F888950
+            description: bae9e492-99e4-4578-8f32-1ae452c59cf9
+            externalIdentifier: bae9e492-99e4-4578-8f32-1ae452c59cf9
+            installment: 555.24
+            paymentStatus: Failed
+            scheduleId: 66292844
+            startDate: '2020-03-27'
+            statusDateTime: '2020-03-27T04:59:29.000Z'
+            errorCode: Insufficient Funds
+          - businessAccountId: QP91F
+            accountId: QP91F888956
+            description: 99347f65-cdaf-4d59-9926-a0f15bf96555
+            externalIdentifier: 99347f65-cdaf-4d59-9926-a0f15bf96555
+            installment: 365
+            paymentStatus: Pending
+            scheduleId: 64674481
+            startDate: '2020-03-20'
+            statusDateTime: '2020-03-20T05:19:14.143Z'
+            errorCode: ''
+        responseMetadata:
+          nextCursor: Mjg1MjE=
+          hasNext: true
       properties:
         paymentStatuses:
           type: array
           uniqueItems: true
           minItems: 1
           items:
-            required:
-              - businessAccountId
-              - accountId
-              - description
-              - externalIdentifier
-              - installment
-              - paymentStatus
-              - scheduleId
-              - startDate
-              - statusDateTime
-              - errorCode
+            type: object
             properties:
               businessAccountId:
                 type: string
@@ -16670,47 +16626,6 @@ components:
               minLength: 1
             hasNext:
               type: boolean
-          required:
-            - nextCursor
-            - hasNext
-      required:
-        - paymentStatuses
-        - responseMetadata
-      example:
-        paymentStatuses:
-          - businessAccountId: QP91F
-            accountId: QP91F888950
-            description: bae9e492-99e4-4578-8f32-1ae452c59cf9
-            externalIdentifier: bae9e492-99e4-4578-8f32-1ae452c59cf9
-            installment: 555.24
-            paymentStatus: CreditControl
-            scheduleId: 66292844
-            startDate: '2020-03-27'
-            statusDateTime: '2020-03-27T04:30:40.070Z'
-            errorCode: ''
-          - businessAccountId: QP91F
-            accountId: QP91F888950
-            description: bae9e492-99e4-4578-8f32-1ae452c59cf9
-            externalIdentifier: bae9e492-99e4-4578-8f32-1ae452c59cf9
-            installment: 555.24
-            paymentStatus: Failed
-            scheduleId: 66292844
-            startDate: '2020-03-27'
-            statusDateTime: '2020-03-27T04:59:29.000Z'
-            errorCode: Insufficient Funds
-          - businessAccountId: QP91F
-            accountId: QP91F888956
-            description: 99347f65-cdaf-4d59-9926-a0f15bf96555
-            externalIdentifier: 99347f65-cdaf-4d59-9926-a0f15bf96555
-            installment: 365
-            paymentStatus: Pending
-            scheduleId: 64674481
-            startDate: '2020-03-20'
-            statusDateTime: '2020-03-20T05:19:14.143Z'
-            errorCode: ''
-        responseMetadata:
-          nextCursor: Mjg1MjE=
-          hasNext: true
   securitySchemes:
     apiKeyHeader:
       type: apiKey
