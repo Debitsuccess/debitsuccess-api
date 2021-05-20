@@ -2122,9 +2122,11 @@ paths:
             type: string
             default: '201'
       requestBody:
-        description: |-
+        description: |
           Request to create account to existing customer based on CustomerID and BusinessAccountID provided.
-          Notes: Maximum 3 recurring schedules are allowed to be assigned to an account.
+
+          >
+          Notes: Maximum 3 recurring schedules are allowed to be assigned to an account. Recurring schedules are not applicable for Gateway Billing accounts.
         content:
           application/json:
             schema:
@@ -4707,7 +4709,11 @@ paths:
       tags:
         - Schedules-Recurring
       summary: Create Schedule (Recurring)
-      description: Create a recurring schedule for an existing account based on the Account ID provided
+      description: |-
+        Create a recurring schedule for an existing account based on the Account ID provided.
+
+        >
+        Note: This endpoint is not applicable for Gateway Billing accounts.
       operationId: 5ddaf6e8c341d15d73945994
       parameters:
         - name: accountId
@@ -5054,7 +5060,11 @@ paths:
       tags:
         - Schedules-Recurring
       summary: Get Schedules (Recurring)
-      description: 'Retrieves list of recurring schedule based on Account ID provided. '
+      description: |-
+        Retrieves list of recurring schedule based on Account ID provided. 
+
+        >
+        Note: This endpoint is not applicable for Gateway Billing accounts.
       operationId: 5ddb407e8406be61a32cacea
       parameters:
         - name: accountId
@@ -5266,6 +5276,9 @@ paths:
       summary: Delete Schedule (Recurring)
       description: |
         Delete recurring schedule based on query parameters provided.
+
+        >
+        Note: This endpoint is not applicable for Gateway Billing accounts.
 
         Notes: 
         1) Start date of the recurring schedule that needs to be deleted must be in the future.
@@ -5552,7 +5565,11 @@ paths:
       tags:
         - Schedules-Recurring
       summary: Get Schedule (Recurring)
-      description: 'Retrieves recurring schedule based on account ID and schedule ID provided in the query path. '
+      description: |-
+        Retrieves recurring schedule based on account ID and schedule ID provided in the query path. 
+
+        >
+        Note: This endpoint is not applicable for Gateway Billing accounts.
       operationId: 5ddb4055e367b992b479dc1c
       parameters:
         - name: accountId
@@ -5778,7 +5795,11 @@ paths:
   '/accounts/{accountId}/scheduleRecurrings/{scheduleId}':
     put:
       summary: INTERNAL API - Update Schedule (Recurring)
-      description: Updates existing recurring schedule details of an account based on the query parameters provided.
+      description: |-
+        Updates existing recurring schedule details of an account based on the query parameters provided.
+
+        >
+        Note: This endpoint is not applicable for Gateway Billing accounts.
       operationId: 5ddb3c9f2e24240b5236e6a5
       parameters:
         - name: accountId
@@ -11049,19 +11070,19 @@ paths:
                     accountId: AILL056H6
                     AccountExternalId: ABC123
                     fromOverdueStatus: 0
-                    fromOverdueAmount: 0.00
+                    fromOverdueAmount: 0
                     fromOverdueStatusChangeDateTime: '2019-01-01T08:11:55.0000000+00:00'
                     toOverdueStatus: 1
-                    toOverdueAmount: 10.00
+                    toOverdueAmount: 10
                     toOverdueStatusChangeDateTime: '2019-01-02T08:11:55.0000000+00:00'
                   - businessAccountId: DSFit1
                     accountId: AILL056H8
                     AccountExternalId: ABC122
                     fromOverdueStatus: 1
-                    fromOverdueAmount: 100.00
+                    fromOverdueAmount: 100
                     fromOverdueStatusChangeDateTime: '2019-01-01T08:11:55.0000000+00:00'
                     toOverdueStatus: 0
-                    toOverdueAmount: 0.00
+                    toOverdueAmount: 0
                     toOverdueStatusChangeDateTime: '2019-01-02T08:11:55.0000000+00:00'
                 responseMetadata:
                   nextCursor: TmV4dEl0ZW1JZDoz
@@ -11291,7 +11312,7 @@ paths:
                   - businessAccountId: DSFit1
                     accountId: AILL056H6
                     batchNumber: '12345'
-                    paymentAmount: 10.00
+                    paymentAmount: 10
                     paymentDateTime: '2019-01-01T08:11:55.0000000+00:00'
                     paymentDescription: Payment Desc ABC
                     paymentCode: Payment
@@ -11304,7 +11325,7 @@ paths:
                   - businessAccountId: DSFit1
                     accountId: AILL056H8
                     batchNumber: '23456'
-                    paymentAmount: 30.00
+                    paymentAmount: 30
                     paymentDateTime: '2019-01-01T08:11:55.0000000+00:00'
                     paymentDescription: Payment Desc ABC
                     paymentCode: Payment
