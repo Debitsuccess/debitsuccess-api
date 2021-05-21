@@ -165,7 +165,7 @@ paths:
                       areaCode: '09'
                       phoneNumber: 264 5555
                       phoneType: home
-                      isPrimary: true
+                      isPrimary: 'true'
         '400':
           description: 'Bad Request - Request failed due to validation errors, the response lists the field in the request that did not pass the validation. The client can directly show these errors to the end users.'
           headers:
@@ -7636,7 +7636,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/200UpdateAddress'
+              $ref: '#/components/schemas/UpdateAddressRequest'
             example:
               addressLine1: 5 The warehouse way
               addressLine2: Northcote
@@ -14157,15 +14157,15 @@ components:
         errors:
           type: array
           items:
-            required:
-              - field
-              - message
             type: object
             properties:
               field:
                 type: string
               message:
                 type: string
+            required:
+              - field
+              - message
     401Unauthorised:
       type: object
       properties:
@@ -14220,15 +14220,15 @@ components:
         errors:
           type: array
           items:
-            required:
-              - field
-              - message
             type: object
             properties:
               field:
                 type: string
               message:
                 type: string
+            required:
+              - field
+              - message
     400AddPhoneNumber:
       type: object
       properties:
@@ -14239,15 +14239,15 @@ components:
         errors:
           type: array
           items:
-            required:
-              - field
-              - message
             type: object
             properties:
               field:
                 type: string
               message:
                 type: string
+            required:
+              - field
+              - message
     400CreateCustomerBusiness:
       type: object
       properties:
@@ -14539,6 +14539,11 @@ components:
             - true
           type: boolean
           description: 'Flag to set an address to be preferred for mailing. Notes: false is not required, i.e. when an adrress is being updated to isPrimary=true, all other addresses belong to the same customer will automatically set to false'
+      required:
+        - addressLine1
+        - postcode
+        - countryISOCode
+        - addressType
     200GetEmailAddress:
       type: object
       properties:
@@ -14662,6 +14667,9 @@ components:
             - false
           type: boolean
           description: Flag to set an email to be preferred as primary email
+      required:
+        - emailAddress
+        - isPrimary
     200GetRecurringSchedule:
       type: object
       properties:
@@ -14802,6 +14810,10 @@ components:
         externalScheduleId:
           type: string
           description: External identifier of the recurring schedule
+      required:
+        - recurringScheduleStartDate
+        - installment
+        - frequency
     200GetBusinessAccounts:
       description: ''
       type: object
@@ -14932,11 +14944,6 @@ components:
           type: string
         address:
           type: object
-          required:
-            - addressLine1
-            - postcode
-            - countryISOCode
-            - addressType
           properties:
             addressId:
               type: string
@@ -14969,8 +14976,6 @@ components:
               type: string
             isPrimary:
               type: string
-          required:
-            - emailAddress
         phoneNumber:
           type: object
           properties:
@@ -14988,11 +14993,6 @@ components:
               type: string
             isPrimary:
               type: string
-          required:
-            - phoneName
-            - countryCode
-            - phoneNumber
-            - phoneType
       required:
         - businessId
         - customerType
@@ -15079,6 +15079,10 @@ components:
         dateOfBirth:
           type: string
           description: YYYY-MM-DD
+      required:
+        - firstName
+        - gender
+        - dateOfBirth
     400UpdateCustomer:
       type: object
       properties:
@@ -15245,6 +15249,7 @@ components:
         minimumEffectiveDate:
           type: string
           description: The minimum start date for the Recurring schedule start date. Unless OverrideBillingCycleAlignment = true (see below) the actual start date will be set to the first date after that aligns with the current schedule
+          pattern: YYYY-MM-DD
         installment:
           type: number
           description: Recurring schedule installment amount
@@ -15261,9 +15266,11 @@ components:
         sheduleDescription:
           type: string
           description: Description of the recurring schedule
+          maxLength: 50
         externalScheduleId:
           type: string
           description: External identifier of the recurring schedule
+          maxLength: 50
         deleteFutureSchedules:
           type: boolean
           description: This flag must be set to true since the newly created schedule always replace (or delete) any future schedules if exist
@@ -15273,6 +15280,11 @@ components:
         previousScheduleEndDate:
           type: string
           description: 'PreviousScheduleEndDate is required if overrideBillingCycleAllignment is true. Else if overrideBillingCycleAllignment is false, previousScheduleEndDate will be defaulted to a day before the new recurring schedule starts'
+          pattern: YYYY-MM-DD
+      required:
+        - minimumEffectiveDate
+        - installment
+        - frequency
     400CreatePaymentMethod:
       type: object
       properties:
@@ -15298,15 +15310,19 @@ components:
         suspensionScheduleEndDate:
           type: string
           description: Suspension schedule end date
+      required:
+        - suspensionScheduleEndDate
     CreateSuspensionScheduleRequest:
       type: object
       properties:
         minimumEffectiveDate:
           type: string
           description: 'Suspension minimum effective start date. If this date falls on a payment break period, it will auto align to start on next billing date'
+          pattern: YYYY-MM-DD
         suspensionScheduleEndDate:
           type: string
           description: Suspension schedule end date
+          pattern: YYYY-MM-DD
         suspensionFee:
           type: number
           description: Suspension fee to be collected for a single frequency iteration
@@ -15330,6 +15346,10 @@ components:
         externalScheduleId:
           type: string
           description: External identifier of the suspension schedule
+      required:
+        - minimumEffectiveDate
+        - suspensionFee
+        - frequency
     CreatePaymentMethodRequest:
       type: object
       properties:
@@ -15359,11 +15379,17 @@ components:
           minLength: 5
           type: string
           description: Expiry date of the credit card associated to the payment method to be created. Required if paymentMethod is CreditCard. Format  MM/yy
+      required:
+        - holderName
+        - paymentMethodType
+        - number
     PatchAccountRequest:
       type: object
       properties:
         PaymentMethodToken:
           type: string
+      required:
+        - PaymentMethodToken
     201CreatePaymentMethod:
       type: object
       properties:
@@ -15606,6 +15632,8 @@ components:
             - true
           type: boolean
           description: 'Flag to set an email to be preferred email. Notes: false is not required, i.e. when an email is being updated to isPrimary=true, all other existing emails belong to the same customer will automatically set to false'
+      required:
+        - emailAddress
     200UpdatePhoneNumber:
       type: object
       properties:
@@ -15636,6 +15664,9 @@ components:
         addressLine1:
           maxLength: 60
           type: string
+          description: |-
+            Address line 1. Max length 60 characters
+            .
         addressLine2:
           maxLength: 60
           type: string
@@ -15652,11 +15683,12 @@ components:
         postcode:
           maxLength: 10
           type: string
+          description: Postcode
         countryISOCode:
           maxLength: 3
           minLength: 3
           type: string
-          description: '3 characters Country ISO Code. For example, NZL,AUS,USA,SGP.'
+          description: '3 characters [Country ISO Code](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/6-Reference.md#countryisocode). For example, NZL,AUS,USA,SGP. '
         addressType:
           enum:
             - business
@@ -15672,6 +15704,12 @@ components:
             - false
           type: boolean
           description: Flag to set an address to be preferred for mailing
+      required:
+        - addressLine1
+        - postcode
+        - countryISOCode
+        - addressType
+        - isPrimary
     200UpdateAccount:
       type: object
       properties:
@@ -15720,19 +15758,28 @@ components:
         closureNotes:
           maxLength: 10000
           type: string
-          description: Information regarding the account closure process.
+          description: Information regarding the account closure.
+      required:
+        - closureNotes
     CreateOneOffScheduleRequest:
       type: object
+      description: Date (in UTC) when this schedule starts.
       properties:
         dueDate:
           type: string
           description: 'dueDate field must be in a date only format i.e., YYYY-MM-DD and is treated as local time.'
         amount:
           type: number
+          description: Amount to be paid for this schedule. Must be >= $1
         scheduleDescription:
           type: string
+          description: Description associated to this schedule
         externalScheduleId:
           type: string
+          description: External identifier of the one-off schedule
+      required:
+        - dueDate
+        - amount
     200PatchCustomer:
       type: object
       properties:
@@ -15761,6 +15808,8 @@ components:
         oneTimePaymentMethodToken:
           type: string
           description: The temporary token for the Payment Method created via the payment widget at Business account level.
+      required:
+        - oneTimePaymentMethodToken
     CreatePaymentMethodforBARequest:
       type: object
       properties:
@@ -15786,6 +15835,14 @@ components:
           minLength: 5
           type: string
           description: Expiry date of the credit card associated to the payment method to be created. Required if paymentMethod is CreditCard. Format  MM/yy
+        accountId:
+          type: string
+          description: Unique identifier associated to the account of the payment method to be created. Exactly one of CustomerId or AccountId is required.
+          maxLength: 15
+      required:
+        - holderName
+        - paymentMethodType
+        - number
     UpdateAccountRequest:
       type: object
       properties:
@@ -15826,6 +15883,12 @@ components:
         contractAmount:
           type: number
           description: Total installments for all recurring schedules to be collected for the account before the account is past its minimum term
+      required:
+        - termType
+        - term
+        - fixedTerm
+        - accountStartDate
+        - paymentStopped
     UpdatePhoneNumberRequest:
       type: object
       properties:
@@ -15856,6 +15919,10 @@ components:
             - true
           type: boolean
           description: 'Flag to set a phone number to be preferred contact number. Notes: false is not required, i.e. when a phone number is being updated to isPrimary=true, all other existing phone number belong to the same customer will automatically set to false'
+      required:
+        - phoneName
+        - phoneNumber
+        - phonetype
     AddPhoneNumberRequest:
       type: object
       properties:
@@ -15888,6 +15955,11 @@ components:
             - false
           type: boolean
           description: Flag to set a phone number to be preferred as primary phone number
+      required:
+        - phoneName
+        - phoneNumber
+        - phoneType
+        - isPrimary
     201CreateAccount:
       type: object
       properties:
@@ -16091,6 +16163,18 @@ components:
               sheduleDescription:
                 type: string
                 description: Description of the recurring payment schedule
+            required:
+              - RecurringScheduleStartDate
+              - installment
+              - frequency
+      required:
+        - customerId
+        - businessAccountId
+        - accountExternalId
+        - termType
+        - term
+        - fixedTerm
+        - accountStartDate
     GetPaymentTokenForAccountPaymentRequest:
       type: object
       properties:
@@ -16105,7 +16189,14 @@ components:
           description: '​true – If a payment is successful, a one-off schedule will be created for the Amount. false – If the payment is successful, Amount will be allocated to account balance.'
         paymentNote:
           type: string
-          description: 'Any notes to be recorded against the payment.Accepted characters are alphanumeric # + - ( ) * _ [space] , ; : . /'
+          description: |-
+            Any notes to be recorded against the payment. This field is required if CreateOneOffCharge is set to true. 
+            Accepted characters are alphanumeric # + - ( ) * _ [space] , ; : . /
+      required:
+        - amount
+        - callbackURL
+        - createOneOffCharge
+        - paymentNote
     GetPaymentTokenForCasualPaymentRequest:
       type: object
       properties:
@@ -16115,12 +16206,19 @@ components:
         callbackURL:
           type: string
           description: The URL the customer needs to be redirected to after the operation.
+          maxLength: 256
         paymentNote:
           type: string
-          description: 'Any notes to be recorded against the payment.Accepted characters are alphanumeric # + - ( ) * _ [space] , ; : . /'
+          description: |-
+            Any notes to be recorded against the payment. 
+            Accepted characters are alphanumeric # + - ( ) * _ [space] , ; : . /
+          maxLength: 30
         paymentRef:
           type: string
           description: 'PaymentRef if provided must be unique at ContractPrefix level (i.e. Facility Account level). If PaymentRef provided has already been used before by the same Facility Account, it is rejected. Only accept characters alphanumeric # + - ( ) * _ [space] , ; : . / and [space] in front and at the back will be trimmed. Note: PaymentRef can be re-cycled if the token has expired before being used.'
+      required:
+        - amount
+        - callbackURL
     CreateCustomerRequest:
       type: object
       properties:
@@ -16192,6 +16290,11 @@ components:
                 - postal
                 - legal
               type: string
+          required:
+            - addressLine1
+            - postcode
+            - countryISOCode
+            - addressType
         emailAddress:
           type: object
           properties:
@@ -16201,6 +16304,8 @@ components:
             emailAddress:
               maxLength: 75
               type: string
+          required:
+            - emailAddress
         phoneNumber:
           type: object
           properties:
@@ -16226,6 +16331,16 @@ components:
                 - mobile
                 - work
               type: string
+          required:
+            - phoneName
+            - countryCode
+            - phoneNumber
+            - phoneType
+      required:
+        - businessId
+        - customerType
+        - firstName
+        - externalReference
     200GetCustomer:
       type: object
       properties:
