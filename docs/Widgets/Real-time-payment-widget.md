@@ -18,9 +18,7 @@ Add a link to the Debitsuccess javascript library on the page where the widget w
 ```json
 <script src="https://oc.debitsuccess.com/Debitsuccesspaymentwidget/dsRealTimePaymentWidget.js"></script>
 ```
-<!-- theme: danger -->
->
-Widget is not available in production yet. You can test the widget using: https://oc-test.debitsuccess.com/dspaymentwidget/dsRealTimePaymentWidget.js
+
 
 ### Step 2 - Initializing the Widget
 
@@ -45,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 |  **Parameter**  |  **Required**  |  **Description**  | 
 |  --- |  --- |  --- | 
-|  _authToken_  |  | get this token from [Debitsuccess Identity Server](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/986809101/Authentication) using your  _client secret_  and  _client ID_  | 
+|  _authToken_  |  | get this token from [Debitsuccess Identity Server](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/2-Authentication.md) using your  _client secret_  and  _client ID_  | 
 |  _businessAccountId_  |  | a unique identifier (string, Debitsuccess contract prefix) of the business customer belongs to | 
 |  _domain_  | Optional | describes the environment the widget will be used against, possible values:  **OC-Test** https://oc-test.debitsuccess.com  **OC-Production** https://oc.debitsuccess.com (default) |
 

@@ -1,10 +1,10 @@
 # Payment Method Capture Widget
 
-The Payment Method Capture Widget allows you to securely capture payment details (credit card and bank account) by embedding it in your website and save payment details in Debitsuccess systems. This widget triggers the internal [Create PaymentMethod](https://oc-debitsuccess.portal.azure-api.net/docs/services/Mock/operations/5e4317913b44f651f411dc64?&groupBy=tag) API to create the payment method into Debitsuccess.
+The Payment Method Capture Widget allows you to securely capture payment details (credit card and bank account) by embedding it in your website and save payment details in Debitsuccess systems. This widget triggers the internal [Create PaymentMethod](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1businessAccounts~1%7BbusinessAccountId%7D~1paymentMethods/post) API to create the payment method into Debitsuccess.
 
 
 >
-The [Create PaymentMethod](https://oc-debitsuccess.portal.azure-api.net/docs/services/Mock/operations/5e4317913b44f651f411dc64?&groupBy=tag) API is intended for internal use only. If you decide to capture credit cards yourself and pass them through the API then you would be required to be PCI certified as opposed to doing a PCI self-assessment.
+The [Create PaymentMethod](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1businessAccounts~1%7BbusinessAccountId%7D~1paymentMethods/post) API is intended for internal use only. If you decide to capture credit cards yourself and pass them through the API then you would be required to be PCI certified as opposed to doing a PCI self-assessment.
 
 
 ## Adding Payment Method Capture widget
@@ -23,7 +23,7 @@ The [Create PaymentMethod](https://oc-debitsuccess.portal.azure-api.net/docs/ser
 
 |  **Parameter**  |  **Required**  |  **Description**  | 
 |  --- |  --- |  --- | 
-|  _authToken_  |  | get this token from [Debitsuccess Identity Server](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/986809101/Authentication) using your  _client secret_  and  _client ID_  | 
+|  _authToken_  |  | get this token from [Debitsuccess Identity Server](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/2-Authentication.md) using your  _client secret_  and  _client ID_  | 
 |  _businessAccountId_  |  | a unique identifier (string, Debitsuccess contract prefix) of the business customer belongs to | 
 | customerId  | Optional | a unique identifier (integer) of the customer the payment method will be captured for | 
 |  _domain_  | Optional | describes the environment the widget will be used against, possible values:  **OC-Test** https://oc-test.debitsuccess.com  **OC-Production** https://oc.debitsuccess.com | 
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function() {
                   );
 });
 ```
- 4. Subscribe to [events ](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1357742205/Payment+Capture+Widget#Events)emitted from the widget to get a notification on your website. 
+ 4. Subscribe to [events ](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Widgets/Payment-Capture-Widget.md#events)emitted from the widget to get a notification on your website. 
 
 
 ```js
