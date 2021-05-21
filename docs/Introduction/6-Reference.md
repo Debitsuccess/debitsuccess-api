@@ -1,7 +1,6 @@
 # Reference 
 ## CountryISOCode
-To specify Debitsuccess supported countries and regions in request body parameters, use three-character ISO 3166-1 alpha-3 country codes.
-
+To specify Debitsuccess supported countries and regions in request body parameters of customer address, use three-character ISO 3166-1 alpha-3 country codes.
 
 
 |  **COUNTRY**  |  **ISO CODES**  |
@@ -249,7 +248,7 @@ To specify Debitsuccess supported countries and regions in request body paramete
 
 
 ## StateCode (USA and AUS)
-The Debitsuccess REST APIs accept the following state codes in thestateparameter for an address.
+The Debitsuccess REST APIs accept the following state codes in the `state` parameter for an address.
 
 
 ### AUS State Code
@@ -323,7 +322,7 @@ The Debitsuccess REST APIs accept the following state codes in thestateparameter
 
 
 ## CountryCode
-The Debitsuccess REST APIs accept the following phone number country codes in theCountryCode parameter for a phone number.
+The Debitsuccess REST APIs accept the following phone number country codes in the `CountryCode` parameter for a phone number.
 
 
 |  **Country**  |  **Country Code**  |  **Extention**  | 
@@ -570,7 +569,7 @@ The Debitsuccess REST APIs accept the following phone number country codes in th
 | Zimbabwe | +263 |  | 
 
 
-## TransactionType
+## PaymentCode
 
 
 |  |  **Code**  |  **Description**  |  **DS Fee?**  **True - DS Fees**  **False - Facility charges**  | 
@@ -607,7 +606,7 @@ The Debitsuccess REST APIs accept the following phone number country codes in th
 | 30 | FV | Facility Variation Fee | True | 
 
 
-## PaymentMethodType
+## PaymentMethod
 
 
 |  **Code**  |  **Description**  | 
@@ -631,17 +630,6 @@ The Debitsuccess REST APIs accept the following phone number country codes in th
 | CO | Credit Card Other | 
 | CU | Credit Union | 
 
-
-## WaiveEstFee
-
-
-|  **Code**  |  **Description**  | 
-|  --- |  --- | 
-| 1 | Customer pays | 
-| 2 | Facility pays | 
-| 3 | No Est Fee | 
-
-
 ## PaymentErrorCode
 
 
@@ -657,5 +645,9 @@ The Debitsuccess REST APIs accept the following phone number country codes in th
 | XC | Card Expired | 
 | RC | Restricted Card | 
 | LC | Lost / Stolen Card | 
+
+
+
+
 
 

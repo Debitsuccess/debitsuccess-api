@@ -6621,7 +6621,10 @@ paths:
             type: string
             default: '201'
       requestBody:
-        description: 'If "isPrimary" is set to "true", when this address successfully added, all other existing addresses belong to the customer will have their "isPrimary" field set to "false".'
+        description: |-
+          If "isPrimary" is set to "true", when this address successfully added, all other existing addresses belong to the customer will have their "isPrimary" field set to "false".
+          >
+          Refer to the [supporting documentation](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/6-Reference.md) for the accepted values for countryISOCode.
         content:
           application/json:
             schema:
@@ -7633,6 +7636,9 @@ paths:
           Allows to update an address to an existing customer. 
           If 'isPrimary' field is set to 'true' value, when the address is successfully updated, all other existing addresses belong to the customer will have their 'isPrimary' set to 'false'.
           Primary address is not allowed to be updated to false(i.e. non-Primary).
+
+          >
+          Refer to the [supporting documentation](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/6-Reference.md) for the accepted values for `countryISOCode` and `state`.
         content:
           application/json:
             schema:
@@ -7953,6 +7959,9 @@ paths:
         description: |-
           If "isPrimary" is set to "true", when this phone number successfully updated, all other existing phone numbers belong to the customer will have their "isPrimary" field set to "false".
           Primary phone number is not allowed to be updated to false(i.e. non-Primary).
+
+          >
+          Refer to the [supporting documentation](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/6-Reference.md) for the accepted values for `countryCode`.
         content:
           application/json:
             schema:
@@ -9842,8 +9851,8 @@ paths:
       requestBody:
         description: |-
           If "isPrimary" is set to "true", when this phone number successfully added, all other existing phone numbers belong to the customer will have their "isPrimary" field set to "false". 
-
-          Refer to the supporting documentation (https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1257414195/Library) for the accepted values for countryCode.
+          >
+          Refer to the [supporting documentation](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/6-Reference.md) for the accepted values for `countryCode`.
         content:
           application/json:
             schema:
@@ -11302,7 +11311,11 @@ paths:
             default: '200'
       responses:
         '200':
-          description: Successful response with all payments based on the query parameters provided.
+          description: |-
+            Successful response with all payments based on the query parameters provided.
+
+            >
+            Refer to the [supporting documentation](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/6-Reference.md) for the possible values retuned for `paymentCode`, `paymentMethod` and `paymentErrorCode`.
           content:
             application/json:
               schema:
@@ -15532,30 +15545,49 @@ components:
             properties:
               businessAccountId:
                 type: string
+                description: Business Account's contract prefix associated to the Account of the transaction extracted
+                maxLength: 6
               accountId:
                 type: string
+                description: System generated reference no associated to the Account of the transaction extracted
+                maxLength: 15
               batchNumber:
                 type: string
+                description: Batch number of the transaction
               paymentAmount:
                 type: string
+                description: Amount of transaction
               paymentDateTime:
                 type: string
+                description: Date time when the transaction was made
               paymentDescription:
                 type: string
+                description: Description of transaction
+                maxLength: 30
               paymentCode:
                 type: string
+                description: Transaction type
               paymentErrorCode:
                 type: string
+                description: Transaction payment method
               paymentMethod:
                 type: string
+                description: Transaction payment method
               paymentId:
                 type: string
+                description: Unique identifier for the payment
+                maxLength: 10
               externalPaymentIdentifier:
                 type: string
+                description: External identifier for the transaction
+                maxLength: 50
               reversedPaymentId:
                 type: string
+                description: Unique identifier for reversed payment
+                maxLength: 10
               retryCount:
                 type: integer
+                description: Number of retry accumulated for the payment transaction
         responseMetadata:
           type: object
           properties:
@@ -16077,6 +16109,7 @@ components:
           recurringSchedule: null
     CreateAccountRequest:
       type: object
+      description: ''
       properties:
         customerId:
           type: string
@@ -16118,12 +16151,15 @@ components:
             - false
           type: boolean
           default: false
+          description: |
+            A flag to waive establishment fee is defaulted to be paid by Customer.
         alignEstFeeWithSchedule:
           enum:
             - true
             - false
           type: boolean
           default: false
+          description: True will align the establishment fee to start on the Pay Schedule’s startdate. False will align the establishment fee to start on the Account’s startdate.
         accountStartDate:
           type: string
           description: 'YYYY-MM-DD, Determine the date (in UTC) when the account will start.'
