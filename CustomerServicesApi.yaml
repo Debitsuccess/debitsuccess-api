@@ -12525,11 +12525,11 @@ paths:
         - Customers
       summary: Patch Customer
       description: |-
-        Assign payment method created via Capture Payment Method widget to customer.
+        Assign payment method created via [Payment Method Capture widget](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Widgets/Payment-Capture-Widget.md) to customer.
 
         Only oneTimePaymentMethodToken field is supported in this request. Any attempt to change any other field will cause errors.
-
-        Notes: The one-off token created via the Capture payment method widget should be used in this request. This token is for single use only. Once the payment method is successfully assigned to the customer, a permanent payment method token will be associated to the customer.  
+        >
+        Notes: The one-off payment token created via the Payment Method Capture widget should be used in this request. This token is for single use only. Once the payment method is successfully assigned to the customer, a permanent payment method token will be associated to the customer.  
       operationId: 5fb4455ff434cfa57bcb16ce
       parameters:
         - name: customerId
