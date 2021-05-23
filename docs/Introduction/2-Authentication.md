@@ -50,8 +50,6 @@ Request Parameters
 
 
 
-
-
 |  **Input Parameter**  |  **Required/Optional**  |  **Format**  |  **Remark**  | 
 |  --- |  --- |  --- |  --- | 
 | Client_ID | Required | ########-####-####-####-############where # is alphanumeric | Unique identifier for a client provided by Debitsuccess. | 
