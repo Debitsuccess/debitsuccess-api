@@ -4164,7 +4164,7 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateSuspenseScheduleRequest'
             example:
-              suspensionScheduleEndDate: '2020-12-31T00:00:00.0000000+00:00'
+              suspensionScheduleEndDate: '2020-12-31'
       responses:
         '201':
           description: Suspension schedule successfully updated.
@@ -4175,7 +4175,7 @@ paths:
               example:
                 scheduleId: '12345678'
                 accountId: CWAUS999999
-                suspensionScheduleEndDate: '2020-12-31T00:00:00.0000000+00:00'
+                suspensionScheduleEndDate: '2020-12-31'
         '400':
           description: 'Bad Request - Request failed due to validation errors, the response lists the field in the request that did not pass the validation. The client can directly show these errors to the end users.'
           headers:
@@ -4456,8 +4456,8 @@ paths:
                 scheduleId: '12345678'
                 accountId: AILL056H6
                 accountExternalId: ABC12345
-                suspensionScheduleStartDate: '2020-01-31T00:00:00.0000000+00:00'
-                suspensionScheduleEndDate: '2020-12-31T00:00:00.0000000+00:00'
+                suspensionScheduleStartDate: '2020-01-31'
+                suspensionScheduleEndDate: '2020-12-31'
                 suspensionFee: 50
                 frequency: monthly
                 scheduleDescription: Suspension schedule Jan-Dec
@@ -4634,7 +4634,9 @@ paths:
         - Schedules-Recurring
       summary: Create Schedule (Recurring)
       description: |-
-        Create a recurring schedule for an existing account based on the Account ID provided.
+        Create a recurring schedule for an existing account for the Account ID provided.
+
+        This endpoint creates an indefinite recurring schedule for the account whereas the recurring schedule created using [POST /accounts](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1accounts/post) can be configured as a [tried schedule](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1314914915/Create+a+recurring+schedule). 
 
         >
         Note: This endpoint is not applicable for Gateway Billing accounts.
@@ -6088,7 +6090,7 @@ paths:
             schema:
               $ref: '#/components/schemas/CreateOneOffScheduleRequest'
             example:
-              dueDate: '2020-01-31T00:00:00.0000000+00:00'
+              dueDate: '2020-01-31'
               amount: 50
               scheduleDescription: Maintenance charges FY20
               externalScheduleId: T125810
@@ -6102,7 +6104,7 @@ paths:
               example:
                 scheduleId: '12345678'
                 accountId: CWAUS999999
-                dueDate: '2020-01-31T00:00:00.0000000+00:00'
+                dueDate: '2020-01-31'
                 amount: 50
                 scheduleDescription: Recurring schedule Jan-Dec
                 externalScheduleId: T125810
@@ -6365,13 +6367,13 @@ paths:
                 oneOffSchedules:
                   - scheduleId: '12345678'
                     accountId: AILL056H6
-                    dueDate: '2019-01-31T00:00:00.0000000+00:00'
+                    dueDate: '2020-01-31'
                     amount: 50
                     scheduleDescription: One-off schedule Jan-Nov 2019
                     externalScheduleId: S125810
                   - scheduleId: '12345679'
                     accountId: AILL056H6
-                    dueDate: '2020-02-31'
+                    dueDate: '2021-03-31'
                     amount: 5
                     scheduleDescription: One-off schedule Feb 2020
                     externalScheduleId: S125811
@@ -10482,7 +10484,7 @@ paths:
                   - scheduleId: '12345678'
                     accountId: AILL056H6
                     accountExternalId: ABC12345
-                    suspensionScheduleStartDate: '2019-01-31T00:00:00.0000000+00:00'
+                    suspensionScheduleStartDate: '2019-01-31'
                     suspensionScheduleEndDate: '2019-11-31'
                     suspensionFee: 50
                     frequency: monthly
@@ -10673,8 +10675,8 @@ paths:
             schema:
               $ref: '#/components/schemas/CreateSuspensionScheduleRequest'
             example:
-              minimumEffectiveDate: '2020-01-31T00:00:00.0000000+00:00'
-              suspensionScheduleEndDate: '2020-02-29T00:00:00.0000000+00:00'
+              minimumEffectiveDate: '2020-01-31'
+              suspensionScheduleEndDate: '2020-02-29'
               suspensionFee: 50
               frequency: monthly
               numberOfPayments: 0
@@ -10690,8 +10692,8 @@ paths:
               example:
                 scheduleId: '12345678'
                 accountId: CWAUS999999
-                suspensionScheduleStartDate: '2020-01-31T00:00:00.0000000+00:00'
-                suspensionScheduleEndDate: '2020-02-29T00:00:00.0000000+00:00'
+                suspensionScheduleStartDate: '2020-01-31'
+                suspensionScheduleEndDate: '2020-02-29'
                 suspensionFee: 50
                 frequency: monthly
                 scheduleDescription: Suspension schedule Jan-Feb
@@ -11002,21 +11004,21 @@ paths:
                   - businessAccountId: DSFit1
                     accountId: AILL056H6
                     AccountExternalId: ABC123
-                    fromOverdueStatus: 0
-                    fromOverdueAmount: 0
-                    fromOverdueStatusChangeDateTime: '2019-01-01T08:11:55.0000000+00:00'
-                    toOverdueStatus: 1
-                    toOverdueAmount: 10
-                    toOverdueStatusChangeDateTime: '2019-01-02T08:11:55.0000000+00:00'
+                    fromODStatus: 0
+                    fromODAmount: 0
+                    fromODStatusChangeDateTime: '2019-01-01T08:11:55.0000000+00:00'
+                    toODStatus: 1
+                    toODAmount: 10
+                    toODStatusChangeDateTime: '2019-01-02T08:11:55.0000000+00:00'
                   - businessAccountId: DSFit1
                     accountId: AILL056H8
                     AccountExternalId: ABC122
-                    fromOverdueStatus: 1
-                    fromOverdueAmount: 100
-                    fromOverdueStatusChangeDateTime: '2019-01-01T08:11:55.0000000+00:00'
-                    toOverdueStatus: 0
-                    toOverdueAmount: 0
-                    toOverdueStatusChangeDateTime: '2019-01-02T08:11:55.0000000+00:00'
+                    fromODStatus: 1
+                    fromODAmount: 100
+                    fromODChangeDateTime: '2019-01-01T08:11:55.0000000+00:00'
+                    toODStatus: 0
+                    toODAmount: 0
+                    toODStatusChangeDateTime: '2019-01-02T08:11:55.0000000+00:00'
                 responseMetadata:
                   nextCursor: TmV4dEl0ZW1JZDoz
                   hasNext: true
@@ -11699,7 +11701,7 @@ paths:
               example:
                 scheduleId: '12345678'
                 accountId: AILL056H6
-                dueDate: '2020-01-31T00:00:00.0000000+00:00'
+                dueDate: '2021-05-26'
                 amount: 50
                 scheduleDescription: One-off Schedule
                 externalScheduleId: S125810
@@ -12279,7 +12281,7 @@ paths:
                     holderName: TestName
                     number: '***1111'
                     cardType: visa
-                    cardExpiryDate: '2021-11-22T00:00:00.0000000+00:00'
+                    cardExpiryDate: 12/25
                     defaultPaymentMethod: true
                   - paymentMethodToken: cdrft678-3456-78ik-hnhf-gbbggfdsrtyj
                     paymentMethodType: BankAccount
@@ -15074,8 +15076,10 @@ components:
           type: string
         suspensionScheduleStartDate:
           type: string
+          pattern: YYYY-MM-DD
         suspensionScheduleEndDate:
           type: string
+          pattern: YYYY-MM-DD
         suspensionFee:
           type: number
         frequency:
@@ -15095,8 +15099,10 @@ components:
           type: string
         suspensionScheduleStartDate:
           type: string
+          pattern: YYYY-MM-DD
         suspensionScheduleEndDate:
           type: string
+          pattern: YYYY-MM-DD
         suspensionFee:
           type: number
         frequency:
@@ -15152,29 +15158,35 @@ components:
     200GetOverdueStatusChanges:
       type: object
       properties:
-        overdueStatusChangeHistories:
+        overdueStatusChanges:
           type: array
           items:
             type: object
             properties:
               businessAccountId:
                 type: string
+                description: Business Account associated to the account extracted
               accountId:
                 type: string
-              accountExternalId:
-                type: string
-              fromOverdueStatus:
+                description: 'System generated reference number associated with the Account. '
+              fromODStatus:
                 type: integer
-              fromOverdueAmount:
+                description: Account's previous overdue status
+              fromODAmount:
                 type: number
-              fromOverdueStatusChangeDateTime:
+                description: Account's previous overdue amount
+              fromODStatusChangeDateTime:
                 type: string
-              toOverdueStatus:
+                description: Account's overdue status changed date
+              toODStatus:
                 type: integer
-              toOverdueAmount:
+                description: New overdue status
+              toODAmount:
                 type: number
-              toOverdueStatusChangeDateTime:
+                description: New overdue amount
+              toODtatusChangeDateTime:
                 type: string
+                description: New overdue status changed date
         responseMetadata:
           type: object
           properties:
@@ -15925,44 +15937,7 @@ components:
         - isPrimary
     201CreateAccount:
       type: object
-      x-examples:
-        example-1:
-          accountId: string
-          accountExternalId: string
-          customerId: string
-          businessAccountId: string
-          accountCode: string
-          termType: string
-          term: 0
-          accountNotes: string
-          fixedTerm: true
-          nextBillingDate: string
-          lastBillingDateTime: string
-          overdueStatus: 0
-          overdueAmountPayment: 0
-          overdueAmountFee: 0
-          lastReversalReason: string
-          closeReason: string
-          suspended: true
-          paymentStopped: true
-          paymentStopEndDate: string
-          catchUpAmount: 0
-          catchUpEndDate: string
-          paymentInAdvanceAmount: 0
-          paymentInAdvanceEnddate: string
-          waiveEstFee: true
-          accountStartDate: string
-          accountLoadedDateTime: string
-          accountCloseDateTime: string
-          lastUpdatedDateTime: string
-          accruedContractAmount: 0
-          originalContractAmount: 0
-          outstandingRecurringAmount: 0
-          outandingOneOffAmount: 0
-          outstandingFeeAmount: 0
-          projectedFinishDate: string
-          paymentMethodToken: string
-          recurringSchedule: null
+      x-examples: {}
       properties:
         accountId:
           type: string
@@ -16040,7 +16015,17 @@ components:
         recurringSchedules:
           type: object
           properties:
-            '':
+            recurringScheduleStartDate:
+              type: string
+            installment:
+              type: number
+            frequency:
+              type: string
+            numberOfPayments:
+              type: string
+            externalScheduleId:
+              type: string
+            scheduleDescription:
               type: string
     CreateAccountRequest:
       type: object

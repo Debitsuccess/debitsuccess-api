@@ -33,7 +33,7 @@ The date from which the account will be active.
 ### accountStatus
 It can be used to filter retrieved account based on their current status. The default value is Active if not provided.  'Active' accounts can also be 'Suspended' or 'PaymentStopped' at the same time.  
 
-'Suspended' accounts can also be 'PaymentStopped' at the same time. Descriptions of the status can be found here [https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1492877598/Statuses#Account-Status](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1492877598/Statuses#Account-Status).
+'Suspended' accounts can also be 'PaymentStopped' at the same time. Descriptions of the status can be found [here](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1492877598/Statuses#Account-Status).
 
 
 ### accruedContractAmount
@@ -353,7 +353,7 @@ Amount paid
 
 
 ### paymentCode
-[Transaction type](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1257414195/Library#%5BhardBreak%5DTransactionType)
+[Transaction type](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/6-Reference.md#paymentcode)
 
 
 ### paymentDatetime
@@ -365,7 +365,7 @@ Description of payment
 
 
 ### paymentErrorCode
-Payment [transaction error](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1257414195/Library#%5BhardBreak%5DPaymentErrorCode), if any
+Payment [transaction error](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/6-Reference.md#paymenterrorcode), if any
 
 
 ### paymentId
@@ -381,7 +381,7 @@ End date for payment in advance
 
 
 ### paymentMethod
-[Mode of payment](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1257414195/Library#%5BhardBreak%5DPaymentMethodType)
+[Mode of payment](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/6-Reference.md#paymentmethod)
 
 
 ### paymentMethodToken
@@ -413,7 +413,7 @@ Unique reference/ identifier for the phone number provided by Debitsuccess. Busi
 
 
 ### phoneType
-Type of the phone number provided. To be selected from one of the [options ](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1257414195/Library#PhoneType)provided.
+Type of the phone number provided. 
 
 
 ### postcode
@@ -457,7 +457,7 @@ Unique reference/ identifier for the schedule provided by Debitsuccess. Business
 
 
 ### state
-[State code](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1257414195/Library#StateCode-(USA%26AUS)) for US and Australia.
+[State code](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/6-Reference.md#statecode-usa-and-aus) for US and Australia.
 
 
 ### suburb
@@ -525,7 +525,7 @@ Datetime of overdue status change in UTC.
 ## W
 
 ### waiveEstFee
-Can be used to override the establishment fee payer in case it is set to business by default and should be [waived ](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1257414195/Library#WaiveEstFee)so that the business pays the establishment fee.
+Can be used to override the establishment fee payer in case it is set to business by default and should be waived so that the business pays the establishment fee.
 
 
 
