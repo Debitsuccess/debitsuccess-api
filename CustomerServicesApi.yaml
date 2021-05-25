@@ -990,7 +990,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: access_denied
-                message: Unable to process this request as you do not have access to the business associated to this request.
+                message: Unable to process this request as you do not have access to the business account associated to this request.
         '429':
           description: Too Many Requests - Occurs when user has sent too many requests in a given amount of time.
           headers:
@@ -1202,44 +1202,6 @@ paths:
         '401':
           description: |
             Unauthorized - Occurs when the authorization token provided is either expired or invalid.
-        '403':
-          description: Forbidden - Occurs when the client does not have sufficient claims to access this endpoint. Or when the identity server client does not have access to the business this request is being made for. see - List of claims required for this request see - Additional errorCodes returned
-          headers:
-            X-Notification:
-              description: This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.
-              required: true
-              schema:
-                enum:
-                  - 'Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00'
-                type: string
-            X-RateLimit-Limit:
-              description: The maximum number of requests you're permitted to make per hour.
-              required: true
-              schema:
-                enum:
-                  - 60
-                type: integer
-            X-RateLimit-Remaining:
-              description: The number of requests remaining in the current rate limit window.
-              required: true
-              schema:
-                enum:
-                  - 10
-                type: integer
-            X-RateLimit-Reset:
-              description: The time at which the current rate limit window resets in UTC epoch seconds.
-              required: true
-              schema:
-                enum:
-                  - 1377013266
-                type: integer
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/403BusinessAccessDenied'
-              example:
-                errorCode: access_denied
-                message: Unable to process this request as you do not have access to the business associated to this request.
         '429':
           description: Too Many Requests - Occurs when user has sent too many requests in a given amount of time.
           headers:
@@ -1385,44 +1347,6 @@ paths:
         '401':
           description: |
             Unauthorized - Occurs when the authorization token provided is either expired or invalid.
-        '403':
-          description: Forbidden - Occurs when the client does not have sufficient claims to access this endpoint. Or when the identity server client does not have access to the business this request is being made for. see - List of claims required for this request see - Additional errorCodes returned
-          headers:
-            X-Notification:
-              description: This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.
-              required: true
-              schema:
-                enum:
-                  - 'Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00'
-                type: string
-            X-RateLimit-Limit:
-              description: The maximum number of requests you're permitted to make per hour.
-              required: true
-              schema:
-                enum:
-                  - 60
-                type: integer
-            X-RateLimit-Remaining:
-              description: The number of requests remaining in the current rate limit window.
-              required: true
-              schema:
-                enum:
-                  - 10
-                type: integer
-            X-RateLimit-Reset:
-              description: The time at which the current rate limit window resets in UTC epoch seconds.
-              required: true
-              schema:
-                enum:
-                  - 1377013266
-                type: integer
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/403BusinessAccessDenied'
-              example:
-                errorCode: access_denied
-                message: Unable to process this request as you do not have access to the business associated to this request.
         '429':
           description: Too Many Requests - Occurs when user has sent too many requests in a given amount of time.
           headers:
@@ -1602,7 +1526,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: access_denied
-                message: Unable to process this request as you do not have access to the customer associated to this request.
+                message: Unable to process this request as you do not have access to the customer associated to this request.
         '404':
           description: Not Found - Occurs when the resource provided is not found
           headers:
@@ -2391,7 +2315,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: access_denied
-                message: Unable to process this request as you do not have access to the customer associated to this request.
+                message: Unable to process this request as you do not have access to the customer associated to this request.
         '429':
           description: Too Many Requests - Occurs when user has sent too many requests in a given amount of time.
           headers:
@@ -2932,7 +2856,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: access_denied
-                message: Unable to process this request as you do not have access to the customer associated to this request.
+                message: Unable to process this request as you do not have access to the account associated to this request.
         '404':
           description: Not Found - Occurs when the resource provided is not found
           headers:
@@ -3293,7 +3217,7 @@ paths:
                 example:
                   value:
                     errorCode: access_denied
-                    message: Unable to process this request as you do not have access to the customer associated to this request.
+                    message: Unable to process this request as you do not have access to the account associated to this request.
                 example-1:
                   value:
                     errorCode: access_denied
@@ -3564,7 +3488,7 @@ paths:
                 example:
                   value:
                     errorCode: access_denied
-                    message: Unable to process this request as you do not have access to the customer associated to this request.
+                    message: Unable to process this request as you do not have access to the account associated to this request.
                 example-1:
                   value:
                     errorCode: access_denied
@@ -3830,7 +3754,7 @@ paths:
                 example:
                   value:
                     errorCode: access_denied
-                    message: Unable to process this request as you do not have access to the customer associated to this request.
+                    message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_account\_associated\_to\_this\_request."
                 example-1:
                   value:
                     errorCode: access_denied
@@ -4057,7 +3981,7 @@ paths:
                 example:
                   value:
                     errorCode: customer_access_denied
-                    message: Unable to process this request as you do not have access to the customer associated to this request.
+                    message: Unable to process this request as you do not have access to the account associated to this request.
                 example-1:
                   value:
                     errorCode: access_denied
@@ -4353,7 +4277,7 @@ paths:
                 example:
                   value:
                     errorCode: access_denied
-                    message: Unable to process this request as you do not have access to the customer associated to this request.
+                    message: Unable to process this request as you do not have access to the account associated to this request.
                 example-1:
                   value:
                     errorCode: access_denied
@@ -4578,7 +4502,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: customer_access_denied
-                message: Unable to process this request as you do not have access to the customer associated to this request.
+                message: Unable to process this request as you do not have access to the account associated to this request.
         '404':
           description: Not Found - Occurs when the resource provided is not found
           headers:
@@ -4900,7 +4824,7 @@ paths:
                 example:
                   value:
                     errorCode: access_denied
-                    message: Unable to process this request as you do not have access to the customer associated to this request.
+                    message: Unable to process this request as you do not have access to the account associated to this request.
                 example-1:
                   value:
                     errorCode: access_denied
@@ -5180,7 +5104,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: access_denied
-                message: Unable to process this request as you do not have access to the customer associated to this request.
+                message: Unable to process this request as you do not have access to the account associated to this request.
         '429':
           description: Too Many Requests - Occurs when user has sent too many requests in a given amount of time.
           headers:
@@ -5666,7 +5590,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: access_denied
-                message: Unable to process this request as you do not have access to the customer associated to this request.
+                message: Unable to process this request as you do not have access to the account associated to this request.
         '404':
           description: Not Found - Occurs when the resource provided is not found
           headers:
@@ -6289,7 +6213,7 @@ paths:
                 example:
                   value:
                     errorCode: customer_access_denied
-                    message: Unable to process this request as you do not have access to the customer associated to this request.
+                    message: Unable to process this request as you do not have access to the account associated to this request.
                 example-1:
                   value:
                     errorCode: customer_access_denied
@@ -6494,7 +6418,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: customer_access_denied
-                message: Unable to process this request as you do not have access to the customer associated to this request.
+                message: Unable to process this request as you do not have access to the account associated to this request.
         '429':
           description: Too Many Requests - Occurs when user has sent too many requests in a given amount of time.
           headers:
@@ -10616,7 +10540,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: customer_access_denied
-                message: Unable to process this request as you do not have access to the customer associated to this request.
+                message: Unable to process this request as you do not have access to the account associated to this request.
         '429':
           description: Too Many Requests - Occurs when user has sent too many requests in a given amount of time.
           headers:
@@ -10893,7 +10817,7 @@ paths:
                 example:
                   value:
                     errorCode: customer_access_denied
-                    message: Unable to process this request as you do not have access to the customer associated to this request.
+                    message: Unable to process this request as you do not have access to the account associated to this request.
                 example-1:
                   value:
                     errorCode: access_denied
@@ -11315,7 +11239,7 @@ paths:
             Successful response with all payments based on the query parameters provided.
 
             >
-            Refer to the [supporting documentation](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/6-Reference.md) for the possible values retuned for `paymentCode`, `paymentMethod` and `paymentErrorCode`.
+            Refer to the [supporting documentation](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/6-Reference.md) for the possible values returned for `paymentCode`, `paymentMethod` and `paymentErrorCode`.
           content:
             application/json:
               schema:
@@ -11575,7 +11499,7 @@ paths:
                 example:
                   value:
                     errorCode: access_denied
-                    message: Unable to process this request as you do not have access to the customer associated to this request.
+                    message: Unable to process this request as you do not have access to the account associated to this request.
                 example-1:
                   value:
                     errorCode: access_denied
@@ -11819,7 +11743,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: customer_access_denied
-                message: Unable to process this request as you do not have access to the customer associated to this request.
+                message: Unable to process this request as you do not have access to the account associated to this request.
         '404':
           description: Not Found - Occurs when the resource provided is not found
           headers:
@@ -12714,7 +12638,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: access_denied
-                message: Unable to process this request as you do not have access to the business associated to this request.
+                message: Unable to process this request as you do not have access to the customer associated to this request.
         '429':
           description: Too Many Requests - Occurs when user has sent too many requests in a given amount of time.
           headers:
@@ -12887,7 +12811,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: access_denied
-                message: Unable to process this request as you do not have access to the business associated to this request.
+                message: Unable to process this request as you do not have access to the business account associated to this request.
         '429':
           description: Too Many Requests - Occurs when user has sent too many requests in a given amount of time.
           headers:
@@ -13115,7 +13039,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: access_denied
-                message: Unable to process this request as you do not have access to the customer associated to this request.
+                message: Unable to process this request as you do not have access to the customer associated to this request.
         '404':
           description: Not Found - Occurs when the resource provided is not found
           headers:
@@ -13433,7 +13357,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: access_denied
-                message: Unable to process this request as you do not have access to the customer associated to this request.
+                message: Unable to process this request as you do not have access to the account associated to this request.
         '404':
           description: Not Found - Occurs when the resource provided is not found
           headers:
@@ -13724,7 +13648,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: access_denied
-                message: Unable to process this request as you do not have access to the customer associated to this request.
+                message: Unable to process this request as you do not have access to the business account associated to this request.
         '404':
           description: Not Found - Occurs when the resource provided is not found
           headers:

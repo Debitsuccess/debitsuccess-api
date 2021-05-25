@@ -1,36 +1,36 @@
 # HTTP Requests
 
 ## Filtering
-The _$filter_ query string parameter allows clients to filter a collection of resources that are addressed by a request URL. The expression specified with _$filter_ is evaluated for each resource in the collection, and only items where the expression evaluates to true are included in the response. Resources for which the expression evaluates to false or to null, or which reference properties that are unavailable due to permissions, are omitted from the response.
+The _$filter_ query string parameter allows you to filter a collection of resources that are addressed by a request URL. The expression specified with _$filter_ is evaluated for each resource in the collection, and only items where the expression evaluates to true are included in the response. Resources for which the expression evaluates to false or to null, or which reference properties that are unavailable due to permissions, are omitted from the response.
 
 Example: return all Products whose Price is less than $10.00
 
 
 ```
-GET http://debitsuccess.com/DsCoreApi/v1.0/accounts?$filter=AdfitNo eq TST13522
+GET http://<ServerURL>/<DebitsuccessAPI>/v1.0/accounts?$filter=AdfitNo eq TST13522
 ```
 The value of the _$filter_ option is a Boolean expression.
 
 
 ### Filter Operations
-Services that support _$filter_ SHOULD support the following minimal set of operations.
+Services that support _$filter_ supports the following minimal set of operations.
 
 
 
 |  **Operator**  |  **Description**  |  **Example**  | 
 |  --- |  --- |  --- | 
-| Comparison Operators |  |  | 
+| **Comparison Operators** |  |  | 
 | eq | Equal | city eq 'Auckland' | 
 | ne | Not equal | city ne 'Auckland' | 
 | gt | Greater than | price gt 20 | 
 | ge | Greater than or equal | price ge 10 | 
 | lt | Less than | price lt 20 | 
 | le | Less than or equal | price le 100 | 
-| Logical Operators |  |  | 
+| **Logical Operators** |  |  | 
 | and | Logical and | price le 200 and price gt 3.5 | 
 | or | Logical or | price le 3.5 or price gt 200 | 
 | not | Logical negation | not price le 3.5 | 
-| Grouping Operators |  |  | 
+| **Grouping Operators** |  |  | 
 | ( ) | Precedence grouping | (priority eq 1 or city eq 'Auckland') and price gt 100 | 
 
 
@@ -41,34 +41,34 @@ Example: all accounts with a name equal to 'John'
 
 
 ```
-GET https://debitsuccess.com/core/v1.0/accounts?$filter=name eq 'John'
+GET https://<ServerURL>/<DebitsuccessAPI>/v1.0/accounts?$filter=name eq 'John'
 ```
 Example: all accounts with a name not equal to 'John'
 
 
 ```
-GET https://debitsuccess.com/core/v1.0/accounts?$filter=name ne 'John'
+GET https://<ServerURL>/<DebitsuccessAPI>/v1.0/accounts?$filter=name ne 'John'
 ```
 Example: all accounts with the name 'John' that also have a age less than 2 years:
 
 
 ```
-GET https://debitsuccess.com/core/v1.0/accounts?$filter=name eq 'John' and age lt 2
+GET https://<ServerURL>/<DebitsuccessAPI>/v1.0/accounts?$filter=name eq 'John' and age lt 2
 ```
 Example: all accounts that either have the name 'John' or have a age less than :
 
 
 ```
-GET https://debitsuccess.com/core/v1.0/accounts?$filter=name eq 'John' or age lt 2
+GET https://<ServerURL>/<DebitsuccessAPI>/v1.0/accounts?$filter=name eq 'John' or age lt 2
 ```
 Example : all accounts that have the name 'John' or 'Doe' and have a price less than 2.55:
 
 
 ```
-GET https://debitsuccess.com/core/v1.0/accounts?$filter=(name eq 'John' or name eq 'Doe') and age lt 2
+GET https://<ServerURL>/<DebitsuccessAPI>/v1.0/accounts?$filter=(name eq 'John' or name eq 'Doe') and age lt 2
 ```
 
-###  **Expression Evaluating Orde** r
+###  Expression Evaluating Order
 
 
 |  **Group**  |  **Operator**  |  **Description**  | 
@@ -88,23 +88,23 @@ GET https://debitsuccess.com/core/v1.0/accounts?$filter=(name eq 'John' or name 
 
 
 ## Sorting Collections
-The results of a collection query MAY be sorted based on property values. The property is determined by the value of the _$orderBy_ query parameter.
+The results of a collection query are be sorted based on property values. The property is determined by the value of the _$orderBy_ query parameter.
 
 The value of the _$orderBy_ parameter contains a comma-separated list of expressions used to sort the items. A special case of such an expression is a property path terminating on a primitive property.
 
-The expression MAY include the suffix "asc" for ascending or "desc" for descending, separated from the property name by one or more spaces. If "asc" or "desc" is not specified, the service MUST order by the specified property in ascending order.
+The expression include the suffix "asc" for ascending or "desc" for descending, separated from the property name by one or more spaces. If "asc" or "desc" is not specified, the service is order by the specified property in ascending order.
 
-NULL values MUST sort as "less than" non-NULL values.
+NULL values are sort as "less than" non-NULL values.
 
-Items MUST be sorted by the result values of the first expression, and then items with the same value for the first expression are sorted by the result value of the second expression, and so on. The sort order is the inherent order for the type of property.
+Items will be sorted by the result values of the first expression, and then items with the same value for the first expression are sorted by the result value of the second expression, and so on. The sort order is the inherent order for the type of property.
 
-Sorting should be available on list responses. sorting can be very beneficial when combined with pagination.
+Sorting is available on list responses. sorting can be very beneficial when combined with pagination.
 
 
 ### Interpreting a sorting expression
-Sorting parameters MUST be consistent across pages, as both client and server-side paging is fully compatible with sorting.
+Sorting parameters is consistent across pages, as both client and server-side paging is fully compatible with sorting.
 
-If a service does not support sorting by a property named in a _$orderBy_ expression, the service MUST respond with an error message as defined in the Responding to Unsupported Requests section.
+If a service does not support sorting by a property named in a _$orderBy_ expression, the service responds with an error message.
 
 
 ### Examples
@@ -112,7 +112,7 @@ If a service does not support sorting by a property named in a _$orderBy_ expres
 
 
 ```
-GET https://debitsuccess.com/core/v1.0/accounts?$orderBy=name
+GET https://<ServerURL>/<DebitsuccessAPI>/v1.0/accounts?$orderBy=name
 ```
 Will return all accounts sorted by name in ascending order.
 
@@ -120,7 +120,7 @@ For example:
 
 
 ```
-GET https://debitsuccess.com/core/v1.0/accounts?$orderBy=name desc
+GET https://<ServerURL>/<DebitsuccessAPI>/v1.0/accounts?$orderBy=name desc
 ```
 Will return all accounts sorted by name in descending order.
 
@@ -130,31 +130,31 @@ For example:
 
 
 ```
-GET https://debitsuccess.com/core/v1.0/accounts?$orderBy=name desc,startDate
+GET https://<ServerURL>/<DebitsuccessAPI>/v1.0/accounts?$orderBy=name desc,startDate
 ```
 Will return all accounts sorted by name in descending order and a secondary sort order of startDate in ascending order.
 
-Sorting MUST compose with filtering such that:
+Sorting can be paired with filtering such that:
 
 
 ```
-GET https://debitsuccess.com/core/v1.0/accounts?$filter=name eq 'john'&$orderBy=startDate
+GET https://<ServerURL>/<DebitsuccessAPI>/v1.0/accounts?$filter=name eq 'john'&$orderBy=startDate
 ```
-Will return all accounts whose name is john sorted in ascending order bystartDate.
+Will return all accounts whose name is john sorted in ascending order by startDate.
 
 
 
 
 ## Pagination
-nextCursor: Is used to indicate the first record to be fetched in the next retrieval if we wanted to continue to fetch more records.
+nextCursor: Indicate the position of the next record to be fetched into the list. Default to retrieve from the first record if not provided.
 
-limit
+limit: Indicate the number of records to be fetched into the list. Default to maximum value of 50 If not provided or value provided is greater than 50.
 
 
 
-RESTful APIs that return collections MAY return partial sets. Consumers of these services MUST expect partial result sets and correctly page through to retrieve an entire set.
+RESTful APIs that return collections return the results in partial sets. You must correctly page through the results to retrieve an entire set.
 
-Client-driven pagination MUST be supported by RESTful APIs.Client-driven paging enables clients to request only the number of resources that it can use at a given time.
+Client-driven pagination is supported by RESTful APIs. Client-driven paging enables clients to request only the number of resources that it can use at a given time.
 
 Sorting and Filtering parameters MUST be consistent across pages, because both client- and server-side paging is fully compatible with both filtering and sorting.
 

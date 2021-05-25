@@ -1,5 +1,10 @@
 # Change Log
 
+## May 25, 2021
+Enhancement to populate standardized 403 error messages when client attempts to execute API request with the resources provided in the request URL that has not been authorized to them. 
+
+There are 4 types of resources i.e., account, customer, business, and business account where each type will return error code 403 with standard errors message depending on the resource type.
+
 ## May 20, 2021 
 
 * Introduced a new endpoint for customer services API that will retrieve customer [payment schedule statuses](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1businesses~1%7BbusinessID%7D~1paymentstatuses/get) and other details for Gateway Model accounts.
@@ -45,7 +50,7 @@ Customer Services REST API is now available in the production environment. [Cust
 ******
 
 ## Upcoming APIs and Features
-Debitsuccess is always improving how we deliver our service.As part of delivering updated features, we may make some changes that impact how some of our existing APIs return data.
+Debitsuccess is always improving how we deliver our service. As part of delivering updated features, we may make some changes that impact how some of our existing APIs return data.
 
 <!-- theme: success -->
 

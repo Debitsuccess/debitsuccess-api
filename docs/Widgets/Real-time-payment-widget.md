@@ -7,6 +7,8 @@ The Realtime Payment Widget currently supports only casual payments. Support for
 
 The default casual payment form:
 
+![](https://drive.google.com/uc?export=view&id=1tkN8CSBIXyYfwYgeQgmE_TxZNvspc6fj) 
+
 ## Adding RealTime Payment Widget to a Web Page
 
 The following steps will walk you through collecting payment using the casual payment widget.
