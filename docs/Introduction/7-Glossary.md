@@ -53,7 +53,7 @@ Street address 2 (e.g., apartment, suite, unit, or building).
 
 
 ### addressType
-Type of the address provided. To be selected from one of the options provided [here](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1257414195/Library#AddressType).
+Type of the address provided such as Business, Home, Physical, or Postal.
 
 
 ### amount
@@ -121,11 +121,11 @@ The total value of the contract signed by the customer.
 
 
 ### countryCode
-The [country code](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1257414195/Library#PhoneNumberCountryCode) associated with the phone number.
+The [country code](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/6-Reference.md#countrycode) associated with the phone number.
 
 
 ### countryISOCode
-The three-character [ISO code](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1257414195/Library#CountryISOCode) of the country.
+The three-character [ISO code](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/6-Reference.md#countryisocode) of the country.
 
 
 ### customerId
@@ -227,7 +227,7 @@ Datetime of previous overdue status change in UTC.
 ## G
 
 ### gender
-The customer’s [gender](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1257414195/Library#Gender). 
+The customer’s gender. 
 
 
 ## H
@@ -339,7 +339,7 @@ Overdue amount to pay in business charges
 
 
 ### overdueStatus
-0, 1, 2, 3 (0 = Not overdue, > 0 indicate overdue stages with increasing severity ). Status descriptions can be found here [https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1492877598/Statuses#Overdue-Status](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1492877598/Statuses#Overdue-Status).
+0, 1, 2, 3 (0 = Not overdue, > 0 indicate overdue stages with increasing severity ). Status descriptions can be found here [https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1492877598/Statuses#Overdue-Status](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1492877598/Statuses+in+Debitsuccess+Systems#Account-Overdue-Status).
 
 
 ### overrideBillingCycleAlignment

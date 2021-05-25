@@ -1526,7 +1526,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: access_denied
-                message: Unable to process this request as you do not have access to the customer associated to this request.
+                message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_customer\_associated\_to\_this\_request."
         '404':
           description: Not Found - Occurs when the resource provided is not found
           headers:
@@ -2067,7 +2067,7 @@ paths:
               waiveEstFee: true
               alignEstFeeWithSchedule: false
               accountStartDate: '2019-12-31T00:00:00.0000000+00:00'
-              contractAmount: '900'
+              contractAmount: 900
               paymentMethodToken: frtg67yu-yht5-6756-234r-tghy6u7ytrre
               recurringSchedules:
                 - recurringScheduleStartDate: '2020-01-31T00:00:00.0000000+00:00'
@@ -2315,7 +2315,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: access_denied
-                message: Unable to process this request as you do not have access to the customer associated to this request.
+                message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_customer\_associated\_to\_this\_request."
         '429':
           description: Too Many Requests - Occurs when user has sent too many requests in a given amount of time.
           headers:
@@ -2856,7 +2856,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: access_denied
-                message: Unable to process this request as you do not have access to the account associated to this request.
+                message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_account\_associated\_to\_this\_request."
         '404':
           description: Not Found - Occurs when the resource provided is not found
           headers:
@@ -3217,7 +3217,7 @@ paths:
                 example:
                   value:
                     errorCode: access_denied
-                    message: Unable to process this request as you do not have access to the account associated to this request.
+                    message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_account\_associated\_to\_this\_request."
                 example-1:
                   value:
                     errorCode: access_denied
@@ -3488,7 +3488,7 @@ paths:
                 example:
                   value:
                     errorCode: access_denied
-                    message: Unable to process this request as you do not have access to the account associated to this request.
+                    message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_account\_associated\_to\_this\_request."
                 example-1:
                   value:
                     errorCode: access_denied
@@ -3981,7 +3981,7 @@ paths:
                 example:
                   value:
                     errorCode: customer_access_denied
-                    message: Unable to process this request as you do not have access to the account associated to this request.
+                    message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_account\_associated\_to\_this\_request."
                 example-1:
                   value:
                     errorCode: access_denied
@@ -4277,7 +4277,7 @@ paths:
                 example:
                   value:
                     errorCode: access_denied
-                    message: Unable to process this request as you do not have access to the account associated to this request.
+                    message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_account\_associated\_to\_this\_request."
                 example-1:
                   value:
                     errorCode: access_denied
@@ -4502,7 +4502,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: customer_access_denied
-                message: Unable to process this request as you do not have access to the account associated to this request.
+                message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_account\_associated\_to\_this\_request."
         '404':
           description: Not Found - Occurs when the resource provided is not found
           headers:
@@ -4824,7 +4824,7 @@ paths:
                 example:
                   value:
                     errorCode: access_denied
-                    message: Unable to process this request as you do not have access to the account associated to this request.
+                    message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_account\_associated\_to\_this\_request."
                 example-1:
                   value:
                     errorCode: access_denied
@@ -5104,7 +5104,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: access_denied
-                message: Unable to process this request as you do not have access to the account associated to this request.
+                message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_account\_associated\_to\_this\_request."
         '429':
           description: Too Many Requests - Occurs when user has sent too many requests in a given amount of time.
           headers:
@@ -5590,7 +5590,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: access_denied
-                message: Unable to process this request as you do not have access to the account associated to this request.
+                message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_account\_associated\_to\_this\_request."
         '404':
           description: Not Found - Occurs when the resource provided is not found
           headers:
@@ -6213,7 +6213,7 @@ paths:
                 example:
                   value:
                     errorCode: customer_access_denied
-                    message: Unable to process this request as you do not have access to the account associated to this request.
+                    message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_account\_associated\_to\_this\_request."
                 example-1:
                   value:
                     errorCode: customer_access_denied
@@ -6418,7 +6418,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: customer_access_denied
-                message: Unable to process this request as you do not have access to the account associated to this request.
+                message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_account\_associated\_to\_this\_request."
         '429':
           description: Too Many Requests - Occurs when user has sent too many requests in a given amount of time.
           headers:
@@ -10540,7 +10540,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: customer_access_denied
-                message: Unable to process this request as you do not have access to the account associated to this request.
+                message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_account\_associated\_to\_this\_request."
         '429':
           description: Too Many Requests - Occurs when user has sent too many requests in a given amount of time.
           headers:
@@ -10817,7 +10817,7 @@ paths:
                 example:
                   value:
                     errorCode: customer_access_denied
-                    message: Unable to process this request as you do not have access to the account associated to this request.
+                    message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_account\_associated\_to\_this\_request."
                 example-1:
                   value:
                     errorCode: access_denied
@@ -11499,7 +11499,7 @@ paths:
                 example:
                   value:
                     errorCode: access_denied
-                    message: Unable to process this request as you do not have access to the account associated to this request.
+                    message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_account\_associated\_to\_this\_request."
                 example-1:
                   value:
                     errorCode: access_denied
@@ -11743,7 +11743,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: customer_access_denied
-                message: Unable to process this request as you do not have access to the account associated to this request.
+                message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_account\_associated\_to\_this\_request."
         '404':
           description: Not Found - Occurs when the resource provided is not found
           headers:
@@ -12550,7 +12550,7 @@ paths:
                 paymentMethodType: CreditCard
                 number: '**** 1111'
                 cardType: visa
-                cardExpiryDate: '2021-11-22T00:00:00.0000000+00:00'
+                cardExpiryDate: 11/22
         '400':
           description: 'Bad Request - Request failed due to validation errors, the response lists the field in the request that did not pass the validation. The client can directly show these errors to the end users.'
           headers:
@@ -12638,7 +12638,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: access_denied
-                message: Unable to process this request as you do not have access to the customer associated to this request.
+                message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_customer\_associated\_to\_this\_request."
         '429':
           description: Too Many Requests - Occurs when user has sent too many requests in a given amount of time.
           headers:
@@ -13039,7 +13039,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: access_denied
-                message: Unable to process this request as you do not have access to the customer associated to this request.
+                message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_customer\_associated\_to\_this\_request."
         '404':
           description: Not Found - Occurs when the resource provided is not found
           headers:
@@ -13357,7 +13357,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: access_denied
-                message: Unable to process this request as you do not have access to the account associated to this request.
+                message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_account\_associated\_to\_this\_request."
         '404':
           description: Not Found - Occurs when the resource provided is not found
           headers:
@@ -15147,6 +15147,8 @@ components:
           type: string
         suspensionScheduleEndDate:
           type: string
+          format: date
+          pattern: YYYY-MM-DD
     200GetOverdueStatusChanges:
       type: object
       properties:
@@ -15247,6 +15249,8 @@ components:
         suspensionScheduleEndDate:
           type: string
           description: Suspension schedule end date
+          format: date
+          pattern: YYYY-MM-DD
       required:
         - suspensionScheduleEndDate
     CreateSuspensionScheduleRequest:
@@ -15404,6 +15408,8 @@ components:
                 type: string
               dueDate:
                 type: string
+                format: date
+                pattern: YYYY-MM-DD
               amount:
                 type: number
               scheduleDescription:
@@ -15738,6 +15744,7 @@ components:
         - amount
     200PatchCustomer:
       type: object
+      x-examples: {}
       properties:
         paymentMethodToken:
           type: string
@@ -15918,6 +15925,44 @@ components:
         - isPrimary
     201CreateAccount:
       type: object
+      x-examples:
+        example-1:
+          accountId: string
+          accountExternalId: string
+          customerId: string
+          businessAccountId: string
+          accountCode: string
+          termType: string
+          term: 0
+          accountNotes: string
+          fixedTerm: true
+          nextBillingDate: string
+          lastBillingDateTime: string
+          overdueStatus: 0
+          overdueAmountPayment: 0
+          overdueAmountFee: 0
+          lastReversalReason: string
+          closeReason: string
+          suspended: true
+          paymentStopped: true
+          paymentStopEndDate: string
+          catchUpAmount: 0
+          catchUpEndDate: string
+          paymentInAdvanceAmount: 0
+          paymentInAdvanceEnddate: string
+          waiveEstFee: true
+          accountStartDate: string
+          accountLoadedDateTime: string
+          accountCloseDateTime: string
+          lastUpdatedDateTime: string
+          accruedContractAmount: 0
+          originalContractAmount: 0
+          outstandingRecurringAmount: 0
+          outandingOneOffAmount: 0
+          outstandingFeeAmount: 0
+          projectedFinishDate: string
+          paymentMethodToken: string
+          recurringSchedule: null
       properties:
         accountId:
           type: string
@@ -15992,45 +16037,11 @@ components:
         paymentMethodToken:
           type: string
           description: PaymentMethod must be associated to the provided CustomerId.
-        recurringSchedule: {}
-      x-examples:
-        example-1:
-          accountId: string
-          accountExternalId: string
-          customerId: string
-          businessAccountId: string
-          accountCode: string
-          termType: string
-          term: 0
-          accountNotes: string
-          fixedTerm: true
-          nextBillingDate: string
-          lastBillingDateTime: string
-          overdueStatus: 0
-          overdueAmountPayment: 0
-          overdueAmountFee: 0
-          lastReversalReason: string
-          closeReason: string
-          suspended: true
-          paymentStopped: true
-          paymentStopEndDate: string
-          catchUpAmount: 0
-          catchUpEndDate: string
-          paymentInAdvanceAmount: 0
-          paymentInAdvanceEnddate: string
-          waiveEstFee: true
-          accountStartDate: string
-          accountLoadedDateTime: string
-          accountCloseDateTime: string
-          lastUpdatedDateTime: string
-          accruedContractAmount: 0
-          originalContractAmount: 0
-          outstandingRecurringAmount: 0
-          outandingOneOffAmount: 0
-          outstandingFeeAmount: 0
-          projectedFinishDate: string
-          paymentMethodToken: string
-          recurringSchedule: null
+        recurringSchedules:
+          type: object
+          properties:
+            '':
+              type: string
     CreateAccountRequest:
       type: object
       description: ''
@@ -16088,7 +16099,7 @@ components:
           type: string
           description: 'YYYY-MM-DD, Determine the date (in UTC) when the account will start.'
         contractAmount:
-          type: string
+          type: number
           description: Amount to be collected for the account (in terms of recurring payments) before the account is past its minimum term. Applicable for fixedTerm = true.
         paymentMethodToken:
           type: string
