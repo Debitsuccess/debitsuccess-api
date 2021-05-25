@@ -1330,7 +1330,7 @@ paths:
             default: '200'
       responses:
         '200':
-          description: Successful response with all businesses assigned to the client ID derived from the Authorization token provided
+          description: Successful response with all businesses assigned to the client ID derived from the Authorization token provided.
           content:
             application/json:
               schema:
