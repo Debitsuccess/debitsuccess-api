@@ -4464,7 +4464,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: customer_access_denied
-                message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_account\_associated\_to\_this\_request."
+                message: "Unable to process this request as you do not have access to the account associated to this request."
         '404':
           description: Not Found - Occurs when the resource provided is not found
           headers:
