@@ -2020,8 +2020,8 @@ paths:
     post:
       tags:
         - Accounts
-      summary: 'Create Account '
-      description: 'Create an account for existing customer '
+      summary: 'Create Account'
+      description: 'Create an account for existing customer'
       operationId: 5dc0a46f2f4e8967ea68c2ae
       parameters:
         - name: Authorization
@@ -15363,16 +15363,38 @@ components:
       properties:
         paymentMethodToken:
           type: string
+          description: Token associated to the payment method
         paymentMethodType:
           type: string
+          description: |-
+            BA - BankAccount
+
+            CC - CreditCard
+          maxLength: 2
         holderName:
           type: string
+          description: Name of Account holder associated to the payment method
+          maxLength: 50
         cardNumber:
           type: string
+          description: Bank account number or credit card number associated to the payment method. This field must be masked according to the PCI standard.
+          maxLength: 35
         cardType:
           type: string
+          description: |-
+            AM - American Express
+            DC - Discover
+            DI - Diners
+            JC - JCB
+            MA - Mastercard
+            VI - Visa
+            Null - for bank account payment method
+          maxLength: 2
         cardExpiryDate:
           type: string
+          description: Expiry date of the credit card used in this payment method. Not applicable to bank account payment method
+          default: MM/YY
+          maxLength: 5
         defaultPaymentMethod:
           type: boolean
           description: Null if accountId is not provided
