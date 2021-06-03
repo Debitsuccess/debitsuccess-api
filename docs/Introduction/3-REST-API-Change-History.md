@@ -1,15 +1,13 @@
 # Change Log
 
 ## May 25, 2021
-Enhancement to populate standardized 403 error messages when client attempts to execute API request with the resources provided in the request URL that has not been authorized to them. 
-
-There are 4 types of resources i.e., account, customer, business, and business account where each type will return error code 403 with standard errors message depending on the resource type.
+Enhancement to populate standardized 403 error messages when client attempts to execute API request with the resources provided in the request URL that has not been authorized to them. There are four types of resources i.e., account, customer, business, and business account where each type will return error code 403 with standard errors message depending on the resource type.
 
 ## May 20, 2021 
 
 * Introduced a new endpoint for customer services API that will retrieve customer [payment schedule statuses](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1businesses~1%7BbusinessID%7D~1paymentstatuses/get) and other details for Gateway Model accounts.
 * Implemented multilevel permission checks for [GET Payment History](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1payments/get) endpoints by filter off all records that the client do not have access to.
-* Fix to stop 'Overdue' mail if Account has a new schedule created (via POST Account/POST Schedule) to start immediately but after the billing has completed. This is to prevent the customer from being sent the email for overdue.
+* Fix to stop 'Overdue' mail if Account has a new schedule created (via POST Account/POST Schedule) to start immediately but after the billing cycle for the day has completed. This is to prevent sending an overdue email to the customer.
 
 ## May 11, 2021
 
@@ -57,6 +55,8 @@ Debitsuccess is always improving how we deliver our service. As part of deliveri
 > Please note that these features are in our roadmap but we do not have a definite ETA.
 
 * New endpoint for customer services API will be introduced to transfer an account from one business account to another.
+
+
 
 *****
 

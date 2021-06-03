@@ -1982,8 +1982,8 @@ paths:
     post:
       tags:
         - Accounts
-      summary: 'Create Account'
-      description: 'Create an account for existing customer'
+      summary: Create Account
+      description: Create an account for an existing customer.
       operationId: 5dc0a46f2f4e8967ea68c2ae
       parameters:
         - name: Authorization
@@ -2010,9 +2010,11 @@ paths:
       requestBody:
         description: |
           Request to create account to existing customer based on CustomerID and BusinessAccountID provided.
-
           >
-          Notes: Maximum 3 recurring schedules are allowed to be assigned to an account. Recurring schedules are not applicable for Gateway Billing accounts.
+          *Notes*:
+          * Maximum of 3 recurring schedules are allowed to be assigned to an account. 
+          * Recurring schedules are not applicable for Gateway Billing accounts.
+          * If an account has a new schedule created to start immediately but after the billing cut-off, then the customer will be billed the next working day.
         content:
           application/json:
             schema:
@@ -4597,7 +4599,10 @@ paths:
             type: string
             default: '201'
       requestBody:
-        description: Request to create recurring schedule for existing account based on Account ID provided.
+        description: |-
+          Request to create recurring schedule for existing account based on Account ID provided.
+
+          > Note:  If a new schedule is created to start immediately but after the billing cut-off, then the customer will be billed the next working day.
         content:
           application/json:
             schema:
@@ -6008,7 +6013,10 @@ paths:
             default: '201'
       requestBody:
         description: |
-          Request to create new one-off schedule for existing accounts. This can be used for full service accounts and payment gateway model accounts.
+          Request to create new one-off schedule for existing accounts. This can be used for full service accounts and payment gateway model accounts. 
+
+
+          > Note:  If a new schedule is created to start immediately but after the billing cut-off, then the customer will be billed the next working day.
         content:
           application/json:
             schema:
@@ -10559,7 +10567,7 @@ paths:
       tags:
         - Schedules-Suspension
       summary: Create Schedule (Suspension)
-      description: Create a suspension schedule for an existing account based on the Account ID provided
+      description: Create a suspension schedule for an account for a number of payment cycles or for a period.
       operationId: 5de960d65fd7c9955030668f
       parameters:
         - name: accountId
