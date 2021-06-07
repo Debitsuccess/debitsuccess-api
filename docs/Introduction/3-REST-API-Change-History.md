@@ -1,5 +1,18 @@
 # Change Log
 
+## Upcoming APIs and Features
+Debitsuccess is always improving how we deliver our service. As part of delivering updated features, we may make some changes that impact how some of our existing APIs return data.
+
+<!-- theme: success -->
+
+> Please note that these features are in our roadmap for the next three months but we do not have a definite ETA.
+
+* New endpoint for customer services API will be introduced to transfer an account from one business account to another.
+* New customer services API endpoint to create, get, and update gauatantor details will soon be available.
+* Enhancement to the [Realtime Payment Widget](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Widgets/Real-time-payment-widget.md) to support account payments.
+
+
+*****
 ## May 25, 2021
 Enhancement to populate standardized 403 error messages when client attempts to execute API request with the resources provided in the request URL that has not been authorized to them. There are four types of resources i.e., account, customer, business, and business account where each type will return error code 403 with standard errors message depending on the resource type.
 
@@ -47,16 +60,5 @@ Customer Services REST API is now available in the production environment. [Cust
 
 ******
 
-## Upcoming APIs and Features
-Debitsuccess is always improving how we deliver our service. As part of delivering updated features, we may make some changes that impact how some of our existing APIs return data.
 
-<!-- theme: success -->
-
-> Please note that these features are in our roadmap but we do not have a definite ETA.
-
-* New endpoint for customer services API will be introduced to transfer an account from one business account to another.
-
-
-
-*****
 
