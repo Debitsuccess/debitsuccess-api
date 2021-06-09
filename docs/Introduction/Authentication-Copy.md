@@ -86,7 +86,23 @@ In exchange for these credentials, the Debitsuccess authorization server issues 
 | Token_Type | "Bearer" | A bearer token means that the bearer of the access token can access authorized resources without further identification.The access token must always be appended with the term “Bearer” when you call any Debitsuccess REST API. E.g. Bearer \[access_token]| 
 
 
+```json
+{
 
+  "access_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjExODhlZTc5NjIzNTVlODYwNzUwMWIzMGY2Y2QzZjBmIiwidHlwIjoiSldUIn0.eyJuYmYiOjE1MTE2NTIwODEsImV4cCI6MTUxMTY1NTY4MSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDozMDAw
+
+                   MiIsImF1ZCI6WyJodHRwOi8vbG9jYWxob3N0OjMwMDAyL3Jlc291cmNlcyIsIk9NRyJdLCJjbGllbnRfaWQiOiI1ZjFiMWQ2Ny02NDlhLTRmYzMtYjkzMC1iMzExOTFjZjZmMTEiLCJjbGllbnRfVXNlcklkIjoiMTIzNCIsInNjb3BlIjpbIk9NRyJdfQ.Mlnd0RZhW8tp
+
+                   8Ktj7_KuxViFAzyeYLMl7SdnVbKAFNPh74Z9Ib4u8kGMvz0ZFnx62_CaMpSPEwE6wHdFBTeBKvYKN5h1PjnJrrSh9J2S4a3PsCnnlLrhfO6sNBHzZzAlQhGMQei2GHQufiOyWtrYSfK8R4Ye1ULeysTRkfrWxk_fZ3Brm_vFh5J43EbTHe8NSgIXbobyN7brVFjntNZskJ
+
+                   Sj4QUaw8Fz1npwZSNHF8XpOMZIEWAL2uOWUPm18Op-1IDOOj04eZAsFoHL5gb_pNqGph5SejTqjSbpbabMalJlaxvJrA1NNFxbGAMGXWR0ocJZvmlIYRebrueZk5yGg",
+
+ "expires_in": 3600,
+
+ "token_type": "Bearer"
+
+}
+```
 **Error message 400- Bad Request, Request validation error**
 
 The response message will vary depending on the cause.
@@ -112,7 +128,15 @@ To call the API, the token should be added to the request in theAuthorizationhea
 ```json
 GET https://oc-test.debitsuccess.com/customerservice/accounts/{accountId}
 
+Headers:
 
+content-type: application/json; charset=utf-8
+
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjExODhlZTc5NjIzNTVlODYwNzUwMWIzMGY2Y2QzZjBmIiwidHlwIjoiSldUIn0.eyJuYmYiOjE1MTE2NTUyNzQsImV4cCI6MTUxMTY1ODg3NCwiaXNzIjoiaHR0cDovL2xvY2F
+saG9zdDozMDAwMiIsImF1ZCI6WyJodHRwOi8vbG9jYWxob3N0OjMwMDAyL3Jlc291cmNlcyIsIk9NRyJdLCJjbGllbnRfaWQiOiI1ZjFiMWQ2Ny02NDlhLTRmYzMtYjkzMC1iMzExOTFjZjZmMTEiLCJjbGllbnRfVXNlcklkIjoiMTIzNCIsInN
+jb3BlIjpbIk9NRyJdfQ.NVON-z-Dli5AjSR91M6PR4jGUh9SyCej0sAaC0ClBIQbo9Eez7LP7ZGeVU2_UfGdv6mAmmuBrWKlC3LvAxXpavFACw0cSbtG_ayLwIyfkc1PGHZO1F8xqMdskD6vM6h704cuZ7XCE3otIYM-1IEvuEV7dl_83MtFX9cF
+K3QsDwjYlgwAWUBH7IxKDJCAXXqf4PqZY53jr1tjMDBgINRsl0iCjG83X9pvzf0pa9i5bLfFHmDLgagGpqdm7-GwTDNgzAx28gXzlzWFSuuWkikzTw7F7Mi7O91u3Su3dHZ79hc0YxoIJ7q7pMss1bhdYiGiPCQ-GNTkljeG5vatPZvSxQ
+```
 
 
 *******
