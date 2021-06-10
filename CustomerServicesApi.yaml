@@ -2012,9 +2012,9 @@ paths:
           Request to create account to existing customer based on CustomerID and BusinessAccountID provided.
           >
           *Notes*:
-          * Maximum of 3 recurring schedules are allowed to be assigned to an account. 
-          * Recurring schedules are not applicable for Gateway Billing accounts.
-          * If an account has a new schedule created to start immediately but after the billing cut-off, then the customer will be billed the next working day.
+          >* Maximum of 3 recurring schedules are allowed to be assigned to an account. 
+          >* Recurring schedules are not applicable for Gateway Billing accounts.
+          >* If an account has a new schedule created to start immediately but after the billing cut-off, then the customer will be billed the next working day.
         content:
           application/json:
             schema:
@@ -2030,17 +2030,17 @@ paths:
               fixedTerm: true
               waiveEstFee: true
               alignEstFeeWithSchedule: false
-              accountStartDate: '2019-12-31T00:00:00.0000000+00:00'
+              accountStartDate: '2019-12-31'
               contractAmount: 900
               paymentMethodToken: frtg67yu-yht5-6756-234r-tghy6u7ytrre
               recurringSchedules:
-                - recurringScheduleStartDate: '2020-01-31T00:00:00.0000000+00:00'
+                - recurringScheduleStartDate: '2020-01-31'
                   installment: 50
                   frequency: monthly
                   numberOfPayments: 6
                   externalScheduleId: R125810
                   scheduleDescription: Recurring schedule Jan-Jun
-                - recurringScheduleStartDate: '2020-07-31T00:00:00.0000000+00:00'
+                - recurringScheduleStartDate: '2020-07-31'
                   installment: 100
                   frequency: monthly
                   numberOfPayments: 0
@@ -2966,7 +2966,7 @@ paths:
               term: 12
               accountCode: DSFit Account Code 1
               fixedTerm: true
-              accountStartDate: '2019-01-31T00:00:00.0000000+00:00'
+              accountStartDate: '2019-01-31'
               paymentStopped: false
               paymentStoppedEndDate: ''
               contractAmount: 999.9
@@ -2984,7 +2984,7 @@ paths:
                 term: 12
                 accountCode: DSFit Account Code 1
                 fixedTerm: true
-                accountStartDate: '2019-01-31T00:00:00.0000000+00:00'
+                accountStartDate: '2019-01-31'
                 paymentStopped: false
                 paymentStoppedEndDate: ''
                 contractAmount: 999.9
@@ -4608,7 +4608,7 @@ paths:
             schema:
               $ref: '#/components/schemas/CreateRecurringScheduleRequest'
             example:
-              minimumEffectiveDate: '2020-01-31T00:00:00.0000000+00:00'
+              minimumEffectiveDate: '2020-01-31'
               installment: 50
               frequency: monthly
               scheduleDescription: Recurring schedule Jan-Dec
@@ -4626,7 +4626,7 @@ paths:
               example:
                 scheduleId: '12345678'
                 accountId: CWAUS999999
-                recurringScheduleStartDate: '2020-01-31T00:00:00.0000000+00:00'
+                recurringScheduleStartDate: '2020-01-31'
                 installment: 50
                 frequency: monthly
                 scheduleDescription: Recurring schedule Jan-Dec
@@ -4977,8 +4977,8 @@ paths:
                   - scheduleId: '12345678'
                     accountId: AILL056H6
                     accountExternalId: ABC12345
-                    recurringScheduleStartDate: '2020-01-31T00:00:00.0000000+00:00'
-                    recurringScheduleEndDate: '2020-12-31T00:00:00.0000000+00:00'
+                    recurringScheduleStartDate: '2020-01-31'
+                    recurringScheduleEndDate: '2020-12-31'
                     installment: 50
                     frequency: monthly
                     scheduleDescription: Recurring schedule Jan-Dec
@@ -15775,7 +15775,7 @@ components:
       required:
         - phoneName
         - phoneNumber
-        - phonetype
+        - phoneType
     AddPhoneNumberRequest:
       type: object
       properties:
@@ -16086,7 +16086,7 @@ components:
           type: string
         dateOfBirth:
           type: string
-          description: YYYY-MM-DD
+          description: format YYYY-MM-DD
         externalReference:
           type: string
           description: External reference associated to the customer to be created
