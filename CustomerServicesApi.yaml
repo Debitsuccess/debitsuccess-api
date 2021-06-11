@@ -1982,8 +1982,8 @@ paths:
     post:
       tags:
         - Accounts
-      summary: 'Create Account '
-      description: 'Create an account for existing customer '
+      summary: Create Account
+      description: Create an account for an existing customer.
       operationId: 5dc0a46f2f4e8967ea68c2ae
       parameters:
         - name: Authorization
@@ -2010,9 +2010,11 @@ paths:
       requestBody:
         description: |
           Request to create account to existing customer based on CustomerID and BusinessAccountID provided.
-
           >
-          Notes: Maximum 3 recurring schedules are allowed to be assigned to an account. Recurring schedules are not applicable for Gateway Billing accounts.
+          *Notes*:
+          >* Maximum of 3 recurring schedules are allowed to be assigned to an account. 
+          >* Recurring schedules are not applicable for Gateway Billing accounts.
+          >* If an account has a new schedule created to start immediately but after the billing cut-off, then the customer will be billed the next working day.
         content:
           application/json:
             schema:
@@ -2028,17 +2030,17 @@ paths:
               fixedTerm: true
               waiveEstFee: true
               alignEstFeeWithSchedule: false
-              accountStartDate: '2019-12-31T00:00:00.0000000+00:00'
+              accountStartDate: '2019-12-31'
               contractAmount: 900
               paymentMethodToken: frtg67yu-yht5-6756-234r-tghy6u7ytrre
               recurringSchedules:
-                - recurringScheduleStartDate: '2020-01-31T00:00:00.0000000+00:00'
+                - recurringScheduleStartDate: '2020-01-31'
                   installment: 50
                   frequency: monthly
                   numberOfPayments: 6
                   externalScheduleId: R125810
                   scheduleDescription: Recurring schedule Jan-Jun
-                - recurringScheduleStartDate: '2020-07-31T00:00:00.0000000+00:00'
+                - recurringScheduleStartDate: '2020-07-31'
                   installment: 100
                   frequency: monthly
                   numberOfPayments: 0
@@ -2964,7 +2966,7 @@ paths:
               term: 12
               accountCode: DSFit Account Code 1
               fixedTerm: true
-              accountStartDate: '2019-01-31T00:00:00.0000000+00:00'
+              accountStartDate: '2019-01-31'
               paymentStopped: false
               paymentStoppedEndDate: ''
               contractAmount: 999.9
@@ -2982,7 +2984,7 @@ paths:
                 term: 12
                 accountCode: DSFit Account Code 1
                 fixedTerm: true
-                accountStartDate: '2019-01-31T00:00:00.0000000+00:00'
+                accountStartDate: '2019-01-31'
                 paymentStopped: false
                 paymentStoppedEndDate: ''
                 contractAmount: 999.9
@@ -4597,20 +4599,23 @@ paths:
             type: string
             default: '201'
       requestBody:
-        description: Request to create recurring schedule for existing account based on Account ID provided.
+        description: |-
+          Request to create recurring schedule for existing account based on Account ID provided.
+
+          > Note:  If a new schedule is created to start immediately but after the billing cut-off, then the customer will be billed the next working day.
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateRecurringScheduleRequest'
             example:
-              minimumEffectiveDate: '2020-01-31T00:00:00.0000000+00:00'
+              minimumEffectiveDate: '2020-01-31'
               installment: 50
               frequency: monthly
               scheduleDescription: Recurring schedule Jan-Dec
               externalScheduleId: T125810
               deleteFutureSchedules: true
               overrideBillingCycleAlignment: true
-              previousScheduleEndDate: '2019-11-30T00:00:00.0000000+00:00'
+              previousScheduleEndDate: '2019-11-30'
       responses:
         '201':
           description: Recurring schedule is successfully created.
@@ -4621,14 +4626,14 @@ paths:
               example:
                 scheduleId: '12345678'
                 accountId: CWAUS999999
-                recurringScheduleStartDate: '2020-01-31T00:00:00.0000000+00:00'
+                recurringScheduleStartDate: '2020-01-31'
                 installment: 50
                 frequency: monthly
                 scheduleDescription: Recurring schedule Jan-Dec
                 externalScheduleId: T125810
                 deleteFutureSchedules: true
                 overrideBillingCycleAlignment: true
-                previousScheduleEndDate: '2019-11-30T00:00:00.0000000+00:00'
+                previousScheduleEndDate: '2019-11-30'
         '400':
           description: 'Bad Request - Request failed due to validation errors, the response lists the field in the request that did not pass the validation. The client can directly show these errors to the end users.'
           headers:
@@ -4972,8 +4977,8 @@ paths:
                   - scheduleId: '12345678'
                     accountId: AILL056H6
                     accountExternalId: ABC12345
-                    recurringScheduleStartDate: '2020-01-31T00:00:00.0000000+00:00'
-                    recurringScheduleEndDate: '2020-12-31T00:00:00.0000000+00:00'
+                    recurringScheduleStartDate: '2020-01-31'
+                    recurringScheduleEndDate: '2020-12-31'
                     installment: 50
                     frequency: monthly
                     scheduleDescription: Recurring schedule Jan-Dec
@@ -4981,7 +4986,7 @@ paths:
                   - scheduleId: '12345688'
                     accountId: AILL056H6
                     accountExternalId: ABC12345
-                    recurringScheduleStartDate: '2021-01-31T00:00:00.0000000+00:00'
+                    recurringScheduleStartDate: '2021-01-31'
                     recurringScheduleEndDate: 'null'
                     installment: 30
                     frequency: weekly
@@ -5470,8 +5475,8 @@ paths:
                 scheduleId: '12345678'
                 accountId: AILL056H6
                 accountExternalId: ABC12345
-                recurringScheduleStartDate: '2020-01-31T00:00:00.0000000+00:00'
-                recurringScheduleEndDate: '2020-12-31T00:00:00.0000000+00:00'
+                recurringScheduleStartDate: '2020-01-31'
+                recurringScheduleEndDate: '2020-12-31'
                 installment: 50
                 frequency: monthly
                 scheduleDescription: Recurring schedule Jan-Dec
@@ -5699,8 +5704,8 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateRecurringScheduleRequest'
             example:
-              recurringScheduleStartDate: '2020-01-31T00:00:00.0000000+00:00'
-              recurringScheduleEndDate: '2020-12-31T00:00:00.0000000+00:00'
+              recurringScheduleStartDate: '2020-01-31'
+              recurringScheduleEndDate: '2020-12-31'
               installment: 50
               frequency: monthly
               numberOfPayments: 12
@@ -5716,8 +5721,8 @@ paths:
               example:
                 scheduleId: '12345678'
                 accountId: CWAUS999999
-                recurringScheduleStartDate: '2020-01-31T00:00:00.0000000+00:00'
-                recurringScheduleEndDate: '2020-12-31T00:00:00.0000000+00:00'
+                recurringScheduleStartDate: '2020-01-31'
+                recurringScheduleEndDate: '2020-12-31'
                 installment: 50
                 frequency: monthly
                 scheduleDescription: Recurring schedule Jan-Dec
@@ -6008,7 +6013,10 @@ paths:
             default: '201'
       requestBody:
         description: |
-          Request to create new one-off schedule for existing accounts. This can be used for full service accounts and payment gateway model accounts.
+          Request to create new one-off schedule for existing accounts. This can be used for full service accounts and payment gateway model accounts. 
+
+
+          > Note:  If a new schedule is created to start immediately but after the billing cut-off, then the customer will be billed the next working day.
         content:
           application/json:
             schema:
@@ -10559,7 +10567,7 @@ paths:
       tags:
         - Schedules-Suspension
       summary: Create Schedule (Suspension)
-      description: Create a suspension schedule for an existing account based on the Account ID provided
+      description: Create a suspension schedule for an account for a number of payment cycles or for a period.
       operationId: 5de960d65fd7c9955030668f
       parameters:
         - name: accountId
@@ -13665,7 +13673,7 @@ paths:
       tags:
         - Payment Status
       operationId: get-businesses-businessID-paymentstatuses
-      description: Returns payment  statuses for Gateway Accounts based on the input parameters provided.
+      description: 'Returns payment  statuses for Gateway Accounts based on the input parameters provided. See [Statuses in Debitsuccess Systems](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1492877598/Statuses+in+Debitsuccess+Systems#Payment-Status) for details on the possible Payment statuses. '
       parameters:
         - schema:
             type: string
@@ -13676,10 +13684,9 @@ paths:
             type: string
           in: query
           name: AccountId
-          description: Unique identifier associated to the account
+          description: 'Unique identifier associated to the account. if not provided, records from all accounts associated to the user will be extracted.'
         - schema:
             enum:
-              - Unattempted
               - Pending
               - Retry
               - Failed
@@ -13690,7 +13697,7 @@ paths:
             type: string
           in: query
           name: Status
-          description: Status of the payment
+          description: 'Status of the payment. If not provided, payment schedule records from all statuses associated to the user will be extracted.'
         - schema:
             type: string
           in: query
@@ -15211,16 +15218,38 @@ components:
       properties:
         paymentMethodToken:
           type: string
+          description: Token associated to the payment method
         paymentMethodType:
           type: string
+          description: |-
+            BA - BankAccount
+
+            CC - CreditCard
+          maxLength: 2
         holderName:
           type: string
+          description: Name of Account holder associated to the payment method
+          maxLength: 50
         cardNumber:
           type: string
+          description: Bank account number or credit card number associated to the payment method. This field must be masked according to the PCI standard.
+          maxLength: 35
         cardType:
           type: string
+          description: |-
+            AM - American Express
+            DC - Discover
+            DI - Diners
+            JC - JCB
+            MA - Mastercard
+            VI - Visa
+            Null - for bank account payment method
+          maxLength: 2
         cardExpiryDate:
           type: string
+          description: Expiry date of the credit card used in this payment method. Not applicable to bank account payment method
+          default: MM/YY
+          maxLength: 5
         defaultPaymentMethod:
           type: boolean
           description: Null if accountId is not provided
@@ -15745,7 +15774,7 @@ components:
       required:
         - phoneName
         - phoneNumber
-        - phonetype
+        - phoneType
     AddPhoneNumberRequest:
       type: object
       properties:
@@ -16056,7 +16085,7 @@ components:
           type: string
         dateOfBirth:
           type: string
-          description: YYYY-MM-DD
+          description: format YYYY-MM-DD
         externalReference:
           type: string
           description: External reference associated to the customer to be created
@@ -16509,42 +16538,47 @@ components:
           minItems: 1
           items:
             type: object
+            description: ''
             properties:
               businessAccountId:
                 type: string
-                minLength: 1
+                description: System generated reference to Business Account e.g. Contract Prefix associated to the account owning the payment schedule
               accountId:
                 type: string
-                minLength: 1
+                description: System generated reference id associated to the Account
               description:
                 type: string
-                minLength: 1
+                description: Description of the payment schedule
               externalIdentifier:
                 type: string
-                minLength: 1
+                description: External reference of the payment schedule
               installment:
                 type: number
+                description: Payment amount associated to the payment schedule
               paymentStatus:
                 type: string
-                minLength: 1
+                description: Payment status associated to the payment schedule.
               scheduleId:
                 type: number
+                description: Unique reference no associated to the payment schedule
               startDate:
                 type: string
-                minLength: 1
+                description: Effective/Start date of the payment schedule
               statusDateTime:
                 type: string
-                minLength: 1
+                description: Date time when the status of the payment schedule got updated
               errorCode:
                 type: string
+                description: 'Error (if any) that has cause the payment to failed. '
         responseMetadata:
           type: object
           properties:
             nextCursor:
               type: string
-              minLength: 1
+              description: Indicate the position of the next record to be fetched into the list. Default to retrieve from the first record if not provided.
             hasNext:
               type: boolean
+              description: Indicate the number of records to be fetched into the list. Default to maximum value of 50 if not provided or value provided is greater than 50.
   securitySchemes:
     apiKeyHeader:
       type: apiKey
