@@ -13939,6 +13939,53 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
+  '/accounts/{accountId}/transfers':
+    parameters:
+      - schema:
+          type: string
+        name: accountId
+        in: path
+        required: true
+    post:
+      summary: Account Transfer
+      tags:
+        - Account Transfer
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ''
+      operationId: post-accounts-accountId-Transfers
+      description: |-
+        Trsnafers an active account from one business to a destination business. Upon the successful transfer of a account, the requested account will be closed and a new account will be created with the information** copied from the requested account.
+        For this solution version, only standalone and non-overdue accounts can be transferred. History of the account also will not be transferred.
+
+        Standalone account is an account which is not linked to another account (parent-child accounts, primary-addon accounts, etc.)
+
+        Information copied are:
+
+        * Pay method for the current active schedule
+        * Current physical and billing addresses
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAccountTransferRequest'
+          application/xml:
+            schema:
+              type: object
+              properties: {}
+        description: Request to transfer an account to another business based on Account ID provided.
+      parameters:
+        - schema:
+            type: string
+          in: header
+          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          name: Authorization
 components:
   schemas:
     400AddAddress:
@@ -16579,6 +16626,88 @@ components:
             hasNext:
               type: boolean
               description: Indicate the number of records to be fetched into the list. Default to maximum value of 50 if not provided or value provided is greater than 50.
+    CreateAccountTransferRequest:
+      title: CreateAccountTransferRequest
+      x-tags:
+        - Account Transfer
+      x-examples:
+        example:
+          value:
+            destBusinessAccountId: DEA2
+            newAccountExternalId: NEW_CLUB_NO
+      type: object
+      properties:
+        destBusinessAccountId:
+          type: string
+          maxLength: 6
+          description: Contract Prefix or the Unique code provided by Debitsuccess associated to the Facility Account
+        newAccountExternalId:
+          type: string
+          maxLength: 50
+          description: External reference id associated to the Account.
+      required:
+        - destBusinessAccountId
+        - newAccountExternalId
+    200AccountTransferResponse:
+      title: 200AccountTransferResponse
+      type: object
+      x-tags:
+        - Account Transfer
+      properties:
+        id:
+          type: string
+    400AccountTransferResponse:
+      description: ''
+      type: object
+      properties:
+        errorCode:
+          type: string
+          minLength: 1
+        message:
+          type: string
+          minLength: 1
+        errors:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            required:
+              - field
+              - message
+            properties:
+              field:
+                type: string
+                minLength: 1
+              message:
+                type: string
+                minLength: 1
+      required:
+        - errorCode
+        - message
+        - errors
+      x-examples:
+        example-1:
+          errorCode: string
+          message: string
+          errors:
+            - field: string
+              message: string
+          value:
+            errorCode: validation
+            message: Unable to process request due to validation errors.
+            errors:
+              - field: destBusinessAccountId
+                message: DestBusinessAccountId is required.
+              - field: destBusinessAccountId
+                message: DestBusinessAccountId is invalid.
+              - field: newAccountExternalId
+                message: "NewAccountExternalId\_must not exceed 50 characters."
+              - field: newAccountExternalId
+                message: The newAccountExternalId is invalid.
+              - field: newAccountExternalId
+                message: The newAccountExternalId is not unique and has been used for an account previously. Please retry with a different newAccountExternalId.
+              - field: newAccountExternalId
+                message: newAccountExternalId is required.
   securitySchemes:
     apiKeyHeader:
       type: apiKey
