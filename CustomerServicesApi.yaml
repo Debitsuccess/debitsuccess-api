@@ -13652,7 +13652,7 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  '/businesses/{businessID}/paymentstatuses':
+  '/businesses/{businessID}/paymentStatuses':
     parameters:
       - schema:
           type: string
