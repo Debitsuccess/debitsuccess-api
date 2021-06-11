@@ -13673,7 +13673,11 @@ paths:
       tags:
         - Payment Status
       operationId: get-businesses-businessID-paymentstatuses
-      description: Returns payment  statuses for Gateway Accounts based on the input parameters provided.
+      description: |-
+        Returns payment  statuses for Gateway Accounts based on the input parameters provided.
+
+        > Note:
+        See [Statuses in Debitsuccess Systems](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1492877598/Statuses+in+Debitsuccess+Systems#Payment-Status) for details on the possible Payment statuses. 
       parameters:
         - schema:
             type: string
@@ -13684,10 +13688,9 @@ paths:
             type: string
           in: query
           name: AccountId
-          description: Unique identifier associated to the account
+          description: 'Unique identifier associated to the account. if not provided, records from all accounts associated to the user will be extracted.'
         - schema:
             enum:
-              - Unattempted
               - Pending
               - Retry
               - Failed
@@ -13698,7 +13701,7 @@ paths:
             type: string
           in: query
           name: Status
-          description: Status of the payment
+          description: 'Status of the payment. If not provided, payment schedule records from all statuses associated to the user will be extracted.'
         - schema:
             type: string
           in: query
@@ -16539,42 +16542,47 @@ components:
           minItems: 1
           items:
             type: object
+            description: ''
             properties:
               businessAccountId:
                 type: string
-                minLength: 1
+                description: System generated reference to Business Account e.g. Contract Prefix associated to the account owning the payment schedule
               accountId:
                 type: string
-                minLength: 1
+                description: System generated reference id associated to the Account
               description:
                 type: string
-                minLength: 1
+                description: Description of the payment schedule
               externalIdentifier:
                 type: string
-                minLength: 1
+                description: External reference of the payment schedule
               installment:
                 type: number
+                description: Payment amount associated to the payment schedule
               paymentStatus:
                 type: string
-                minLength: 1
+                description: Payment status associated to the payment schedule.
               scheduleId:
                 type: number
+                description: Unique reference no associated to the payment schedule
               startDate:
                 type: string
-                minLength: 1
+                description: Effective/Start date of the payment schedule
               statusDateTime:
                 type: string
-                minLength: 1
+                description: Date time when the status of the payment schedule got updated
               errorCode:
                 type: string
+                description: 'Error (if any) that has cause the payment to failed. '
         responseMetadata:
           type: object
           properties:
             nextCursor:
               type: string
-              minLength: 1
+              description: Indicate the position of the next record to be fetched into the list. Default to retrieve from the first record if not provided.
             hasNext:
               type: boolean
+              description: Indicate the number of records to be fetched into the list. Default to maximum value of 50 if not provided or value provided is greater than 50.
   securitySchemes:
     apiKeyHeader:
       type: apiKey
