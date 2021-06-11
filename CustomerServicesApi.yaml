@@ -13953,12 +13953,28 @@ paths:
       responses:
         '201':
           description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/201AccountTransferResponse'
         '400':
           description: Bad Request
           content:
             application/json:
               schema:
-                $ref: ''
+                $ref: '#/components/schemas/400AccountTransferResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: ./models/403AccountTransferResponse.yaml
+        '422':
+          description: Unprocessable Entity (WebDAV)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/422AccountTransferResonse'
       operationId: post-accounts-accountId-Transfers
       description: |-
         Trsnafers an active account from one business to a destination business. Upon the successful transfer of a account, the requested account will be closed and a new account will be created with the information** copied from the requested account.
@@ -16648,14 +16664,20 @@ components:
       required:
         - destBusinessAccountId
         - newAccountExternalId
-    200AccountTransferResponse:
-      title: 200AccountTransferResponse
+    201AccountTransferResponse:
+      title: 201AccountTransferResponse
       type: object
       x-tags:
         - Account Transfer
       properties:
-        id:
+        newAccountId:
           type: string
+        newAccountExternalId:
+          type: string
+      example:
+        value:
+          newAccountId: DEA22345435
+          newAccountExternalId: DEA22345435
     400AccountTransferResponse:
       description: ''
       type: object
@@ -16685,29 +16707,111 @@ components:
         - errorCode
         - message
         - errors
+      example:
+        errorCode: string
+        message: string
+        errors:
+          - field: destBusinessAccountId
+            message: DestBusinessAccountId is required.
+          - field: destBusinessAccountId
+            message: DestBusinessAccountId is invalid.
+          - field: newAccountExternalId
+            message: "NewAccountExternalId\_must not exceed 50 characters."
+          - field: newAccountExternalId
+            message: The newAccountExternalId is invalid.
+          - field: newAccountExternalId
+            message: The newAccountExternalId is not unique and has been used for an account previously. Please retry with a different newAccountExternalId.
+          - field: newAccountExternalId
+            message: newAccountExternalId is required.
+      title: ''
+    404AccountTransferResponse:
+      description: ''
+      type: object
+      properties:
+        message:
+          type: string
+          minLength: 1
+      required:
+        - message
       x-examples:
-        example-1:
-          errorCode: string
-          message: string
-          errors:
-            - field: string
-              message: string
+        example:
+          message: The resource provided could not be found.
+      title: ''
+    422AccountTransferResonse:
+      title: 422AccountTransferResonse
+      type: object
+      x-tags:
+        - Account Transfer
+      x-examples:
+        example:
           value:
-            errorCode: validation
-            message: Unable to process request due to validation errors.
-            errors:
-              - field: destBusinessAccountId
-                message: DestBusinessAccountId is required.
-              - field: destBusinessAccountId
-                message: DestBusinessAccountId is invalid.
-              - field: newAccountExternalId
-                message: "NewAccountExternalId\_must not exceed 50 characters."
-              - field: newAccountExternalId
-                message: The newAccountExternalId is invalid.
-              - field: newAccountExternalId
-                message: The newAccountExternalId is not unique and has been used for an account previously. Please retry with a different newAccountExternalId.
-              - field: newAccountExternalId
-                message: newAccountExternalId is required.
+            field: destBusinessIAccountId
+            message: DestBusinessIAccountId is invalid.
+        example-2:
+          value:
+            errorCode: overdue_account
+            message: Cannot transfer an account with an overdue payment
+        example-3:
+          value:
+            errorCode: account_with_credit
+            message: "\_\"Cannot transfer an account with a credit amount.\""
+        example-4:
+          value:
+            errorCode: linked_account
+            message: Cannot transfer an account with a linked account.
+        example-5:
+          value:
+            errorCode: "\_\"account_billed_today\""
+            "\_ \"message\":\_\"Cannot transfer an account that is due for billing today.\"": null
+        example-6:
+          value:
+            errorCode: "\_\"inactive_account\""
+            "\_\"message\":\_\"Cannot transfer a closed account.\"": null
+        example-7:
+          value:
+            errorCode: "\_\"business_group_mismatch\""
+            "\_\"message\":\_\"The destination business account is not in the same business group as an account being transferred.\"": null
+        example-8:
+          value:
+            errorCode: string
+            message: string
+        example-9:
+          value:
+            errorCode: "\_\"payment_stop\""
+            "\_\"message\":\_\"Cannot transfer an account that has payment stop/suspense\_applied.\"": null
+        example-10:
+          value:
+            errorCode: "\_\"invalid_payments_structure\""
+            "\_\"message\":\_\"Cannot transfer an account without scheduled payments or with invalid scheduled payments information.\"": null
+        example-11:
+          value:
+            errorCode: "\_\"gateway_business\""
+            "\_\"message\":\_\"Cannot transfer an account from/to a gateway model business.\"": null
+        example-12:
+          value:
+            errorCode: "\_“invalid_payments_structure” \"invalid_payment_information\""
+            "\_\"message\":\_\"Cannot transfer an account without scheduled payments or with invalid scheduled payments information.\"": null
+        example-13:
+          value:
+            errorCode: "invalid_payments_structure\_\"invalid_payment_information\""
+            "\_\"message\":\_\"Cannot transfer an account without scheduled payments or with invalid scheduled payments information.\"": null
+        example-14:
+          value:
+            errorCode: trust_account_mismatch
+            message: The destination business account is not in the same trust account  as an account being transferred.
+        example-15:
+          value:
+            errorCode: country_mismatch
+            message: The destination business account is not in the same country  as an account being transferred.
+        example-16:
+          value:
+            errorCode: business_group_not_allowed
+            message: The business group associated with this account does not allow a transfer account request.
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
   securitySchemes:
     apiKeyHeader:
       type: apiKey
