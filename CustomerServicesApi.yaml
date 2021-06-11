@@ -4615,7 +4615,7 @@ paths:
               externalScheduleId: T125810
               deleteFutureSchedules: true
               overrideBillingCycleAlignment: true
-              previousScheduleEndDate: '2019-11-30T00:00:00.0000000+00:00'
+              previousScheduleEndDate: '2019-11-30'
       responses:
         '201':
           description: Recurring schedule is successfully created.
@@ -4633,7 +4633,7 @@ paths:
                 externalScheduleId: T125810
                 deleteFutureSchedules: true
                 overrideBillingCycleAlignment: true
-                previousScheduleEndDate: '2019-11-30T00:00:00.0000000+00:00'
+                previousScheduleEndDate: '2019-11-30'
         '400':
           description: 'Bad Request - Request failed due to validation errors, the response lists the field in the request that did not pass the validation. The client can directly show these errors to the end users.'
           headers:
@@ -4986,7 +4986,7 @@ paths:
                   - scheduleId: '12345688'
                     accountId: AILL056H6
                     accountExternalId: ABC12345
-                    recurringScheduleStartDate: '2021-01-31T00:00:00.0000000+00:00'
+                    recurringScheduleStartDate: '2021-01-31'
                     recurringScheduleEndDate: 'null'
                     installment: 30
                     frequency: weekly
@@ -5475,8 +5475,8 @@ paths:
                 scheduleId: '12345678'
                 accountId: AILL056H6
                 accountExternalId: ABC12345
-                recurringScheduleStartDate: '2020-01-31T00:00:00.0000000+00:00'
-                recurringScheduleEndDate: '2020-12-31T00:00:00.0000000+00:00'
+                recurringScheduleStartDate: '2020-01-31'
+                recurringScheduleEndDate: '2020-12-31'
                 installment: 50
                 frequency: monthly
                 scheduleDescription: Recurring schedule Jan-Dec
@@ -5704,8 +5704,8 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateRecurringScheduleRequest'
             example:
-              recurringScheduleStartDate: '2020-01-31T00:00:00.0000000+00:00'
-              recurringScheduleEndDate: '2020-12-31T00:00:00.0000000+00:00'
+              recurringScheduleStartDate: '2020-01-31'
+              recurringScheduleEndDate: '2020-12-31'
               installment: 50
               frequency: monthly
               numberOfPayments: 12
@@ -5721,8 +5721,8 @@ paths:
               example:
                 scheduleId: '12345678'
                 accountId: CWAUS999999
-                recurringScheduleStartDate: '2020-01-31T00:00:00.0000000+00:00'
-                recurringScheduleEndDate: '2020-12-31T00:00:00.0000000+00:00'
+                recurringScheduleStartDate: '2020-01-31'
+                recurringScheduleEndDate: '2020-12-31'
                 installment: 50
                 frequency: monthly
                 scheduleDescription: Recurring schedule Jan-Dec
@@ -13673,11 +13673,7 @@ paths:
       tags:
         - Payment Status
       operationId: get-businesses-businessID-paymentstatuses
-      description: |-
-        Returns payment  statuses for Gateway Accounts based on the input parameters provided.
-
-        > Note:
-        See [Statuses in Debitsuccess Systems](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1492877598/Statuses+in+Debitsuccess+Systems#Payment-Status) for details on the possible Payment statuses. 
+      description: 'Returns payment  statuses for Gateway Accounts based on the input parameters provided. See [Statuses in Debitsuccess Systems](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1492877598/Statuses+in+Debitsuccess+Systems#Payment-Status) for details on the possible Payment statuses. '
       parameters:
         - schema:
             type: string
