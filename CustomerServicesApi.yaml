@@ -13947,7 +13947,7 @@ paths:
         in: path
         required: true
     post:
-      summary: Account Transfer
+      summary: Create Account Transfer
       tags:
         - Account Transfer
       responses:
@@ -13983,7 +13983,7 @@ paths:
                 $ref: '#/components/schemas/422AccountTransferResonse'
       operationId: post-accounts-accountId-Transfers
       description: |-
-        Transfer an active account from one business to a destination business. Upon the successful transfer of a account, the requested account will be closed and a new account will be created with the information** copied from the requested account.
+        Transfers an active account from one business to a destination business. Upon the successful transfer of a account, the requested account will be closed and a new account will be created with the information** copied from the requested account.
         For this solution version, only standalone and non-overdue accounts can be transferred. History of the account also will not be transferred.
 
         Standalone account is an account which is not linked to another account (parent-child accounts, primary-addon accounts, etc.)
