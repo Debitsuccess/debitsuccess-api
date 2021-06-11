@@ -13969,6 +13969,12 @@ paths:
             application/json:
               schema:
                 $ref: ./models/403AccountTransferResponse.yaml
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404AccountTransferResponse'
         '422':
           description: Unprocessable Entity (WebDAV)
           content:
@@ -16754,47 +16760,47 @@ components:
         example-3:
           value:
             errorCode: account_with_credit
-            message: "\_\"Cannot transfer an account with a credit amount.\""
+            message: Cannot transfer an account with a credit amount.
         example-4:
           value:
             errorCode: linked_account
             message: Cannot transfer an account with a linked account.
         example-5:
           value:
-            errorCode: "\_\"account_billed_today\""
-            "\_ \"message\":\_\"Cannot transfer an account that is due for billing today.\"": null
+            errorCode: account_billed_today
+            message: "\_\"Cannot transfer an account that is due for billing today.\""
         example-6:
           value:
-            errorCode: "\_\"inactive_account\""
-            "\_\"message\":\_\"Cannot transfer a closed account.\"": null
+            errorCode: inactive_account
+            message: Cannot transfer a closed account.
         example-7:
           value:
-            errorCode: "\_\"business_group_mismatch\""
-            "\_\"message\":\_\"The destination business account is not in the same business group as an account being transferred.\"": null
+            errorCode: business_group_mismatch
+            message: The destination business account is not in the same business group as an account being transferred.
         example-8:
           value:
-            errorCode: string
-            message: string
+            errorCode: business_pay_method
+            message: "Destination\_business account {dest_business_acct_id} does not allow card which is linked to the account {AdfitNo}."
         example-9:
           value:
-            errorCode: "\_\"payment_stop\""
-            "\_\"message\":\_\"Cannot transfer an account that has payment stop/suspense\_applied.\"": null
+            errorCode: payment_stop
+            message: "Cannot transfer an account that has payment stop/suspense\_applied."
         example-10:
           value:
-            errorCode: "\_\"invalid_payments_structure\""
-            "\_\"message\":\_\"Cannot transfer an account without scheduled payments or with invalid scheduled payments information.\"": null
+            errorCode: invalid_payments_structure
+            message: Cannot transfer an account without scheduled payments or with invalid scheduled payments information.
         example-11:
           value:
-            errorCode: "\_\"gateway_business\""
-            "\_\"message\":\_\"Cannot transfer an account from/to a gateway model business.\"": null
+            errorCode: gateway_business
+            message: Cannot transfer an account from/to a gateway model business
         example-12:
           value:
-            errorCode: "\_“invalid_payments_structure” \"invalid_payment_information\""
-            "\_\"message\":\_\"Cannot transfer an account without scheduled payments or with invalid scheduled payments information.\"": null
+            errorCode: invalid_payment_information
+            message: Cannot transfer an account without scheduled payments or with invalid scheduled payments information.
         example-13:
           value:
-            errorCode: "invalid_payments_structure\_\"invalid_payment_information\""
-            "\_\"message\":\_\"Cannot transfer an account without scheduled payments or with invalid scheduled payments information.\"": null
+            errorCode: invalid_payment_information
+            message: Cannot transfer an account without scheduled payments or with invalid scheduled payments information.
         example-14:
           value:
             errorCode: trust_account_mismatch
