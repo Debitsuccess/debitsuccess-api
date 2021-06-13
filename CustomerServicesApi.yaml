@@ -14002,6 +14002,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateAccountTransferRequest'
+            examples: {}
           application/xml:
             schema:
               type: object
@@ -16659,15 +16660,20 @@ components:
         destBusinessAccountId: DEA2
         newAccountExternalId: NEW_CLUB_NO
       type: object
+      x-examples:
+        example-1:
+          value:
+            destBusinessAccountId: DEA2
+            newAccountExternalId: NEW_CLUB_NO
       properties:
         destBusinessAccountId:
           type: string
           maxLength: 6
-          description: Contract Prefix or the Unique code provided by Debitsuccess associated to the Facility Account
+          description: Contract Prefix or the Unique code provided by Debitsuccess associated to the Facility Account where the account will be transferred to
         newAccountExternalId:
           type: string
           maxLength: 50
-          description: External reference id associated to the Account.
+          description: External reference id associated to the new Account after the transferred.
       required:
         - destBusinessAccountId
         - newAccountExternalId
