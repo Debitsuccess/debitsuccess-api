@@ -54,6 +54,7 @@ tags:
   - name: Businesses
   - name: Payment Status
   - name: Payment Methods
+  - name: Account Transfer
 paths:
   /customers:
     post:
@@ -13968,7 +13969,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./models/403AccountTransferResponse.yaml
+                $ref: '#/components/schemas/403AccountTransferResponse'
         '404':
           description: Not Found
           content:
@@ -16650,13 +16651,9 @@ components:
               description: Indicate the number of records to be fetched into the list. Default to maximum value of 50 if not provided or value provided is greater than 50.
     CreateAccountTransferRequest:
       title: CreateAccountTransferRequest
-      x-tags:
-        - Account Transfer
-      x-examples:
-        example:
-          value:
-            destBusinessAccountId: DEA2
-            newAccountExternalId: NEW_CLUB_NO
+      example:
+        destBusinessAccountId: DEA2
+        newAccountExternalId: NEW_CLUB_NO
       type: object
       properties:
         destBusinessAccountId:
@@ -16673,8 +16670,6 @@ components:
     201AccountTransferResponse:
       title: 201AccountTransferResponse
       type: object
-      x-tags:
-        - Account Transfer
       properties:
         newAccountId:
           type: string
@@ -16730,6 +16725,26 @@ components:
           - field: newAccountExternalId
             message: newAccountExternalId is required.
       title: ''
+    403AccountTransferResponse:
+      description: ''
+      type: object
+      properties:
+        errorCode:
+          type: string
+          minLength: 1
+        message:
+          type: string
+          minLength: 1
+      required:
+        - errorCode
+        - message
+      x-examples:
+        example:
+          errorCode: access_denied
+          message: Unable to process this request as you do not have access to the business account associated to this request.
+          value:
+            errorCode: access_denied
+            message: Unable to process this request as you do not have access to the business account associated to this request.
     404AccountTransferResponse:
       description: ''
       type: object
@@ -16746,10 +16761,8 @@ components:
     422AccountTransferResonse:
       title: 422AccountTransferResonse
       type: object
-      x-tags:
-        - Account Transfer
       x-examples:
-        example:
+        example-1:
           value:
             field: destBusinessIAccountId
             message: DestBusinessIAccountId is invalid.
@@ -16768,7 +16781,7 @@ components:
         example-5:
           value:
             errorCode: account_billed_today
-            message: "\_\"Cannot transfer an account that is due for billing today.\""
+            message: "Cannot transfer an account that is due for billing today."
         example-6:
           value:
             errorCode: inactive_account
