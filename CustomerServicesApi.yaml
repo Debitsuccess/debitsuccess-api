@@ -13985,16 +13985,18 @@ paths:
               schema:
                 $ref: '#/components/schemas/422AccountTransferResonse'
       operationId: post-accounts-accountId-Transfers
-      description: |-
-        Transfers an active account from one business to a destination business. Upon the successful transfer of a account, the requested account will be closed and a new account will be created with the information** copied from the requested account.
-        For this solution version, only standalone and non-overdue accounts can be transferred. History of the account also will not be transferred.
+      description: |
+        Transfers an active account from a business to another business within the same business group. Upon the successful transfer of an account, the requested account will be closed and a new account will be created with the information inherited from the requested account.
+        Only standalone and non-overdue accounts can be transferred. History of the account will not be transferred. Please refer to error responses below for all other restrictions to transfer an account.
 
         Standalone account is an account which is not linked to another account (parent-child accounts, primary-addon accounts, etc.)
 
         Information copied are:
 
+        * All current active schedules
         * Pay method for the current active schedule
         * Current physical and billing addresses
+        * Guarantor details (if any)
       requestBody:
         content:
           application/json:
