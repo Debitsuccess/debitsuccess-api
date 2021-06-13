@@ -32,6 +32,7 @@ info:
     | [Businesses](../CustomerServicesApi.yaml/paths/~1businesses/get)  | <span style="background-color:lightgreen; color:white"> GET</span>  | Retrieves a list of businesses (Facility DS domain) assigned to the client ID that is used for authenticating with the Debitsuccess authentication server. Multiple businesses can be assigned to a single client ID.  |
     | [Payment Status](../CustomerServicesApi.yaml/paths/~1businesses~1%7BbusinessID%7D~1paymentstatuses/get)  | <span style="background-color:lightgreen; color:white"> GET</span>  | Returns payment statuses for Gateway Accounts based on the input parameters provided.  |
     | [Payment Methods](../CustomerServicesApi.yaml/paths/~1customers~1%7BcustomerId%7D~1paymentMethods/get)  | <span style="background-color:lightgreen; color:white"> GET</span>  | Retrieves payment method based on customer ID or account ID provided in the query path.  |
+    | [Account Transfer](../CustomerServicesApi.yaml/paths/~1accounts~1%7BaccountId%7D~1transfers/post)  | <span style="background-color:skyblue; color:white"> POST</span>  | Transfers an active account from one business to a destination business.  |
   contact:
     email: TestAPI.Support@debitsuccess.com
   version: V1.0
@@ -13947,6 +13948,7 @@ paths:
         name: accountId
         in: path
         required: true
+        description: Unique identifier associated to the account to be extracted.
     post:
       summary: Create Account Transfer
       tags:
@@ -16717,7 +16719,7 @@ components:
           - field: destBusinessAccountId
             message: DestBusinessAccountId is invalid.
           - field: newAccountExternalId
-            message: "NewAccountExternalId\_must not exceed 50 characters."
+            message: NewAccountExternalId must not exceed 50 characters.
           - field: newAccountExternalId
             message: The newAccountExternalId is invalid.
           - field: newAccountExternalId
@@ -16738,13 +16740,9 @@ components:
       required:
         - errorCode
         - message
-      x-examples:
-        example:
-          errorCode: access_denied
-          message: Unable to process this request as you do not have access to the business account associated to this request.
-          value:
-            errorCode: access_denied
-            message: Unable to process this request as you do not have access to the business account associated to this request.
+      example:
+        errorCode: access_denied
+        message: Unable to process this request as you do not have access to the account associated to this request.
     404AccountTransferResponse:
       description: ''
       type: object
@@ -16754,18 +16752,17 @@ components:
           minLength: 1
       required:
         - message
-      x-examples:
-        example:
-          message: The resource provided could not be found.
+      example:
+        message: The resource provided could not be found.
       title: ''
     422AccountTransferResonse:
       title: 422AccountTransferResonse
       type: object
-      x-examples:
+      example:
         example-1:
-          value:
-            field: destBusinessIAccountId
-            message: DestBusinessIAccountId is invalid.
+          value: null
+          field: destBusinessIAccountId
+          message: DestBusinessIAccountId is invalid.
         example-2:
           value:
             errorCode: overdue_account
@@ -16781,7 +16778,7 @@ components:
         example-5:
           value:
             errorCode: account_billed_today
-            message: "Cannot transfer an account that is due for billing today."
+            message: Cannot transfer an account that is due for billing today.
         example-6:
           value:
             errorCode: inactive_account
@@ -16831,6 +16828,73 @@ components:
           type: string
         message:
           type: string
+      x-examples:
+        example-1:
+          value:
+            example-1:
+              value: null
+              field: destBusinessIAccountId
+              message: DestBusinessIAccountId is invalid.
+            example-2:
+              value:
+                errorCode: overdue_account
+                message: Cannot transfer an account with an overdue payment
+            example-3:
+              value:
+                errorCode: account_with_credit
+                message: Cannot transfer an account with a credit amount.
+            example-4:
+              value:
+                errorCode: linked_account
+                message: Cannot transfer an account with a linked account.
+            example-5:
+              value:
+                errorCode: account_billed_today
+                message: Cannot transfer an account that is due for billing today.
+            example-6:
+              value:
+                errorCode: inactive_account
+                message: Cannot transfer a closed account.
+            example-7:
+              value:
+                errorCode: business_group_mismatch
+                message: The destination business account is not in the same business group as an account being transferred.
+            example-8:
+              value:
+                errorCode: business_pay_method
+                message: "Destination\_business account {dest_business_acct_id} does not allow card which is linked to the account {AdfitNo}."
+            example-9:
+              value:
+                errorCode: payment_stop
+                message: "Cannot transfer an account that has payment stop/suspense\_applied."
+            example-10:
+              value:
+                errorCode: invalid_payments_structure
+                message: Cannot transfer an account without scheduled payments or with invalid scheduled payments information.
+            example-11:
+              value:
+                errorCode: gateway_business
+                message: Cannot transfer an account from/to a gateway model business
+            example-12:
+              value:
+                errorCode: invalid_payment_information
+                message: Cannot transfer an account without scheduled payments or with invalid scheduled payments information.
+            example-13:
+              value:
+                errorCode: invalid_payment_information
+                message: Cannot transfer an account without scheduled payments or with invalid scheduled payments information.
+            example-14:
+              value:
+                errorCode: trust_account_mismatch
+                message: The destination business account is not in the same trust account  as an account being transferred.
+            example-15:
+              value:
+                errorCode: country_mismatch
+                message: The destination business account is not in the same country  as an account being transferred.
+            example-16:
+              value:
+                errorCode: business_group_not_allowed
+                message: The business group associated with this account does not allow a transfer account request.
   securitySchemes:
     apiKeyHeader:
       type: apiKey
