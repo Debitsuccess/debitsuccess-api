@@ -13948,7 +13948,7 @@ paths:
         name: accountId
         in: path
         required: true
-        description: Unique identifier associated to the account to be extracted.
+        description: Unique identifier associated to the account to be transfered.
     post:
       summary: Create Account Transfer
       tags:
