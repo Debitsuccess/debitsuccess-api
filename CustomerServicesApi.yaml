@@ -16846,7 +16846,7 @@ components:
             example-2:
               value:
                 errorCode: overdue_account
-                message: Cannot transfer an account with an overdue payment
+                message: Cannot transfer an account with an overdue payment.
             example-3:
               value:
                 errorCode: account_with_credit
@@ -16882,7 +16882,7 @@ components:
             example-11:
               value:
                 errorCode: gateway_business
-                message: Cannot transfer an account from/to a gateway model business
+                message: Cannot transfer an account from/to a gateway model business.
             example-12:
               value:
                 errorCode: invalid_payment_information
