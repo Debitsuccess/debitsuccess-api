@@ -322,7 +322,7 @@ Occurs when the identity server-client does not have access to the business Id p
 },
 {
   "errorCode": "card_not_accepted", 
-  "message": The selected payment method is not supported by this business."
+  "message": "The selected payment method is not supported by this business."
 }
 ```
 ### HTTP 400- Validation errors
@@ -349,7 +349,7 @@ Occurs when the identity server-client does not have access to the business Id p
 },
 {
   "field": "CardNumber", 
-  "message": Invalid card number" 
+  "message": "Invalid card number" 
 },
 {
   "field": "Cvc", 
