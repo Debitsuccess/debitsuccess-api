@@ -32,30 +32,30 @@ info:
     | [Businesses](../CustomerServicesApi.yaml/paths/~1businesses/get)  | <span style="background-color:lightgreen; color:white"> GET</span>  | Retrieves a list of businesses (Facility DS domain) assigned to the client ID that is used for authenticating with the Debitsuccess authentication server. Multiple businesses can be assigned to a single client ID.  |
     | [Payment Status](../CustomerServicesApi.yaml/paths/~1businesses~1%7BbusinessID%7D~1paymentstatuses/get)  | <span style="background-color:lightgreen; color:white"> GET</span>  | Returns payment statuses for Gateway Accounts based on the input parameters provided.  |
     | [Payment Methods](../CustomerServicesApi.yaml/paths/~1customers~1%7BcustomerId%7D~1paymentMethods/get)  | <span style="background-color:lightgreen; color:white"> GET</span>  | Retrieves payment method based on customer ID or account ID provided in the query path.  |
-    | [Account Transfer](../CustomerServicesApi.yaml/paths/~1accounts~1%7BaccountId%7D~1transfers/post)  | <span style="background-color:skyblue; color:white"> POST</span>  | Transfers an active account from one business to a destination business.  |
+    | [Account Transfer](../CustomerServicesApi.yaml/paths/~1accounts~1%7BaccountId%7D~1transfers/post)  | <span style="background-color:skyblue; color:white"> POST</span>  | Transfers an active account from a business to another business within the same business group. |
   contact:
     email: TestAPI.Support@debitsuccess.com
   version: V1.0
 servers:
   - url: 'https://oc-test.debitsuccess.com/CustomerServices/v1.0'
 tags:
-  - name: Customers
-  - name: BusinessAccounts
   - name: Accounts
-  - name: Schedules-Suspension
-  - name: Schedules-Recurring
-  - name: Schedules-OneOff
+  - name: Account Transfer
   - name: Addresses
-  - name: PhoneNumbers
+  - name: BusinessAccounts
+  - name: Businesses
+  - name: Customers
   - name: EmailAddresses
   - name: OverdueStatusChanges
   - name: Payment History
-  - name: Terms and Conditions
-  - name: PaymentToken
-  - name: Businesses
-  - name: Payment Status
   - name: Payment Methods
-  - name: Account Transfer
+  - name: Payment Status
+  - name: PaymentToken
+  - name: PhoneNumbers	
+  - name: Schedules-OneOff
+  - name: Schedules-Recurring
+  - name: Schedules-Suspension
+  - name: Terms and Conditions
 paths:
   /customers:
     post:
@@ -13987,6 +13987,8 @@ paths:
       operationId: post-accounts-accountId-Transfers
       description: |
         Transfers an active account from a business to another business within the same business group. Upon the successful transfer of an account, the requested account will be closed and a new account will be created with the information inherited from the requested account.
+        
+        >
         Only standalone and non-overdue accounts can be transferred. History of the account will not be transferred. Please refer to error responses below for all other restrictions to transfer an account.
 
         Standalone account is an account which is not linked to another account (parent-child accounts, primary-addon accounts, etc.)
