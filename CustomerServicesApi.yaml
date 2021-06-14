@@ -71,21 +71,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '201'
-              - '400'
-              - '401'
-              - '403'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '201'
       requestBody:
         description: |-
           Exactly one address + one email + one phone number are required when creating a new customer.
@@ -431,10 +416,10 @@ paths:
     get:
       tags:
         - Customers
-      summary: Get Customers
+      summary: List Customers
       description: |-
         Retrieves a list of all customers based on the following criteria.
-        - When query parameter business ID is provided, the customers of this business will be returned.
+        - When the query parameter `businessId` is provided, the customers of this business will be returned.
         - When NO query parameter is provided, all customers that the client has access (i.e. based on the authorization token) will be returned.
       operationId: 5dad2ca828887c378a3a820f
       parameters:
@@ -472,21 +457,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '200'
-              - '401'
-              - '403'
-              - '404'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '200'
       responses:
         '200':
           description: |-
@@ -703,21 +673,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '200'
-              - '401'
-              - '403'
-              - '404'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '200'
       responses:
         '200':
           description: 'Successful response with the business associated to the business ID provided. '
@@ -872,22 +827,7 @@ paths:
           description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
-            type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '200'
-              - '401'
-              - '403'
-              - '404'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '200'
+            type: string'
       responses:
         '200':
           description: |
@@ -1047,7 +987,7 @@ paths:
     get:
       tags:
         - BusinessAccounts
-      summary: Get Business Accounts
+      summary: List Business Accounts
       description: |-
         Retrieves a list of Business Accounts (FacilityAccounts DS domain) based on business ID provided.
         If none provided, all Business Accounts assigned to the client derived from the authentication token will be returned,
@@ -1089,20 +1029,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '200'
-              - '401'
-              - '403'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '200'
       responses:
         '200':
           description: Successful response with list of Business Accounts based on client ID (i.e derived from the Authorization token) or Business ID provided.
@@ -1252,7 +1178,7 @@ paths:
     get:
       tags:
         - Businesses
-      summary: Get Businesses
+      summary: List Businesses
       description: 'Retrieves a list of businesses (Facility DS domain) assigned to the client ID that is used for authenticating with the Debitsuccess authentication server. Multiple businesses can be assigned to a single client ID. '
       operationId: 5da682dce57a263a6195db1a
       parameters:
@@ -1278,20 +1204,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '200'
-              - '401'
-              - '403'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '200'
       responses:
         '200':
           description: Successful response with all businesses assigned to the client ID derived from the Authorization token provided.
@@ -1415,21 +1327,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '200'
-              - '401'
-              - '403'
-              - '404'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '200'
       responses:
         '200':
           description: Successful response with customer details based on customer ID provided.
@@ -1667,21 +1564,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '201'
-              - '400'
-              - '401'
-              - '403'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '201'
       requestBody:
         description: Allows to update an existing customer. based on customer ID provided.
         content:
@@ -1994,21 +1876,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '201'
-              - '400'
-              - '401'
-              - '403'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '201'
       requestBody:
         description: |
           Request to create account to existing customer based on CustomerID and BusinessAccountID provided.
@@ -2367,15 +2234,15 @@ paths:
     get:
       tags:
         - Accounts
-      summary: Get Accounts
+      summary: List Accounts
       description: |
         Retrieves list of accounts based on queries parameters provided. This API is used to retrieve:
 
-        • one Account if AccountID is provided or 
+        • one Account if `accountExternalId` is provided or 
 
-        • a list of Accounts associated to the Customer as provided via CustomerID or
+        • a list of Accounts associated to the Customer as provided via `customerID` or
 
-        • a list of Accounts associated to the Business Account as provided via BusinessAccountID
+        • a list of Accounts associated to the Business Account as provided via `businessAccountID`
       operationId: 5dc1d4af15ad1d4dea48b781
       parameters:
         - name: customerId
@@ -2477,24 +2344,9 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '200'
-              - '401'
-              - '403'
-              - '404'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '200'
       responses:
         '200':
-          description: Successful response with account details based on query list provided.
+          description: 'Successful response with account details based on query list provided. '
           content:
             application/json:
               schema:
@@ -2687,21 +2539,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '200'
-              - '401'
-              - '403'
-              - '404'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '200'
       responses:
         '200':
           description: Successful response with account details based on account ID provided.
@@ -2926,6 +2763,7 @@ paths:
         3) Updating Accounts from fixed term to on-going is NOT allowed
 
         4) Updating Account Term or Contract Amount is NOT allowed after the minimum term has past.
+        5) Populate Collection Stop Reason as ‘Manual Payment Stop’ when WS StopPayment successfully executed 
       operationId: 5dc0a8788afb2359af79d530
       parameters:
         - name: accountId
@@ -2942,21 +2780,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '201'
-              - '400'
-              - '401'
-              - '403'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '201'
       requestBody:
         description: Allows to update an existing account based on account ID provided.
         content:
@@ -3293,21 +3116,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '201'
-              - '400'
-              - '401'
-              - '403'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '201'
       requestBody:
         description: Allows to update default payment method for an existing account based on account ID provided.
         content:
@@ -3566,21 +3374,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '200'
-              - '401'
-              - '403'
-              - '404'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '200'
       requestBody:
         description: Request to close an existing account based on the account ID provided.
         content:
@@ -3844,21 +3637,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '200'
-              - '401'
-              - '403'
-              - '404'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '200'
       responses:
         '200':
           description: Successful delete suspension schedule based on query parameters provided.
@@ -4071,21 +3849,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '201'
-              - '400'
-              - '401'
-              - '403'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '201'
       requestBody:
         description: Allows to update an existing suspensions schedule based on the schedule ID provided.
         content:
@@ -4359,21 +4122,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '200'
-              - '401'
-              - '403'
-              - '404'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '200'
       responses:
         '200':
           description: Successful response with suspension schedule details based on  account ID and schedule ID provided.
@@ -4585,22 +4333,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '201'
-              - '400'
-              - '401'
-              - '403'
-              - '404'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '201'
       requestBody:
         description: |-
           Request to create recurring schedule for existing account based on Account ID provided.
@@ -4917,7 +4649,7 @@ paths:
     get:
       tags:
         - Schedules-Recurring
-      summary: Get Schedules (Recurring)
+      summary: List Schedules (Recurring)
       description: |-
         Retrieves list of recurring schedule based on Account ID provided. 
 
@@ -4953,21 +4685,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '200'
-              - '401'
-              - '403'
-              - '404'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '200'
       responses:
         '200':
           description: Successful response with a list of recurring schedules details based on accountId provided.
@@ -5166,21 +4883,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '200'
-              - '401'
-              - '403'
-              - '404'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '200'
       responses:
         '200':
           description: Successful delete recurring schedule based on query parameters provided.
@@ -5452,21 +5154,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '200'
-              - '401'
-              - '403'
-              - '404'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '200'
       responses:
         '200':
           description: Successful response with recurring schedule details based on  account ID and schedule ID provided.
@@ -5685,21 +5372,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '201'
-              - '400'
-              - '401'
-              - '403'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '201'
       requestBody:
         description: Allows to update an existing recurring schedule based schedule ID provided.
         content:
@@ -5999,21 +5671,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '201'
-              - '400'
-              - '401'
-              - '403'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '201'
       requestBody:
         description: |
           Request to create new one-off schedule for existing accounts. This can be used for full service accounts and payment gateway model accounts. 
@@ -6244,7 +5901,7 @@ paths:
     get:
       tags:
         - Schedules-OneOff
-      summary: Get Schedules (One-off)
+      summary: List Schedules (One-off)
       description: 'Retrieves list of one-off Schedules based on Account ID provided. '
       operationId: 5e4301f7735ed5e900dd61e5
       parameters:
@@ -6276,21 +5933,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '200'
-              - '401'
-              - '403'
-              - '404'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '200'
       responses:
         '200':
           description: Successful response with a list of one-off schedules details based on query list provided.
@@ -6466,21 +6108,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '201'
-              - '400'
-              - '401'
-              - '403'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '201'
       requestBody:
         description: |-
           If "isPrimary" is set to "true", when this address successfully added, all other existing addresses belong to the customer will have their "isPrimary" field set to "false".
@@ -6713,7 +6340,7 @@ paths:
     get:
       tags:
         - Addresses
-      summary: Get Addresses
+      summary: List Addresses
       description: Retrieves a list of addresses assigned to the customer based on the customer ID provided.
       operationId: 5ddddd28e4aa08e1610ab987
       parameters:
@@ -6747,20 +6374,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '200'
-              - '401'
-              - '403'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '200'
       responses:
         '200':
           description: Successful response with customer addresses associated to the customer ID provided.
@@ -6954,21 +6567,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '200'
-              - '401'
-              - '403'
-              - '404'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '200'
       responses:
         '200':
           description: Successful delete customer address based on customer ID and address ID provided.
@@ -7248,21 +6846,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '200'
-              - '401'
-              - '403'
-              - '404'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '200'
       responses:
         '200':
           description: Successful response with customer address based on customer ID and address ID provided.
@@ -7477,21 +7060,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '201'
-              - '400'
-              - '401'
-              - '403'
-              - '404'
-              - '429'
-              - '500'
-            type: string
-            default: '201'
       requestBody:
         description: |-
           Allows to update an address to an existing customer. 
@@ -7801,21 +7369,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '201'
-              - '400'
-              - '401'
-              - '403'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '201'
       requestBody:
         description: |-
           If "isPrimary" is set to "true", when this phone number successfully updated, all other existing phone numbers belong to the customer will have their "isPrimary" field set to "false".
@@ -8109,21 +7662,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '200'
-              - '401'
-              - '403'
-              - '404'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '200'
       responses:
         '200':
           description: Successful response with customer phone number based on phoneNomber ID and customer ID provided.
@@ -8366,21 +7904,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '200'
-              - '401'
-              - '403'
-              - '404'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '200'
       responses:
         '200':
           description: Successful delete customer phone number based on phoneNumber ID and customer ID provided.
@@ -8667,21 +8190,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '201'
-              - '400'
-              - '401'
-              - '403'
-              - '404'
-              - '429'
-              - '500'
-            type: string
-            default: '201'
       requestBody:
         description: |-
           Allows to update an email address to an existing customer. 
@@ -8976,21 +8484,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '200'
-              - '401'
-              - '403'
-              - '404'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '200'
       responses:
         '200':
           description: Successful response with customer email address based on customer ID and email ID provided.
@@ -9200,21 +8693,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '200'
-              - '401'
-              - '403'
-              - '404'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '200'
       responses:
         '200':
           description: Successful delete email address based on customer ID and email ID provided.
@@ -9469,7 +8947,7 @@ paths:
     get:
       tags:
         - PhoneNumbers
-      summary: Get Phone Numbers
+      summary: List Phone Numbers
       description: 'Retrieves the detail of all phone numbers of a customer based on the customer ID provided in the query path. '
       operationId: 5dddddd2bfa8e2680bcce4e2
       parameters:
@@ -9503,21 +8981,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '200'
-              - '401'
-              - '403'
-              - '404'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '200'
       responses:
         '200':
           description: Successful response with a list customer phone numbers based on customer ID provided.
@@ -9694,21 +9157,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '201'
-              - '400'
-              - '401'
-              - '403'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '201'
       requestBody:
         description: |-
           If "isPrimary" is set to "true", when this phone number successfully added, all other existing phone numbers belong to the customer will have their "isPrimary" field set to "false". 
@@ -9928,7 +9376,7 @@ paths:
     get:
       tags:
         - EmailAddresses
-      summary: Get Email Addresses
+      summary: List Email Addresses
       description: 'Retrieves all email addresses belong to a customer based on customer ID provided in the query path. '
       operationId: 5dddde2faf5a4e7d30f9b11e
       parameters:
@@ -9962,21 +9410,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '200'
-              - '401'
-              - '403'
-              - '404'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '200'
       responses:
         '200':
           description: Successful response with customer email addresses based on customer ID provided.
@@ -10147,21 +9580,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '201'
-              - '400'
-              - '401'
-              - '403'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '201'
       requestBody:
         description: 'If "isPrimary" is set to "true", when this email address successfully added, all other existing email addresses belong to the customer will have their "isPrimary" field set to "false".'
         content:
@@ -10360,7 +9778,7 @@ paths:
     get:
       tags:
         - Schedules-Suspension
-      summary: Get Schedules (Suspension)
+      summary: List Schedules (Suspension)
       description: 'Retrieves list of suspension Schedules based on Account ID provided. '
       operationId: 5de96099b72c6266f54f0168
       parameters:
@@ -10392,21 +9810,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '200'
-              - '401'
-              - '403'
-              - '404'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '200'
       responses:
         '200':
           description: Successful response with a list of suspension schedules details based on query list provided.
@@ -10588,21 +9991,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '201'
-              - '400'
-              - '401'
-              - '403'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '201'
       requestBody:
         description: Request to create suspension schedule for existing account based on Account ID provided.
         content:
@@ -10913,20 +10301,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '200'
-              - '401'
-              - '403'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '200'
       responses:
         '200':
           description: Successful response with all overdue status changes based on the query parameters provided.
@@ -11118,20 +10492,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '200'
-              - '401'
-              - '403'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '200'
       responses:
         '200':
           description: |-
@@ -11294,21 +10654,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '200'
-              - '401'
-              - '403'
-              - '404'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '200'
       responses:
         '200':
           description: Successful delete one-off schedule based on query parameters provided.
@@ -11535,21 +10880,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '200'
-              - '401'
-              - '403'
-              - '404'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '200'
       responses:
         '200':
           description: Successful response with one-off schedule details based on  account ID and schedule ID provided.
@@ -11755,22 +11085,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '201'
-              - '400'
-              - '401'
-              - '403'
-              - '404'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '201'
       requestBody:
         description: Request to create payment method for existing customer or account.
         content:
@@ -12111,21 +11425,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '200'
-              - '401'
-              - '403'
-              - '404'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '200'
       responses:
         '200':
           description: Successful response with payment method details based on customer ID or account ID provided
@@ -12344,21 +11643,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '201'
-              - '400'
-              - '401'
-              - '403'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '201'
       requestBody:
         description: |-
           Exactly one address + one email + one phone number are required when creating a new customer.
@@ -12604,21 +11888,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '200'
-              - '401'
-              - '403'
-              - '404'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '200'
       responses:
         '200':
           description: |
@@ -12787,22 +12056,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '201'
-              - '400'
-              - '401'
-              - '403'
-              - '404'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '201'
       requestBody:
         description: 'Request to create payment method for the business account '
         content:
@@ -13078,22 +12331,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '201'
-              - '400'
-              - '401'
-              - '403'
-              - '404'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '201'
       requestBody:
         description: 'Request to create payment method for the business account '
         content:
@@ -13395,22 +12632,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
-          schema:
-            enum:
-              - '201'
-              - '400'
-              - '401'
-              - '403'
-              - '404'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '201'
       requestBody:
         description: 'Request to create payment method for the business account '
         content:
@@ -13726,21 +12947,6 @@ paths:
           in: header
           description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           name: Authorization
-        - schema:
-            enum:
-              - '200'
-              - '401'
-              - '403'
-              - '404'
-              - '429'
-              - '500'
-              - '503'
-            type: string
-            default: '200'
-          name: X-Mock-Code
-          in: header
-          description: Http Status code of the supported mocked responses.
-          required: true
       responses:
         '200':
           description: OK
