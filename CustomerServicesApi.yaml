@@ -11,7 +11,7 @@ info:
     **Live Environment**    https://oc.debitsuccess.com/CustomerServices/v1.0
 
     ## Authentication 
-    Please visit [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) 
+    Please visit [[Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md)](../docs/Introduction/2-Authentication.md) 
 
     ## Resources
     |  Resources  | Supported Methods   |Purpose |
@@ -51,7 +51,7 @@ tags:
   - name: Payment Methods
   - name: Payment Status
   - name: PaymentToken
-  - name: PhoneNumbers	
+  - name: PhoneNumbers
   - name: Schedules-OneOff
   - name: Schedules-Recurring
   - name: Schedules-Suspension
@@ -67,7 +67,7 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -468,7 +468,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -699,7 +699,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -869,7 +869,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -1085,7 +1085,7 @@ paths:
             type: boolean
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -1274,7 +1274,7 @@ paths:
             default: 10
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -1411,7 +1411,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -1663,7 +1663,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -1990,7 +1990,7 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -2388,9 +2388,10 @@ paths:
         - name: accountStatus
           in: query
           description: |-
-            Account status. Can be used to filter retrieved account based on their current status. Possible values are: Active, Suspended, PaymentStopped, Closed, Overdue. Default value is Active if not provided.
-            Notes:
-            1) 'Active' accounts can also be 'Suspended' or 'PaymentStopped' at the same time.
+            [Account status](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1492877598/Statuses+in+Debitsuccess+Systems) can be used to filter retrieved account based on their current status. Default value is Active if not provided.
+            >Notes:
+            >1) 'Active' accounts can also be 'Suspended', 'PaymentStopped' or 'Overdue' at the same time.
+            2) 'Closed' accounts can also be 'Suspended', 'PaymentStopped' or 'Overdue' at the same time.
             2) 'Suspended' accounts can also be 'PaymentStopped' at the same time.
           schema:
             enum:
@@ -2472,7 +2473,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -2682,7 +2683,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -2937,7 +2938,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -3288,7 +3289,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -3561,7 +3562,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -3839,7 +3840,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -4066,7 +4067,7 @@ paths:
             default: '12345678'
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -4354,7 +4355,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -4580,7 +4581,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -4948,7 +4949,7 @@ paths:
             type: integer
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -5161,7 +5162,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -5447,7 +5448,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -5680,7 +5681,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -5994,7 +5995,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -6271,7 +6272,7 @@ paths:
             type: integer
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -6461,7 +6462,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -6742,7 +6743,7 @@ paths:
             type: integer
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -6949,7 +6950,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -7243,7 +7244,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -7472,7 +7473,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -7796,7 +7797,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -8104,7 +8105,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -8361,7 +8362,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -8662,7 +8663,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -8971,7 +8972,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -9195,7 +9196,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -9498,7 +9499,7 @@ paths:
             type: integer
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -9689,7 +9690,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -9957,7 +9958,7 @@ paths:
             type: integer
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -10142,7 +10143,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -10387,7 +10388,7 @@ paths:
             type: integer
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -10583,7 +10584,7 @@ paths:
             default: CWAUS999999
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -10908,7 +10909,7 @@ paths:
             type: integer
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -11113,7 +11114,7 @@ paths:
             default: Ascending
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -11289,7 +11290,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -11530,7 +11531,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -11750,7 +11751,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -12106,7 +12107,7 @@ paths:
             type: integer
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -12339,7 +12340,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -12599,7 +12600,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -12782,7 +12783,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -13073,7 +13074,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -13390,7 +13391,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
             type: string
@@ -13675,7 +13676,7 @@ paths:
       tags:
         - Payment Status
       operationId: get-businesses-businessID-paymentstatuses
-      description: 'Returns payment  statuses for Gateway Accounts based on the input parameters provided. See [Statuses in Debitsuccess Systems](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1492877598/Statuses+in+Debitsuccess+Systems#Payment-Status) for details on the possible Payment statuses. '
+      description: 'Returns [payment statuses](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1492877598/Statuses+in+Debitsuccess+Systems#Payment-Status) for Gateway Accounts based on the input parameters provided. '
       parameters:
         - schema:
             type: string
@@ -13699,7 +13700,7 @@ paths:
             type: string
           in: query
           name: Status
-          description: 'Status of the payment. If not provided, payment schedule records from all statuses associated to the user will be extracted.'
+          description: '[Status of the payment](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1492877598/Statuses+in+Debitsuccess+Systems#Payment-Status). If not provided, payment schedule records from all statuses associated to the user will be extracted.'
         - schema:
             type: string
           in: query
@@ -13723,7 +13724,7 @@ paths:
         - schema:
             type: string
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           name: Authorization
         - schema:
             enum:
@@ -13987,7 +13988,7 @@ paths:
       operationId: post-accounts-accountId-Transfers
       description: |
         Transfers an active account from a business to another business within the same business group. Upon the successful transfer of an account, the requested account will be closed and a new account will be created with the information inherited from the requested account.
-        
+
         >
         Only standalone and non-overdue accounts can be transferred. History of the account will not be transferred. Please refer to error responses below for all other restrictions to transfer an account.
 
@@ -14014,7 +14015,7 @@ paths:
         - schema:
             type: string
           in: header
-          description: JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           name: Authorization
 components:
   schemas:
