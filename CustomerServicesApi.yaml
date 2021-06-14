@@ -13987,7 +13987,7 @@ paths:
                 $ref: '#/components/schemas/422AccountTransferResonse'
       operationId: post-accounts-accountId-Transfers
       description: |
-        Transfers an active account from a business to another business within the same business group. Upon the successful transfer of an account, the requested account will be closed and a new account will be created with the information inherited from the requested account.
+        Transfers an active account from a business to another business within the same business group. Upon the successful transfer of an account, the original account will be closed and a new account will be created with the information inherited from the original account.
 
         >
         Only standalone and non-overdue accounts can be transferred. History of the account will not be transferred. Please refer to error responses below for all other restrictions to transfer an account.
