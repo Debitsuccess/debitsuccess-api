@@ -2346,7 +2346,10 @@ paths:
             type: string
       responses:
         '200':
-          description: 'Successful response with account details based on query list provided. '
+          description: |-
+            Successful response with account details based on query list provided. 
+
+            See [Statuses in Debitsuccess Systems](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1492877598/Statuses+in+Debitsuccess+Systems) for possible values and descriptions for `overdueStatus`, `lastReversalReason`, `closeReason`, and `collectionStopReason`.
           content:
             application/json:
               schema:
@@ -2541,7 +2544,10 @@ paths:
             type: string
       responses:
         '200':
-          description: Successful response with account details based on account ID provided.
+          description: |-
+            Successful response with account details based on account ID provided.
+
+            See [Statuses in Debitsuccess Systems](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1492877598/Statuses+in+Debitsuccess+Systems) for possible values and descriptions for `overdueStatus`, `lastReversalReason`, `closeReason`, and `collectionStopReason`.
           content:
             application/json:
               schema:
@@ -2756,14 +2762,13 @@ paths:
         Updates existing account details based on the query parameters provided.
 
         Notes: 
-        1) Updating Term and TermType are applicable for on-going Accounts only i.e. fixedTerm=false
+        1) Updating `term` and `termType` are applicable for on-going Accounts only i.e., fixedTerm=false
 
-        2) Adjusting ContractAmount will set the Account to fixed term
+        2) Adjusting `contractAmount` will set the Account to fixed term
 
         3) Updating Accounts from fixed term to on-going is NOT allowed
 
-        4) Updating Account Term or Contract Amount is NOT allowed after the minimum term has past.
-        5) Populate Collection Stop Reason as ‘Manual Payment Stop’ when WS StopPayment successfully executed 
+        4) Updating Account `term` or `contractAmount` is NOT allowed after the minimum term has past.
       operationId: 5dc0a8788afb2359af79d530
       parameters:
         - name: accountId
@@ -15489,34 +15494,62 @@ components:
           description: External reference associated to the customer
     200GetAccount:
       type: object
+      description: ''
+      title: ''
       properties:
         accountId:
           type: string
+          description: System generated reference id associated to the Account extracted.
         accountExternalId:
           maxLength: 50
           type: string
           description: External identifier associated to the account to be extracted.
         customerId:
           type: string
+          description: Unique identifier associated to the customer owning the Account extracted
         businessAccountId:
           type: string
+          description: Business Account's contract prefix associated to the Accounts extracted
         termType:
           type: string
+          description: Unit of measurement for the minimum contract duration
+          enum:
+            - Months
+            - Payments
         term:
           type: integer
+          description: Total number of terms before the account meets the contract minimum term requirement
         accountCode:
           type: string
+          description: |
+            Account code associated to the contract extracted
+          maxLength: 100
         accountNotes:
           type: string
           description: Free form text. Can be used to capture account's activities and other account details.
+          maxLength: 1000
         fixedTerm:
           type: boolean
+          description: |-
+            True - account will be closed at the end of the minimum term
+
+            False - account will continue to bill after minimum term
         nextBillingDate:
           type: string
+          description: |
+            Next date (in UTC) the extracted account is due to be billed on. 
         lastBillingDateTime:
           type: string
+          description: |
+            Last date (in UTC) the extracted account was billed on. 
         overdueStatus:
           type: integer
+          description: Flag indicate if extracted account is overdue and at which stage it is being overdue.
+          enum:
+            - 0
+            - 1
+            - 2
+            - 3
         overdueAmountPayment:
           type: number
           description: Payment amount overdued. Negative amount refer to account is in credit for payments.
@@ -15525,48 +15558,93 @@ components:
           description: Fee amount overdued. Negative amount refer to account is in credit for fees.
         lastReversalReason:
           type: string
+          description: 'Reason for account''s last payment failure, e.g. Insufficient Funds, Account Closed, etc.'
         closeReason:
           type: string
+          description: 'Reason account was closed, e.g. End of term, Facility Request, etc'
         suspended:
           type: boolean
+          description: |-
+            Flag indicates if the payment of the extracted account is suspended 
+
+            notes: amount owing will NOT continue to accrue while payments are suspended
+
+            True - suspended
+
+            False - not suspended
         paymentStopped:
           type: boolean
+          description: |-
+            Flag indicates if the payment of the extracted account is stopped. 
+
+            Notes: amount owing will continue to accrue while payments are stopped
+
+            True - There is a stop on payment collection
+
+            False - There is no stop on payment collection
         paymentStopEndDate:
           type: string
+          description: 'Date (in UTC) that the payment stop is due to end. '
         catchUpAmount:
           type: number
+          description: 'Account''s scheduled Catch-up amount. Only applicable when Account has overdue amount. '
         catchUpEndDate:
           type: string
+          description: End date (in UTC) for account scheduled catch-up. Only applicable when Account has overdue amount
         paymentInAdvanceAmount:
           type: number
+          description: Account's scheduled Advance payment amount. Only applicable when Account has NO overdue amount
         paymentInAdvanceEnddate:
           type: string
+          description: End date (in UTC) for account scheduled advance payment. Only applicable when Account has NO overdue amount
         accountStartDate:
           type: string
+          description: Account start date (in UTC).
+          pattern: YYYY-MM-DD
         accountLoadedDateTime:
           type: string
+          description: Account loaded date (in UTC).
         accountCloseDateTime:
           type: string
+          description: Account close date (in UTC).
+          pattern: YYYY-MM-DD
         lastUpdatedDateTime:
           type: string
+          description: Date (in UTC) that the account or related details was last updated.
         accruedContractAmount:
           type: number
+          description: Amount to be collected for the account (in terms of recurring payments) before the account is past its minimum term
         originalContractAmount:
           type: number
+          description: Original Amount to be collected for the account when account first created.
         outstandingRecurringAmount:
           type: number
+          description: Account recurring payment outstanding amount.
         outandingOneOffAmount:
           type: number
+          description: |
+            Account one off payment outstanding amount.
         outstandingFeeAmount:
           type: number
+          description: |
+            Account fee outstanding amount.
         projectedFinishDate:
           type: string
+          description: Calculated estimated time for the account finish date (in UTC). This field is being calculated overnight.
+          pattern: YYYY-MM-DD
         paymentMethodToken:
           type: string
           description: PaymentMethod must be associated to the provided CustomerId.
         collectionStopReason:
           type: string
-          description: Reason for DD stop
+          description: Reason for DD stop. Collection Stop Reason is set to ‘Manual Payment Stop’ when `PaymentStop` parameter in Put Account is set to true.
+          enum:
+            - Manual Payment Stop
+            - Charge Back
+            - Invalid Account
+            - Activated by Suspension
+            - Bulk Suspension
+            - Batch Collection Attempts To Clear Limit Exceeded
     200GetAccounts:
       type: object
       properties:
@@ -15577,31 +15655,62 @@ components:
             properties:
               accountId:
                 type: string
+                description: |
+                  System generated reference id associated to the Account extracted.
               accountExternalId:
                 maxLength: 50
                 type: string
                 description: External identifier associated to the account to be extracted.
               customerId:
                 type: string
+                description: |
+                  Unique identifier associated to the customer owning the Account extracted
               businessAccountId:
                 type: string
+                description: |
+                  Business Account's contract prefix associated to the Accounts extracted
               termType:
                 type: string
+                description: Unit of measurement for the minimum contract duration
+                enum:
+                  - Months
+                  - Payments
               term:
                 type: integer
+                description: |
+                  Total number of terms before the account meets the contract minimum term requirement
               accountCode:
                 type: string
+                description: |
+                  Account code associated to the contract extracted
               accountNotes:
                 type: string
                 description: Free form text. Can be used to capture account's activities and other account details.
+                maxLength: 1000
               fixedTerm:
                 type: boolean
+                description: |
+                  True - account will be closed at the end of the minimum term
+
+                  False - account will continue to bill after minimum term
               nextBillingDate:
                 type: string
+                description: |
+                  Next date (in UTC) the extracted account is due to be billed on. 
+                pattern: YYYY-MM-DD
               lastBillingDateTime:
                 type: string
+                description: |
+                  Last date (in UTC) the extracted account was billed on. 
               overdueStatus:
                 type: integer
+                description: |
+                  Flag indicate if extracted account is overdue and at which stage it is being overdue
+                enum:
+                  - 0
+                  - 1
+                  - 2
+                  - 3
               overdueAmountPayment:
                 type: number
                 description: Payment amount overdued. Negative amount refer to account is in credit for payments.
@@ -15610,48 +15719,93 @@ components:
                 description: Fee amount overdued. Negative amount refer to account is in credit for fees.
               lastReversalReason:
                 type: string
+                description: 'Reason account''s last payment failure, e.g. Insufficient Funds, Account Closed, etc.'
               closeReason:
                 type: string
+                description: 'Reason account was closed, e.g. End of term, Facility Request, etc'
               suspended:
                 type: boolean
+                description: |-
+                  Flag indicates if the payment of the extracted account is suspended 
+
+                  notes: amount owing will NOT continue to accrue while payments are suspended
+
+                  True - suspended
+
+                  False - not suspended
               paymentStopped:
                 type: boolean
+                description: |-
+                  Flag indicates if the payment of the extracted account is stopped. 
+
+                  notes: amount owing will continue to accrue while payments are stopped
+
+                  True - There is a stop on payment collection
+
+                  False - There is no stop on payment collection
               paymentStopEndDate:
                 type: string
+                description: 'Date (in UTC) that the payment stop is due to end. '
+                pattern: YYYY-MM-DD
               catchUpAmount:
                 type: number
+                description: Account's scheduled Catch-up amount. Only applicable when Account has overdue amount
               catchUpEndDate:
                 type: string
+                description: End date (in UTC) for account scheduled catch-up. Only applicable when Account has overdue amount
               paymentInAdvanceAmount:
                 type: number
+                description: Account's scheduled Advance payment amount. Only applicable when Account has NO overdue amount
               paymentInAdvanceEnddate:
                 type: string
+                description: End date (in UTC) for account scheduled advance payment. Only applicable when Account has NO overdue amount
               accountStartDate:
                 type: string
+                pattern: YYYY-MM-DD
+                description: Account start date (in UTC).
               accountLoadedDateTime:
                 type: string
+                description: Account loaded date (in UTC).
               accountCloseDateTime:
                 type: string
+                pattern: YYYY-MM-DD
+                description: Account end date (in UTC).
               lastUpdatedDateTime:
                 type: string
+                description: Date (in UTC) that the account or related details was last updated.
               accruedContractAmount:
                 type: number
+                description: Amount to be collected for the account (in terms of recurring payments) before the account is past its minimum term
               originalContractAmount:
                 type: number
+                description: Original Amount to be collected for the account when account first created.
               outstandingRecurringAmount:
                 type: number
+                description: |
+                  Account recurring payment outstanding amount.
               outstandingOneOffAmount:
                 type: number
+                description: Account one off payment outstanding amount.
               outstandingFeeAmount:
                 type: integer
+                description: Account fee outstanding amount.
               projectedFinishDate:
                 type: string
+                description: Calculated estimated time for the account finish date (in UTC). This field is being calculated overnight.
+                pattern: YYYY-MM-DD
               paymentMethodToken:
                 type: string
-                description: PaymentMethod must be associated to the provided CustomerId.
+                description: Payment Method token associated to the account.PaymentMethod must be associated to the provided CustomerId.
               collectionStopReason:
                 type: string
-                description: Reason for DD stop
+                description: Reason for DD stop. The CollectionStopReason defaults to Manual Payment Stop when payment is stopped using PUT Account.
+                enum:
+                  - Manual Payment Stop
+                  - Charge Back
+                  - Invalid Account
+                  - Activated by Suspension
+                  - Bulk Suspension
+                  - Batch Collection Attempts To Clear Limit Exceeded
         responseMetadata:
           type: object
           properties:
