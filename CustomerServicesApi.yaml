@@ -13236,7 +13236,7 @@ paths:
           type: string
         name: accountId
         in: path
-        description: Unique identifier of the account associated to the guarantor
+        description: Unique identifier of the account in which the new guarantor will be asassociated to
         required: true
     post:
       summary: Create Guarantor
