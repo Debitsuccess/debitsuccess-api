@@ -46,6 +46,7 @@ tags:
   - name: Businesses
   - name: Customers
   - name: EmailAddresses
+  - name: Guarantor
   - name: OverdueStatusChanges
   - name: Payment History
   - name: Payment Methods
@@ -56,6 +57,7 @@ tags:
   - name: Schedules-Recurring
   - name: Schedules-Suspension
   - name: Terms and Conditions
+  - name: Beta
 paths:
   /customers:
     post:
@@ -827,7 +829,7 @@ paths:
           description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           schema:
-            type: string'
+            type: string
       responses:
         '200':
           description: |
@@ -9986,10 +9988,7 @@ paths:
           description: Unique identifier of the account associated to this Suspension Schedule
           required: true
           schema:
-            enum:
-              - CWAUS999999
             type: string
-            default: CWAUS999999
         - name: Authorization
           in: header
           description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
@@ -13165,6 +13164,7 @@ paths:
       summary: Create Account Transfer
       tags:
         - Account Transfer
+        - Beta
       responses:
         '201':
           description: Created
@@ -13228,6 +13228,77 @@ paths:
           in: header
           description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           name: Authorization
+      x-internal: false
+  '/accounts/{accountId}/guarantors':
+    parameters:
+      - schema:
+          type: string
+        name: accountId
+        in: path
+        description: Unique identifier of the account associated to the guarantor
+        required: true
+    post:
+      summary: Create Guarantor
+      tags:
+        - Guarantor
+        - Beta
+      responses:
+        '201':
+          description: Guarantor created successfully for the specified account.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/201CreateGuarantorResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400CreateGuarantorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401CreateGuarantorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403CreateGuarantorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404CreateGuarantorResponse'
+        '422':
+          description: Unprocessable Entity (WebDAV)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/422CreateGuarantorResonse'
+      operationId: post-accounts-accountId-guarantors
+      description: Creates a Guarantor for an existing account.
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authorization
+          required: true
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGuarantorRequest'
+        description: |-
+          Request to create Guarantor for existing account based on Account ID provided.
+
+          >
+          At least one of `homePhone`, `businessPhone` or `mobilePhone` is required.
+      x-internal: false
 components:
   schemas:
     400AddAddress:
@@ -16041,7 +16112,6 @@ components:
         - destBusinessAccountId
         - newAccountExternalId
     201AccountTransferResponse:
-      title: 201AccountTransferResponse
       type: object
       properties:
         newAccountId:
@@ -16266,6 +16336,287 @@ components:
               value:
                 errorCode: business_group_not_allowed
                 message: The business group associated with this account does not allow a transfer account request.
+    CreateGuarantorRequest:
+      description: ''
+      type: object
+      x-examples:
+        example:
+          fullName: Joe Smith
+          relationship: Father
+          dateOfBirth: '1960-12-31'
+          address: 123 Street 1
+          homePhone: '34354545'
+          businessPhone: '23454546'
+          mobilePhone: '345456577'
+          emailAddress: john@debitsuccess.com
+          value:
+            fullName: Joe Smith
+            relationship: Father
+            dateOfBirth: '1960-12-31'
+            address: 123 Street 1
+            homePhone: '34354545'
+            businessPhone: '23454546'
+            mobilePhone: '345456577'
+            emailAddress: john@debitsuccess.com
+      properties:
+        fullName:
+          type: string
+          minLength: 1
+          description: |
+            Full name of the guarantor
+          maxLength: 30
+          pattern: 'alphanumeric # + - ( ) * _ [space] , ; : .'
+        relationship:
+          type: string
+          minLength: 1
+          description: Guarantor's relationship with the customer
+          pattern: 'alphanumeric # + - ( ) * _ [space] , ; : .'
+          maxLength: 20
+        dateOfBirth:
+          type: string
+          minLength: 1
+          description: Date of birth of the guarantor
+          pattern: YYYY-MM-DD
+          maxLength: 10
+        address:
+          type: string
+          minLength: 1
+          description: Address of the guarantor
+          maxLength: 100
+          pattern: 'alphanumeric # + - ( ) * _ [space] , ; : .'
+        homePhone:
+          type: string
+          description: Home phone number of the guarantor
+          maxLength: 20
+          pattern: 'alphanumeric # + - ( ) * _ [space] , ; : . '
+        businessPhone:
+          type: string
+          description: Work phone number of the guarantor
+          maxLength: 20
+          pattern: 'alphanumeric # + - ( ) * _ [space] , ; : .'
+        mobilePhone:
+          type: string
+          description: Mobile phone number of the guarantor
+          maxLength: 20
+          pattern: 'alphanumeric # + - ( ) * _ [space] , ; : .'
+        emailAddress:
+          type: string
+          minLength: 1
+          description: Email Address of the guarantor
+          maxLength: 75
+          pattern: myemailaddress@domain.com
+      required:
+        - fullName
+        - relationship
+        - dateOfBirth
+        - address
+        - emailAddress
+    201CreateGuarantorResponse:
+      description: ''
+      type: object
+      example:
+        value:
+          accountId: DEA123234
+          fullName: Joe Smith
+          relationship: Father
+          dateOfBirth: '1960-12-31'
+          address: 123 Street 1
+          homePhone: '34354545'
+          businessPhone: '23454546'
+          mobilePhone: '345456577'
+          emailAddress: john@debitsuccess.com
+      properties:
+        accountId:
+          type: string
+          minLength: 1
+          description: 'Unique identifier associated to the Account '
+        fullName:
+          type: string
+          minLength: 1
+          description: Full name of the guarantor
+        relationship:
+          type: string
+          minLength: 1
+          description: Guarantor's relationship with the customer
+        dateOfBirth:
+          type: string
+          minLength: 1
+          description: ' Date of birth of the guarantor'
+        address:
+          type: string
+          minLength: 1
+          description: Address of the guarantor
+        homePhone:
+          type: string
+          minLength: 1
+          description: Home phone number of the guarantor
+        businessPhone:
+          type: string
+          minLength: 1
+          description: Work phone number of the guarantor
+        mobilePhone:
+          type: string
+          minLength: 1
+          description: Mobile phone number of the guarantor
+        emailAddress:
+          type: string
+          minLength: 1
+          description: Email Address of the guarantor
+      required:
+        - accountId
+        - fullName
+        - relationship
+        - dateOfBirth
+        - address
+        - homePhone
+        - businessPhone
+        - mobilePhone
+        - emailAddress
+    400CreateGuarantorResponse:
+      description: ''
+      type: object
+      properties:
+        errorCode:
+          type: string
+          minLength: 1
+        message:
+          type: string
+          minLength: 1
+        errors:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            required:
+              - field
+              - message
+            properties:
+              field:
+                type: string
+                minLength: 1
+              message:
+                type: string
+                minLength: 1
+      required:
+        - errorCode
+        - message
+        - errors
+      example:
+        value:
+          errorCode: validation
+          message: Unable to process request due to validation errors.
+          errors:
+            - field: fullName
+              message: FullName is required.
+            - field: fullName
+              message: FullName must not exceed 30 characters.
+            - field: fullName
+              message: FullName is invalid.
+            - field: address
+              message: Address is required.
+            - field: address
+              message: Address must not exceed 100 characters.
+            - field: address
+              message: Address is invalid.
+            - field: relationship
+              message: Relationship is required.
+            - field: relationship
+              message: Relationship must not exceed 20 characters.
+            - field: relationship
+              message: Relationship is invalid.
+            - field: dateOfBirth
+              message: DateOfBirth is required.
+            - field: dateOfBirth
+              message: Guarantor must be at least 18 years old.
+            - field: dateOfBirth
+              message: 'DateOfBirth is invalid, please ensure date is formatted in ''YYYY-MM-DD'' format.'
+            - field: dateOfBirth
+              message: DateOfBirth is out of range.
+            - field: homePhone
+              message: HomePhone must not exceed 20 characters.
+            - field: homePhone
+              message: HomePhone is invalid.
+            - field: businessPhone
+              message: BusinessPhone must not exceed 20 characters.
+            - field: mobilePhone
+              message: MobilePhone must not exceed 20 characters.
+            - field: mobilePhone
+              message: MobilePhone is invalid.
+            - field: mobilePhone
+              message: 'At least one of HomePhone, BusinessPhone or MobilePhone is required.'
+            - field: emailAddress
+              message: EmailAddress is required.
+            - field: emailAddress
+              message: EmailAddress must not exceed 75 characters.
+            - field: emailAddress
+              message: EmailAddress is invalid.
+    401CreateGuarantorResponse:
+      description: ''
+      type: object
+      example:
+        message: Unable to process this request due to insufficient client claims.
+        errors:
+          - claim: CustomerApi.
+      properties:
+        message:
+          type: string
+          minLength: 1
+        error:
+          type: string
+          minLength: 1
+      required:
+        - message
+        - errorCode
+    403CreateGuarantorResponse:
+      description: ''
+      type: object
+      properties:
+        errorCode:
+          type: string
+          minLength: 1
+        message:
+          type: string
+          minLength: 1
+      required:
+        - errorCode
+        - message
+      example:
+        errorCode: access_denied
+        message: Unable to process this request as you do not have access to the account associated to this request.
+    404CreateGuarantorResponse:
+      description: ''
+      type: object
+      properties:
+        message:
+          type: string
+          minLength: 1
+      required:
+        - message
+      example:
+        message: The resource provided could not be found.
+      title: ''
+      x-examples:
+        example-1:
+          value:
+            message: The resource provided could not be found.
+    422CreateGuarantorResonse:
+      title: 422AccountTransferResonse
+      type: object
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
+      x-examples:
+        example-1:
+          value:
+            message: The resource provided is inactive/closed.
+        example-2:
+          value:
+            message: The resource provided already has a Guarantor.
+        example-3:
+          value:
+            message: The Customer associated to the resource provided already has a Guarantor assigned from a different account. Please use PUT Account to assign the existing guarator to this account.
   securitySchemes:
     apiKeyHeader:
       type: apiKey
