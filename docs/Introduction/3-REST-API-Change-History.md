@@ -7,12 +7,22 @@ Debitsuccess is always improving how we deliver our service. As part of deliveri
 
 > Please note that these features are in our roadmap for the next three months but we do not have a definite ETA.
 
-* New endpoint for customer services API will be introduced to transfer an account from one business account to another.
-* New customer services API endpoint to create, get, and update gauatantor details will soon be available.
+* New customer services API endpoint to create, get, and update guarantor details will soon be available.
 * Enhancement to the [Realtime Payment Widget](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Widgets/Real-time-payment-widget.md) to support account payments.
-
+* Enhancement to the close account endpoint with additional cancellation options.
 
 *****
+
+## June 17, 2021
+* Introduced a new endpoint for customer services API will be used to [transfer an account](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1accounts~1%7BaccountId%7D~1transfers/post) from one business account to another.
+
+* Enhanced the existing REST API endpoint [PUT Account](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1accounts~1%7BaccountId%7D/put):
+
+  * The `collectionStopReason` in [GET Account(s)](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1accounts/get) response defaults to *Manual Payment Stop* when `paymentStopped` is set to *true* in PUT Account.
+
+  * New Error 400 introduced to reject PUT Account request if `collectionStopReason` is not *Manual Payment Stop*.
+
+
 ## May 25, 2021
 Enhancement to populate standardized 403 error messages when client attempts to execute API request with the resources provided in the request URL that has not been authorized to them. There are four types of resources i.e., account, customer, business, and business account where each type will return error code 403 with standard errors message depending on the resource type.
 
@@ -52,7 +62,7 @@ A new REST API [Get PaymentToken (for Account Payment)](https://debitsuccess.sto
 
 ## Oct 29, 2020
 
-All [Debitsuccess REST APIs](../Introduction/1-REST-APIs.md) are now available in the production environment. Please contact us to obtain your credentials before using it on production. 
+All [Debitsuccess REST APIs](../Introduction/1-REST-APIs.md) are now available in the production environment. Please contact us to obtain your live environment credentials before using them on production. 
 
 ## Oct 22, 2020
 

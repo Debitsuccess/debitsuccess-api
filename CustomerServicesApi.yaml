@@ -2769,7 +2769,7 @@ paths:
 
         2) Adjusting `contractAmount` will set the Account to fixed term
 
-        3) Updating Accounts from fixed term to on-going is NOT allowed
+        3) Updating Accounts from fixed term to ongoing is NOT allowed
 
         4) Updating Account `term` or `contractAmount` is NOT allowed after the minimum term has past.
       operationId: 5dc0a8788afb2359af79d530
@@ -14927,24 +14927,36 @@ components:
       properties:
         accountId:
           type: string
+          description: System generated reference number associated with the updated Account
         accountExternalId:
           type: string
+          description: External reference number associated with the updated Account
         termType:
           type: string
+          description: 'Term type, e.g. Payments or Months'
         term:
           type: integer
+          description: Number of terms to complete the recurring payments
         accountCode:
           type: string
+          description: Account code associated to the updated Account
         fixedTerm:
           type: boolean
+          description: Flag indicate if account is a fixed term (i.e. will be closed at the end of the minimum term) or an open ended ongoing account.
         accountStartDate:
           type: string
+          description: Account start date (in UTC).
+          pattern: YYYY-MM-DD
         paymentsStopped:
           type: boolean
+          description: 'Flag indicate if the payment for the account has been stopped (the amount owing will continue to accrue while payments are stopped). '
         paymentsStoppedEndDate:
           type: string
+          description: 'Date (in UTC) that the payment stop is due to end. '
+          pattern: YYYY-MM-DD
         contractAmount:
           type: number
+          description: Amount to be collected for the account (in terms of recurring payments) before the account is past its minimum term
     400closeAccount:
       type: object
       properties:
@@ -15095,7 +15107,12 @@ components:
           description: 'YYYY-MM-DD, Set the date (local time) when the payment stopped order will end. PaymentStoppedEndDate is not allowed to be updated together with accountStartDate'
         contractAmount:
           type: number
-          description: Total installments for all recurring schedules to be collected for the account before the account is past its minimum term
+          description: |-
+            Amount to be collected for the account (in terms of recurring payments) before the account is past its minimum term
+
+            Notes 1: Only fixedTerm account can update contractAmount to a different value.
+
+            Notes 2: ContractAmount is not required if a new Term value is provided as it will be auto recalculate again based on the new Term value.
       required:
         - termType
         - term
@@ -16416,15 +16433,15 @@ components:
       description: ''
       type: object
       example:
-          accountId: DEA123234
-          fullName: Joe Smith
-          relationship: Father
-          dateOfBirth: '1960-12-31'
-          address: 123 Street 1
-          homePhone: '34354545'
-          businessPhone: '23454546'
-          mobilePhone: '345456577'
-          emailAddress: john@debitsuccess.com
+        accountId: DEA123234
+        fullName: Joe Smith
+        relationship: Father
+        dateOfBirth: '1960-12-31'
+        address: 123 Street 1
+        homePhone: '34354545'
+        businessPhone: '23454546'
+        mobilePhone: '345456577'
+        emailAddress: john@debitsuccess.com
       properties:
         accountId:
           type: string
@@ -16502,53 +16519,53 @@ components:
         - message
         - errors
       example:
-          errorCode: validation
-          message: Unable to process request due to validation errors.
-          errors:
-            - field: fullName
-              message: FullName is required.
-            - field: fullName
-              message: FullName must not exceed 30 characters.
-            - field: fullName
-              message: FullName is invalid.
-            - field: address
-              message: Address is required.
-            - field: address
-              message: Address must not exceed 100 characters.
-            - field: address
-              message: Address is invalid.
-            - field: relationship
-              message: Relationship is required.
-            - field: relationship
-              message: Relationship must not exceed 20 characters.
-            - field: relationship
-              message: Relationship is invalid.
-            - field: dateOfBirth
-              message: DateOfBirth is required.
-            - field: dateOfBirth
-              message: Guarantor must be at least 18 years old.
-            - field: dateOfBirth
-              message: 'DateOfBirth is invalid, please ensure date is formatted in ''YYYY-MM-DD'' format.'
-            - field: dateOfBirth
-              message: DateOfBirth is out of range.
-            - field: homePhone
-              message: HomePhone must not exceed 20 characters.
-            - field: homePhone
-              message: HomePhone is invalid.
-            - field: businessPhone
-              message: BusinessPhone must not exceed 20 characters.
-            - field: mobilePhone
-              message: MobilePhone must not exceed 20 characters.
-            - field: mobilePhone
-              message: MobilePhone is invalid.
-            - field: mobilePhone
-              message: 'At least one of HomePhone, BusinessPhone or MobilePhone is required.'
-            - field: emailAddress
-              message: EmailAddress is required.
-            - field: emailAddress
-              message: EmailAddress must not exceed 75 characters.
-            - field: emailAddress
-              message: EmailAddress is invalid.
+        errorCode: validation
+        message: Unable to process request due to validation errors.
+        errors:
+          - field: fullName
+            message: FullName is required.
+          - field: fullName
+            message: FullName must not exceed 30 characters.
+          - field: fullName
+            message: FullName is invalid.
+          - field: address
+            message: Address is required.
+          - field: address
+            message: Address must not exceed 100 characters.
+          - field: address
+            message: Address is invalid.
+          - field: relationship
+            message: Relationship is required.
+          - field: relationship
+            message: Relationship must not exceed 20 characters.
+          - field: relationship
+            message: Relationship is invalid.
+          - field: dateOfBirth
+            message: DateOfBirth is required.
+          - field: dateOfBirth
+            message: Guarantor must be at least 18 years old.
+          - field: dateOfBirth
+            message: 'DateOfBirth is invalid, please ensure date is formatted in ''YYYY-MM-DD'' format.'
+          - field: dateOfBirth
+            message: DateOfBirth is out of range.
+          - field: homePhone
+            message: HomePhone must not exceed 20 characters.
+          - field: homePhone
+            message: HomePhone is invalid.
+          - field: businessPhone
+            message: BusinessPhone must not exceed 20 characters.
+          - field: mobilePhone
+            message: MobilePhone must not exceed 20 characters.
+          - field: mobilePhone
+            message: MobilePhone is invalid.
+          - field: mobilePhone
+            message: 'At least one of HomePhone, BusinessPhone or MobilePhone is required.'
+          - field: emailAddress
+            message: EmailAddress is required.
+          - field: emailAddress
+            message: EmailAddress must not exceed 75 characters.
+          - field: emailAddress
+            message: EmailAddress is invalid.
     401CreateGuarantorResponse:
       description: ''
       type: object
