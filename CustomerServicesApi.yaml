@@ -12614,13 +12614,13 @@ paths:
                 $ref: '#/components/schemas/503ServiceUnavailable'
               example:
                 message: The API is currently unavailable due to a scheduled outage – please try again soon.
-  '/businessAccounts/{businessAccountId}/paymentTokens':
+  '/businessAccounts/{businessAccountId}/casualPaymentTokens':
     post:
       tags:
         - PaymentToken
       summary: Generate PaymentToken (for Casual Payment)
       description: |
-        Generate a link to paynow page so that user can make a casual using credit card
+        Generate a link to Paynow page so that the customer can make a casual using credit card.
       operationId: 6032d38d4c55a6c59ff9de42
       parameters:
         - name: businessAccountId
