@@ -26,7 +26,7 @@ The [Create PaymentMethod](https://debitsuccess.stoplight.io/docs/debitsuccess-a
 |  _authToken_  |  | get this token from [Debitsuccess Identity Server](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/2-Authentication.md) using your  _client secret_  and  _client ID_  | 
 |  _businessAccountId_  |  | a unique identifier (string, Debitsuccess contract prefix) of the business customer belongs to | 
 | customerId  | Optional | a unique identifier (integer) of the customer the payment method will be captured for | 
-|  _domain_  | Optional | describes the environment the widget will be used against, possible values:  **OC-Test** https://oc-test.debitsuccess.com  **OC-Production** https://oc.debitsuccess.com | 
+|  _domain_  | Optional | describes the environment the widget will be used against, possible values:<ul><li>**OC-Test** https://oc-test.debitsuccess.com </li><li> **OC-Production** https://oc.debitsuccess.com </li></ul> | 
 |  _accountId_  | Optional | a unique identifier (string, Debitsuccess account reference) of the account a new payment method should be attached to | 
 
 
@@ -130,7 +130,7 @@ If you want to add a form for capturing bank account information to your page yo
 *  _containerElementId_  - id of the parent element for iframe with the form;
 
 
-*  _country_  - the ISO Alpha 3 code of the country, bank account belongs to;
+*  _country_  - the [ISO Alpha-3 code](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/6-Reference.md#countryisocode) of the country, bank account belongs to;
 
 
 *  _styles*(optional) - a string of custom CSS styles for the form;_ 

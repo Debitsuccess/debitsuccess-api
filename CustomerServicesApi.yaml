@@ -13365,6 +13365,8 @@ components:
       properties:
         message:
           type: string
+      x-internal: true
+      title: ''
     400AddEmailAddress:
       type: object
       properties:
@@ -14081,27 +14083,37 @@ components:
       properties:
         customerId:
           type: string
+          description: 'Unique identifier associated with the Customer. '
         businessId:
           type: string
+          description: Unique identifier associated with the Facility
         customerType:
           type: string
+          description: 'Type of customer, i.e. Individual or Business'
         title:
           type: string
+          description: 'Title used to address the Customer. E.g. Mr, Dr, Ms'
         firstName:
           type: string
+          description: Given name/first name associated with the Customer or Business
         middleName:
           type: string
+          description: Middle name associated with the Customer.
         lastName:
           type: string
+          description: Family name/last name associated with the Customer.
         gender:
           type: string
+          description: Customer gender
         dateOfBirth:
           type: string
+          description: Customer date of birth.
         address:
           type: object
           properties:
             addressId:
               type: string
+              description: Unique identifier associated with the Address
             addressLine1:
               type: string
             addressLine2:
@@ -14116,38 +14128,51 @@ components:
               type: string
             countryISOCode:
               type: string
+              description: Country ISO code
             addressType:
               type: string
             isPrimary:
               type: boolean
+              description: Flag to indicate if an address type is preferred for mailing
         emailAddress:
           type: object
           properties:
             emailId:
               type: string
+              description: Unique identifier associated with the emailID
             emailName:
               type: string
+              description: Name of person to be contacted
             emailAddress:
               type: string
+              description: The actul email address
             isPrimary:
               type: string
+              description: Flag to indicate if an emailaddress is preferred for mailing
         phoneNumber:
           type: object
           properties:
             phoneNumberId:
               type: string
+              description: Unique identifier associated with the Contact.
             phoneName:
               type: string
+              description: Name of person to be contacted
             countryCode:
               type: string
+              description: 'Country code of a phone number. E.g. +61, +64'
             areaCode:
               type: string
+              description: 'Area code of a phone number. E.g. 02, 07'
             phoneNumber:
               type: string
+              description: 'Details of contact.e.g. Phone number or email '
             phoneType:
               type: string
+              description: Contact Type
             isPrimary:
               type: string
+              description: Flag for indication of preferred contact.
       required:
         - businessId
         - customerType
@@ -15432,6 +15457,7 @@ components:
         - callbackURL
     CreateCustomerRequest:
       type: object
+      description: ''
       properties:
         businessId:
           type: string
@@ -15441,19 +15467,25 @@ components:
             - Individual
             - Business
           type: string
-          description: 'Indicate the type of customer to be created. Title, middleName, lastName, gender and dateOfBirth is NOT required for customer of Business type'
+          description: |-
+            Indicate the type of customer to be created i.e. Individual or Business. 
+            Title, middleName, lastName, gender, and dateOfBirth is NOT required for customer of Business type
         title:
           maxLength: 10
           type: string
+          description: 'Title used to address the Customer. E.g. Mr, Dr, Ms'
         firstName:
           maxLength: 40
           type: string
+          description: Given name/first name associated with the Customer or Business.
         middleName:
           maxLength: 40
           type: string
+          description: Middle name associated with the Customer.
         lastName:
           maxLength: 40
           type: string
+          description: Family name/last name associated with the Customer.
         gender:
           enum:
             - male
@@ -15461,33 +15493,51 @@ components:
             - unspecified
             - non-binary
           type: string
+          description: Gender of the Customer. Required if the the customerType is Individual.
         dateOfBirth:
           type: string
-          description: format YYYY-MM-DD
+          description: Date of birth of the Customer. Cannot be a future date. Required if the the customerType is Individual.
+          pattern: YYYY-MM-DD
         externalReference:
           type: string
           description: External reference associated to the customer to be created
         address:
           type: object
+          description: |-
+            For NZ address provide:
+            * Address line 1
+            * City
+            * Postcode
+
+            For Australia address provide:
+            * Address Line 1
+            * Suburb
+            * Postcode
           properties:
             addressLine1:
               maxLength: 60
               type: string
+              description: |
+                Address line 1
             addressLine2:
               maxLength: 60
               type: string
+              description: Address line 2 is used when the total address length exceeded Address1
             suburb:
               maxLength: 50
               type: string
+              description: Required for AUS address
             postcode:
               maxLength: 10
               type: string
+              description: 'post code, PIN or ZIP Code'
             state:
               maxLength: 3
               type: string
             city:
               maxLength: 50
               type: string
+              description: Required for NZ address
             countryISOCode:
               maxLength: 3
               minLength: 3
@@ -15501,6 +15551,7 @@ components:
                 - postal
                 - legal
               type: string
+              description: Customers are not allowed to have multiple addresses with same Address Type.
           required:
             - addressLine1
             - postcode
@@ -15512,9 +15563,11 @@ components:
             emailName:
               maxLength: 50
               type: string
+              description: Name of person to be contacted
             emailAddress:
               maxLength: 75
               type: string
+              description: The actul email address. e.g. myemailaddress@domain.com
           required:
             - emailAddress
         phoneNumber:
@@ -15523,13 +15576,15 @@ components:
             phoneName:
               maxLength: 50
               type: string
+              description: Name of person to be contacted
             countryCode:
               maxLength: 4
               type: string
-              description: 'For example, +61, +64, +1'
+              description: 'Country code of a phone number. E.g. +61, +64 For example, +61, +64, +1'
             areaCode:
               maxLength: 4
               type: string
+              description: 'Area code of a phone number. E.g. 02, 07'
             phoneNumber:
               maxLength: 75
               type: string
@@ -15551,6 +15606,8 @@ components:
         - businessId
         - customerType
         - firstName
+        - gender
+        - dateOfBirth
         - externalReference
     200GetCustomer:
       type: object
