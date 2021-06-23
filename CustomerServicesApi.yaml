@@ -12620,7 +12620,7 @@ paths:
         required: true
         description: Unique identifier associated to the account to be transfered.
     post:
-      summary: Create Account Transfer
+      summary: Transfer Account
       tags:
         - Account Transfer
         - Beta
