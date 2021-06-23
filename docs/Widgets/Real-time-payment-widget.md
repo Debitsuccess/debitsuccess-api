@@ -393,3 +393,9 @@ Occurs when the identity server-client does not have access to the business Id p
 }
 ```
 
+## Related Articles
+- [Data for Test Environment](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/989890688/Data+for+Test+Environment)
+
+- [Create customer accounts for testing](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1549369452/Create+customer+accounts+for+testing)
+
+- [Statuses in Debitsuccess Systems](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1492877598/Statuses+in+Debitsuccess+Systems)

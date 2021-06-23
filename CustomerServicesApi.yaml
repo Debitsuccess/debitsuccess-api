@@ -11,7 +11,7 @@ info:
     **Live Environment**    https://oc.debitsuccess.com/CustomerServices/v1.0
 
     ## Authentication 
-    Please visit [[Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md)](../docs/Introduction/2-Authentication.md) 
+    Please visit [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) 
 
     ## Resources
     |  Resources  | Supported Methods   |Purpose |
@@ -36,6 +36,8 @@ info:
     | [Account Transfer](../CustomerServicesApi.yaml/paths/~1accounts~1%7BaccountId%7D~1transfers/post)  | <span style="background-color:skyblue; color:white"> POST</span>  | Transfers an active account from a business to another business within the same business group. |
   contact:
     email: TestAPI.Support@debitsuccess.com
+    url: 'https://debitsuccess.atlassian.net/wiki/spaces/DDE/overview'
+    name: Debitsuccess Developer Documentation
   version: V1.0
 servers:
   - url: 'https://oc-test.debitsuccess.com/CustomerServices/v1.0'
@@ -147,7 +149,7 @@ paths:
                       emailId: '9999999'
                       emailName: John
                       emailAddress: john.doe@debitsuccess.com
-                      isPrimary: 'true'
+                      isPrimary: true
                     phoneNumber:
                       phoneNumberId: '7777777'
                       phoneName: John
@@ -155,7 +157,7 @@ paths:
                       areaCode: '09'
                       phoneNumber: 264 5555
                       phoneType: home
-                      isPrimary: 'true'
+                      isPrimary: true
         '400':
           description: 'Bad Request - Request failed due to validation errors, the response lists the field in the request that did not pass the validation. The client can directly show these errors to the end users.'
           headers:
@@ -408,14 +410,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
     get:
       tags:
         - Customers
@@ -616,44 +610,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          headers:
-            "X-Notification\t":
-              description: This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.
-              required: true
-              schema:
-                enum:
-                  - 'Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00'
-                type: string
-            "X-RateLimit-Limit\t":
-              description: The maximum number of requests you're permitted to make per hour.
-              required: true
-              schema:
-                enum:
-                  - 60
-                type: integer
-            "X-RateLimit-Remaining\t":
-              description: |
-                The number of requests remaining in the current rate limit window.
-              required: true
-              schema:
-                enum:
-                  - 10
-                type: integer
-            "X-RateLimit-Reset\t":
-              description: The time at which the current rate limit window resets in UTC epoch seconds.
-              required: true
-              schema:
-                enum:
-                  - 1377013266
-                type: integer
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
   '/businesses/{businessId}':
     get:
       tags:
@@ -801,14 +757,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
   '/businessAccounts/{businessAccountId}':
     get:
       tags:
@@ -978,14 +926,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
   /businessAccounts:
     get:
       tags:
@@ -1169,14 +1109,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
   /businesses:
     get:
       tags:
@@ -1300,14 +1232,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
   '/customers/{customerId}':
     get:
       tags:
@@ -1508,44 +1432,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          headers:
-            "X-Notification\t":
-              description: This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.
-              required: true
-              schema:
-                enum:
-                  - 'Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00'
-                type: string
-            "X-RateLimit-Limit\t":
-              description: The maximum number of requests you're permitted to make per hour.
-              required: true
-              schema:
-                enum:
-                  - 60
-                type: integer
-            "X-RateLimit-Remaining\t":
-              description: |
-                The number of requests remaining in the current rate limit window.
-              required: true
-              schema:
-                enum:
-                  - 10
-                type: integer
-            "X-RateLimit-Reset\t":
-              description: The time at which the current rate limit window resets in UTC epoch seconds.
-              required: true
-              schema:
-                enum:
-                  - 1377013266
-                type: integer
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
     put:
       tags:
         - Customers
@@ -1857,14 +1743,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
   /accounts:
     post:
       tags:
@@ -2226,14 +2104,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
     get:
       tags:
         - Accounts
@@ -2515,14 +2385,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
   '/accounts/{accountId}':
     get:
       tags:
@@ -2749,14 +2611,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
     put:
       tags:
         - Accounts
@@ -3093,14 +2947,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
     patch:
       tags:
         - Accounts
@@ -3349,14 +3195,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
   '/accounts/{accountId}/close':
     post:
       tags:
@@ -3606,14 +3444,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
   '/accounts/{accountId}/suspensionSchedules/{scheduleId}':
     delete:
       tags:
@@ -3818,14 +3648,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
     patch:
       tags:
         - Schedules-Suspension
@@ -4093,14 +3915,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
     get:
       tags:
         - Schedules-Suspension
@@ -4305,14 +4119,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
   '/accounts/{accountId}/recurringSchedules':
     post:
       tags:
@@ -4646,14 +4452,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
     get:
       tags:
         - Schedules-Recurring
@@ -4844,14 +4642,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
   '/accounts/{accountId}/recurringSchedules/{scheduleId}':
     delete:
       tags:
@@ -5121,14 +4911,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
     get:
       tags:
         - Schedules-Recurring
@@ -5337,14 +5119,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
   '/accounts/{accountId}/scheduleRecurrings/{scheduleId}':
     put:
       summary: INTERNAL API - Update Schedule (Recurring)
@@ -5647,14 +5421,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
       x-internal: true
   '/accounts/{accountId}/oneOffSchedules':
     post:
@@ -5898,14 +5664,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
     get:
       tags:
         - Schedules-OneOff
@@ -6086,14 +5844,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
   '/customers/{customerId}/addresses':
     post:
       tags:
@@ -6337,14 +6087,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
     get:
       tags:
         - Addresses
@@ -6535,14 +6277,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
   '/customers/{customerId}/addresses/{addressId}':
     delete:
       tags:
@@ -6817,14 +6551,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
     get:
       tags:
         - Addresses
@@ -7030,14 +6756,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
     put:
       tags:
         - Addresses
@@ -7335,14 +7053,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
   '/customers/{customerId}/phoneNumbers/{phoneNumberId}':
     put:
       tags:
@@ -7633,14 +7343,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
     get:
       tags:
         - PhoneNumbers
@@ -7843,44 +7545,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          headers:
-            "X-Notification\t":
-              description: This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.
-              required: true
-              schema:
-                enum:
-                  - 'Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00'
-                type: string
-            "X-RateLimit-Limit\t":
-              description: The maximum number of requests you're permitted to make per hour.
-              required: true
-              schema:
-                enum:
-                  - 60
-                type: integer
-            "X-RateLimit-Remaining\t":
-              description: |
-                The number of requests remaining in the current rate limit window.
-              required: true
-              schema:
-                enum:
-                  - 10
-                type: integer
-            "X-RateLimit-Reset\t":
-              description: The time at which the current rate limit window resets in UTC epoch seconds.
-              required: true
-              schema:
-                enum:
-                  - 1377013266
-                type: integer
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
     delete:
       tags:
         - PhoneNumbers
@@ -8155,14 +7819,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
   '/customers/{customerId}/emailAddresses/{emailAddressId}':
     put:
       tags:
@@ -8455,14 +8111,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
     get:
       tags:
         - EmailAddresses
@@ -8662,14 +8310,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
     delete:
       tags:
         - EmailAddresses
@@ -8943,14 +8583,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
   '/customers/{customerId}/phoneNumbers':
     get:
       tags:
@@ -9136,14 +8768,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
     post:
       tags:
         - PhoneNumbers
@@ -9372,14 +8996,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
   '/customers/{customerId}/emailAddresses':
     get:
       tags:
@@ -9559,14 +9175,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
     post:
       tags:
         - EmailAddresses
@@ -9774,14 +9382,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
   '/accounts/{accountId}/suspensionSchedules':
     get:
       tags:
@@ -9969,14 +9569,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
     post:
       tags:
         - Schedules-Suspension
@@ -10230,14 +9822,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
   /overdueStatusChanges:
     get:
       tags:
@@ -10413,14 +9997,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
   /payments:
     get:
       tags:
@@ -10616,14 +10192,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
   '/accounts/{accountId}/oneOffSchedules/{scheduleId}':
     delete:
       tags:
@@ -10848,14 +10416,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
     get:
       tags:
         - Schedules-OneOff
@@ -11057,14 +10617,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
   '/customers/{customerId}/paymentMethods':
     post:
       summary: INTERNAL API - Create PaymentMethod
@@ -11378,14 +10930,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
       x-internal: true
     get:
       tags:
@@ -11614,14 +11158,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
     patch:
       tags:
         - Customers
@@ -11863,14 +11399,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
   '/businessAccounts/{businessAccountId}/termsAndConditions':
     get:
       tags:
@@ -12027,14 +11555,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
   '/businessAccounts/{businessAccountId}/paymentMethods':
     post:
       summary: INTERNAL API - Create PaymentMethod (for Business Account)
@@ -12304,14 +11824,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
       x-internal: true
   '/accounts/{accountId}/paymentTokens':
     post:
@@ -12606,14 +12118,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
   '/businessAccounts/{businessAccountId}/casualPaymentTokens':
     post:
       tags:
@@ -12881,14 +12385,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
   '/businesses/{businessID}/paymentStatuses':
     parameters:
       - schema:
@@ -13115,44 +12611,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-        '503':
-          description: Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.
-          headers:
-            "X-Notification\t":
-              description: This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.
-              required: true
-              schema:
-                enum:
-                  - 'Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00'
-                type: string
-            "X-RateLimit-Limit\t":
-              description: The maximum number of requests you're permitted to make per hour.
-              required: true
-              schema:
-                enum:
-                  - 60
-                type: integer
-            "X-RateLimit-Remaining\t":
-              description: |
-                The number of requests remaining in the current rate limit window.
-              required: true
-              schema:
-                enum:
-                  - 10
-                type: integer
-            "X-RateLimit-Reset\t":
-              description: The time at which the current rate limit window resets in UTC epoch seconds.
-              required: true
-              schema:
-                enum:
-                  - 1377013266
-                type: integer
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/503ServiceUnavailable'
-              example:
-                message: The API is currently unavailable due to a scheduled outage – please try again soon.
   '/accounts/{accountId}/transfers':
     parameters:
       - schema:
@@ -14147,8 +13605,8 @@ components:
               type: string
               description: The actul email address
             isPrimary:
-              type: string
-              description: Flag to indicate if an emailaddress is preferred for mailing
+              description: Flag for indication of preferred email address.
+              type: boolean
         phoneNumber:
           type: object
           properties:
@@ -14171,7 +13629,7 @@ components:
               type: string
               description: Contact Type
             isPrimary:
-              type: string
+              type: boolean
               description: Flag for indication of preferred contact.
       required:
         - businessId
@@ -14580,10 +14038,10 @@ components:
     PatchAccountRequest:
       type: object
       properties:
-        PaymentMethodToken:
+        paymentMethodToken:
           type: string
       required:
-        - PaymentMethodToken
+        - paymentMethodToken
     201CreatePaymentMethod:
       type: object
       properties:
@@ -15374,7 +14832,7 @@ components:
           items:
             type: object
             properties:
-              RecurringScheduleStartDate:
+              recurringScheduleStartDate:
                 type: string
                 description: Recurring payment collection start date (in UTC). Must not be a date before accountStartDate or overlap with other recurring schedule
               installment:
@@ -15400,7 +14858,7 @@ components:
                 type: string
                 description: Description of the recurring payment schedule
             required:
-              - RecurringScheduleStartDate
+              - recurringScheduleStartDate
               - installment
               - frequency
       required:

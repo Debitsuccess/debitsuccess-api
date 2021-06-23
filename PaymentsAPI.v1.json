@@ -262,19 +262,6 @@
                 }
               }
             }
-          },
-          "503": {
-            "description": "Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/503ServiceUnavailable"
-                },
-                "example": {
-                  "message": "The API is currently unavailable due to a scheduled outage – please try again soon."
-                }
-              }
-            }
           }
         }
       }
@@ -1026,19 +1013,6 @@
                 }
               }
             }
-          },
-          "503": {
-            "description": "Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/503ServiceUnavailable"
-                },
-                "example": {
-                  "message": "The API is currently unavailable due to a scheduled outage – please try again soon."
-                }
-              }
-            }
           }
         },
         "x-internal": false
@@ -1228,19 +1202,6 @@
                 },
                 "example": {
                   "message": "Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment."
-                }
-              }
-            }
-          },
-          "503": {
-            "description": "Service Unavailable - API is currently unavailable typically due to a scheduled outage – try again soon.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/503ServiceUnavailable"
-                },
-                "example": {
-                  "message": "The API is currently unavailable due to a scheduled outage – please try again soon."
                 }
               }
             }
