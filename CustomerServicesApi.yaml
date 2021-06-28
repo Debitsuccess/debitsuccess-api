@@ -8583,6 +8583,392 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
+  '/customers/{customerId}/emailAddresses':
+    get:
+      tags:
+        - EmailAddresses
+      summary: List Email Addresses
+      description: 'Retrieves all email addresses belong to a customer based on customer ID provided in the query path. '
+      operationId: 5dddde2faf5a4e7d30f9b11e
+      parameters:
+        - name: customerId
+          in: path
+          description: 'Unique identifier associated to the customer. If provided, all emails belong to this customer will be extracted.'
+          required: true
+          schema:
+            enum:
+              - '1234567'
+            type: string
+        - name: nextCursor
+          in: query
+          description: |-
+            Indicate the position of the next record to be fetched into the list. 
+            Default to retrieve from the first record if not provided.
+          schema:
+            enum:
+              - TmV4dEl0ZW1JZDox
+            type: string
+        - name: limit
+          in: query
+          description: Indicate the number of records to be fetched into the list. Default to maximum value of 50 if not provided or value provided is greater than 50.
+          schema:
+            enum:
+              - 10
+            type: integer
+        - name: Authorization
+          in: header
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response with customer email addresses based on customer ID provided.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200GetEmailAddresses'
+              example:
+                emailAddresses:
+                  - emailAddressId: '6666666'
+                    emailName: john
+                    emailAddress: john.doe@debitsuccess.com
+                    isPrimary: false
+                  - emailAddressId: '7777777'
+                    emailName: jean
+                    emailAddress: jean.doe@debitsuccess.com
+                    isPrimary: true
+                responseMetadata:
+                  nextCursor: TmV4dEl0ZW1JZDoz
+                  hasNext: true
+        '401':
+          description: |
+            Unauthorized - Occurs when the authorization token provided is either expired or invalid.
+        '403':
+          description: Forbidden - Occurs when the client does not have sufficient claims to access this endpoint. Or when the identity server client does not have access to the business this request is being made for. see - List of claims required for this request see - Additional errorCodes returned
+          headers:
+            X-Notification:
+              description: This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.
+              required: true
+              schema:
+                enum:
+                  - 'Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00'
+                type: string
+            X-RateLimit-Limit:
+              description: The maximum number of requests you're permitted to make per hour.
+              required: true
+              schema:
+                enum:
+                  - 60
+                type: integer
+            X-RateLimit-Remaining:
+              description: The number of requests remaining in the current rate limit window.
+              required: true
+              schema:
+                enum:
+                  - 10
+                type: integer
+            X-RateLimit-Reset:
+              description: The time at which the current rate limit window resets in UTC epoch seconds.
+              required: true
+              schema:
+                enum:
+                  - 1377013266
+                type: integer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403BusinessAccessDenied'
+              example:
+                errorCode: access_denied
+                message: Unable to process this request as you do not have access to the customer associated to this request.
+        '429':
+          description: Too Many Requests - Occurs when user has sent too many requests in a given amount of time.
+          headers:
+            X-Notification:
+              description: This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.
+              required: true
+              schema:
+                enum:
+                  - 'Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00'
+                type: string
+            X-RateLimit-Limit:
+              description: |
+                The maximum number of requests you're permitted to make per hour.
+              required: true
+              schema:
+                enum:
+                  - 60
+                type: integer
+            "X-RateLimit-Remaining\t":
+              description: |
+                The number of requests remaining in the current rate limit window.
+              required: true
+              schema:
+                enum:
+                  - 10
+                type: integer
+            "X-RateLimit-Reset\t":
+              description: |
+                The time at which the current rate limit window resets in UTC epoch seconds.
+              required: true
+              schema:
+                enum:
+                  - 1377013266
+                type: integer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/429TooManyRequests'
+              example:
+                message: You have exceeded the maximum limit of request allowed. Please try your request again in a moment.
+        '500':
+          description: Internal Server Error - Something went wrong on our end (These are rare).
+          headers:
+            X-Notification:
+              description: |
+                This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.
+              required: true
+              schema:
+                enum:
+                  - 'Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00'
+                type: string
+            "X-RateLimit-Limit\t":
+              description: |
+                The maximum number of requests you're permitted to make per hour.
+              required: true
+              schema:
+                enum:
+                  - 60
+                type: integer
+            "X-RateLimit-Remaining\t":
+              description: |
+                The number of requests remaining in the current rate limit window.
+              required: true
+              schema:
+                enum:
+                  - 10
+                type: integer
+            "X-RateLimit-Reset\t":
+              description: The time at which the current rate limit window resets in UTC epoch seconds.
+              required: true
+              schema:
+                enum:
+                  - 1377013266
+                type: integer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500InternalServerError'
+              example:
+                message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
+    post:
+      tags:
+        - EmailAddresses
+      summary: Add Email Address
+      description: Adds email address to an existing customer based on customer ID provided.
+      operationId: 5ddde1a62bd5ea6d280dfe70
+      parameters:
+        - name: customerId
+          in: path
+          description: Unique identifier associated to the customer whom the email is created for
+          required: true
+          schema:
+            enum:
+              - '1234567'
+            type: string
+        - name: Authorization
+          in: header
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: 'If "isPrimary" is set to "true", when this email address successfully added, all other existing email addresses belong to the customer will have their "isPrimary" field set to "false".'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddEmailAddressRequest'
+            example:
+              emailName: jean
+              emailAddress: jean.doe@debitsuccess.com
+              isPrimary: true
+      responses:
+        '201':
+          description: Email address successfully created for the customer ID provided.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/201AddEmailAddress'
+              example:
+                emailAddressId: DEFR56YH-GT67-GTR3-DAV7-GTYH789KIJNB
+                emailName: jean
+                emailAddress: jean.doe@debitsuccess.com
+                isPrimary: true
+        '400':
+          description: 'Bad Request - Request failed due to validation errors, the response lists the field in the request that did not pass the validation. The client can directly show these errors to the end users.'
+          headers:
+            X-Notification:
+              description: This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.
+              required: true
+              schema:
+                enum:
+                  - 'Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00'
+                type: string
+            X-RateLimit-Limit:
+              description: The maximum number of requests you're permitted to make per hour.
+              required: true
+              schema:
+                enum:
+                  - 60
+                type: integer
+            X-RateLimit-Remaining:
+              description: The number of requests remaining in the current rate limit window.
+              required: true
+              schema:
+                enum:
+                  - 10
+                type: integer
+            X-RateLimit-Reset:
+              description: The time at which the current rate limit window resets in UTC epoch seconds.
+              required: true
+              schema:
+                enum:
+                  - 1377013266
+                type: integer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/400AddEmailAddress'
+              example:
+                errorCode: validation
+                message: Unable to process request due to validation errors.
+                errors:
+                  - field: emailName
+                    message: EmailName must not exceed 50 characters.
+                  - field: emailAddress
+                    message: EmailAddress is required.
+                  - field: emailAddress
+                    message: EmailAddress format is invalid.
+                  - field: emailAddress
+                    message: EmailAddress must not exceed 75 characters.
+                  - field: emailAddress
+                    message: EmailAddress provided already exists.
+        '401':
+          description: |
+            Unauthorized - Occurs when the authorization token provided is either expired or invalid.
+        '403':
+          description: Forbidden - Occurs when the client does not have sufficient claims to access this endpoint. Or when the identity server client does not have access to the business this request is being made for. see - List of claims required for this request see - Additional errorCodes returned
+          headers:
+            X-Notification:
+              description: This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.
+              required: true
+              schema:
+                enum:
+                  - 'Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00'
+                type: string
+            X-RateLimit-Limit:
+              description: The maximum number of requests you're permitted to make per hour.
+              required: true
+              schema:
+                enum:
+                  - 60
+                type: integer
+            X-RateLimit-Remaining:
+              description: The number of requests remaining in the current rate limit window.
+              required: true
+              schema:
+                enum:
+                  - 10
+                type: integer
+            X-RateLimit-Reset:
+              description: The time at which the current rate limit window resets in UTC epoch seconds.
+              required: true
+              schema:
+                enum:
+                  - 1377013266
+                type: integer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403BusinessAccessDenied'
+              example:
+                errorCode: access_denied
+                message: Unable to process this request as you do not have access to the customer associated to this request.
+        '429':
+          description: Too Many Requests - Occurs when user has sent too many requests in a given amount of time.
+          headers:
+            X-Notification:
+              description: This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.
+              required: true
+              schema:
+                enum:
+                  - 'Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00'
+                type: string
+            X-RateLimit-Limit:
+              description: The maximum number of requests you're permitted to make per hour.
+              required: true
+              schema:
+                enum:
+                  - 60
+                type: integer
+            X-RateLimit-Remaining:
+              description: The number of requests remaining in the current rate limit window.
+              required: true
+              schema:
+                enum:
+                  - 10
+                type: integer
+            X-RateLimit-Reset:
+              description: The time at which the current rate limit window resets in UTC epoch seconds.
+              required: true
+              schema:
+                enum:
+                  - 1377013266
+                type: integer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/429TooManyRequests'
+              example:
+                message: You have exceeded the maximum limit of request allowed. Please try your request again in a moment.
+        '500':
+          description: Internal Server Error - Something went wrong on our end (These are rare).
+          headers:
+            X-Notification:
+              description: This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.
+              required: true
+              schema:
+                enum:
+                  - 'Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00'
+                type: string
+            X-RateLimit-Limit:
+              description: The maximum number of requests you're permitted to make per hour.
+              required: true
+              schema:
+                enum:
+                  - 60
+                type: integer
+            X-RateLimit-Remaining:
+              description: The number of requests remaining in the current rate limit window.
+              required: true
+              schema:
+                enum:
+                  - 10
+                type: integer
+            X-RateLimit-Reset:
+              description: The time at which the current rate limit window resets in UTC epoch seconds.
+              required: true
+              schema:
+                enum:
+                  - 1377013266
+                type: integer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500InternalServerError'
+              example:
+                message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
   '/customers/{customerId}/phoneNumbers':
     get:
       tags:
@@ -8881,392 +9267,6 @@ paths:
                     message: PhoneType is required.
                   - field: phoneType
                     message: PhoneType is invalid.
-        '401':
-          description: |
-            Unauthorized - Occurs when the authorization token provided is either expired or invalid.
-        '403':
-          description: Forbidden - Occurs when the client does not have sufficient claims to access this endpoint. Or when the identity server client does not have access to the business this request is being made for. see - List of claims required for this request see - Additional errorCodes returned
-          headers:
-            X-Notification:
-              description: This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.
-              required: true
-              schema:
-                enum:
-                  - 'Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00'
-                type: string
-            X-RateLimit-Limit:
-              description: The maximum number of requests you're permitted to make per hour.
-              required: true
-              schema:
-                enum:
-                  - 60
-                type: integer
-            X-RateLimit-Remaining:
-              description: The number of requests remaining in the current rate limit window.
-              required: true
-              schema:
-                enum:
-                  - 10
-                type: integer
-            X-RateLimit-Reset:
-              description: The time at which the current rate limit window resets in UTC epoch seconds.
-              required: true
-              schema:
-                enum:
-                  - 1377013266
-                type: integer
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/403BusinessAccessDenied'
-              example:
-                errorCode: access_denied
-                message: Unable to process this request as you do not have access to the customer associated to this request.
-        '429':
-          description: Too Many Requests - Occurs when user has sent too many requests in a given amount of time.
-          headers:
-            X-Notification:
-              description: This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.
-              required: true
-              schema:
-                enum:
-                  - 'Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00'
-                type: string
-            X-RateLimit-Limit:
-              description: The maximum number of requests you're permitted to make per hour.
-              required: true
-              schema:
-                enum:
-                  - 60
-                type: integer
-            X-RateLimit-Remaining:
-              description: The number of requests remaining in the current rate limit window.
-              required: true
-              schema:
-                enum:
-                  - 10
-                type: integer
-            X-RateLimit-Reset:
-              description: The time at which the current rate limit window resets in UTC epoch seconds.
-              required: true
-              schema:
-                enum:
-                  - 1377013266
-                type: integer
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/429TooManyRequests'
-              example:
-                message: You have exceeded the maximum limit of request allowed. Please try your request again in a moment.
-        '500':
-          description: Internal Server Error - Something went wrong on our end (These are rare).
-          headers:
-            X-Notification:
-              description: This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.
-              required: true
-              schema:
-                enum:
-                  - 'Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00'
-                type: string
-            X-RateLimit-Limit:
-              description: The maximum number of requests you're permitted to make per hour.
-              required: true
-              schema:
-                enum:
-                  - 60
-                type: integer
-            X-RateLimit-Remaining:
-              description: The number of requests remaining in the current rate limit window.
-              required: true
-              schema:
-                enum:
-                  - 10
-                type: integer
-            X-RateLimit-Reset:
-              description: The time at which the current rate limit window resets in UTC epoch seconds.
-              required: true
-              schema:
-                enum:
-                  - 1377013266
-                type: integer
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/500InternalServerError'
-              example:
-                message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-  '/customers/{customerId}/emailAddresses':
-    get:
-      tags:
-        - EmailAddresses
-      summary: List Email Addresses
-      description: 'Retrieves all email addresses belong to a customer based on customer ID provided in the query path. '
-      operationId: 5dddde2faf5a4e7d30f9b11e
-      parameters:
-        - name: customerId
-          in: path
-          description: 'Unique identifier associated to the customer. If provided, all emails belong to this customer will be extracted.'
-          required: true
-          schema:
-            enum:
-              - '1234567'
-            type: string
-        - name: nextCursor
-          in: query
-          description: |-
-            Indicate the position of the next record to be fetched into the list. 
-            Default to retrieve from the first record if not provided.
-          schema:
-            enum:
-              - TmV4dEl0ZW1JZDox
-            type: string
-        - name: limit
-          in: query
-          description: Indicate the number of records to be fetched into the list. Default to maximum value of 50 if not provided or value provided is greater than 50.
-          schema:
-            enum:
-              - 10
-            type: integer
-        - name: Authorization
-          in: header
-          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful response with customer email addresses based on customer ID provided.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/200GetEmailAddresses'
-              example:
-                emailAddresses:
-                  - emailAddressId: '6666666'
-                    emailName: john
-                    emailAddress: john.doe@debitsuccess.com
-                    isPrimary: false
-                  - emailAddressId: '7777777'
-                    emailName: jean
-                    emailAddress: jean.doe@debitsuccess.com
-                    isPrimary: true
-                responseMetadata:
-                  nextCursor: TmV4dEl0ZW1JZDoz
-                  hasNext: true
-        '401':
-          description: |
-            Unauthorized - Occurs when the authorization token provided is either expired or invalid.
-        '403':
-          description: Forbidden - Occurs when the client does not have sufficient claims to access this endpoint. Or when the identity server client does not have access to the business this request is being made for. see - List of claims required for this request see - Additional errorCodes returned
-          headers:
-            X-Notification:
-              description: This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.
-              required: true
-              schema:
-                enum:
-                  - 'Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00'
-                type: string
-            X-RateLimit-Limit:
-              description: The maximum number of requests you're permitted to make per hour.
-              required: true
-              schema:
-                enum:
-                  - 60
-                type: integer
-            X-RateLimit-Remaining:
-              description: The number of requests remaining in the current rate limit window.
-              required: true
-              schema:
-                enum:
-                  - 10
-                type: integer
-            X-RateLimit-Reset:
-              description: The time at which the current rate limit window resets in UTC epoch seconds.
-              required: true
-              schema:
-                enum:
-                  - 1377013266
-                type: integer
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/403BusinessAccessDenied'
-              example:
-                errorCode: access_denied
-                message: Unable to process this request as you do not have access to the customer associated to this request.
-        '429':
-          description: Too Many Requests - Occurs when user has sent too many requests in a given amount of time.
-          headers:
-            X-Notification:
-              description: This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.
-              required: true
-              schema:
-                enum:
-                  - 'Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00'
-                type: string
-            X-RateLimit-Limit:
-              description: |
-                The maximum number of requests you're permitted to make per hour.
-              required: true
-              schema:
-                enum:
-                  - 60
-                type: integer
-            "X-RateLimit-Remaining\t":
-              description: |
-                The number of requests remaining in the current rate limit window.
-              required: true
-              schema:
-                enum:
-                  - 10
-                type: integer
-            "X-RateLimit-Reset\t":
-              description: |
-                The time at which the current rate limit window resets in UTC epoch seconds.
-              required: true
-              schema:
-                enum:
-                  - 1377013266
-                type: integer
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/429TooManyRequests'
-              example:
-                message: You have exceeded the maximum limit of request allowed. Please try your request again in a moment.
-        '500':
-          description: Internal Server Error - Something went wrong on our end (These are rare).
-          headers:
-            X-Notification:
-              description: |
-                This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.
-              required: true
-              schema:
-                enum:
-                  - 'Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00'
-                type: string
-            "X-RateLimit-Limit\t":
-              description: |
-                The maximum number of requests you're permitted to make per hour.
-              required: true
-              schema:
-                enum:
-                  - 60
-                type: integer
-            "X-RateLimit-Remaining\t":
-              description: |
-                The number of requests remaining in the current rate limit window.
-              required: true
-              schema:
-                enum:
-                  - 10
-                type: integer
-            "X-RateLimit-Reset\t":
-              description: The time at which the current rate limit window resets in UTC epoch seconds.
-              required: true
-              schema:
-                enum:
-                  - 1377013266
-                type: integer
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/500InternalServerError'
-              example:
-                message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-    post:
-      tags:
-        - EmailAddresses
-      summary: Add Email Address
-      description: Adds email address to an existing customer based on customer ID provided.
-      operationId: 5ddde1a62bd5ea6d280dfe70
-      parameters:
-        - name: customerId
-          in: path
-          description: Unique identifier associated to the customer whom the email is created for
-          required: true
-          schema:
-            enum:
-              - '1234567'
-            type: string
-        - name: Authorization
-          in: header
-          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
-          required: true
-          schema:
-            type: string
-      requestBody:
-        description: 'If "isPrimary" is set to "true", when this email address successfully added, all other existing email addresses belong to the customer will have their "isPrimary" field set to "false".'
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AddEmailAddressRequest'
-            example:
-              emailName: jean
-              emailAddress: jean.doe@debitsuccess.com
-              isPrimary: true
-      responses:
-        '201':
-          description: Email address successfully created for the customer ID provided.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/201AddEmailAddress'
-              example:
-                emailAddressId: DEFR56YH-GT67-GTR3-DAV7-GTYH789KIJNB
-                emailName: jean
-                emailAddress: jean.doe@debitsuccess.com
-                isPrimary: true
-        '400':
-          description: 'Bad Request - Request failed due to validation errors, the response lists the field in the request that did not pass the validation. The client can directly show these errors to the end users.'
-          headers:
-            X-Notification:
-              description: This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.
-              required: true
-              schema:
-                enum:
-                  - 'Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00'
-                type: string
-            X-RateLimit-Limit:
-              description: The maximum number of requests you're permitted to make per hour.
-              required: true
-              schema:
-                enum:
-                  - 60
-                type: integer
-            X-RateLimit-Remaining:
-              description: The number of requests remaining in the current rate limit window.
-              required: true
-              schema:
-                enum:
-                  - 10
-                type: integer
-            X-RateLimit-Reset:
-              description: The time at which the current rate limit window resets in UTC epoch seconds.
-              required: true
-              schema:
-                enum:
-                  - 1377013266
-                type: integer
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/400AddEmailAddress'
-              example:
-                errorCode: validation
-                message: Unable to process request due to validation errors.
-                errors:
-                  - field: emailName
-                    message: EmailName must not exceed 50 characters.
-                  - field: emailAddress
-                    message: EmailAddress is required.
-                  - field: emailAddress
-                    message: EmailAddress format is invalid.
-                  - field: emailAddress
-                    message: EmailAddress must not exceed 75 characters.
-                  - field: emailAddress
-                    message: EmailAddress provided already exists.
         '401':
           description: |
             Unauthorized - Occurs when the authorization token provided is either expired or invalid.
@@ -12124,7 +12124,7 @@ paths:
         - PaymentToken
       summary: Generate PaymentToken (for Casual Payment)
       description: |
-        Generate a link to Paynow page so that the customer can make a casual using credit card.
+        Generate a link to Paynow page so that the customer can make a casual payment using credit card.
       operationId: 6032d38d4c55a6c59ff9de42
       parameters:
         - name: businessAccountId
@@ -12199,6 +12199,34 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/400GetPaymentTokenForAccountPayment'
+              examples:
+                example:
+                  value:
+                    errorCode: validation
+                    message: Invalid request
+                    errors:
+                      - field: amount
+                        message: Amount is required.
+                      - field: amount
+                        message: Amount is invalid.
+                      - field: amount
+                        message: 'Amount must be greater than or equal to ${minAmount} and less than or equal to ${maxPayment}.'
+                      - field: paymentNote
+                        message: PaymentNote cannot exceed 30 characters.
+                      - field: paymentNote
+                        message: PaymentNote is invalid.
+                      - field: PaymentRef
+                        message: PaymentRef cannot exceed 50 characters.
+                      - field: PaymentRef
+                        message: PaymentRef is invalid.
+                      - field: PaymentRef
+                        message: PaymentRef identifier is not unique.
+                      - field: CallbackURL
+                        message: CallbackURL is required.
+                      - field: CallbackURL
+                        message: CallBackUrl cannot exceed 256 characters.
+                      - field: CallbackURL
+                        message: 'CallBackUrl is invalid. Ensure URL is correctly formatted. Example: https://www.debitsuccess.com'
         '401':
           description: |
             Unauthorized - Occurs when the authorization token provided is either expired or invalid.
