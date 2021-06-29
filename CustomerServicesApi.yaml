@@ -12788,6 +12788,8 @@ paths:
       x-internal: false
     put:
       summary: Update Guarantor
+      tags:
+        - Guarantor
       operationId: put-accounts-accountId-guarantors
       responses:
         '200':
