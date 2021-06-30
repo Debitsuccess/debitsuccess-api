@@ -177,7 +177,7 @@ Status Code | Description |
 declined_refer_to_card_issuer |Refer to Issuer. The customer's bank (Card Issuer) has indicated there is a problem with the card number. The customer should contact their bank or the customer should use an alternate card. |
  processing |Payment has been accepted for processing. But the processing has not been completed. The request might or might not eventually be acted upon, as it might be disallowed when processing actually takes place. In this scenario, you must poll the Get Casual Payment status endpoint (Step 5 - Retrieve Payment Status) to retrieve the payment status code. It is recommend to retry retrieving the status code 5 times within a 2-minute duration. If the status code still is processing after retrying, please contact Debitsuccess support. |
 
-### Response Simulation
+## Response Simulation
 
 NZ/AU: The following cards can be used to generate different types of status for testing purpose.
 
