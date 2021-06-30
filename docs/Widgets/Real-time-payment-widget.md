@@ -18,7 +18,7 @@ The following steps will walk you through collecting payment using the casual pa
 Add a link to the Debitsuccess javascript library on the page where the widget will be used, like:
 
 ```json
-<script src="https://oc.debitsuccess.com/Debitsuccesspaymentwidget/dsRealTimePaymentWidget.js"></script>
+<script src="https://oc.debitsuccess.com/dspaymentwidget/dsRealTimePaymentWidget.js"></script>
 ```
 
 
