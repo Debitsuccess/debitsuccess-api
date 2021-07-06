@@ -9832,7 +9832,7 @@ paths:
       parameters:
         - name: fromDatetime
           in: query
-          description: 'From datetime - range used to filter overdue status change records to be extracted. For example, 2020-06-23T00:00:00.000Z.'
+          description: 'From datetime - range used to filter overdue status change records to be extracted. Must be in UTC format i.e., YYYY-MM-DDTHH:MM:SS.SSST for example, 2020-06-23T00:00:00.000Z.'
           schema:
             enum:
               - '2020-06-23T00:00:00.000Z'
@@ -9840,7 +9840,7 @@ paths:
             default: '2020-06-23T00:00:00.000Z'
         - name: toDatetime
           in: query
-          description: 'To datetime - range used to filter overdue status change records to be extracted. For example, 2020-07-03T00:00:00.000Z.'
+          description: 'To datetime - range used to filter overdue status change records to be extracted. Fields must be in UTC format i.e., YYYY-MM-DDTHH:MM:SS.SSST, for example, 2020-07-03T00:00:00.000Z.'
           schema:
             enum:
               - '2020-07-03T00:00:00.000Z'
@@ -10007,7 +10007,7 @@ paths:
       parameters:
         - name: fromDatetime
           in: query
-          description: 'From datetime - range used to filter payment records to be extracted. For example, 2020-06-23T00:00:00.000Z'
+          description: 'From datetime - range used to filter payment records to be extracted fields. Must be in UTC format i.e., YYYY-MM-DDTHH:MM:SS.SSST For example, 2020-06-23T00:00:00.000Z'
           schema:
             enum:
               - '2020-06-23T00:00:00.000Z'
@@ -10015,7 +10015,7 @@ paths:
             default: '2020-06-23T00:00:00.000Z'
         - name: toDatetime
           in: query
-          description: 'To datetime - range used to filter payment records to be extracted. For example, 2020-07-03T00:00:00.000Z.'
+          description: 'To datetime - range used to filter payment records to be extracted. Must be in UTC format i.e., YYYY-MM-DDTHH:MM:SS.SSST For example, 2020-07-03T00:00:00.000Z.'
           schema:
             enum:
               - '2020-07-03T00:00:00.000Z'
@@ -12766,6 +12766,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/422CreateGuarantorResonse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500InternalServerError'
+              examples:
+                example:
+                  value:
+                    message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
       operationId: post-accounts-accountId-guarantors
       description: Creates a Guarantor for an existing account.
       parameters:
@@ -12785,7 +12795,6 @@ paths:
 
           >
           At least one of `homePhone`, `businessPhone` or `mobilePhone` is required.
-      x-internal: false
     put:
       summary: Update Guarantor
       tags:
@@ -12832,6 +12841,14 @@ paths:
           description: Too Many Requests
         '500':
           description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500InternalServerError'
+              examples:
+                example:
+                  value:
+                    message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
       description: |-
         Update an existing Guarantor for an account. 
 
@@ -12854,6 +12871,91 @@ paths:
 
           >
           At least one of `homePhone`, `businessPhone` or `mobilePhone` is required.
+    get:
+      summary: Get Guarantor
+      tags:
+        - Guarantor
+      operationId: get-Guarantor
+      description: Retrieves the guarantor details of an account based on the accountId provided.
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authorization
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
+          required: true
+      responses:
+        '200':
+          description: Successful-Request is able to retrieve Guarantor details for Closed Account.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/200GetGuarantorResonse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/401GetGuarantorResonse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/403GetGuarantorResonse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404GetGuarantorResonse'
+        '422':
+          description: Unprocessable Entity (WebDAV)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/422GetGuarantorResonse'
+        '500':
+          description: Internal Server Error - Something went wrong on our end (These are rare).
+          headers:
+            X-Notification:
+              description: |
+                This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.
+              required: true
+              schema:
+                enum:
+                  - 'Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00'
+                type: string
+            "X-RateLimit-Limit\t":
+              description: |
+                The maximum number of requests you're permitted to make per hour.
+              required: true
+              schema:
+                enum:
+                  - 60
+                type: integer
+            "X-RateLimit-Remaining\t":
+              description: |
+                The number of requests remaining in the current rate limit window.
+              required: true
+              schema:
+                enum:
+                  - 10
+                type: integer
+            "X-RateLimit-Reset\t":
+              description: The time at which the current rate limit window resets in UTC epoch seconds.
+              required: true
+              schema:
+                enum:
+                  - 1377013266
+                type: integer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/500InternalServerError'
+              example:
+                message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
+              examples: {}
 components:
   schemas:
     400AddAddress:
@@ -13971,7 +14073,7 @@ components:
                 description: Account's previous overdue amount
               fromODStatusChangeDateTime:
                 type: string
-                description: Account's overdue status changed date
+                description: Account's overdue status changed date in UTC
               toODStatus:
                 type: integer
                 description: New overdue status
@@ -13980,7 +14082,7 @@ components:
                 description: New overdue amount
               toODtatusChangeDateTime:
                 type: string
-                description: New overdue status changed date
+                description: New overdue status changed date in UTC
         responseMetadata:
           type: object
           properties:
@@ -14317,7 +14419,7 @@ components:
                 description: Amount of transaction
               paymentDateTime:
                 type: string
-                description: Date time when the transaction was made
+                description: Date time in UTC when the transaction was made
               paymentDescription:
                 type: string
                 description: Description of transaction
@@ -16192,7 +16294,7 @@ components:
           minLength: 1
       required:
         - message
-        - error
+        - errors
     403CreateGuarantorResponse:
       description: ''
       type: object
@@ -16540,13 +16642,7 @@ components:
           minLength: 1
       required:
         - message
-        - error
-      x-examples:
-        example-1:
-          value:
-            message: Unable to process this request due to insufficient client claims.
-            errors:
-              - claim: CustomerApi.
+        - errors
     403UpdateGuarantorResponse:
       description: ''
       type: object
@@ -16596,6 +16692,150 @@ components:
           value:
             errorCode: inactive_account
             message: The resource provided is inactive/closed.
+    200GetGuarantorResonse:
+      description: ''
+      type: object
+      example:
+        guarantors:
+          - fullName: Dick Smith
+            relationship: Friend
+            dateOfBirth: '2000-01-31'
+            address: No.1 Upper Steet
+            homePhone: '685685688'
+            businessPhone: ”143434436”
+            mobilePhone: '+4546788855'
+            emailAddress: dick.smith@email.co
+        responseMetadata:
+          nextCursor: ''
+          hasNext: false
+      properties:
+        guarantors:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            type: object
+            properties:
+              fullName:
+                type: string
+                minLength: 1
+                description: Full name of the guarantor
+              relationship:
+                type: string
+                minLength: 1
+                description: Guarantor's relationship with the customer
+              dateOfBirth:
+                type: string
+                minLength: 1
+                description: ' Date of birth of the guarantor (yyyy-MM-dd)'
+              address:
+                type: string
+                minLength: 1
+                description: Address of the guarantor
+              homePhone:
+                type: string
+                minLength: 1
+                description: Home phone number of the guarantor
+              businessPhone:
+                type: string
+                minLength: 1
+                description: Work phone number of the guarantor
+              mobilePhone:
+                type: string
+                minLength: 1
+                description: Mobile phone number of the guarantor
+              emailAddress:
+                type: string
+                minLength: 1
+                description: Email Address of the guarantor
+            required:
+              - fullName
+              - relationship
+              - dateOfBirth
+              - address
+              - homePhone
+              - businessPhone
+              - mobilePhone
+              - emailAddress
+        responseMetadata:
+          type: object
+          required:
+            - nextCursor
+            - hasNext
+          properties:
+            nextCursor:
+              type: string
+            hasNext:
+              type: boolean
+      required:
+        - guarantors
+        - responseMetadata
+    401GetGuarantorResonse:
+      type: object
+      example:
+        message: Unable to process this request due to insufficient client claims.
+        errors:
+          - claim: CustomerApi.
+      properties:
+        message:
+          type: string
+          minLength: 1
+        error:
+          type: string
+          minLength: 1
+      required:
+        - message
+        - error
+    403GetGuarantorResonse:
+      description: ''
+      type: object
+      properties:
+        errorCode:
+          type: string
+          minLength: 1
+        message:
+          type: string
+          minLength: 1
+      required:
+        - errorCode
+        - message
+      example:
+        errorCode: access_denied
+        message: Unable to process this request as you do not have access to the account associated to this request.
+    404GetGuarantorResonse:
+      description: ''
+      type: object
+      properties:
+        message:
+          type: string
+          minLength: 1
+      required:
+        - message
+      example:
+        message: The requested resource could not be found.
+    422GetGuarantorResonse:
+      description: ''
+      type: object
+      properties:
+        errorCode:
+          type: string
+          minLength: 1
+        message:
+          type: string
+          minLength: 1
+      required:
+        - errorCode
+        - message
+      example:
+        errorCode: account_without_guarantor
+        message: The resource provided do not have a guarantor assigned. Please use PUT Account to assign any existing guarator to this account or POST Guarantor to create one if there is none.
+    500GetGuarantorResonse:
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
+      example: null
   securitySchemes:
     apiKeyHeader:
       type: apiKey
