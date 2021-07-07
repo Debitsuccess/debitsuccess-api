@@ -7,11 +7,19 @@ Debitsuccess is always improving how we deliver our service. As part of deliveri
 
 > Please note that these features are in our roadmap for the next three months but we do not have a definite ETA.
 
-* New customer services API endpoint to create, get, and update guarantor details will soon be available.
+* ~~New customer services API endpoint to create, get, and update guarantor details will soon be available.~~
 * Enhancement to the [Realtime Payment Widget](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Widgets/Real-time-payment-widget.md) to support account payments.
 * Enhancement to the close account endpoint with additional cancellation options.
 
 *****
+
+## July 08, 2021
+Introduced new endpoints:
+* [PUT Guarantor](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1accounts~1%7BaccountId%7D~1guarantors/put) - allows users to update Guarantor details for existing active accounts
+* [GET Guarantor](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1accounts~1%7BaccountId%7D~1guarantors/get) - allows users to get Guarantor details for existing active accounts
+
+## July 06, 2021
+Implemented a new endpoint i.e., [POST Guarantor](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1accounts~1%7BaccountId%7D~1guarantors/post) which allows users to create Guarantor record for existing active accounts.
 
 ## June 17, 2021
 * Introduced a new endpoint for customer services API will be used to [transfer an account](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1accounts~1%7BaccountId%7D~1transfers/post) from one business account to another.
