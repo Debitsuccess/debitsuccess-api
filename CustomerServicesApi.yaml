@@ -12722,7 +12722,7 @@ paths:
           type: string
         name: accountId
         in: path
-        description: Unique identifier of the account in which the new guarantor will be asassociated to
+        description: Unique identifier of the account to which the guarantor is associated.
         required: true
     post:
       summary: Create Guarantor
@@ -16770,6 +16770,21 @@ components:
       required:
         - guarantors
         - responseMetadata
+      x-examples:
+        example-1:
+          value:
+            guarantors:
+              - fullName: Dick Smith
+                relationship: Friend
+                dateOfBirth: '2000-01-31'
+                address: No.1 Upper Steet
+                homePhone: '685685688'
+                businessPhone: '143434436'
+                mobilePhone: '+4546788855'
+                emailAddress: dick.smith@email.co
+            responseMetadata:
+              nextCursor: ''
+              hasNext: false
     401GetGuarantorResonse:
       type: object
       example:
