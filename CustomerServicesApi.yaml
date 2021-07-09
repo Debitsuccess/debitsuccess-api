@@ -16095,12 +16095,12 @@ components:
           description: |
             Full name of the guarantor
           maxLength: 30
-          pattern: 'alphanumeric # + - ( ) * _ [space] , ; : .'
+          pattern: 'alphanumeric # + - ( ) * _ [space] , ; : ''.'
         relationship:
           type: string
           minLength: 1
           description: Guarantor's relationship with the customer
-          pattern: 'alphanumeric # + - ( ) * _ [space] , ; : .'
+          pattern: 'alphanumeric # + - ( ) * _ [space] , ; : ''.'
           maxLength: 20
         dateOfBirth:
           type: string
@@ -16374,12 +16374,12 @@ components:
           description: |
             Full name of the guarantor
           maxLength: 30
-          pattern: 'alphanumeric # + - ( ) * _ [space] , ; : .'
+          pattern: 'alphanumeric # + - ( ) * _ [space] , ; :'' .'
         relationship:
           type: string
           minLength: 1
           description: Guarantor's relationship with the customer
-          pattern: 'alphanumeric # + - ( ) * _ [space] , ; : .'
+          pattern: 'alphanumeric # + - ( ) * _ [space] , ; :'' .'
           maxLength: 20
         dateOfBirth:
           type: string
