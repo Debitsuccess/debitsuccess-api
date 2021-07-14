@@ -12,6 +12,8 @@ Debitsuccess is always improving how we deliver our service. As part of deliveri
 * Enhancement to the close account endpoint with additional cancellation options.
 
 *****
+## July 13, 2021
+This release introduces a new boolean field named `assignExistingGuarantor` in [POST Account](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1accounts/post) to allow users to assign an existing Guarantor to the new account when the account is created.
 
 ## July 08, 2021
 Introduced new endpoints:
