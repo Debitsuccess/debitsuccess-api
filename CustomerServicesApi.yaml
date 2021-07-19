@@ -2178,7 +2178,7 @@ paths:
             * If dateType is provided but from/to are not provided then all records will be extracted (i.e., records that fulfilled other parameter filters) 
             * If an invalid format of dateType is provided, API will return an empty list. 
             * If datetype is StartDate - Only date format for "From" and "To" fields will be accepted in format YYYY-MM-DD and will be treated as local time. Timestamp will be disregarded.
-            * If datetype is CloseDateTime / LastUpdateDateTime / LoadDatetime - "From" and "To" fields must be in UTC format i.e. YYYY-MM-DDTHH:MM:SS.SSST. If timestamp not provided, time will be defaulted to 00:00:000.00 for ‘from’ and 23:59.59.999 for ‘to’.
+            * If datetype is CloseDateTime / LastUpdateDateTime / LoadDatetime - "From" and "To" fields must be in UTC format i.e. YYYY-MM-DDTHH:MM:SS.SSSZ. If timestamp not provided, time will be defaulted to 00:00:000.00 for ‘from’ and 23:59.59.999 for ‘to’.
           schema:
             enum:
               - StartDate
@@ -10261,7 +10261,7 @@ paths:
       parameters:
         - name: fromDatetime
           in: query
-          description: 'From datetime - range used to filter overdue status change records to be extracted. Must be in UTC format i.e., YYYY-MM-DDTHH:MM:SS.SSST for example, 2020-06-23T00:00:00.000Z.'
+          description: 'From datetime - range used to filter overdue status change records to be extracted. Must be in UTC format i.e., YYYY-MM-DDTHH:MM:SS.SSS for example, 2020-06-23T00:00:00.000Z.'
           schema:
             enum:
               - '2020-06-23T00:00:00.000Z'
@@ -10269,7 +10269,7 @@ paths:
             default: '2020-06-23T00:00:00.000Z'
         - name: toDatetime
           in: query
-          description: 'To datetime - range used to filter overdue status change records to be extracted. Fields must be in UTC format i.e., YYYY-MM-DDTHH:MM:SS.SSST, for example, 2020-07-03T00:00:00.000Z.'
+          description: 'To datetime - range used to filter overdue status change records to be extracted. Fields must be in UTC format i.e., YYYY-MM-DDTHH:MM:SS.SSSZ, for example, 2020-07-03T00:00:00.000Z.'
           schema:
             enum:
               - '2020-07-03T00:00:00.000Z'
@@ -10436,7 +10436,7 @@ paths:
       parameters:
         - name: fromDatetime
           in: query
-          description: 'From datetime - range used to filter payment records to be extracted fields. Must be in UTC format i.e., YYYY-MM-DDTHH:MM:SS.SSST For example, 2020-06-23T00:00:00.000Z'
+          description: 'From datetime - range used to filter payment records to be extracted fields. Must be in UTC format i.e., YYYY-MM-DDTHH:MM:SS.SSSZ For example, 2020-06-23T00:00:00.000Z'
           schema:
             enum:
               - '2020-06-23T00:00:00.000Z'
@@ -10444,7 +10444,7 @@ paths:
             default: '2020-06-23T00:00:00.000Z'
         - name: toDatetime
           in: query
-          description: 'To datetime - range used to filter payment records to be extracted. Must be in UTC format i.e., YYYY-MM-DDTHH:MM:SS.SSST For example, 2020-07-03T00:00:00.000Z.'
+          description: 'To datetime - range used to filter payment records to be extracted. Must be in UTC format i.e., YYYY-MM-DDTHH:MM:SS.SSSZ For example, 2020-07-03T00:00:00.000Z.'
           schema:
             enum:
               - '2020-07-03T00:00:00.000Z'
