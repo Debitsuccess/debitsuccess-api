@@ -695,7 +695,7 @@
         }
       },
       "get": {
-        "summary": "Get Business Collected Payments",
+        "summary": "INTERNAL Get Business Collected Payments",
         "description": "Retrieves business collected paymetns based on the query parameters provided.",
         "operationId": "5e530fdb2d8bf4cfa9148db9",
         "parameters": [
@@ -1505,7 +1505,7 @@
             }
           }
         },
-        "summary": "Get Payment Processor Card Types",
+        "summary": "INTERNAL Get Payment Processor Card Types",
         "x-internal": true
       }
     },
@@ -1656,7 +1656,7 @@
             }
           }
         },
-        "summary": "Create Webpay",
+        "summary": "INTERNAL Create Webpay",
         "x-internal": true
       }
     },
@@ -1758,7 +1758,7 @@
             }
           }
         },
-        "summary": "Get Web Payment Status",
+        "summary": " INTERNAL Get Web Payment Status",
         "x-internal": true
       }
     },
