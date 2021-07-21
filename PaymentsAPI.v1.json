@@ -1015,7 +1015,7 @@
             }
           }
         },
-        "x-internal": false
+        "x-internal": true
       }
     },
     "/businessCollectedPayments/{originalExternalPaymentIdentifier}/reverse": {
@@ -1313,7 +1313,8 @@
               }
             }
           }
-        }
+        },
+        "summary": "Get Pay Method Configurations"
       }
     },
     "/paymethods/{paymethodtype}": {
@@ -1402,7 +1403,8 @@
               }
             }
           }
-        }
+        },
+        "summary": "List Pay Method Configurations"
       }
     },
     "/paymentprocessorcardtypes": {
@@ -1502,7 +1504,9 @@
               }
             }
           }
-        }
+        },
+        "summary": "Get Payment Processor Card Types",
+        "x-internal": true
       }
     },
     "/webpay/creditcard": {
@@ -1651,7 +1655,9 @@
               }
             }
           }
-        }
+        },
+        "summary": "Create Webpay",
+        "x-internal": true
       }
     },
     "/webpay/creditcard/{externalPaymentIdentifier}": {
@@ -1752,7 +1758,8 @@
             }
           }
         },
-        "summary": "Get Web Payment Status"
+        "summary": "Get Web Payment Status",
+        "x-internal": true
       }
     },
     "/casual/creditcard": {

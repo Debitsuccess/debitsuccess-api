@@ -38,7 +38,7 @@ info:
     email: TestAPI.Support@debitsuccess.com
     url: 'https://debitsuccess.atlassian.net/wiki/spaces/DDE/overview'
     name: Debitsuccess Developer Documentation
-  version: V1.0
+  version: v1.0
 servers:
   - url: 'https://oc-test.debitsuccess.com/CustomerServices/v1.0'
 tags:
@@ -1760,8 +1760,8 @@ paths:
       requestBody:
         description: |
           Request to create account to existing customer based on CustomerID and BusinessAccountID provided.
-          >
-          *Notes*:
+
+          > *Notes*:
           >* Maximum of 3 recurring schedules are allowed to be assigned to an account. 
           >* Recurring schedules are not applicable for Gateway Billing accounts.
           >* If an account has a new schedule created to start immediately but after the billing cut-off, then the customer will be billed the next working day.
@@ -3458,8 +3458,7 @@ paths:
 
         This endpoint creates an indefinite recurring schedule for the account whereas the recurring schedule created using [POST /accounts](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1accounts/post) can be configured as a [tried schedule](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1314914915/Create+a+recurring+schedule). 
 
-        >
-        Note: This endpoint is not applicable for Gateway Billing accounts.
+        >        Note: This endpoint is not applicable for Gateway Billing accounts.
       operationId: 5ddaf6e8c341d15d73945994
       parameters:
         - name: accountId
@@ -3788,8 +3787,7 @@ paths:
       description: |-
         Retrieves list of recurring schedule based on Account ID provided. 
 
-        >
-        Note: This endpoint is not applicable for Gateway Billing accounts.
+        >        Note: This endpoint is not applicable for Gateway Billing accounts.
       operationId: 5ddb407e8406be61a32cacea
       parameters:
         - name: accountId
@@ -3979,8 +3977,7 @@ paths:
       description: |
         Delete recurring schedule based on query parameters provided.
 
-        >
-        Note: This endpoint is not applicable for Gateway Billing accounts.
+        >        Note: This endpoint is not applicable for Gateway Billing accounts.
 
         Notes: 
         1) Start date of the recurring schedule that needs to be deleted must be in the future.
@@ -4247,8 +4244,7 @@ paths:
       description: |-
         Retrieves recurring schedule based on account ID and schedule ID provided in the query path. 
 
-        >
-        Note: This endpoint is not applicable for Gateway Billing accounts.
+        >        Note: This endpoint is not applicable for Gateway Billing accounts.
       operationId: 5ddb4055e367b992b479dc1c
       parameters:
         - name: accountId
@@ -4454,8 +4450,7 @@ paths:
       description: |-
         Updates existing recurring schedule details of an account based on the query parameters provided.
 
-        >
-        Note: This endpoint is not applicable for Gateway Billing accounts.
+        >        Note: This endpoint is not applicable for Gateway Billing accounts.
       operationId: 5ddb3c9f2e24240b5236e6a5
       parameters:
         - name: accountId
@@ -5623,8 +5618,7 @@ paths:
       requestBody:
         description: |-
           If "isPrimary" is set to "true", when this address successfully added, all other existing addresses belong to the customer will have their "isPrimary" field set to "false".
-          >
-          Refer to the [supporting documentation](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/6-Reference.md) for the accepted values for countryISOCode.
+          >          Refer to the [supporting documentation](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/6-Reference.md) for the accepted values for countryISOCode.
         content:
           application/json:
             schema:
@@ -6546,8 +6540,7 @@ paths:
           If 'isPrimary' field is set to 'true' value, when the address is successfully updated, all other existing addresses belong to the customer will have their 'isPrimary' set to 'false'.
           Primary address is not allowed to be updated to false(i.e. non-Primary).
 
-          >
-          Refer to the [supporting documentation](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/6-Reference.md) for the accepted values for `countryISOCode` and `state`.
+          >          Refer to the [supporting documentation](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/6-Reference.md) for the accepted values for `countryISOCode` and `state`.
         content:
           application/json:
             schema:
@@ -7016,8 +7009,7 @@ paths:
       requestBody:
         description: |-
           If "isPrimary" is set to "true", when this phone number successfully added, all other existing phone numbers belong to the customer will have their "isPrimary" field set to "false". 
-          >
-          Refer to the [supporting documentation](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/6-Reference.md) for the accepted values for `countryCode`.
+          >          Refer to the [supporting documentation](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/6-Reference.md) for the accepted values for `countryCode`.
         content:
           application/json:
             schema:
@@ -7228,8 +7220,7 @@ paths:
       description: |-
         Updates existing phone number of a customer based on the customer ID and phoneNumber ID provided.
 
-        >
-        Note: If a customer has a Guarantor and the guarantor has a mobile number, then the guarantor’s mobile number will always be the preferred phone number. Any attempt to update other non-guarantor phone numbers to primary number (isPrimary=true) will be ignored.
+        >        Note: If a customer has a Guarantor and the guarantor has a mobile number, then the guarantor’s mobile number will always be the preferred phone number. Any attempt to update other non-guarantor phone numbers to primary number (isPrimary=true) will be ignored.
       operationId: 5ddddd7330e1bcdcaf336cb8
       parameters:
         - name: customerId
@@ -7259,8 +7250,7 @@ paths:
           If "isPrimary" is set to "true", when this phone number successfully updated, all other existing phone numbers belong to the customer will have their "isPrimary" field set to "false".
           Primary phone number is not allowed to be updated to false(i.e. non-Primary).
 
-          >
-          Refer to the [supporting documentation](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/6-Reference.md) for the accepted values for `countryCode`.
+          >          Refer to the [supporting documentation](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/6-Reference.md) for the accepted values for `countryCode`.
         content:
           application/json:
             schema:
@@ -9495,8 +9485,7 @@ paths:
       description: |-
         Updates existing email address of a customer based on the customer ID and email ID provided.
 
-        >
-        Note: If a customer has a Guarantor and the guarantor has an email address, then the guarantor’s email address will always be the preferred email address. Any attempt to update other non-guarantor email address to primary email address (isPrimary=true) will be ignored.
+        >        Note: If a customer has a Guarantor and the guarantor has an email address, then the guarantor’s email address will always be the preferred email address. Any attempt to update other non-guarantor email address to primary email address (isPrimary=true) will be ignored.
       operationId: 5ddddd9b5cfbcb04e6dcdf02
       parameters:
         - name: customerId
@@ -10507,8 +10496,7 @@ paths:
           description: |-
             Successful response with all payments based on the query parameters provided.
 
-            >
-            Refer to the [supporting documentation](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/6-Reference.md) for the possible values returned for `paymentCode`, `paymentMethod` and `paymentErrorCode`.
+            >            Refer to the [supporting documentation](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/6-Reference.md) for the possible values returned for `paymentCode`, `paymentMethod` and `paymentErrorCode`.
           content:
             application/json:
               schema:
@@ -11170,8 +11158,7 @@ paths:
         Assign payment method created via [Payment Method Capture widget](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Widgets/Payment-Capture-Widget.md) to customer.
 
         Only oneTimePaymentMethodToken field is supported in this request. Any attempt to change any other field will cause errors.
-        >
-        Notes: The one-off payment token created via the Payment Method Capture widget should be used in this request. This token is for single use only. Once the payment method is successfully assigned to the customer, a permanent payment method token will be associated to the customer.  
+        > Notes: The one-off payment token created via the Payment Method Capture widget should be used in this request. This token is for single use only. Once the payment method is successfully assigned to the customer, a permanent payment method token will be associated to the customer.  
       operationId: 5fb4455ff434cfa57bcb16ce
       parameters:
         - name: customerId
@@ -12691,8 +12678,7 @@ paths:
       description: |
         Transfers an active account from a business to another business within the same business group. Upon the successful transfer of an account, the original account will be closed and a new account will be created with the information inherited from the closed account.
 
-        >
-        Only standalone and non-overdue accounts can be transferred. History of the account will not be transferred. Please refer to error responses below for all other restrictions to transfer an account.
+        > Only standalone and non-overdue accounts can be transferred. History of the account will not be transferred. Please refer to error responses below for all other restrictions to transfer an account.
 
         Standalone account is an account which is not linked to another account (parent-child accounts, primary-addon accounts, etc.)
 
@@ -12797,8 +12783,7 @@ paths:
         description: |-
           Request to create Guarantor for existing account based on Account ID provided.
 
-          >
-          At least one of `homePhone`, `businessPhone` or `mobilePhone` is required.
+          > At least one of `homePhone`, `businessPhone` or `mobilePhone` is required.
     put:
       summary: Update Guarantor
       tags:
@@ -12856,8 +12841,7 @@ paths:
       description: |-
         Update an existing Guarantor for an account. 
 
-        >
-        Notes:  Updating guarantor details for one account will affect all accounts under the same customer since there are associated to the same guarantor.
+        > Notes:  Updating guarantor details for one account will affect all accounts under the same customer since there are associated to the same guarantor.
       parameters:
         - schema:
             type: string
@@ -12873,8 +12857,7 @@ paths:
         description: |-
           Request to update Guarantor for existing account based on Account ID provided.
 
-          >
-          At least one of `homePhone`, `businessPhone` or `mobilePhone` is required.
+          >  At least one of `homePhone`, `businessPhone` or `mobilePhone` is required.
     get:
       summary: Get Guarantor
       tags:
@@ -15024,7 +15007,7 @@ components:
           properties:
             recurringScheduleStartDate:
               type: string
-              description: Recurring payment collection start date. 
+              description: Recurring payment collection start date.
             installment:
               type: number
               description: Recurring payment amount
@@ -15104,8 +15087,7 @@ components:
           description: Payment Method token to be assigned to the new account.
         assignExistingGuarantor:
           type: boolean
-          description: |-
-            Associate the account with the existing the guarantor record that is already assigned to it’s sibling account. Sibling account refer to all accounts belonging to the same customer.
+          description: Associate the account with the existing the guarantor record that is already assigned to it’s sibling account. Sibling account refer to all accounts belonging to the same customer.
         recurringSchedules:
           type: array
           items:
