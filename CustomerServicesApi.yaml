@@ -12942,7 +12942,6 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-              examples: {}
 components:
   schemas:
     400AddAddress:
@@ -16853,7 +16852,7 @@ components:
       type: object
       example:
         message: Unable to process this request due to insufficient client claims.
-        errors:
+        error:
           - claim: CustomerApi.
       properties:
         message:
