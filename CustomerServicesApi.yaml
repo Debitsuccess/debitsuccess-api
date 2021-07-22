@@ -60,7 +60,7 @@ tags:
   - name: Schedules-Recurring
   - name: Schedules-Suspension
   - name: Terms and Conditions
-  - name: Beta
+  - name: Internal API
 paths:
   /customers:
     post:
@@ -4489,9 +4489,10 @@ paths:
   '/accounts/{accountId}/scheduleRecurrings/{scheduleId}':
     put:
       summary: INTERNAL API - Update Schedule (Recurring)
+      tags:
+        - Internal API
       description: |-
         Updates existing recurring schedule details of an account based on the query parameters provided.
-
         >        Note: This endpoint is not applicable for Gateway Billing accounts.
       operationId: 5ddb3c9f2e24240b5236e6a5
       parameters:
@@ -5660,7 +5661,7 @@ paths:
       requestBody:
         description: |-
           If "isPrimary" is set to "true", when this address successfully added, all other existing addresses belong to the customer will have their "isPrimary" field set to "false".
-          >          Refer to the [supporting documentation](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/6-Reference.md) for the accepted values for countryISOCode.
+          > Refer to the [supporting documentation](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/6-Reference.md) for the accepted values for countryISOCode.
         content:
           application/json:
             schema:
@@ -6582,7 +6583,7 @@ paths:
           If 'isPrimary' field is set to 'true' value, when the address is successfully updated, all other existing addresses belong to the customer will have their 'isPrimary' set to 'false'.
           Primary address is not allowed to be updated to false(i.e. non-Primary).
 
-          >          Refer to the [supporting documentation](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/6-Reference.md) for the accepted values for `countryISOCode` and `state`.
+          > Refer to the [supporting documentation](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/6-Reference.md) for the accepted values for `countryISOCode` and `state`.
         content:
           application/json:
             schema:
@@ -7051,7 +7052,7 @@ paths:
       requestBody:
         description: |-
           If "isPrimary" is set to "true", when this phone number successfully added, all other existing phone numbers belong to the customer will have their "isPrimary" field set to "false". 
-          >          Refer to the [supporting documentation](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/6-Reference.md) for the accepted values for `countryCode`.
+          > Refer to the [supporting documentation](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/6-Reference.md) for the accepted values for `countryCode`.
         content:
           application/json:
             schema:
@@ -7292,7 +7293,7 @@ paths:
           If "isPrimary" is set to "true", when this phone number successfully updated, all other existing phone numbers belong to the customer will have their "isPrimary" field set to "false".
           Primary phone number is not allowed to be updated to false(i.e. non-Primary).
 
-          >          Refer to the [supporting documentation](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/6-Reference.md) for the accepted values for `countryCode`.
+          > Refer to the [supporting documentation](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/6-Reference.md) for the accepted values for `countryCode`.
         content:
           application/json:
             schema:
@@ -9527,7 +9528,7 @@ paths:
       description: |-
         Updates existing email address of a customer based on the customer ID and email ID provided.
 
-        >        Note: If a customer has a Guarantor and the guarantor has an email address, then the guarantor’s email address will always be the preferred email address. Any attempt to update other non-guarantor email address to primary email address (isPrimary=true) will be ignored.
+        > Note: If a customer has a Guarantor and the guarantor has an email address, then the guarantor’s email address will always be the preferred email address. Any attempt to update other non-guarantor email address to primary email address (isPrimary=true) will be ignored.
       operationId: 5ddddd9b5cfbcb04e6dcdf02
       parameters:
         - name: customerId
@@ -10289,7 +10290,7 @@ paths:
       summary: Get OverdueStatusChanges
       description: |-
         Retrieves overdue status/overdue amount changes according to the query parameters provided.
-        Note: Overdue amounts returned by this message are based on cleared funds, so if Debitsuccess collected a bank account payment yesterday, an update to the overdue amount will not be returned until the payment has cleared. 
+        > Note: Overdue amounts returned by this message are based on cleared funds, so if Debitsuccess collected a bank account payment yesterday, an update to the overdue amount will not be returned until the payment has cleared. 
       operationId: 5e1778c773c4b5d0db9def9c
       parameters:
         - name: fromDatetime
@@ -10540,7 +10541,7 @@ paths:
           description: |-
             Successful response with all payments based on the query parameters provided.
 
-            >            Refer to the [supporting documentation](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/6-Reference.md) for the possible values returned for `paymentCode`, `paymentMethod` and `paymentErrorCode`.
+            > Refer to the [supporting documentation](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/6-Reference.md) for the possible values returned for `paymentCode`, `paymentMethod` and `paymentErrorCode`.
           content:
             application/json:
               schema:
@@ -10656,10 +10657,12 @@ paths:
   '/customers/{customerId}/paymentMethods':
     post:
       summary: INTERNAL API - Create PaymentMethod
+      tags:
+        - Internal API
       description: |-
         Create a payment method for an existing customer or account.
 
-        Notes: If payment method is created for account (i.e. AccountId is used in this request) all current and future schedules associated to the account will have their payment method updated. Schedules that are due on the same day as this request will likely to have the update effective on next due date.
+        > Notes: If payment method is created for account (i.e. AccountId is used in this request) all current and future schedules associated to the account will have their payment method updated. Schedules that are due on the same day as this request will likely to have the update effective on next due date.
 
         IMPORTANT: This API is intended for internal use only. If you decide to capture credit cards yourself and pass them through the API then you would be required to get a PCI assessment as opposed to doing a PCI self assessment.
       operationId: 5e4317913b44f651f411dc64
@@ -11436,11 +11439,13 @@ paths:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
   '/businessAccounts/{businessAccountId}/paymentMethods':
     post:
+      tags:
+        - Internal API
       summary: INTERNAL API - Create PaymentMethod (for Business Account)
       description: |-
         Create a temporary payment method at business account level before customer creation. 
 
-        Notes:  Once the customer is created, the one-time token in the response of this endpoint will be used to assigned this payment method to the customer via PATCH Customer request.
+        > Notes:  Once the customer is created, the one-time token in the response of this endpoint will be used to assigned this payment method to the customer via PATCH Customer request.
 
         IMPORTANT: This API is intended for internal use only. If you decide to capture credit cards yourself and pass them through the API then you would be required to get a PCI assessment as opposed to doing a PCI self assessment.
       operationId: 5fb44b95039ef22772141a66
