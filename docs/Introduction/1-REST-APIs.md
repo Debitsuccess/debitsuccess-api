@@ -14,6 +14,8 @@ Easily embed these widgets into your website and customize it to match your prod
 
 - [Payment Method Capture Widget](../Widgets/Payment-Capture-Widget.md)
 - [Realtime Payment Widget](../Widgets/Real-time-payment-widget.md)
+
+
 <!--
 type: tab
 title: Customer Sign-up API
