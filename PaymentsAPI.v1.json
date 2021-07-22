@@ -31,6 +31,9 @@
     },
     {
       "name": "Pay Method Configuration"
+    },
+    {
+      "name": "Internal API"
     }
   ],
   "paths": {
@@ -695,6 +698,7 @@
         }
       },
       "get": {
+        "tags": ["Internal API"],
         "summary": "INTERNAL Get Business Collected Payments",
         "description": "Retrieves business collected paymetns based on the query parameters provided.",
         "operationId": "5e530fdb2d8bf4cfa9148db9",
@@ -1409,7 +1413,7 @@
     },
     "/paymentprocessorcardtypes": {
       "get": {
-        "tags": [],
+        "tags": ["Internal API"],
         "description": "This endpoint retrieves the mapping between Debitsuccess card type and a payment processor (Vantiv, Dps) the payment processor specific card type are used when submitting a payment request. Example - DS card type = AM - Vantiv card type = AX\n",
         "operationId": "getpaymentprocessorcardtypes",
         "parameters": [
@@ -1511,6 +1515,7 @@
     },
     "/webpay/creditcard": {
       "post": {
+        "tags": ["Internal API"],
         "description": "This endpoint processes credit card casual payments. Casual payments are recorded at the business level (Facility Account). The details of the customer making the payments are not recorded.",
         "operationId": "postwebpay",
         "parameters": [
@@ -1662,6 +1667,7 @@
     },
     "/webpay/creditcard/{externalPaymentIdentifier}": {
       "get": {
+        "tags": ["Internal API"],
         "description": "This endpoint can be used to retrieve the payment status for all the casual payments submitted via the Post endpoint.\n",
         "operationId": "getwebpay",
         "parameters": [
