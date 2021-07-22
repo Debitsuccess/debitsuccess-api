@@ -3,8 +3,7 @@
 The Payment Method Capture Widget allows you to securely capture payment details (credit card and bank account) by embedding it in your website and save payment details in Debitsuccess systems. This widget triggers the internal [Create PaymentMethod](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1businessAccounts~1%7BbusinessAccountId%7D~1paymentMethods/post) API to create the payment method into Debitsuccess.
 
 
->
-The [Create PaymentMethod](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1businessAccounts~1%7BbusinessAccountId%7D~1paymentMethods/post) API is intended for internal use only. If you decide to capture credit cards yourself and pass them through the API then you would be required to be PCI certified as opposed to doing a PCI self-assessment.
+> The [Create PaymentMethod](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1businessAccounts~1%7BbusinessAccountId%7D~1paymentMethods/post) API is intended for internal use only. If you decide to capture credit cards yourself and pass them through the API then you would be required to be PCI certified as opposed to doing a PCI self-assessment.
 
 
 ## Adding Payment Method Capture widget
@@ -25,7 +24,7 @@ The [Create PaymentMethod](https://debitsuccess.stoplight.io/docs/debitsuccess-a
 |  --- |  --- |  --- | 
 |  _authToken_  |  | get this token from [Debitsuccess Identity Server](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/2-Authentication.md) using your  _client secret_  and  _client ID_  | 
 |  _businessAccountId_  |  | a unique identifier (string, Debitsuccess contract prefix) of the business customer belongs to | 
-| customerId  | Optional | a unique identifier (integer) of the customer the payment method will be captured for | 
+| customerId  | Optional | a unique identifier (integer) of the customer the payment method will be captured for. `customerId` must be provided if `accountId` is provided. | 
 |  _domain_  | Optional | describes the environment the widget will be used against, possible values:<ul><li>**OC-Test** https://oc-test.debitsuccess.com </li><li> **OC-Production** https://oc.debitsuccess.com </li></ul> | 
 |  _accountId_  | Optional | a unique identifier (string, Debitsuccess account reference) of the account a new payment method should be attached to | 
 
@@ -37,7 +36,7 @@ var dsWidget = new DsPaymentFormWidget(
                         {
                             "customerId": "123456" // your Customer ID
                             "domain": "https://oc-test.debitsuccess.com",
-                            "accountId": 654321
+                            "accountId": DEMO888999
                         }
                     );
 ```
@@ -56,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function() {
                       {
                           "customerId": "123456" // your Customer ID
                           "domain": "https://oc-test.debitsuccess.com",
-                          "accountId": 654321
+                          "accountId": DEMO888999
                       }
                   );
 });

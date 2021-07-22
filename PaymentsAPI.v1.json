@@ -6,7 +6,7 @@
     "contact": {
       "email": "TestAPI.Support@debitsuccess.com"
     },
-    "version": "1.0"
+    "version": "v1.0"
   },
   "servers": [
     {
@@ -3613,6 +3613,18 @@
           "example": "0HLD8JO11CCGR:00000001"
         }
       }
+    },
+  "securitySchemes": {
+    "apiKeyHeader": {
+       "type": "apiKey",
+      "name": "Ocp-Apim-Subscription-Key",
+      "in": "header"
+    },
+    "apiKeyQuery": {
+     "type": "apiKey",
+      "name": "subscription-key",
+      "in": "query" 
     }
+  }
   }
 }

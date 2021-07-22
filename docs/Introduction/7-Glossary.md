@@ -339,7 +339,7 @@ Overdue amount to pay in business charges
 
 
 ### overdueStatus
-0, 1, 2, 3 (0 = Not overdue, > 0 indicate overdue stages with increasing severity ). Status descriptions can be found here [https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1492877598/Statuses#Overdue-Status](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1492877598/Statuses+in+Debitsuccess+Systems#Account-Overdue-Status).
+0, 1, 2, 3 (0 = Not overdue, > 0 indicate overdue stages with increasing severity ). Status descriptions can be found in [Statuses in Debitsuccess Systems](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1492877598/Statuses+in+Debitsuccess+Systems#Account-Overdue-Status).
 
 
 ### overrideBillingCycleAlignment

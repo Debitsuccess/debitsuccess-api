@@ -9,7 +9,7 @@ Debitsuccess is always improving how we deliver our service. As part of deliveri
 
 * ~~New customer services API endpoint to create, get, and update guarantor details will soon be available.~~
 * Enhancement to the [Realtime Payment Widget](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Widgets/Real-time-payment-widget.md) to support account payments.
-* Enhancement to the close account endpoint with additional cancellation options.
+* Enhancement to the [close account](https://debitsuccess.stoplight.io/docs/debitsuccess-api/b3A6ODQ0Nzk0MA-close-account) endpoint with additional cancellation options.
 
 *****
 ## July 13, 2021
