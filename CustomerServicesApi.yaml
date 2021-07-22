@@ -2306,6 +2306,48 @@ paths:
                 responseMetadata:
                   nextCursor: NjM1MDkz
                   hasNext: true
+              examples:
+                example-1:
+                  value:
+                    accounts:
+                      - accountId: string
+                        accountExternalId: string
+                        customerId: string
+                        businessAccountId: string
+                        termType: Months
+                        term: 0
+                        accountCode: string
+                        accountNotes: string
+                        fixedTerm: true
+                        nextBillingDate: string
+                        lastBillingDateTime: string
+                        overdueStatus: 0
+                        overdueAmountPayment: 0
+                        overdueAmountFee: 0
+                        lastReversalReason: string
+                        closeReason: string
+                        suspended: true
+                        paymentStopped: true
+                        paymentStopEndDate: string
+                        catchUpAmount: 0
+                        catchUpEndDate: string
+                        paymentInAdvanceAmount: 0
+                        paymentInAdvanceEnddate: string
+                        accountStartDate: string
+                        accountLoadedDateTime: string
+                        accountCloseDateTime: string
+                        lastUpdatedDateTime: string
+                        accruedContractAmount: 0
+                        originalContractAmount: 0
+                        outstandingRecurringAmount: 0
+                        outstandingOneOffAmount: 0
+                        outstandingFeeAmount: 0
+                        projectedFinishDate: string
+                        paymentMethodToken: string
+                        collectionStopReason: Manual Payment Stop
+                    responseMetadata:
+                      nextCursor: string
+                      hasNext: true
         '401':
           description: |
             Unauthorized - Occurs when the authorization token provided is either expired or invalid.
@@ -10245,7 +10287,9 @@ paths:
       tags:
         - OverdueStatusChanges
       summary: Get OverdueStatusChanges
-      description: Retrieves overdue status changes according to the query parameters provided.
+      description: |-
+        Retrieves overdue status/overdue amount changes according to the query parameters provided.
+        Note: Overdue amounts returned by this message are based on cleared funds, so if Debitsuccess collected a bank account payment yesterday, an update to the overdue amount will not be returned until the payment has cleared. 
       operationId: 5e1778c773c4b5d0db9def9c
       parameters:
         - name: fromDatetime
@@ -15577,10 +15621,10 @@ components:
                   - 3
               overdueAmountPayment:
                 type: number
-                description: Payment amount overdued. Negative amount refer to account is in credit for payments.
+                description: 'Overdue amount of business payments (not Debitsuccess fees). A negative amount means the account is in credit for payments. Note: this amount can include uncleared payments'
               overdueAmountFee:
                 type: number
-                description: Fee amount overdued. Negative amount refer to account is in credit for fees.
+                description: 'Overdue amount of related to Debitsuccess fees. A negative amount means the account is in credit for fees. Note: this amount can include uncleared payments'
               lastReversalReason:
                 type: string
                 description: 'Reason account''s last payment failure, e.g. Insufficient Funds, Account Closed, etc.'
