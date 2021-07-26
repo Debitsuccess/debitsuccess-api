@@ -8,7 +8,7 @@ The Payment Method Capture Widget allows you to securely capture payment details
 
 ## Adding Payment Method Capture widget
 
-1. Add a link to Debitsuccess javascript library on the page where the widget will be used, like
+1. Add a link to Debitsuccess javascript library on the page where the widget will be used, as follows:
 
 
 
@@ -24,7 +24,7 @@ The Payment Method Capture Widget allows you to securely capture payment details
 |  --- |  --- |  --- | 
 |  _authToken_  |  | get this token from [Debitsuccess Identity Server](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/2-Authentication.md) using your  _client secret_  and  _client ID_  | 
 |  _businessAccountId_  |  | a unique identifier (string, Debitsuccess contract prefix) of the business customer belongs to | 
-| customerId  | Optional | a unique identifier (integer) of the customer the payment method will be captured for. `customerId` must be provided if `accountId` is provided. | 
+| customerId  | Optional | a unique identifier (integer) of the customer the payment method will be captured for.  `customerId` must be provided if `accountId` is provided. | 
 |  _domain_  | Optional | describes the environment the widget will be used against, possible values:<ul><li>**OC-Test** https://oc-test.debitsuccess.com </li><li> **OC-Production** https://oc.debitsuccess.com </li></ul> | 
 |  _accountId_  | Optional | a unique identifier (string, Debitsuccess account reference) of the account a new payment method should be attached to | 
 
@@ -148,7 +148,7 @@ dsWidget.createBankCaptureForm("bank-container", "AUS", styles, customBankLabels
 ```
 
 ## Customing the Payment Method Capture widget
-Debitsuccess Payment Method Capture widget supports CSS style customization and labels text replacement. By default, the Payment Method Capture forms are displayed as below:
+The Payment Method Capture widget supports CSS style customization and labels text replacement. By default, the Payment Method Capture forms are displayed as below:
 
 
 <!--
@@ -180,7 +180,9 @@ title: AUS Bank Account Details Capture Form
 
 
 
-CSS styles customizationFor style customization, Debitsuccess accepts the following CSS properties:
+### CSS styles customization
+
+For style customization, Debitsuccess accepts the following CSS properties:
 
 
 ```js
@@ -255,7 +257,11 @@ Removes an existing subscription
 ```js
 dsWidget.unsubscribe("stateUpdated");
 ```
-Types of eventsa) Initialized eventThen a capture form is initialized the  _initialized_ event is emitted with the following structure. Where  _minWidth_ & _minHeight_  represent the minimum size of the form that has been created.
+### Types of events
+
+#### a) Initialized event
+
+Then a capture form is initialized the  _initialized_ event is emitted with the following structure. Where  _minWidth_ & _minHeight_  represent the minimum size of the form that has been created.
 
 
 ```
@@ -265,7 +271,9 @@ Types of eventsa) Initialized eventThen a capture form is initialized the  _init
   "minHeight":323
 }
 ```
-b) State updated eventThis event is emitted when the validation state is changed. When the form is loaded the default value is false. When the form is changing state to valid the following event is exposed.
+#### b) State updated event
+
+This event is emitted when the validation state is changed. When the form is loaded the default value is false. When the form is changing state to valid the following event is exposed.
 
 
 ```
@@ -302,7 +310,8 @@ The event with the following error message is applicable only for the bank accou
     }
 }
 ```
-c) Save payment method processing eventWhen you call createPaymentToken() method, the following event is exposed:
+#### c) Save payment method processing event
+When you call createPaymentToken() method, the following event is exposed:
 
 
 ```js
@@ -310,7 +319,9 @@ c) Save payment method processing eventWhen you call createPaymentToken() method
     "type":"savePaymentMethodProcessing"
 }
 ```
-d) Save payment method success eventIf the payment method was successfully saved, based on you the widget parameters you will have either of the following events come back:
+#### d) Save payment method success event 
+
+If the payment method was successfully saved, based on you the widget parameters you will have either of the following events come back:
 
 
 * If  **customerId**  is provided:
@@ -332,7 +343,7 @@ d) Save payment method success eventIf the payment method was successfully saved
 }
 ```
 
-* If  **customerId** is not provided, you will get a one time token as shown below. To get a permanent token, you need to use PATCH customer API and provide this OneTimePaymentMethodToken:
+* If  **customerId** is not provided, you will get a one time token as shown below. To get a permanent token, you need to use [PATCH customer API](https://debitsuccess.stoplight.io/docs/debitsuccess-api/b3A6ODQ0Nzk3NA-patch-customer) and provide this `OneTimePaymentMethodToken`:
 
 
 
@@ -346,7 +357,7 @@ d) Save payment method success eventIf the payment method was successfully saved
              }
 }
 ```
-If a token was created without specifying a customer id, later on, when the customer is created, you will need to associate this oneTimePaymentMethodToken using  **_PATCH_** Customer call
+* If a token was created without specifying a customerId, later on, when the customer is created, you will need to associate this `oneTimePaymentMethodToken` using  [PATCH Customer](https://debitsuccess.stoplight.io/docs/debitsuccess-api/b3A6ODQ0Nzk3NA-patch-customer) call.
 
 
 ```js
@@ -367,7 +378,9 @@ xhr.setRequestHeader("Authorization", "Bearer authToken");
 
 xhr.send(data);
 ```
-e) Save payment method error eventIf you send a payment form which is invalid state the event of the following structure is raised:
+#### e) Save payment method error event
+
+If you send a payment form which is invalid state the event of the following structure is raised:
 
 
 ```js
@@ -400,7 +413,9 @@ If widget validation was bypassed then an error message from API might be expose
                    }
 }
 ```
-f) Configuration error when initializing the widgetIf you do not provide  **businessAccountId,** a configurationError event with a message “businessAccountId is invalid.” is returned.
+#### f) Configuration error when initializing the widget
+
+If you do not provide  **businessAccountId,** a configurationError event with a message “businessAccountId is invalid.” is returned.
 
 
 ```js
