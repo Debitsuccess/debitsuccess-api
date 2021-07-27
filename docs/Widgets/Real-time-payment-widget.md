@@ -1,15 +1,15 @@
 # Real Time Payment Widget
 
-The Realtime Payment Widget allows customers to securely make real-time payments to your business. The widget can be embedded into your website and customized to match your product theme. The widget is made up of a JavaScript library that internally uses an iframe to capture credit card details. It then uses a Debitsuccess payment API to process payments.
+The Real Time Payment Widget allows customers to securely make real-time payments to your business. The widget can be embedded into your website and customized to match your product theme. The widget is made up of a JavaScript library that internally uses an iframe to capture credit card details. It then uses a Debitsuccess payment API to process payments.
 
 >
-The Realtime Payment Widget currently supports only casual payments. Support for account payments will be added in the future.
+The Real Time Payment Widget currently supports only casual payments. Support for account payments will be added in the future.
 
 The default casual payment form:
 
 ![](https://drive.google.com/uc?export=view&id=1tkN8CSBIXyYfwYgeQgmE_TxZNvspc6fj) 
 
-## Adding RealTime Payment Widget to a Web Page
+## Adding Real Time Payment Widget to a Web Page
 
 The following steps will walk you through collecting payment using the casual payment widget.
 

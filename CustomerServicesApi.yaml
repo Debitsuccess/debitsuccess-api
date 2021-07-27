@@ -11223,9 +11223,7 @@ paths:
           schema:
             type: string
       requestBody:
-        description: |-
-          Exactly one address + one email + one phone number are required when creating a new customer.
-          All of them will be created as 'Primary' contact of their own type for the customer (i.e. isPrimary="true").
+        description: Only oneTimePaymentMethodToken field is supported in this request. Any attempt to change any other field will cause errors.
         content:
           application/json:
             schema:

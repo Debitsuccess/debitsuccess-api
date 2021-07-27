@@ -1,6 +1,6 @@
 # Authentication 
 
-Debitsuccess supports [client credentials](https://tools.ietf.org/html/rfc6749#section-1.3.4) flow for authentication. After you receive your credentials, `Client_ID` and `Client_Secret` from us, use the  HTTP POST request to /identity/connect/token to obtain your JWT token also known as API Key. 
+Debitsuccess supports [client credentials](https://tools.ietf.org/html/rfc6749#section-1.3.4) flow for authentication. After you receive your credentials, `Client_ID` and `Client_Secret` from us, use the  HTTP POST request to **/identity/connect/token** to obtain your JWT token also known as API Key.
 
 ## OAuth 2.0 Client Credentials Flow 
 ![](https://drive.google.com/uc?export=view&id=1CbINB1zSVaIgocEuRkcNFnsyp3_S6F38)
@@ -36,7 +36,7 @@ To check whether the identity server is up and running navigate to the configura
 ### 1. Retrieve an access token
 To receive an access token, the client POSTs an API call to Debitsuccess Identity Server, with the values for the client ID and client secret. In addition, the parameter grant_type=client_credentials must be passed as a query parameter.
 
-Request Parameters
+**Request Parameters**
 * Method: <span style="background-color:skyblue; color:white">  POST</span>
 
 
@@ -52,10 +52,10 @@ Request Parameters
 
 |  **Input Parameter**  |  **Required/Optional**  |  **Format**  |  **Remark**  | 
 |  --- |  --- |  --- |  --- | 
-| Client_ID | Required | ########-####-####-####-############where # is alphanumeric | Unique identifier for a client provided by Debitsuccess. | 
+| Client_ID | Required | ########-####-####-####-############ where # is alphanumeric | Unique identifier for a client provided by Debitsuccess. | 
 | Client_Secret | Required | 64 bit | Client secret key provided by Debitsuccess. | 
 | Grant_Type | Required | stringclient_credentials | Denotes the flow you are using. Always use client_credentials | 
-| scope | Optional | Space-separated string | The name of the API that access token will be generated for.If the scope is not provided by Debitsuccess, you can ignore this field in the request body. Also if the scope is not provided the token will contain all available scopes for this client_id.| 
+| scope | Optional | Space-separated string | The name of the API that access token will be generated for. If the scope is not provided by Debitsuccess, you can ignore this field in the request body. Also if the scope is not provided the token will contain all available scopes for this client_id.| 
 
 
 
@@ -83,7 +83,7 @@ In exchange for these credentials, the Debitsuccess authorization server issues 
 |  --- |  --- |  --- | 
 | Access_Token | sample:     "eyJhbGciOiJSUzI1NiIsImtpZCI6IkE4ODFDQzdBNDM4MEUyRDM5N0EwQjNGMERGNDF GOTg1MDYzRkU1RkIiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJxSUhNZWtPQTR0T1hvTFB3MzBINWhRA” | It represents the authorization of a specific application to access specific parts of user data and uniquely identifies the client login session.  | 
 | Expires_In | Integer in seconds, example 1800, 3600 | Represents the number of seconds that the access token will be valid. | 
-| Token_Type | "Bearer" | A bearer token means that the bearer of the access token can access authorized resources without further identification.The access token must always be appended with the term “Bearer” when you call any Debitsuccess REST API. E.g. Bearer \[access_token]| 
+| Token_Type | "Bearer" | A bearer token means that the bearer of the access token can access authorized resources without further identification. The access token must always be appended with the term “Bearer” when you call any Debitsuccess REST API. E.g. Bearer \[access_token]| 
 
 
 ```json
@@ -118,9 +118,9 @@ The error response can include any value that is discribed in the example.
 ```
  ### 2. Call an API with the access token
  
- The token lives for the configured time in the authorization server, when the token expires the API should respond with a401telling the client to get a new token.
+ The token lives for the configured time in the authorization server, when the token expires the API should respond with a 401 telling the client to get a new token.
 
-To call the API, the token should be added to the request in theAuthorizationheader on the form as shown in the below example:
+To call the API, the token should be added to the request in the Authorization header on the form as shown in the below example:
 
 **Request format**
 
@@ -141,7 +141,7 @@ K3QsDwjYlgwAWUBH7IxKDJCAXXqf4PqZY53jr1tjMDBgINRsl0iCjG83X9pvzf0pa9i5bLfFHmDLgagG
 
 *******
 
-**JWT Token validation**  _JSON Web Token (JWT) is an open standard that defines a compact and self-contained way for securely transmitting information between parties as a JSON object._  This information can be verified and trusted because it is digitally signed. JWTs can be signed using a secret (with theHMACalgorithm) or a public/private key pair usingRSA._ We will be using RSA to sign the token. RS256 (RSA Signature with SHA-256) is an asymmetric algorithm, and it uses a public/private key pair: the identity server provider has a private (secret) key used to generate the signature, and the consumer of the JWT gets a public key to validate the signature. Since the public key, as opposed to the private key, doesn't need to be kept secured, the identity server makes it easily available for consumers to obtain from the [https://oc-test.debitsuccess.com/identity/.well-known/openid-configuration/jwks](https://oc-test.debitsuccess.com/identity/.well-known/openid-configuration/jwks) URL.To read more about JWT tokens please visit [https://jwt.io/introduction/](https://jwt.io/introduction/)
+**JWT Token validation**  JSON Web Token (JWT) is an open standard that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed. JWTs can be signed using a secret (with the HMAC algorithm) or a public/private key pair using RSA. We will be using RSA to sign the token. RS256 (RSA Signature with SHA-256) is an asymmetric algorithm, and it uses a public/private key pair: the identity server provider has a private (secret) key used to generate the signature, and the consumer of the JWT gets a public key to validate the signature. Since the public key, as opposed to the private key, doesn't need to be kept secured, the identity server makes it easily available for consumers to obtain from the [https://oc-test.debitsuccess.com/identity/.well-known/openid-configuration/jwks](https://oc-test.debitsuccess.com/identity/.well-known/openid-configuration/jwks) URL. To read more about JWT tokens please visit [https://jwt.io/introduction/](https://jwt.io/introduction/).
 
 
 

@@ -8,7 +8,7 @@ Debitsuccess is always improving how we deliver our service. As part of deliveri
 > Please note that these features are in our roadmap for the next three months but we do not have a definite ETA.
 
 * ~~New customer services API endpoint to create, get, and update guarantor details will soon be available.~~
-* Enhancement to the [Realtime Payment Widget](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Widgets/Real-time-payment-widget.md) to support account payments.
+* Enhancement to the [Real Time Payment Widget](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Widgets/Real-time-payment-widget.md) to support account payments.
 * Enhancement to the [close account](https://debitsuccess.stoplight.io/docs/debitsuccess-api/b3A6ODQ0Nzk0MA-close-account) endpoint with additional cancellation options.
 
 *****
@@ -44,14 +44,14 @@ Enhancement to populate standardized 403 error messages when client attempts to 
 
 ## May 11, 2021
 
-The [Realtime Payment Widget](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Widgets/Real-time-payment-widget.md) allows you to securely make real-time payments to businesses (Casual Payments). Integration partners can embed this widget into their website and customize it to match their product theme. Widget is essentially an iframe to capture credit card details and use Debitsuccess [Payments API](https://debitsuccess.stoplight.io/docs/debitsuccess-api/PaymentsAPI.v1.json) to make payments. 
+The [Real Time Payment Widget](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Widgets/Real-time-payment-widget.md) allows you to securely make real-time payments to businesses (Casual Payments). Integration partners can embed this widget into their website and customize it to match their product theme. Widget is essentially an iframe to capture credit card details and use Debitsuccess [Payments API](https://debitsuccess.stoplight.io/docs/debitsuccess-api/PaymentsAPI.v1.json) to make payments. 
 
 ##  Mar 23, 2021
 The RestAPI [GET Account(s)](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1accounts/get) is enhanced to return the DD Stop reason field in the API Response. If the account status ‘PaymentStopped’ is set to true and has a `CollectionStopReason` assigned, then it will be shown in the GET Account(s) API response CollectionStopReason field, else an empty string will be returned.
 
 ## Mar 16, 2010
 
-Introduced a new field Active as an input parameter for [GET BusinessAccounts](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1businessAccounts/get). This field will act as a filter to allow users to retrieve Active or non-Active Business Accounts. Leaving this field as Null/empty will retrieve all Business Accounts.
+Introduced a new field `Active` as an input parameter for [GET BusinessAccounts](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1businessAccounts/get). This field will act as a filter to allow users to retrieve Active or non-Active Business Accounts. Leaving this field as null/empty will retrieve all Business Accounts.
 
 ## Feb 23, 2021
 Implemented a new REST API[Get Payment Token(for Casual Payment)](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1businessAccounts~1%7BbusinessAccountId%7D~1paymentTokens/post) that generates and returns a PayNow URL link so that integrators can access the link to make a casual payment for a business account.
