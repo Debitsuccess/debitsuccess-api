@@ -1764,7 +1764,7 @@ paths:
           > *Notes*:
           >* Maximum of 3 recurring schedules are allowed to be assigned to an account. 
           >* Recurring schedules are not applicable for Gateway Billing accounts.
-          >* If an account has a new schedule created to start immediately but after the billing cut-off, then the customer will be billed the next working day.
+          >* If an account has a new schedule created to start immediately but after the billing cut-off, the customer will be billed the next working day.
         content:
           application/json:
             schema:
@@ -2135,8 +2135,8 @@ paths:
             [Account status](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1492877598/Statuses+in+Debitsuccess+Systems) can be used to filter retrieved account based on their current status. Default value is Active if not provided.
             >Notes:
             >1) 'Active' accounts can also be 'Suspended', 'PaymentStopped' or 'Overdue' at the same time.
-            2) 'Closed' accounts can also be 'Suspended', 'PaymentStopped' or 'Overdue' at the same time.
-            2) 'Suspended' accounts can also be 'PaymentStopped' at the same time.
+            >2) 'Closed' accounts can also be 'Suspended', 'PaymentStopped' or 'Overdue' at the same time.
+            >3) 'Suspended' accounts can also be 'PaymentStopped' at the same time.
           schema:
             enum:
               - Active
@@ -3500,7 +3500,7 @@ paths:
 
         This endpoint creates an indefinite recurring schedule for the account whereas the recurring schedule created using [POST /accounts](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1accounts/post) can be configured as a [tried schedule](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1314914915/Create+a+recurring+schedule). 
 
-        >        Note: This endpoint is not applicable for Gateway Billing accounts.
+        > Note: This endpoint is not applicable for Gateway Billing accounts.
       operationId: 5ddaf6e8c341d15d73945994
       parameters:
         - name: accountId
@@ -3829,7 +3829,7 @@ paths:
       description: |-
         Retrieves list of recurring schedule based on Account ID provided. 
 
-        >        Note: This endpoint is not applicable for Gateway Billing accounts.
+        > Note: This endpoint is not applicable for Gateway Billing accounts.
       operationId: 5ddb407e8406be61a32cacea
       parameters:
         - name: accountId
@@ -4019,7 +4019,7 @@ paths:
       description: |
         Delete recurring schedule based on query parameters provided.
 
-        >        Note: This endpoint is not applicable for Gateway Billing accounts.
+        > Note: This endpoint is not applicable for Gateway Billing accounts.
 
         Notes: 
         1) Start date of the recurring schedule that needs to be deleted must be in the future.
@@ -4286,7 +4286,7 @@ paths:
       description: |-
         Retrieves recurring schedule based on account ID and schedule ID provided in the query path. 
 
-        >        Note: This endpoint is not applicable for Gateway Billing accounts.
+        > Note: This endpoint is not applicable for Gateway Billing accounts.
       operationId: 5ddb4055e367b992b479dc1c
       parameters:
         - name: accountId
@@ -4493,7 +4493,7 @@ paths:
         - Internal API
       description: |-
         Updates existing recurring schedule details of an account based on the query parameters provided.
-        >        Note: This endpoint is not applicable for Gateway Billing accounts.
+        > Note: This endpoint is not applicable for Gateway Billing accounts.
       operationId: 5ddb3c9f2e24240b5236e6a5
       parameters:
         - name: accountId
@@ -5219,9 +5219,9 @@ paths:
       description: |
         Delete one-off schedule based on query parameters provided.
 
-        Notes: 
-        1) Due date of the recurring schedule that needs to be deleted must be in the future
-        2) Deletion of schedule with due date equal current date is only allowed before the cut off time.
+        >Notes: 
+        >1) Due date of the recurring schedule that needs to be deleted must be in the future
+        >2) Deletion of schedule with due date equal current date is only allowed before the cut off time.
       operationId: 5e2a009ddd899180b8c4534f
       parameters:
         - name: accountId
@@ -7263,7 +7263,7 @@ paths:
       description: |-
         Updates existing phone number of a customer based on the customer ID and phoneNumber ID provided.
 
-        >        Note: If a customer has a Guarantor and the guarantor has a mobile number, then the guarantor’s mobile number will always be the preferred phone number. Any attempt to update other non-guarantor phone numbers to primary number (isPrimary=true) will be ignored.
+        > Note: If a customer has a Guarantor and the guarantor has a mobile number, then the guarantor’s mobile number will always be the preferred phone number. Any attempt to update other non-guarantor phone numbers to primary number (isPrimary=true) will be ignored.
       operationId: 5ddddd7330e1bcdcaf336cb8
       parameters:
         - name: customerId
@@ -10662,7 +10662,7 @@ paths:
       description: |-
         Create a payment method for an existing customer or account.
 
-        > Notes: If payment method is created for account (i.e. AccountId is used in this request) all current and future schedules associated to the account will have their payment method updated. Schedules that are due on the same day as this request will likely to have the update effective on next due date.
+        > Notes: If payment method is created for account (i.e., AccountId is used in this request) all current and future schedules associated to the account will have their payment method updated. Schedules that are due on the same day as this request will likely to have the update effective on next due date.
 
         IMPORTANT: This API is intended for internal use only. If you decide to capture credit cards yourself and pass them through the API then you would be required to get a PCI assessment as opposed to doing a PCI self assessment.
       operationId: 5e4317913b44f651f411dc64
@@ -13659,6 +13659,16 @@ components:
         - recurringScheduleStartDate
         - installment
         - frequency
+      x-examples:
+        example-1:
+          value:
+            recurringScheduleStartDate: string
+            recurringScheduleEndDate: string
+            installment: 0
+            frequency: weekly
+            numberOfPayments: 0
+            sheduleDescription: string
+            externalScheduleId: string
     200GetBusinessAccounts:
       description: ''
       type: object
@@ -13780,7 +13790,7 @@ components:
           description: 'Type of customer, i.e. Individual or Business'
         title:
           type: string
-          description: 'Title used to address the Customer. E.g. Mr, Dr, Ms'
+          description: 'Title used to address the Customer. Example, Mr, Dr, Ms'
         firstName:
           type: string
           description: Given name/first name associated with the Customer or Business
@@ -13848,13 +13858,13 @@ components:
               description: Name of person to be contacted
             countryCode:
               type: string
-              description: 'Country code of a phone number. E.g. +61, +64'
+              description: 'Country code of a phone number. Example, +61, +64'
             areaCode:
               type: string
-              description: 'Area code of a phone number. E.g. 02, 07'
+              description: 'Area code of a phone number. Example, 02, 07'
             phoneNumber:
               type: string
-              description: 'Details of contact.e.g. Phone number or email '
+              description: 'Details of contact.Example, Phone number or email '
             phoneType:
               type: string
               description: Contact Type
@@ -14255,7 +14265,7 @@ components:
           description: Credit card number of bank account number. Only contains numeric
         cardType:
           type: string
-          description: 'Type of credit card associated to the payment method. Required if paymentMethod is CreditCard. e.g. MAstercard, Visa, etc'
+          description: 'Type of credit card associated to the payment method. Required if paymentMethod is CreditCard. Example, MAstercard, Visa, etc'
         cardExpiryDate:
           maxLength: 5
           minLength: 5
@@ -14647,7 +14657,7 @@ components:
           description: External reference number associated with the updated Account
         termType:
           type: string
-          description: 'Term type, e.g. Payments or Months'
+          description: 'Term type, for example, Payments or Months'
         term:
           type: integer
           description: Number of terms to complete the recurring payments
@@ -14768,7 +14778,7 @@ components:
           description: Credit card number of bank account number. Only contains numeric
         cardType:
           type: string
-          description: 'Type of credit card associated to the payment method. Required if paymentMethod is CreditCard. e.g. MAstercard, Visa, etc'
+          description: 'Type of credit card associated to the payment method. Required if paymentMethod is CreditCard. Example, MAstercard, Visa, etc'
         cardExpiryDate:
           maxLength: 5
           minLength: 5
@@ -14931,7 +14941,7 @@ components:
           maxLength: 100
         termType:
           type: string
-          description: 'Term type, e.g. Payments or Months'
+          description: 'Term type, for example, Payments or Months'
           enum:
             - payments
             - months
@@ -14970,10 +14980,10 @@ components:
           description: Fee amount overdued. Negative amount refer to account is in credit for fees.
         lastReversalReason:
           type: string
-          description: 'Reason account''s last payment failure, e.g. Insufficient Funds, Account Closed, etc.'
+          description: 'Reason account''s last payment failure, for example, Insufficient Funds, Account Closed, etc.'
         closeReason:
           type: string
-          description: 'Reason the account was closed, e.g. End of term, Facility Request, etc'
+          description: 'Reason the account was closed, for example, End of term, Facility Request, etc'
         suspended:
           type: boolean
           description: |-
@@ -15238,7 +15248,7 @@ components:
         title:
           maxLength: 10
           type: string
-          description: 'Title used to address the Customer. E.g. Mr, Dr, Ms'
+          description: 'Title used to address the Customer. Example, Mr, Dr, Ms'
         firstName:
           maxLength: 40
           type: string
@@ -15332,7 +15342,7 @@ components:
             emailAddress:
               maxLength: 75
               type: string
-              description: The actul email address. e.g. myemailaddress@domain.com
+              description: 'The actul email address. Example, myemailaddress@domain.com'
           required:
             - emailAddress
         phoneNumber:
@@ -15469,10 +15479,10 @@ components:
           description: 'Overdue amount of related to Debitsuccess fees. A negative amount means the account is in credit for fees. Note: this amount can include uncleared payments'
         lastReversalReason:
           type: string
-          description: 'Reason for account''s last payment failure, e.g. Insufficient Funds, Account Closed, etc.'
+          description: 'Reason for account''s last payment failure, for example, Insufficient Funds, Account Closed, etc.'
         closeReason:
           type: string
-          description: 'Reason account was closed, e.g. End of term, Facility Request, etc'
+          description: 'Reason account was closed, for example, End of term, Facility Request, etc'
         suspended:
           type: boolean
           description: |-
@@ -15630,10 +15640,10 @@ components:
                 description: 'Overdue amount of related to Debitsuccess fees. A negative amount means the account is in credit for fees. Note: this amount can include uncleared payments'
               lastReversalReason:
                 type: string
-                description: 'Reason account''s last payment failure, e.g. Insufficient Funds, Account Closed, etc.'
+                description: 'Reason account''s last payment failure, for example, Insufficient Funds, Account Closed, etc.'
               closeReason:
                 type: string
-                description: 'Reason account was closed, e.g. End of term, Facility Request, etc'
+                description: 'Reason account was closed, for example, End of term, Facility Request, etc'
               suspended:
                 type: boolean
                 description: |-
@@ -15933,7 +15943,7 @@ components:
             properties:
               businessAccountId:
                 type: string
-                description: System generated reference to Business Account e.g. Contract Prefix associated to the account owning the payment schedule
+                description: 'System generated reference to Business Account example, Contract Prefix associated to the account owning the payment schedule'
               accountId:
                 type: string
                 description: System generated reference id associated to the Account

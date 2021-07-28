@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Customer Sign-up API
-  description: | 
+  description: |
     ---
     ## Overview
     The online management gateway API allow for the creation of account templates. This is where you will create a payment plan for your customers to complete. You can create multiple account templates for each type of contract that you have. The account templates are used to signup new customer via Debitsuccess Online management gateway web application.
@@ -44,8 +44,9 @@ paths:
         - Account Template
       description: |
         Creates an account template that can later be used on Debitsuccess Online 
-        Management Getaway to sign up new customers. **Note** - The **customerdetails** field in the request must be sent as base64 encoded string of Json object.
-      operationId: postAccountTemplate
+        Management Getaway to sign up new customers. 
+        > **Note**: The `customerDetails` field in the request must be sent as base64 encoded string of Json object.
+      operationId: Create Account Template
       requestBody:
         content:
           application/json:
@@ -70,12 +71,19 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/inline_response_401'
-  /accounttemplates/{accountTemplateId}:
+      parameters:
+        - schema:
+            type: string
+          in: header
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
+          required: true
+          name: Authorization
+  '/accounttemplates/{accountTemplateId}':
     delete:
       tags:
         - Account Template
       description: Allows for the deletion of account templates.
-      operationId: deleteAccountTemplate
+      operationId: Delete Account Template
       parameters:
         - name: accountTemplateId
           in: path
@@ -85,9 +93,9 @@ paths:
           explode: false
           schema:
             type: string
-        - name: authorization
+        - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           style: simple
           explode: false
@@ -116,12 +124,12 @@ paths:
     get:
       tags:
         - Account Template
-      description: Used to determine whether this api is online.
-      operationId: diagnostics
+      description: Used to determine whether this API is online.
+      operationId: Diagnostics
       parameters:
-        - name: authorization
+        - name: Authorization
           in: header
-          description: JWT token using Bearer authorization scheme
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
           required: true
           style: simple
           explode: false
@@ -216,13 +224,13 @@ components:
         billingFee:
           type: number
           description: |
-            >=0 and <100,000.00 The value in this field is added to the Instalment amount and is debited 
-            every frequency from the customer's account.
+            Must be >= 0 and <100,000.00. The value in this field is added to the Instalment amount and is debited 
+             every frequency from the customer's account.
           example: 0
         additionalOneOffPayment:
           type: number
           description: |
-            >=0 and <100,000.00 Amount of initial one-off payment, can be Joining fee or any other one-off fees that the facility wants to debit from the user.   
+            Must be >=0 and <100,000.00. Amount of initial one-off payment, can be Joining fee or any other one-off fees that the facility wants to debit from the user.   
           example: 0
         joiningFeeIsFirstInstalment:
           type: boolean
@@ -269,50 +277,50 @@ components:
         customerDetails:
           $ref: '#/components/schemas/CustomerDetails'
       example:
-       name: 1 month membership $10
-       paymentOption: '1'
-       term: '1'
-       termType: M
-       isTerm: false
-       accountCode: Sale 3209
-       totalAmount: 10
-       overrideEstFee: false
-       ddrTemplate: '10.00'
-       businessId: TST4
-       isCustomFrequency: false
-       installment: 10
-       allowableFrequencies: WK,FN,MN
-       defaultFrequency: WK
-       billingFee: 10
-       additionalOneOffPayment: 0
-       joiningFeeIsFirstInstalment: false
-       contractStartDate: string
-       firstPaymentDateMin: 0
-       benefits: benefit
-       description: Account template for 2017.1 sales
-       specialConditions: specialConditions
-       templateEndDate: 12/12/2018
-       promoCode: Promocode
-       isProRata: false
-       AllowMinors: false
-       externalAccountReferenceNo: eba09c3c-3f67-11e8-b467-0ed5f89f718b
-       customerDetails:
-        firstName: John
-        lastName: Doe
-        dob: '1991-12-19'
-        gender: 1
-        driversLicenseOrMedicareNumber: SD9999
-        streetAddress: 5 The warehouse road
-        suburb: NorthCote
-        postcode: '5685'
-        city: Auckland
-        state: Auck
-        email: John.Doe@gmail.com
-        phoneHome: '09-1111111'
-        phoneWork: '094213422'
-        phoneMobile: '021324223'
-        phoneEmergency: '233341221'
-        emergencyContactName: John Doe
+        name: 1 month membership $10
+        paymentOption: '1'
+        term: '1'
+        termType: M
+        isTerm: false
+        accountCode: Sale 3209
+        totalAmount: 10
+        overrideEstFee: false
+        ddrTemplate: '10.00'
+        businessId: TST4
+        isCustomFrequency: false
+        installment: 10
+        allowableFrequencies: 'WK,FN,MN'
+        defaultFrequency: WK
+        billingFee: 10
+        additionalOneOffPayment: 0
+        joiningFeeIsFirstInstalment: false
+        contractStartDate: string
+        firstPaymentDateMin: 0
+        benefits: benefit
+        description: Account template for 2017.1 sales
+        specialConditions: specialConditions
+        templateEndDate: 12/12/2018
+        promoCode: Promocode
+        isProRata: false
+        AllowMinors: false
+        externalAccountReferenceNo: eba09c3c-3f67-11e8-b467-0ed5f89f718b
+        customerDetails:
+          firstName: John
+          lastName: Doe
+          dob: '1991-12-19'
+          gender: 1
+          driversLicenseOrMedicareNumber: SD9999
+          streetAddress: 5 The warehouse road
+          suburb: NorthCote
+          postcode: '5685'
+          city: Auckland
+          state: Auck
+          email: John.Doe@gmail.com
+          phoneHome: 09-1111111
+          phoneWork: '094213422'
+          phoneMobile: '021324223'
+          phoneEmergency: '233341221'
+          emergencyContactName: John Doe
     CustomerDetails:
       required:
         - dob
@@ -411,9 +419,9 @@ components:
       example:
         successful: true
         errorMessage:
-        - string
+          - string
         successMessage:
-        - The account template was successfully created.
+          - The account template was successfully created.
         accountTemplateId: 91e52753-5c7c-4a0e-9e67-81cc5575db46
     inline_response_400:
       type: object
@@ -439,9 +447,9 @@ components:
       example:
         successful: false
         errorMessage:
-        - Validation error messages
+          - Validation error messages
         successMessage:
-        - string
+          - string
         accountTemplateId: 00000000-0000-0000-0000-000000000000
     inline_response_401:
       type: object
@@ -476,9 +484,9 @@ components:
       example:
         successful: true
         errorMessage:
-        - string
+          - string
         successMessage:
-        - The account template was successfully deleted.
+          - The account template was successfully deleted.
         accountTemplateId: 00000000-0000-0000-0000-000000000000
     inline_response_400_1:
       type: object
@@ -504,9 +512,9 @@ components:
       example:
         successful: false
         errorMessage:
-        - This account template does not exist.
+          - This account template does not exist.
         successMessage:
-        - string
+          - string
         accountTemplateId: 00000000-0000-0000-0000-000000000000
     inline_response_200_2:
       type: object
@@ -531,9 +539,9 @@ components:
       example:
         successful: true
         errorMessage:
-        - string
+          - string
         successMessage:
-        - string
+          - string
         accountTemplateId: 00000000-0000-0000-0000-000000000000
   responses:
     Success:
@@ -603,7 +611,7 @@ components:
                 example: 'unsupported_grant_type,invalid_scope,invalid_client.'
   parameters:
     Authorization:
-      name: authorization
+      name: Authorization
       in: header
       description: JWT token using Bearer authorization scheme
       required: true

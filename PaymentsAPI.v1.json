@@ -54,26 +54,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "X-Mock-Code",
-            "in": "header",
-            "description": "Http Status code of the supported mocked responses.",
-            "required": true,
-            "schema": {
-              "enum": [
-                "201",
-                "400",
-                "401",
-                "403",
-                "404",
-                "429",
-                "500",
-                "503"
-              ],
-              "type": "string",
-              "default": "201"
-            }
           }
         ],
         "requestBody": {
@@ -294,25 +274,6 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
-          },
-          {
-            "name": "X-Mock-Code",
-            "in": "header",
-            "description": "Http Status code of the supported mocked responses.",
-            "required": true,
-            "schema": {
-              "enum": [
-                "200",
-                "401",
-                "403",
-                "404",
-                "429",
-                "500",
-                "503"
-              ],
-              "type": "string",
-              "default": "200"
             }
           }
         ],
@@ -698,7 +659,9 @@
         }
       },
       "get": {
-        "tags": ["Internal API"],
+        "tags": [
+          "Internal API"
+        ],
         "summary": "INTERNAL Get Business Collected Payments",
         "description": "Retrieves business collected paymetns based on the query parameters provided.",
         "operationId": "5e530fdb2d8bf4cfa9148db9",
@@ -791,24 +754,6 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
-          },
-          {
-            "name": "X-Mock-Code",
-            "in": "header",
-            "description": "Http Status code of the supported mocked responses.",
-            "required": true,
-            "schema": {
-              "enum": [
-                "200",
-                "401",
-                "403",
-                "429",
-                "500",
-                "503"
-              ],
-              "type": "string",
-              "default": "200"
             }
           }
         ],
@@ -1048,26 +993,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "X-Mock-Code",
-            "in": "header",
-            "description": "Http Status code of the supported mocked responses.",
-            "required": true,
-            "schema": {
-              "enum": [
-                "201",
-                "400",
-                "401",
-                "403",
-                "404",
-                "429",
-                "500",
-                "503"
-              ],
-              "type": "string",
-              "default": "201"
-            }
           }
         ],
         "requestBody": {
@@ -1244,7 +1169,7 @@
             }
           },
           {
-            "name": "authorization",
+            "name": "Authorization",
             "in": "header",
             "description": "JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service ](https://app.swaggerhub.com/apis/debitsuccess/DebitsuccessIdentity/1.0.0) on how to generate the authorization token.",
             "required": true,
@@ -1342,7 +1267,7 @@
             }
           },
           {
-            "name": "authorization",
+            "name": "Authorization",
             "in": "header",
             "description": "JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service ](https://app.swaggerhub.com/apis/debitsuccess/DebitsuccessIdentity/1.0.0) on how to generate the authorization token.",
             "required": true,
@@ -1413,7 +1338,9 @@
     },
     "/paymentprocessorcardtypes": {
       "get": {
-        "tags": ["Internal API"],
+        "tags": [
+          "Internal API"
+        ],
         "description": "This endpoint retrieves the mapping between Debitsuccess card type and a payment processor (Vantiv, Dps) the payment processor specific card type are used when submitting a payment request. Example - DS card type = AM - Vantiv card type = AX\n",
         "operationId": "getpaymentprocessorcardtypes",
         "parameters": [
@@ -1440,7 +1367,7 @@
             }
           },
           {
-            "name": "authorization",
+            "name": "Authorization",
             "in": "header",
             "description": "JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service ](https://app.swaggerhub.com/apis/debitsuccess/DebitsuccessIdentity/1.0.0) on how to generate the authorization token.",
             "required": true,
@@ -1515,12 +1442,14 @@
     },
     "/webpay/creditcard": {
       "post": {
-        "tags": ["Internal API"],
+        "tags": [
+          "Internal API"
+        ],
         "description": "This endpoint processes credit card casual payments. Casual payments are recorded at the business level (Facility Account). The details of the customer making the payments are not recorded.",
         "operationId": "postwebpay",
         "parameters": [
           {
-            "name": "authorization",
+            "name": "Authorization",
             "in": "header",
             "description": "JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service ](https://app.swaggerhub.com/apis/debitsuccess/DebitsuccessIdentity/1.0.0) on how to generate the authorization token.",
             "required": true,
@@ -1667,7 +1596,9 @@
     },
     "/webpay/creditcard/{externalPaymentIdentifier}": {
       "get": {
-        "tags": ["Internal API"],
+        "tags": [
+          "Internal API"
+        ],
         "description": "This endpoint can be used to retrieve the payment status for all the casual payments submitted via the Post endpoint.\n",
         "operationId": "getwebpay",
         "parameters": [
@@ -1683,7 +1614,7 @@
             }
           },
           {
-            "name": "authorization",
+            "name": "Authorization",
             "in": "header",
             "description": "JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service ](https://app.swaggerhub.com/apis/debitsuccess/DebitsuccessIdentity/1.0.0) on how to generate the authorization token.",
             "required": true,
@@ -1777,7 +1708,7 @@
         "operationId": "postCasualPayments",
         "parameters": [
           {
-            "name": "authorization",
+            "name": "Authorization",
             "in": "header",
             "description": "JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service ](https://app.swaggerhub.com/apis/debitsuccess/DebitsuccessIdentity/1.0.0) on how to generate the authorization token.",
             "required": true,
@@ -2153,7 +2084,7 @@
             }
           },
           {
-            "name": "authorization",
+            "name": "Authorization",
             "in": "header",
             "description": "JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/986809101/Authentication) on how to generate the authorization token.",
             "required": true,
@@ -3583,7 +3514,7 @@
     },
     "parameters": {
       "Authorization": {
-        "name": "authorization",
+        "name": "Authorization",
         "in": "header",
         "description": "JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service ](https://app.swaggerhub.com/apis/debitsuccess/DebitsuccessIdentity/1.0.0) on how to generate the authorization token.",
         "required": true,
@@ -3614,17 +3545,17 @@
         }
       }
     },
-  "securitySchemes": {
-    "apiKeyHeader": {
-       "type": "apiKey",
-      "name": "Ocp-Apim-Subscription-Key",
-      "in": "header"
-    },
-    "apiKeyQuery": {
-     "type": "apiKey",
-      "name": "subscription-key",
-      "in": "query" 
+    "securitySchemes": {
+      "apiKeyHeader": {
+        "type": "apiKey",
+        "name": "Ocp-Apim-Subscription-Key",
+        "in": "header"
+      },
+      "apiKeyQuery": {
+        "type": "apiKey",
+        "name": "subscription-key",
+        "in": "query"
+      }
     }
-  }
   }
 }

@@ -1,6 +1,8 @@
 # HTTP Requests
 
+
 ## Filtering
+
 The _$filter_ query string parameter allows you to filter a collection of resources that are addressed by a request URL. The expression specified with _$filter_ is evaluated for each resource in the collection, and only items where the expression evaluates to true are included in the response. Resources for which the expression evaluates to false or to null, or which reference properties that are unavailable due to permissions, are omitted from the response.
 
 Example: return all Products whose Price is less than $10.00
