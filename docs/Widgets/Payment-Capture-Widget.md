@@ -147,7 +147,7 @@ If you want to add a form for capturing bank account information to your page yo
 dsWidget.createBankCaptureForm("bank-container", "AUS", styles, customBankLabels, 450);
 ```
 
-## Customing the Payment Method Capture widget
+## Customizing the Payment Method Capture widget
 The Payment Method Capture widget supports CSS style customization and labels text replacement. By default, the Payment Method Capture forms are displayed as below:
 
 
