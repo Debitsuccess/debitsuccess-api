@@ -692,7 +692,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: access_denied
-                message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_customer\_associated\_to\_this\_request."
+                message: "Unable to process this request as you do not have access to the customer associated to this request."
         '404':
           description: Not Found - Occurs when the resource provided is not found
           headers:
@@ -2033,7 +2033,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: access_denied
-                message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_customer\_associated\_to\_this\_request."
+                message: "Unable to process this request as you do not have access to the customer associated to this request."
         '429':
           description: Too Many Requests - Occurs when user has sent too many requests in a given amount of time.
           headers:
@@ -2539,7 +2539,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: access_denied
-                message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_account\_associated\_to\_this\_request."
+                message: "Unable to process this request as you do not have access to the account associated to this request."
         '404':
           description: Not Found - Occurs when the resource provided is not found
           headers:
@@ -2877,7 +2877,7 @@ paths:
                 example:
                   value:
                     errorCode: access_denied
-                    message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_account\_associated\_to\_this\_request."
+                    message: "Unable to process this request as you do not have access to the account associated to this request."
                 example-1:
                   value:
                     errorCode: access_denied
@@ -3125,7 +3125,7 @@ paths:
                 example:
                   value:
                     errorCode: access_denied
-                    message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_account\_associated\_to\_this\_request."
+                    message: "Unable to process this request as you do not have access to the account associated to this request."
                 example-1:
                   value:
                     errorCode: access_denied
@@ -3368,7 +3368,7 @@ paths:
                 example:
                   value:
                     errorCode: access_denied
-                    message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_account\_associated\_to\_this\_request."
+                    message: "Unable to process this request as you do not have access to the account associated to this request."
                 example-1:
                   value:
                     errorCode: access_denied
@@ -3674,7 +3674,7 @@ paths:
                 example:
                   value:
                     errorCode: access_denied
-                    message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_account\_associated\_to\_this\_request."
+                    message: "Unable to process this request as you do not have access to the account associated to this request."
                 example-1:
                   value:
                     errorCode: access_denied
@@ -3930,7 +3930,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: access_denied
-                message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_account\_associated\_to\_this\_request."
+                message: "Unable to process this request as you do not have access to the account associated to this request."
         '429':
           description: Too Many Requests - Occurs when user has sent too many requests in a given amount of time.
           headers:
@@ -4368,7 +4368,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: access_denied
-                message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_account\_associated\_to\_this\_request."
+                message: "Unable to process this request as you do not have access to the account associated to this request."
         '404':
           description: Not Found - Occurs when the resource provided is not found
           headers:
@@ -4948,7 +4948,7 @@ paths:
                 example:
                   value:
                     errorCode: customer_access_denied
-                    message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_account\_associated\_to\_this\_request."
+                    message: "Unable to process this request as you do not have access to the account associated to this request."
                 example-1:
                   value:
                     errorCode: customer_access_denied
@@ -4956,7 +4956,7 @@ paths:
                 example-2:
                   value:
                     errorCode: access_denied
-                    message: Unable to process this request as the account is currently set to stop on payments.
+                    message: New payment schedules cannot be created as the account is currently set to stop on payments.
         '429':
           description: Too Many Requests - Occurs when user has sent too many requests in a given amount of time.
           headers:
@@ -5130,7 +5130,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: customer_access_denied
-                message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_account\_associated\_to\_this\_request."
+                message: "Unable to process this request as you do not have access to the account associated to this request."
         '429':
           description: Too Many Requests - Occurs when user has sent too many requests in a given amount of time.
           headers:
@@ -5297,7 +5297,7 @@ paths:
                 example:
                   value:
                     errorCode: access_denied
-                    message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_account\_associated\_to\_this\_request."
+                    message: "Unable to process this request as you do not have access to the account associated to this request."
                 example-1:
                   value:
                     errorCode: access_denied
@@ -5518,7 +5518,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: customer_access_denied
-                message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_account\_associated\_to\_this\_request."
+                message: "Unable to process this request as you do not have access to the account associated to this request."
         '404':
           description: Not Found - Occurs when the resource provided is not found
           headers:
@@ -8125,7 +8125,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: customer_access_denied
-                message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_account\_associated\_to\_this\_request."
+                message: "Unable to process this request as you do not have access to the account associated to this request."
         '429':
           description: Too Many Requests - Occurs when user has sent too many requests in a given amount of time.
           headers:
@@ -8376,7 +8376,7 @@ paths:
                 example:
                   value:
                     errorCode: customer_access_denied
-                    message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_account\_associated\_to\_this\_request."
+                    message: "Unable to process this request as you do not have access to the account associated to this request."
                 example-1:
                   value:
                     errorCode: access_denied
@@ -8541,7 +8541,7 @@ paths:
                 example:
                   value:
                     errorCode: customer_access_denied
-                    message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_account\_associated\_to\_this\_request."
+                    message: "Unable to process this request as you do not have access to the account associated to this request."
                 example-1:
                   value:
                     errorCode: access_denied
@@ -8814,7 +8814,7 @@ paths:
                 example:
                   value:
                     errorCode: access_denied
-                    message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_account\_associated\_to\_this\_request."
+                    message: "Unable to process this request as you do not have access to the account associated to this request."
                 example-1:
                   value:
                     errorCode: access_denied
@@ -11360,7 +11360,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: access_denied
-                message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_customer\_associated\_to\_this\_request."
+                message: "Unable to process this request as you do not have access to the customer associated to this request."
         '429':
           description: Too Many Requests - Occurs when user has sent too many requests in a given amount of time.
           headers:
@@ -11560,7 +11560,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: access_denied
-                message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_customer\_associated\_to\_this\_request."
+                message: "Unable to process this request as you do not have access to the customer associated to this request."
         '404':
           description: Not Found - Occurs when the resource provided is not found
           headers:
@@ -12010,7 +12010,7 @@ paths:
                 $ref: '#/components/schemas/403BusinessAccessDenied'
               example:
                 errorCode: access_denied
-                message: "Unable\_to\_process\_this\_request\_as\_you\_do\_not\_have\_access\_to\_the\_account\_associated\_to\_this\_request."
+                message: "Unable to process this request as you do not have access to the account associated to this request."
         '404':
           description: Not Found - Occurs when the resource provided is not found
           headers:
@@ -16123,11 +16123,11 @@ components:
         example-8:
           value:
             errorCode: business_pay_method
-            message: "Destination\_business account {dest_business_acct_id} does not allow card which is linked to the account {AdfitNo}."
+            message: "Destination business account {dest_business_acct_id} does not allow card which is linked to the account {AdfitNo}."
         example-9:
           value:
             errorCode: payment_stop
-            message: "Cannot transfer an account that has payment stop/suspense\_applied."
+            message: "Cannot transfer an account that has payment stop/suspense applied."
         example-10:
           value:
             errorCode: invalid_payments_structure
@@ -16195,11 +16195,11 @@ components:
             example-8:
               value:
                 errorCode: business_pay_method
-                message: "Destination\_business account {dest_business_acct_id} does not allow card which is linked to the account {AdfitNo}."
+                message: "Destination business account {dest_business_acct_id} does not allow card which is linked to the account {AdfitNo}."
             example-9:
               value:
                 errorCode: payment_stop
-                message: "Cannot transfer an account that has payment stop/suspense\_applied."
+                message: "Cannot transfer an account that has payment stop/suspense applied."
             example-10:
               value:
                 errorCode: invalid_payments_structure
