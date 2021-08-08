@@ -16558,7 +16558,7 @@ components:
           maxLength: 20
         dateOfBirth:
           type: string
-          minLength: 1
+          minLength: 10
           description: Date of birth of the guarantor
           pattern: YYYY-MM-DD
           maxLength: 10
