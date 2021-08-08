@@ -12901,6 +12901,58 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/400UpdateGuarantorResponse'
+              examples:
+                example-1:
+                  value:
+                    errorCode: validation
+                    message: Unable to process request due to validation errors.
+                    errors:
+                      - field: fullName
+                        message: FullName is required.
+                      - field: fullName
+                        message: FullName must not exceed 30 characters.
+                      - field: fullName
+                        message: FullName is invalid.
+                      - field: address
+                        message: Address is required.
+                      - field: address
+                        message: Address must not exceed 100 characters.
+                      - field: address
+                        message: Address is invalid.
+                      - field: relationship
+                        message: Relationship is required.
+                      - field: relationship
+                        message: Relationship must not exceed 20 characters.
+                      - field: relationship
+                        message: Relationship is invalid.
+                      - field: dateOfBirth
+                        message: DateOfBirth is required.
+                      - field: dateOfBirth
+                        message: Guarantor must be at least 18 years old.
+                      - field: dateOfBirth
+                        message: 'DateOfBirth is invalid, please ensure date is formatted in ''YYYY-MM-DD'' format.'
+                      - field: dateOfBirth
+                        message: DateOfBirth is out of range.
+                      - field: homePhone
+                        message: HomePhone must not exceed 20 characters.
+                      - field: homePhone
+                        message: HomePhone is invalid.
+                      - field: businessPhone
+                        message: BusinessPhone must not exceed 20 characters.
+                      - field: businessPhone
+                        message: BusinessPhone is invalid.
+                      - field: mobilePhone
+                        message: MobilePhone must not exceed 20 characters.
+                      - field: mobilePhone
+                        message: MobilePhone is invalid.
+                      - field: mobilePhone
+                        message: 'At least one of HomePhone, BusinessPhone or MobilePhone is required.'
+                      - field: emailAddress
+                        message: EmailAddress is required.
+                      - field: emailAddress
+                        message: EmailAddress must not exceed 75 characters.
+                      - field: emailAddress
+                        message: EmailAddress is invalid.
         '401':
           description: Unauthorized
           content:
