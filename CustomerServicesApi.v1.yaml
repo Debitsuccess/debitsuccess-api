@@ -16293,7 +16293,6 @@ components:
           pattern: 'alphanumeric # + - ( ) * _ [space] , ; : .'
         emailAddress:
           type: string
-          minLength: 1
           description: Email Address of the guarantor
           maxLength: 75
           pattern: myemailaddress@domain.com
@@ -16585,7 +16584,6 @@ components:
           pattern: 'alphanumeric # + - ( ) * _ [space] , ; : .'
         emailAddress:
           type: string
-          minLength: 1
           description: Email Address of the guarantor
           maxLength: 75
           pattern: myemailaddress@domain.com
