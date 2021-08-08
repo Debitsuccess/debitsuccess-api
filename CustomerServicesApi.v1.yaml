@@ -16994,7 +16994,7 @@ components:
             dateOfBirth: '2000-01-31'
             address: No.1 Upper Steet
             homePhone: '685685688'
-            businessPhone: ”143434436”
+            businessPhone: '143434436'
             mobilePhone: '+4546788855'
             emailAddress: dick.smith@email.co
         responseMetadata:
