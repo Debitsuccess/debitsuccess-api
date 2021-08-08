@@ -16331,8 +16331,9 @@ components:
           description: Guarantor's relationship with the customer
         dateOfBirth:
           type: string
-          minLength: 1
+          minLength: 10
           description: ' Date of birth of the guarantor'
+          maxLength: 10
         address:
           type: string
           minLength: 1
@@ -16363,6 +16364,18 @@ components:
         - businessPhone
         - mobilePhone
         - emailAddress
+      x-examples:
+        example-1:
+          value:
+            accountId: DEA123234
+            fullName: Joe Smith
+            relationship: Father
+            dateOfBirth: '1960-12-31'
+            address: 123 Street 1
+            homePhone: '34354545'
+            businessPhone: '23454546'
+            mobilePhone: '345456577'
+            emailAddress: john@debitsuccess.com
     400CreateGuarantorResponse:
       description: ''
       type: object
@@ -16625,7 +16638,7 @@ components:
           maxLength: 20
         dateOfBirth:
           type: string
-          minLength: 1
+          minLength: 10
           description: ' Date of birth of the guarantor'
           maxLength: 10
         address:
