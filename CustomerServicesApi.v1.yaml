@@ -2672,6 +2672,8 @@ paths:
         3) Updating Accounts from fixed term to ongoing is NOT allowed
 
         4) Updating Account `term` or `contractAmount` is NOT allowed after the minimum term has past.
+
+        5) Updating Account `paymentStopped` to True will default account's CollectionStopReason to 'Manual Payment Stop'. Please refer to CollectionStopReason's description in GET Account endpoint.
       operationId: 5dc0a8788afb2359af79d530
       parameters:
         - name: accountId
@@ -2722,6 +2724,19 @@ paths:
                 paymentStopped: false
                 paymentStoppedEndDate: ''
                 contractAmount: 999.9
+              examples:
+                example-1:
+                  value:
+                    accountId: string
+                    accountExternalId: string
+                    termType: string
+                    term: 0
+                    accountCode: string
+                    fixedTerm: true
+                    accountStartDate: string
+                    paymentsStopped: true
+                    paymentsStoppedEndDate: string
+                    contractAmount: 0
         '400':
           description: 'Bad Request - Request failed due to validation errors, the response lists the field in the request that did not pass the validation. The client can directly show these errors to the end users.'
           headers:
@@ -12722,66 +12737,66 @@ paths:
               schema:
                 $ref: '#/components/schemas/422AccountTransferResonse'
               examples:
-                    example-1:
-                      value:
-                        errorCode: overdue_account
-                        message: Cannot transfer an account with an overdue payment
-                    example-2:
-                      value:
-                        errorCode: account_with_credit
-                        message: Cannot transfer an account with a credit amount.
-                    example-3:
-                      value:
-                        errorCode: linked_account
-                        message: Cannot transfer an account with a linked account.
-                    example-4:
-                      value:
-                        errorCode: account_billed_today
-                        message: Cannot transfer an account that is due for billing today.
-                    example-5:
-                      value:
-                        errorCode: inactive_account
-                        message: Cannot transfer a closed account.
-                    example-6:
-                      value:
-                        errorCode: business_group_mismatch
-                        message: The destination business account is not in the same business group as an account being transferred.
-                    example-7:
-                      value:
-                        errorCode: business_pay_method
-                        message: 'Destination business account {dest_business_acct_id} does not allow card which is linked to the account {AdfitNo}.'
-                    example-8:
-                      value:
-                        errorCode: payment_stop
-                        message: Cannot transfer an account that has payment stop/suspense applied.
-                    example-9:
-                      value:
-                        errorCode: invalid_payments_structure
-                        message: Cannot transfer an account without scheduled payments or with invalid scheduled payments information.
-                    example-10:
-                      value:
-                        errorCode: gateway_business
-                        message: Cannot transfer an account from/to a gateway model business
-                    example-11:
-                      value:
-                        errorCode: invalid_payment_information
-                        message: Cannot transfer an account without scheduled payments or with invalid scheduled payments information.
-                    example-12:
-                      value:
-                        errorCode: invalid_payment_information
-                        message: Cannot transfer an account without scheduled payments or with invalid scheduled payments information.
-                    example-13:
-                      value:
-                        errorCode: trust_account_mismatch
-                        message: The destination business account is not in the same trust account  as an account being transferred.
-                    example-14:
-                      value:
-                        errorCode: country_mismatch
-                        message: The destination business account is not in the same country  as an account being transferred.
-                    example-15:
-                      value:
-                        errorCode: business_group_not_allowed
-                        message: The business group associated with this account does not allow a transfer account request.
+                example-1:
+                  value:
+                    errorCode: overdue_account
+                    message: Cannot transfer an account with an overdue payment
+                example-2:
+                  value:
+                    errorCode: account_with_credit
+                    message: Cannot transfer an account with a credit amount.
+                example-3:
+                  value:
+                    errorCode: linked_account
+                    message: Cannot transfer an account with a linked account.
+                example-4:
+                  value:
+                    errorCode: account_billed_today
+                    message: Cannot transfer an account that is due for billing today.
+                example-5:
+                  value:
+                    errorCode: inactive_account
+                    message: Cannot transfer a closed account.
+                example-6:
+                  value:
+                    errorCode: business_group_mismatch
+                    message: The destination business account is not in the same business group as an account being transferred.
+                example-7:
+                  value:
+                    errorCode: business_pay_method
+                    message: 'Destination business account {dest_business_acct_id} does not allow card which is linked to the account {AdfitNo}.'
+                example-8:
+                  value:
+                    errorCode: payment_stop
+                    message: Cannot transfer an account that has payment stop/suspense applied.
+                example-9:
+                  value:
+                    errorCode: invalid_payments_structure
+                    message: Cannot transfer an account without scheduled payments or with invalid scheduled payments information.
+                example-10:
+                  value:
+                    errorCode: gateway_business
+                    message: Cannot transfer an account from/to a gateway model business
+                example-11:
+                  value:
+                    errorCode: invalid_payment_information
+                    message: Cannot transfer an account without scheduled payments or with invalid scheduled payments information.
+                example-12:
+                  value:
+                    errorCode: invalid_payment_information
+                    message: Cannot transfer an account without scheduled payments or with invalid scheduled payments information.
+                example-13:
+                  value:
+                    errorCode: trust_account_mismatch
+                    message: The destination business account is not in the same trust account  as an account being transferred.
+                example-14:
+                  value:
+                    errorCode: country_mismatch
+                    message: The destination business account is not in the same country  as an account being transferred.
+                example-15:
+                  value:
+                    errorCode: business_group_not_allowed
+                    message: The business group associated with this account does not allow a transfer account request.
       operationId: post-accounts-accountId-Transfers
       description: |
         Transfers an active account from a business to another business within the same business group. Upon the successful transfer of an account, the original account will be closed and a new account will be created with the information inherited from the closed account.
