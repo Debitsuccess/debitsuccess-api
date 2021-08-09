@@ -16346,10 +16346,6 @@ components:
       x-examples:
         example-1:
           value:
-            example-1:
-              value: null
-              field: destBusinessIAccountId
-              message: DestBusinessIAccountId is invalid.
             example-2:
               value:
                 errorCode: overdue_account
