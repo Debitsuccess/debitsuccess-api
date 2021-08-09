@@ -12722,65 +12722,63 @@ paths:
               schema:
                 $ref: '#/components/schemas/422AccountTransferResonse'
               examples:
-                example-1:
-                  value:
-                    example-2:
+                    example-1:
                       value:
                         errorCode: overdue_account
                         message: Cannot transfer an account with an overdue payment
-                    example-3:
+                    example-2:
                       value:
                         errorCode: account_with_credit
                         message: Cannot transfer an account with a credit amount.
-                    example-4:
+                    example-3:
                       value:
                         errorCode: linked_account
                         message: Cannot transfer an account with a linked account.
-                    example-5:
+                    example-4:
                       value:
                         errorCode: account_billed_today
                         message: Cannot transfer an account that is due for billing today.
-                    example-6:
+                    example-5:
                       value:
                         errorCode: inactive_account
                         message: Cannot transfer a closed account.
-                    example-7:
+                    example-6:
                       value:
                         errorCode: business_group_mismatch
                         message: The destination business account is not in the same business group as an account being transferred.
-                    example-8:
+                    example-7:
                       value:
                         errorCode: business_pay_method
                         message: 'Destination business account {dest_business_acct_id} does not allow card which is linked to the account {AdfitNo}.'
-                    example-9:
+                    example-8:
                       value:
                         errorCode: payment_stop
                         message: Cannot transfer an account that has payment stop/suspense applied.
-                    example-10:
+                    example-9:
                       value:
                         errorCode: invalid_payments_structure
                         message: Cannot transfer an account without scheduled payments or with invalid scheduled payments information.
-                    example-11:
+                    example-10:
                       value:
                         errorCode: gateway_business
                         message: Cannot transfer an account from/to a gateway model business
+                    example-11:
+                      value:
+                        errorCode: invalid_payment_information
+                        message: Cannot transfer an account without scheduled payments or with invalid scheduled payments information.
                     example-12:
                       value:
                         errorCode: invalid_payment_information
                         message: Cannot transfer an account without scheduled payments or with invalid scheduled payments information.
                     example-13:
                       value:
-                        errorCode: invalid_payment_information
-                        message: Cannot transfer an account without scheduled payments or with invalid scheduled payments information.
-                    example-14:
-                      value:
                         errorCode: trust_account_mismatch
                         message: The destination business account is not in the same trust account  as an account being transferred.
-                    example-15:
+                    example-14:
                       value:
                         errorCode: country_mismatch
                         message: The destination business account is not in the same country  as an account being transferred.
-                    example-16:
+                    example-15:
                       value:
                         errorCode: business_group_not_allowed
                         message: The business group associated with this account does not allow a transfer account request.
