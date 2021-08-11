@@ -12777,14 +12777,6 @@ paths:
                   value:
                     errorCode: gateway_business
                     message: Cannot transfer an account from/to a gateway model business
-                example-11:
-                  value:
-                    errorCode: invalid_payment_information
-                    message: Cannot transfer an account without scheduled payments or with invalid scheduled payments information.
-                example-12:
-                  value:
-                    errorCode: invalid_payment_information
-                    message: Cannot transfer an account without scheduled payments or with invalid scheduled payments information.
                 example-13:
                   value:
                     errorCode: trust_account_mismatch
