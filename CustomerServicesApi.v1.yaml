@@ -14628,28 +14628,66 @@ components:
       x-examples: {}
     200GetPayments:
       type: object
-      x-examples: {}
+      x-examples:
+        example:
+          value:
+            payments:
+              - accountId: DEA2888334
+                businessAccountId: DEA2
+                batchNumber: 455961
+                paymentAmount: 21
+                commissionAmount: '1.0500'
+                paymentDateTime: '2015-03-11T22:51:13.243Z'
+                paymentDescription: Paid on 12/03/2015
+                paymentErrorCode: No Error
+                paymentMethod: PC
+                paymentCode: Paid At Business
+                paymentId: 1289561969
+                externalPaymentIdentifier: ''
+                reversedPaymentId: null
+                retryCount: 0
+              - accountId: DEA2888334
+                businessAccountId: DEA2
+                batchNumber: 455963
+                paymentAmount: -21
+                commissionAmount: '-1.0500'
+                paymentDateTime: '2015-03-11T22:51:22.510Z'
+                paymentDescription: Paid on 12/03/2015
+                paymentErrorCode: No Error
+                paymentMethod: PC
+                paymentCode: Paid At Business
+                paymentId: 1289561972
+                externalPaymentIdentifier: ''
+                reversedPaymentId: null
+                retryCount: 0
+            responseMetadata:
+              nextCursor: MTQyODQ4ODI4Ng==
+              hasNext: true
       title: ''
+      description: ''
       properties:
         transactions:
           type: array
           items:
             type: object
             properties:
-              businessAccountId:
-                type: string
-                description: Business Account's contract prefix associated to the Account of the transaction extracted
-                maxLength: 6
               accountId:
                 type: string
                 description: System generated reference no associated to the Account of the transaction extracted
                 maxLength: 15
-              batchNumber:
+              businessAccountId:
                 type: string
+                description: Business Account's contract prefix associated to the Account of the transaction extracted
+                maxLength: 6
+              batchNumber:
+                type: number
                 description: Batch number of the transaction
               paymentAmount:
-                type: string
                 description: Amount of transaction
+                type: integer
+              commissionAmount:
+                description: The amount of commission Debitsuccess charged on the payment.
+                type: integer
               paymentDateTime:
                 type: string
                 description: Date time in UTC when the transaction was made
@@ -14657,15 +14695,15 @@ components:
                 type: string
                 description: Description of transaction
                 maxLength: 30
-              paymentCode:
-                type: string
-                description: Transaction type
               paymentErrorCode:
                 type: string
                 description: Transaction payment method
               paymentMethod:
                 type: string
                 description: Transaction payment method
+              paymentCode:
+                type: string
+                description: Transaction type
               paymentId:
                 type: string
                 description: Unique identifier for the payment

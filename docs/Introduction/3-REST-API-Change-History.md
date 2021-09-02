@@ -12,18 +12,21 @@ Debitsuccess is always improving how we deliver our service. As part of deliveri
 * Enhancement to the [close account](https://debitsuccess.stoplight.io/docs/debitsuccess-api/b3A6ODQ0Nzk0MA-close-account) endpoint with additional cancellation options.
 
 *****
-## July 13, 2021
+## Sept 2, 2021
+GET [PaymentHistory](https://debitsuccess.stoplight.io/docs/debitsuccess-api/b3A6MTc2MTM5MTk-get-payment-history) is enhanced to return commission amount in the response. 
+
+## Jul 13, 2021
 This release introduces a new boolean field named `assignExistingGuarantor` in [POST Account](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1accounts/post) to allow users to assign an existing Guarantor to the new account when the account is created.
 
-## July 08, 2021
+## Jul 08, 2021
 Introduced new endpoints:
 * [PUT Guarantor](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1accounts~1%7BaccountId%7D~1guarantors/put) - allows users to update Guarantor details for existing active accounts
 * [GET Guarantor](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1accounts~1%7BaccountId%7D~1guarantors/get) - allows users to get Guarantor details for existing active accounts
 
-## July 06, 2021
+## Jul 06, 2021
 Implemented a new endpoint i.e., [POST Guarantor](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1accounts~1%7BaccountId%7D~1guarantors/post) which allows users to create Guarantor record for existing active accounts.
 
-## June 17, 2021
+## Jun 17, 2021
 * Introduced a new endpoint for customer services API will be used to [transfer an account](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1accounts~1%7BaccountId%7D~1transfers/post) from one business account to another.
 
 * Enhanced the existing REST API endpoint [PUT Account](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1accounts~1%7BaccountId%7D/put):
