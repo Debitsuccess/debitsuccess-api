@@ -1397,8 +1397,8 @@ paths:
         - BusinessAccounts
       summary: List Business Accounts
       description: |-
-        Retrieves a list of Business Accounts (FacilityAccounts DS domain) based on business ID provided.
-        If none provided, all Business Accounts assigned to the client derived from the authentication token will be returned,
+        Retrieves a list of Business Accounts based on business ID provided.
+        If none provided, all Business Accounts assigned to the client derived from the authentication token will be returned.
       operationId: 5da67acb981fb494d4d20b42
       parameters:
         - name: businessId
@@ -1614,7 +1614,15 @@ paths:
                 establishmentFee:
                   amount: 10
                   percent: 50
-                  payer: Customer pays Pays
+                  payer: Customer Pays
+                commissionFee:
+                  paymentType: Casual Credit Card Payments
+                  commissionPercentage: 0.00
+                  commissionTransactionCharge: 5.00
+                  commissionChargeType: Percentage
+                  minimumnimumTransactionCharge: 0.0000
+                  retainCommissionOnReversedTransaction: 0.00
+                  commissionPayerType: Customer Pays
                 supportedPaymentMethods:
                   - paymentMethodType: MasterCard
                   - paymentMethodType: Visa
@@ -13867,60 +13875,96 @@ components:
           type: array
           uniqueItems: true
           minItems: 1
+          description: ''
           items:
             type: object
             properties:
               businessAccountId:
                 type: string
                 minLength: 1
+                description: Contract prefix code Provided by Debitsuccess to identify a Facility Account.
               name:
                 type: string
                 minLength: 1
+                description: Name of Facility Account
               penaltyFee:
                 type: object
                 properties:
                   amount:
                     type: number
+                    description: Penalty fee amount
                   payer:
                     type: string
                     minLength: 1
+                    description: |-
+                      Penalty fee payer:  
+                      * Customer pays
+                      * Facility pays
+                      * No Fee
               establishmentFee:
                 type: object
                 properties:
                   amount:
                     type: number
+                    description: Establishment fee ammount
                   percent:
                     type: number
+                    description: Establishment fee percentage
                   payer:
                     type: string
-                    minLength: 1
+                    description: |-
+                      Establishment fee payer:  
+                      * Customer pays
+                      * Facility pays
+                      * No Fee
               supportedPaymentMethods:
                 type: array
-                uniqueItems: true
-                minItems: 1
                 items:
                   type: object
                   properties:
                     paymentMethodType:
                       type: string
-                      minLength: 1
               business:
                 type: object
+                description: 'Displays all supported payment methods types enabled for the business including back accounts: "Bank Account", "Visa" , "MasterCard", "American Express", etc.'
                 properties:
                   businessId:
                     type: string
                     minLength: 1
+                    description: Unique identifier associated to the business
                   name:
                     type: string
                     minLength: 1
+                    description: Name of business
+              commissionFee:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    paymentType:
+                      type: string
+                    commissionPercentage:
+                      type: number
+                    commissionTransactionCharge:
+                      type: string
+                    commissionChargeType:
+                      type: string
+                    minimumnimumTransactionCharge:
+                      type: string
+                    retainCommissionOnReversedTransaction:
+                      type: string
+                    commissionPayerType:
+                      type: string
         responseMetadata:
           type: object
           properties:
             nextCursor:
               type: string
               minLength: 1
+              description: Indicate the position of the next record not fetched into the list. Null if hasNext = False.
             hasNext:
               type: boolean
+              description: 'Flag to indicate if there are more records matched the query parameter but not being fetched into the list. '
     201CreateRecurringSchedule:
       type: object
       properties:
