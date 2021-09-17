@@ -1617,11 +1617,11 @@ paths:
                   payer: Customer Pays
                 commissionFee:
                   paymentType: Casual Credit Card Payments
-                  commissionPercentage: 0.00
-                  commissionTransactionCharge: 5.00
+                  commissionPercentage: 0
+                  commissionTransactionCharge: 5
                   commissionChargeType: Percentage
-                  minimumnimumTransactionCharge: 0.0000
-                  retainCommissionOnReversedTransaction: 0.00
+                  minimumnimumTransactionCharge: 0
+                  retainCommissionOnReversedTransaction: false
                   commissionPayerType: Customer Pays
                 supportedPaymentMethods:
                   - paymentMethodType: MasterCard
@@ -16055,29 +16055,43 @@ components:
         businessAccountId:
           type: string
           minLength: 1
+          description: Unique identifier associated to the Facility.
         name:
           type: string
           minLength: 1
+          description: Name of Business Account
         active:
           type: boolean
+          description: 'specify whether the business account is active '
         penaltyFee:
           type: object
           properties:
             amount:
               type: number
+              description: Total amount of penalty fee
             payer:
               type: string
-              minLength: 1
+              enum:
+                - Facility Pays
+                - Customer Pays
+                - No Fee
+              description: Defines who pays the penalty fee
         establishmentFee:
           type: object
           properties:
             amount:
               type: number
+              description: Total amount of establishment fee
             percent:
               type: number
+              description: Percentage of establishment fee for the facility
             payer:
               type: string
-              minLength: 1
+              description: Defines who pays the establishment fee.
+              enum:
+                - Client pays
+                - Facility pays
+                - No establishment fee
         supportedPaymentMethods:
           type: array
           uniqueItems: true
@@ -16087,16 +16101,82 @@ components:
             properties:
               paymentMethodType:
                 type: string
-                minLength: 1
+                description: 'Displays the payment type enabled for the business: "Bank Account ", "Visa" , "MasterCard", "American Express", etc.'
         business:
           type: object
           properties:
             businessId:
               type: string
               minLength: 1
+              description: Contract prefix code provided by Debitsuccess to identify a Business Account
             name:
               type: string
               minLength: 1
+              description: Name of Business Account
+        commissionFee:
+          type: array
+          items:
+            type: object
+            properties:
+              paymentType:
+                type: string
+                description: |-
+                  Definition of the PaymentTypeCode:
+
+                  AC - CasualCreditCard
+
+                  AO - CasualCreditCardOther
+
+                  BP - BPAY
+
+                  BC - BPAYCreditCard
+
+                  BO - BPAYCreditCardOther
+
+                  CC - CreditCard
+
+                  CO - CreditCardOther
+
+                  DD - DirectDebit
+
+                  PC - PaidToFacility
+
+                  SC - CasualPointOfSale
+
+                  SO - CasualPointOfSaleOther
+
+                  WC - WebPayCreditCard
+
+                  WO - WebPayCreditCardOther
+
+                  ZC - DirectCreditMasterOrVisa
+
+                  ZO - DirectCreditOtherCC
+              commissionPercentage:
+                type: number
+                description: The percentage of commission configured for the payment type
+              commissionTransactionCharge:
+                type: integer
+                description: The per transaction charge configured for the payment type
+              commissionChargeType:
+                type: string
+                description: Defines if charged with a specific amount or percentage per payment type.
+                enum:
+                  - Percentage
+                  - Transaction Charge
+                  - PercentagePlusTransactionCharge
+              minimumnimumTransactionCharge:
+                type: integer
+                description: 'If this value is configured, the payer will have to pay the higher amount between the final commission amount and the minimum transaction charge'
+              retainCommissionOnReversedTransaction:
+                type: boolean
+                description: 'If set to true, Debitsuccess retains the commision that for any reversal.'
+              commissionPayerType:
+                type: string
+                description: Defines who pays the commission.
+                enum:
+                  - Customer
+                  - Facility
     400PatchCustomer:
       type: object
       properties:
