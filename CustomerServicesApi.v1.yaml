@@ -1439,7 +1439,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Successful response with list of Business Accounts based on client ID (i.e derived from the Authorization token) or Business ID provided.
+          description: 'Successful response with list of Business Accounts based on client ID (i.e., derived from the Authorization token) or Business ID provided.'
           content:
             application/json:
               schema:
@@ -2250,8 +2250,7 @@ paths:
                     accountCode: ''
                     accountNotes: ''
                     fixedTerm: false
-                    nextBillingDate: '2020-11-01'
-                    lastBillingDateTime: '2020-03-02T00:13:48.940Z'
+                    nextBillingDate: '2020-11-01'                    lastBillingDateTime: '2020-03-02T00:13:48.940Z'
                     overdueStatus: 2
                     overdueAmountPayment: 146.9
                     overdueAmountFee: 7.5
@@ -13869,7 +13868,180 @@ components:
     200GetBusinessAccounts:
       description: ''
       type: object
-      x-examples: {}
+      x-examples:
+        example-1:
+          businessAccounts:
+            - businessAccountId: HGCO
+              name: The Hastings Golf Club Inc - OMG
+              business:
+                businessId: 10605
+                name: The Hastings Golf Club Inc
+              penaltyFee:
+                amount: 10
+                payer: Customer Pays
+              establishmentFee:
+                amount: 15
+                percent: 0
+                payer: Customer Pays
+              CommissionFee:
+                - paymentType: Casual Credit Card Payments
+                  commissionPercentage: 0
+                  commissionTransactionCharge: 5
+                  commissionChargeType: Percentage
+                  minimumnimumTransactionCharge: 0
+                  retainCommissionOnReversedTransaction: true
+                  commissionPayerType: Customer Pays
+                - paymentType: Casual Credit Other Payments
+                  commissionPercentage: 0
+                  commissionTransactionCharge: 5
+                  commissionChargeType: Percentage
+                  minimumnimumTransactionCharge: 0
+                  retainCommissionOnReversedTransaction: false
+                  commissionPayerType: Facility Pays
+              supportedPaymentMethods:
+                - paymentMethodType: Bank Account
+                - paymentMethodType: American Express
+                - paymentMethodType: Discover
+                - paymentMethodType: JCB
+                - paymentMethodType: Diners
+              active: true
+            - businessAccountId: '9474'
+              name: 'CFM/ Fresh Start Fitness #2'
+              business:
+                businessId: 4290
+                name: Creative Fitness Marketing Australia
+              penaltyFee:
+                amount: 10
+                payer: No Fee
+              establishmentFee:
+                amount: 20
+                percent: 50
+                payer: Customer Pays
+              CommissionFee:
+                - paymentType: Casual Credit Card Payments
+                  commissionPercentage: 0
+                  commissionTransactionCharge: 5
+                  commissionChargeType: Percentage
+                  minimumnimumTransactionCharge: 0
+                  retainCommissionOnReversedTransaction: 0
+                  commissionPayerType: Customer Pays
+                - paymentType: Casual Credit Other Payments
+                  commissionPercentage: 0
+                  commissionTransactionCharge: 5
+                  commissionChargeType: Percentage
+                  minimumnimumTransactionCharge: 0
+                  retainCommissionOnReversedTransaction: true
+                  commissionPayerType: Facility Pays
+              supportedPaymentMethods:
+                - paymentMethodType: Bank Account
+                - paymentMethodType: Visa
+                - paymentMethodType: MasterCard
+                - paymentMethodType: American Express
+              active: false
+            - businessAccountId: '9895'
+              name: 'CFM/Fitwitz Health & Fitness #3'
+              business:
+                businessId: 4290
+                name: Creative Fitness Marketing Australia
+              penaltyFee:
+                amount: 10
+                payer: No Fee
+              establishmentFee:
+                amount: 10
+                percent: 0
+                payer: Customer Pays
+              CommissionFee:
+                - paymentType: Casual Credit Card Payments
+                  commissionPercentage: 0
+                  commissionTransactionCharge: 5
+                  commissionChargeType: Percentage
+                  minimumnimumTransactionCharge: 0
+                  retainCommissionOnReversedTransaction: 0
+                  commissionPayerType: Customer Pays
+                - paymentType: Casual Credit Other Payments
+                  commissionPercentage: 0
+                  commissionTransactionCharge: 5
+                  commissionChargeType: Percentage
+                  minimumnimumTransactionCharge: 0
+                  retainCommissionOnReversedTransaction: false
+                  commissionPayerType: Facility Pays
+              supportedPaymentMethods:
+                - paymentMethodType: Bank Account
+                - paymentMethodType: Visa
+                - paymentMethodType: MasterCard
+                - paymentMethodType: American Express
+              active: false
+            - businessAccountId: GBYP
+              name: Goodlife Balwyn - PT
+              business:
+                businessId: 14232
+                name: Goodlife Balwyn
+              penaltyFee:
+                amount: 10
+                payer: No Fee
+              establishmentFee:
+                amount: 0
+                percent: 0
+                payer: No Fee
+              CommissionFee:
+                - paymentType: Casual Credit Card Payments
+                  commissionPercentage: 0
+                  commissionTransactionCharge: 5
+                  commissionChargeType: Percentage
+                  minimumnimumTransactionCharge: 0
+                  retainCommissionOnReversedTransaction: true
+                  commissionPayerType: Customer Pays
+                - paymentType: Casual Credit Other Payments
+                  commissionPercentage: 0
+                  commissionTransactionCharge: 5
+                  commissionChargeType: Percentage
+                  minimumnimumTransactionCharge: 0
+                  retainCommissionOnReversedTransaction: false
+                  commissionPayerType: Facility Pays
+              supportedPaymentMethods:
+                - paymentMethodType: Bank Account
+                - paymentMethodType: Visa
+                - paymentMethodType: MasterCard
+                - paymentMethodType: American Express
+                - paymentMethodType: Discover
+                - paymentMethodType: JCB
+              active: false
+            - businessAccountId: '9835'
+              name: 'CFM/Kawana Fitness #2'
+              business:
+                businessId: 4290
+                name: Creative Fitness Marketing Australia
+              penaltyFee:
+                amount: 10
+                payer: No Fee
+              establishmentFee:
+                amount: 10
+                percent: 0
+                payer: Customer Pays
+              CommissionFee:
+                - paymentType: Casual Credit Card Payments
+                  commissionPercentage: 0
+                  commissionTransactionCharge: 5
+                  commissionChargeType: Percentage
+                  minimumnimumTransactionCharge: 0
+                  retainCommissionOnReversedTransaction: true
+                  commissionPayerType: Customer Pays
+                - paymentType: Casual Credit Other Payments
+                  commissionPercentage: 0
+                  commissionTransactionCharge: 5
+                  commissionChargeType: Percentage
+                  minimumnimumTransactionCharge: 0
+                  retainCommissionOnReversedTransaction: false
+                  commissionPayerType: Facility Pays
+              supportedPaymentMethods:
+                - paymentMethodType: Bank Account
+                - paymentMethodType: Visa
+                - paymentMethodType: MasterCard
+                - paymentMethodType: American Express
+              active: false
+          responseMetadata:
+            nextCursor: MTY5NQ==
+            hasNext: true
       properties:
         businessAccounts:
           type: array
@@ -13943,18 +14115,49 @@ components:
                   properties:
                     paymentType:
                       type: string
+                      enum:
+                        - Casual Credit Card Payments
+                        - Casual Credit Other Payments
+                        - BPay payments made by Master or Visa
+                        - BPay payments made by other cards
+                        - BPay payments made by Direct Debit
+                        - Credit Card Payments
+                        - Credit Other Payments
+                        - Direct Debit Payments
+                        - Debt Collection
+                        - Paid at Club Payments
+                        - Casual Point Of Sale Payments
+                        - Casual Point Of Sale Other Payments
+                        - Web-pay payments made by Master or Visa
+                        - Web-pay payments made by other cards
+                        - Directly-Settled to clients MID Credit Card Payments
+                        - Directly-Settled to clients MID Other Card Payments
+                      description: Definition of the PaymentTypeCode.
                     commissionPercentage:
                       type: number
+                      description: The percentage of commission configured for the payment type
                     commissionTransactionCharge:
                       type: string
+                      description: The per transaction charge configured for the payment type
                     commissionChargeType:
                       type: string
+                      description: Defines if charged with a specific amount or percentage per payment type.
+                      enum:
+                        - Percentage
+                        - Transaction Charge
+                        - PercentagePlusTransactionCharge
                     minimumnimumTransactionCharge:
                       type: string
+                      description: 'If this value is configured, the payer will have to pay the higher amount between the final commission amount and the minimum transaction charge.'
                     retainCommissionOnReversedTransaction:
                       type: string
+                      description: 'If set to true, Debitsuccess retains the commision amount for any reversal.'
                     commissionPayerType:
                       type: string
+                      enum:
+                        - Customer Pays
+                        - Facility Pays
+                      description: Defines who pays the commission.
         responseMetadata:
           type: object
           properties:
@@ -16161,8 +16364,8 @@ components:
                 type: string
                 description: Defines who pays the commission.
                 enum:
-                  - Customer
-                  - Facility
+                  - Customer Pays
+                  - Facility Pays
     400PatchCustomer:
       type: object
       properties:
