@@ -16120,38 +16120,24 @@ components:
             properties:
               paymentType:
                 type: string
-                description: |-
-                  Definition of the PaymentTypeCode:
-
-                  AC - CasualCreditCard
-
-                  AO - CasualCreditCardOther
-
-                  BP - BPAY
-
-                  BC - BPAYCreditCard
-
-                  BO - BPAYCreditCardOther
-
-                  CC - CreditCard
-
-                  CO - CreditCardOther
-
-                  DD - DirectDebit
-
-                  PC - PaidToFacility
-
-                  SC - CasualPointOfSale
-
-                  SO - CasualPointOfSaleOther
-
-                  WC - WebPayCreditCard
-
-                  WO - WebPayCreditCardOther
-
-                  ZC - DirectCreditMasterOrVisa
-
-                  ZO - DirectCreditOtherCC
+                description: Definition of the PaymentTypeCode.
+                enum:
+                  - Casual Credit Card Payments
+                  - Casual Credit Other Payments
+                  - BPay payments made by Master or Visa
+                  - BPay payments made by other cards
+                  - BPay payments made by Direct Debit
+                  - Credit Card Payments
+                  - Credit Other Payments
+                  - Direct Debit Payments
+                  - Debt Collection
+                  - Paid at Club Payments
+                  - Casual Point Of Sale Payments
+                  - Casual Point Of Sale Other Payments
+                  - Web-pay payments made by Master or Visa
+                  - Web-pay payments made by other cards
+                  - Directly-Settled to clients MID Credit Card Payments
+                  - Directly-Settled to clients MID Other Card Payments
               commissionPercentage:
                 type: number
                 description: The percentage of commission configured for the payment type
@@ -16170,7 +16156,7 @@ components:
                 description: 'If this value is configured, the payer will have to pay the higher amount between the final commission amount and the minimum transaction charge'
               retainCommissionOnReversedTransaction:
                 type: boolean
-                description: 'If set to true, Debitsuccess retains the commision that for any reversal.'
+                description: 'If set to true, Debitsuccess retains the commision amount for any reversal.'
               commissionPayerType:
                 type: string
                 description: Defines who pays the commission.
