@@ -2731,19 +2731,6 @@ paths:
                 paymentStopped: false
                 paymentStoppedEndDate: ''
                 contractAmount: 999.9
-              examples:
-                example-1:
-                  value:
-                    accountId: string
-                    accountExternalId: string
-                    termType: string
-                    term: 0
-                    accountCode: string
-                    fixedTerm: true
-                    accountStartDate: string
-                    paymentsStopped: true
-                    paymentsStoppedEndDate: string
-                    contractAmount: 0
         '400':
           description: 'Bad Request - Request failed due to validation errors, the response lists the field in the request that did not pass the validation. The client can directly show these errors to the end users.'
           headers:
@@ -14070,8 +14057,8 @@ components:
                     minLength: 1
                     description: |-
                       Penalty fee payer:  
-                      * Customer pays
-                      * Facility pays
+                      * Customer Pays
+                      * Facility Pays
                       * No Fee
               establishmentFee:
                 type: object
