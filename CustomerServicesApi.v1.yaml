@@ -1444,59 +1444,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/200GetBusinessAccounts'
-              example:
-                businessAccounts:
-                  - businessAccountId: DSFit1
-                    name: Northshore - Debitsuccess 24/7 Fitness
-                    penaltyFee:
-                      amount: 10
-                      payer: Facility Pays
-                    establishmentFee:
-                      amount: 10
-                      percent: 50
-                      payer: Customer Pays
-                    supportedPaymentMethods:
-                      - paymentMethodType: MasterCard
-                      - paymentMethodType: Visa
-                      - paymentMethodType: BankAccount
-                    business:
-                      businessId: '3333333'
-                      name: 24/7 fitness
-                  - businessAccountId: DSFit2
-                    name: Waiheke - Debitsuccess 24/7 Fitness
-                    penaltyFee:
-                      amount: 10
-                      payer: Facility Pays
-                    establishmentFee:
-                      amount: 10
-                      percent: 50
-                      payer: Customer Pays
-                    supportedPaymentMethods:
-                      - paymentMethodType: MasterCard
-                      - paymentMethodType: Visa
-                      - paymentMethodType: BankAccount
-                    business:
-                      businessId: '2222222'
-                      name: 24/7 fitness
-                  - businessAccountId: DSFit3
-                    name: City - Debitsuccess 24/7 Fitness
-                    penaltyFee:
-                      amount: 10
-                      payer: Facility Pays
-                    establishmentFee:
-                      amount: 10
-                      percent: 50
-                      payer: Customer Pays
-                    supportedPaymentMethods:
-                      - paymentMethodType: MasterCard
-                      - paymentMethodType: Visa
-                      - paymentMethodType: BankAccount
-                    business:
-                      businessId: 44685F75-FB25-4945-A2DF-E8E4F1A34838
-                      name: 24/7 fitness
-                responseMetadata:
-                  nextCursor: TmV4dEl0ZW1JZDox
-                  hasNext: true
         '401':
           description: |
             Unauthorized - Occurs when the authorization token provided is either expired or invalid.
@@ -13855,8 +13802,7 @@ components:
     200GetBusinessAccounts:
       description: ''
       type: object
-      x-examples:
-        example-1:
+      example:
           businessAccounts:
             - businessAccountId: HGCO
               name: The Hastings Golf Club Inc - OMG
