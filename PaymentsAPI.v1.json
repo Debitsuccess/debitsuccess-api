@@ -33,6 +33,9 @@
       "name": "Pay Method Configuration"
     },
     {
+      "name": "Surcharge"
+    },
+    {
       "name": "Internal API"
     }
   ],
@@ -2219,6 +2222,73 @@
         },
         "summary": "Get Casual Payment Status"
       }
+    },
+    "/account/surcharge": {
+      "get": {
+        "summary": "Surcharge",
+        "tags": [
+          "Surcharge"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/200GetSurcharge"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-account-surcharge",
+        "description": "Retrieves surcharge amount for an account.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "maxLength": 2,
+              "enum": [
+                "CC",
+                "CO"
+              ],
+              "minLength": 2
+            },
+            "in": "query",
+            "name": "CardType",
+            "required": true,
+            "description": "The type of card will be used for the payment in 2 letters representation. Visa, Mastercard - CC  Other credit card type - CO"
+          },
+          {
+            "schema": {
+              "type": "number"
+            },
+            "in": "query",
+            "name": "PaymentAmount",
+            "required": true,
+            "description": "Amount must be provided in order to calculate surcharge."
+          },
+          {
+            "schema": {
+              "type": "string",
+              "maxLength": 15
+            },
+            "in": "query",
+            "name": "AccountId",
+            "required": true,
+            "description": "System generated reference id associated to the Account extracted."
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
+            "name": "CreateOneOffCharge",
+            "required": true,
+            "description": "the flag controls will create a one-off payment schedule or not. "
+          }
+        ]
+      }
     }
   },
   "components": {
@@ -3342,6 +3412,251 @@
             "type": "string",
             "description": "Defines the purpose of the regex value. In this example, the corresponding regex can be used to determine whether a card number is visa card type.",
             "example": "CardType"
+          }
+        }
+      },
+      "200GetSurcharge": {
+        "description": "",
+        "type": "object",
+        "x-examples": {
+          "example": {
+            "paymentAmount": 60,
+            "surchargeAmount": 0.66,
+            "totalPaymentAmount": 60.66,
+            "currency": "AUD",
+            "allocations": [
+              {
+                "name": "One-off payment",
+                "amount": 0.11
+              },
+              {
+                "name": "Recurring payment",
+                "amount": 0.55
+              }
+            ]
+          }
+        },
+        "properties": {
+          "paymentAmount": {
+            "type": "number",
+            "description": "Payment amount provided in the request."
+          },
+          "surchargeAmount": {
+            "type": "number",
+            "description": "Total surcharge amount for the payment."
+          },
+          "totalPaymentAmount": {
+            "type": "number",
+            "description": "Total amount (PaymentAmount + SurchargeAmount ) which will be charged from customer’s card when a payment request will be processed. "
+          },
+          "currency": {
+            "type": "string",
+            "description": "NZD / AUD",
+            "enum": [
+              "NZD",
+              "AUD"
+            ]
+          },
+          "allocations": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Type of payment",
+                  "enum": [
+                    "One-off payment",
+                    "Recurring payment"
+                  ]
+                },
+                "amount": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "name",
+                "amount"
+              ]
+            }
+          }
+        },
+        "required": [
+          "paymentAmount",
+          "surchargeAmount",
+          "totalPaymentAmount",
+          "currency",
+          "allocations"
+        ]
+      },
+      "401GetSurcharge": {
+        "type": "object",
+        "properties": {
+          "errorCode": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "required": [
+                "field",
+                "message"
+              ],
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "403GetSurcharge": {
+        "type": "object",
+        "properties": {
+          "businessCollectedPayments": {
+            "type": "array",
+            "items": {
+              "required": [
+                "businessAccountId",
+                "accountId",
+                "accountExternalId",
+                "externalTransactionIdentifier",
+                "amount",
+                "dateTimeOfPayment",
+                "description"
+              ],
+              "type": "object",
+              "properties": {
+                "businessAccountId": {
+                  "type": "string"
+                },
+                "accountId": {
+                  "type": "string"
+                },
+                "accountExternalId": {
+                  "type": "string"
+                },
+                "externalTransactionIdentifier": {
+                  "type": "string"
+                },
+                "amount": {
+                  "type": "string"
+                },
+                "dateTimeOfPayment": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "responseMetadata": {
+            "type": "object",
+            "properties": {
+              "nextCursor": {
+                "type": "string"
+              },
+              "hasNext": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "422GetSurcharge  ": {
+        "type": "object",
+        "properties": {
+          "errorCode": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "required": [
+                "field",
+                "message"
+              ],
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "429GetSurcharge  ": {
+        "type": "object",
+        "properties": {
+          "errorCode": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "required": [
+                "field",
+                "message"
+              ],
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "500GetSurcharge  ": {
+        "type": "object",
+        "properties": {
+          "errorCode": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "required": [
+                "field",
+                "message"
+              ],
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       }
