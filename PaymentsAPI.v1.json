@@ -2225,7 +2225,7 @@
     },
     "/account/surcharge": {
       "get": {
-        "summary": "Surcharge",
+        "summary": "Get Surcharge",
         "tags": [
           "Surcharge"
         ],
@@ -2236,6 +2236,45 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/200GetSurcharge"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized - Occurs when the authorization token provided is either expired or invalid."
+          },
+          "403": {
+            "description": "Forbidden - Occurs the client does not have access to the endpoint.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/403GetSurcharge"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/422GetSurcharge  "
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/500InternalServerError"
                 }
               }
             }
@@ -3042,6 +3081,11 @@
           "message": {
             "type": "string"
           }
+        },
+        "x-examples": {
+          "example-1": {
+            "message": "string"
+          }
         }
       },
       "503ServiceUnavailable": {
@@ -3520,85 +3564,65 @@
         }
       },
       "403GetSurcharge": {
+        "description": "",
         "type": "object",
         "properties": {
-          "businessCollectedPayments": {
+          "errorCode": {
+            "type": "string",
+            "minLength": 1
+          },
+          "message": {
+            "type": "string",
+            "minLength": 1
+          },
+          "requiredScopes": {
             "type": "array",
             "items": {
-              "required": [
-                "businessAccountId",
-                "accountId",
-                "accountExternalId",
-                "externalTransactionIdentifier",
-                "amount",
-                "dateTimeOfPayment",
-                "description"
-              ],
-              "type": "object",
-              "properties": {
-                "businessAccountId": {
-                  "type": "string"
-                },
-                "accountId": {
-                  "type": "string"
-                },
-                "accountExternalId": {
-                  "type": "string"
-                },
-                "externalTransactionIdentifier": {
-                  "type": "string"
-                },
-                "amount": {
-                  "type": "string"
-                },
-                "dateTimeOfPayment": {
-                  "type": "string"
-                },
-                "description": {
-                  "type": "string"
-                }
-              }
+              "required": [],
+              "properties": {}
             }
-          },
-          "responseMetadata": {
-            "type": "object",
-            "properties": {
-              "nextCursor": {
-                "type": "string"
-              },
-              "hasNext": {
-                "type": "boolean"
-              }
-            }
+          }
+        },
+        "required": [
+          "errorCode",
+          "message",
+          "requiredScopes"
+        ],
+        "x-examples": {
+          "example": {
+            "errorCode": "required_scopes",
+            "message": "Unable to process this request due to insufficient client scopes.",
+            "requiredScopes": [
+              "AccountCreditCard"
+            ]
           }
         }
       },
       "422GetSurcharge  ": {
+        "description": "",
         "type": "object",
         "properties": {
           "errorCode": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1
           },
           "message": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "errorCode",
+          "message"
+        ],
+        "x-examples": {
+          "example": {
+            "errorCode": "split_payment",
+            "message": "Unable to process this request as this business has payout split configured."
           },
-          "errors": {
-            "type": "array",
-            "items": {
-              "required": [
-                "field",
-                "message"
-              ],
-              "type": "object",
-              "properties": {
-                "field": {
-                  "type": "string"
-                },
-                "message": {
-                  "type": "string"
-                }
-              }
-            }
+          "example-1": {
+            "errorCode": "surcharge_not_configured",
+            "message": "Unable to process this request as this business account does not have surcharge policy configured."
           }
         }
       },
