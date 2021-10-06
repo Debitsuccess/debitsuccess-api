@@ -2240,9 +2240,6 @@
               }
             }
           },
-          "201": {
-            "description": "Created"
-          },
           "401": {
             "description": "Unauthorized - Occurs when the authorization token provided is either expired or invalid."
           },
@@ -2261,7 +2258,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/422GetSurcharge  "
+                  "$ref": "#/components/schemas/422GetSurcharge"
                 }
               }
             }
@@ -3598,7 +3595,7 @@
           }
         }
       },
-      "422GetSurcharge  ": {
+      "422GetSurcharge": {
         "description": "",
         "type": "object",
         "properties": {
@@ -3627,35 +3624,6 @@
         }
       },
       "429GetSurcharge  ": {
-        "type": "object",
-        "properties": {
-          "errorCode": {
-            "type": "string"
-          },
-          "message": {
-            "type": "string"
-          },
-          "errors": {
-            "type": "array",
-            "items": {
-              "required": [
-                "field",
-                "message"
-              ],
-              "type": "object",
-              "properties": {
-                "field": {
-                  "type": "string"
-                },
-                "message": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      },
-      "500GetSurcharge  ": {
         "type": "object",
         "properties": {
           "errorCode": {
