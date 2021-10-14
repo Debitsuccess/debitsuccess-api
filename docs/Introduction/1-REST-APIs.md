@@ -80,6 +80,8 @@ Use this API to Process casual payments, set up direct debits, capture new payme
 - [Create customer accounts for testing](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1549369452/Create+customer+accounts+for+testing)
 - [Data for Test Environment](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/989890688/Data+for+Test+Environment)
 - [Statuses in Debitsuccess Systems](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1492877598/Statuses+in+Debitsuccess+Systems)
+- [FAQs](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/984777895/FAQs)
+- [Support](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1357611384/Support)
 
 ### Something missing?
 
