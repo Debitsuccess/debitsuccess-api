@@ -16,7 +16,7 @@ info:
     ## Resources
     |  Resources  | Supported Methods   |Purpose |
     |  --- | --- | --- |
-    | [Customers](../CustomerServicesApi.yaml/paths/~1customers/get)| <span style="background-color:lightgreen; color:white"> GET</span> <span style="background-color:skyblue; color:white">  POST</span> <span style="background-color:orange; color:white"> PUT</span> <span style="background-color:orange; color:white"> PATCH</span>  |  Customer API can create, delete, and update the personal information of a customer. Fetch specific customer information and list all customers’ details.  |
+    | [Customers](../debitsuccess-api/b3A6MTc2MTM4NzU-create-customer)| <span style="background-color:lightgreen; color:white"> GET</span> <span style="background-color:skyblue; color:white">  POST</span> <span style="background-color:orange; color:white"> PUT</span> <span style="background-color:orange; color:white"> PATCH</span>  |  Customer API can create, delete, and update the personal information of a customer. Fetch specific customer information and list all customers’ details.  |
     | [Business Accounts](../CustomerServicesApi.yaml/paths/~1businessAccounts/get) | <span style="background-color:lightgreen; color:white"> GET</span>  |Retrieves a list of Business Account(s) (also known as FacilityAccounts) based on the business ID provided. If none provided, all Business Accounts assigned to the client derived from the authentication token will be returned. |
     | [Accounts](../CustomerServicesApi.yaml/paths/~1accounts/get) | <span style="background-color:lightgreen; color:white"> GET</span> <span style="background-color:skyblue; color:white">  POST</span> <span style="background-color:orange; color:white"> PUT</span> <span style="background-color:orange; color:white"> PATCH</span> | An Account is referred to the contract with your customers for the services you offer. Within the Account API, you can execute account management functions through the API methods, including: <ul><li> Get information about an account and amount. </li><li>Create an account with a payment schedule. </li><li> Adjust the contract amount and change the terms of an account.  </li><li>Update default payment method for an existing account. </li><li>Get a list all accounts within a business based on various search criteria.</li><li>Close an account.</li></ul>|
     | [Suspension Schedules](../CustomerServicesApi.yaml/paths/~1accounts~1%7BaccountId%7D~1suspensionSchedules/get)  | <span style="background-color:lightgreen; color:white"> GET</span> <span style="background-color:skyblue; color:white">  POST</span> <span style="background-color:orange; color:white"> PATCH</span> <span style="background-color:red; color:white"> DELETE</span> | An account is suspended when the regular payments on an account are on hold due to a customer going on holiday or medical reasons. Suspensions can be indefinite – no end date of suspension. For more information see [Suspend an account](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1299022463/Suspend+an+account). Using the Suspension Schedule API, set up, retrieve, edit or delete a suspension schedule for an account.     |
@@ -48,14 +48,14 @@ tags:
   - name: BusinessAccounts
   - name: Businesses
   - name: Customers
-  - name: EmailAddresses
+  - name: Email Addresses
   - name: Guarantor
-  - name: OverdueStatusChanges
+  - name: Overdue Status Changes
   - name: Payment History
   - name: Payment Methods
   - name: Payment Status
-  - name: PaymentToken
-  - name: PhoneNumbers
+  - name: Payment Token
+  - name: Phone Numbers
   - name: Schedules-OneOff
   - name: Schedules-Recurring
   - name: Schedules-Suspension
@@ -2197,7 +2197,8 @@ paths:
                     accountCode: ''
                     accountNotes: ''
                     fixedTerm: false
-                    nextBillingDate: '2020-11-01'                    lastBillingDateTime: '2020-03-02T00:13:48.940Z'
+                    nextBillingDate: '2020-11-01'
+                    lastBillingDateTime: '2020-03-02T00:13:48.940Z'
                     overdueStatus: 2
                     overdueAmountPayment: 146.9
                     overdueAmountFee: 7.5
@@ -6802,7 +6803,7 @@ paths:
   '/customers/{customerId}/phoneNumbers':
     get:
       tags:
-        - PhoneNumbers
+        - Phone Numbers
       summary: List Phone Numbers
       description: 'Retrieves the detail of all phone numbers of a customer based on the customer ID provided in the query path. '
       operationId: 5dddddd2bfa8e2680bcce4e2
@@ -6986,7 +6987,7 @@ paths:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
     post:
       tags:
-        - PhoneNumbers
+        - Phone Numbers
       summary: Add Phone Number
       description: Adds phone number to an existing customer.
       operationId: 5ddde18fb48942b2d52c7a8e
@@ -7214,7 +7215,7 @@ paths:
   '/customers/{customerId}/phoneNumbers/{phoneNumberId}':
     put:
       tags:
-        - PhoneNumbers
+        - Phone Numbers
       summary: Update Phone Number
       description: |-
         Updates existing phone number of a customer based on the customer ID and phoneNumber ID provided.
@@ -7501,7 +7502,7 @@ paths:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
     get:
       tags:
-        - PhoneNumbers
+        - Phone Numbers
       summary: Get Phone Number
       description: 'Retrieves the detail of customer phone number based on the customer ID and phoneNumber ID provided in the query path. '
       operationId: 5dddde07cdf3f2ddac60f8f7
@@ -7703,7 +7704,7 @@ paths:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
     delete:
       tags:
-        - PhoneNumbers
+        - Phone Numbers
       summary: Delete Phone Number
       description: |-
         Deletes existing non-Primary phone number based on the customer ID and phoneNumber ID provided in the query path for a customer. 
@@ -9093,7 +9094,7 @@ paths:
   '/customers/{customerId}/emailAddresses':
     get:
       tags:
-        - EmailAddresses
+        - Email Addresses
       summary: List Email Addresses
       description: 'Retrieves all email addresses belong to a customer based on customer ID provided in the query path. '
       operationId: 5dddde2faf5a4e7d30f9b11e
@@ -9271,7 +9272,7 @@ paths:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
     post:
       tags:
-        - EmailAddresses
+        - Email Addresses
       summary: Add Email Address
       description: Adds email address to an existing customer based on customer ID provided.
       operationId: 5ddde1a62bd5ea6d280dfe70
@@ -9479,7 +9480,7 @@ paths:
   '/customers/{customerId}/emailAddresses/{emailAddressId}':
     put:
       tags:
-        - EmailAddresses
+        - Email Addresses
       summary: Update Email Address
       description: |-
         Updates existing email address of a customer based on the customer ID and email ID provided.
@@ -9769,7 +9770,7 @@ paths:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
     get:
       tags:
-        - EmailAddresses
+        - Email Addresses
       summary: Get Email Address
       description: 'Retrieves customer email address based on the customer ID and email ID provided in the query path. '
       operationId: 5dddde489a7ff4cb75f7efb1
@@ -9968,7 +9969,7 @@ paths:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
     delete:
       tags:
-        - EmailAddresses
+        - Email Addresses
       summary: Delete Email Address
       description: |-
         Delete existing non-Primary email address based on the customer ID and email ID provided in the query path for a customer. 
@@ -10242,7 +10243,7 @@ paths:
   /overdueStatusChanges:
     get:
       tags:
-        - OverdueStatusChanges
+        - Overdue Status Changes
       summary: Get OverdueStatusChanges
       description: |-
         Retrieves overdue status/overdue amount changes according to the query parameters provided.
@@ -11822,7 +11823,7 @@ paths:
   '/accounts/{accountId}/paymentTokens':
     post:
       tags:
-        - PaymentToken
+        - Payment Token
       summary: Generate PaymentToken (for Account Payment)
       description: |
         Generate a link to paynow page so that user can make a payment to an account using credit card
@@ -12115,7 +12116,7 @@ paths:
   '/businessAccounts/{businessAccountId}/casualPaymentTokens':
     post:
       tags:
-        - PaymentToken
+        - Payment Token
       summary: Generate PaymentToken (for Casual Payment)
       description: |
         Generate a link to Paynow page so that the customer can make a casual payment using credit card.
@@ -12776,7 +12777,6 @@ paths:
       summary: Create Guarantor
       tags:
         - Guarantor
-        - Beta
       responses:
         '201':
           description: Guarantor created successfully for the specified account.
@@ -13803,178 +13803,178 @@ components:
       description: ''
       type: object
       example:
-          businessAccounts:
-            - businessAccountId: HGCO
-              name: The Hastings Golf Club Inc - OMG
-              business:
-                businessId: 10605
-                name: The Hastings Golf Club Inc
-              penaltyFee:
-                amount: 10
-                payer: Customer Pays
-              establishmentFee:
-                amount: 15
-                percent: 0
-                payer: Customer Pays
-              CommissionFee:
-                - paymentType: Casual Credit Card Payments
-                  commissionPercentage: 0
-                  commissionTransactionCharge: 5
-                  commissionChargeType: Percentage
-                  minimumnimumTransactionCharge: 0
-                  retainCommissionOnReversedTransaction: true
-                  commissionPayerType: Customer Pays
-                - paymentType: Casual Credit Other Payments
-                  commissionPercentage: 0
-                  commissionTransactionCharge: 5
-                  commissionChargeType: Percentage
-                  minimumnimumTransactionCharge: 0
-                  retainCommissionOnReversedTransaction: false
-                  commissionPayerType: Facility Pays
-              supportedPaymentMethods:
-                - paymentMethodType: Bank Account
-                - paymentMethodType: American Express
-                - paymentMethodType: Discover
-                - paymentMethodType: JCB
-                - paymentMethodType: Diners
-              active: true
-            - businessAccountId: '9474'
-              name: 'CFM/ Fresh Start Fitness #2'
-              business:
-                businessId: 4290
-                name: Creative Fitness Marketing Australia
-              penaltyFee:
-                amount: 10
-                payer: No Fee
-              establishmentFee:
-                amount: 20
-                percent: 50
-                payer: Customer Pays
-              CommissionFee:
-                - paymentType: Casual Credit Card Payments
-                  commissionPercentage: 0
-                  commissionTransactionCharge: 5
-                  commissionChargeType: Percentage
-                  minimumnimumTransactionCharge: 0
-                  retainCommissionOnReversedTransaction: 0
-                  commissionPayerType: Customer Pays
-                - paymentType: Casual Credit Other Payments
-                  commissionPercentage: 0
-                  commissionTransactionCharge: 5
-                  commissionChargeType: Percentage
-                  minimumnimumTransactionCharge: 0
-                  retainCommissionOnReversedTransaction: true
-                  commissionPayerType: Facility Pays
-              supportedPaymentMethods:
-                - paymentMethodType: Bank Account
-                - paymentMethodType: Visa
-                - paymentMethodType: MasterCard
-                - paymentMethodType: American Express
-              active: false
-            - businessAccountId: '9895'
-              name: 'CFM/Fitwitz Health & Fitness #3'
-              business:
-                businessId: 4290
-                name: Creative Fitness Marketing Australia
-              penaltyFee:
-                amount: 10
-                payer: No Fee
-              establishmentFee:
-                amount: 10
-                percent: 0
-                payer: Customer Pays
-              CommissionFee:
-                - paymentType: Casual Credit Card Payments
-                  commissionPercentage: 0
-                  commissionTransactionCharge: 5
-                  commissionChargeType: Percentage
-                  minimumnimumTransactionCharge: 0
-                  retainCommissionOnReversedTransaction: 0
-                  commissionPayerType: Customer Pays
-                - paymentType: Casual Credit Other Payments
-                  commissionPercentage: 0
-                  commissionTransactionCharge: 5
-                  commissionChargeType: Percentage
-                  minimumnimumTransactionCharge: 0
-                  retainCommissionOnReversedTransaction: false
-                  commissionPayerType: Facility Pays
-              supportedPaymentMethods:
-                - paymentMethodType: Bank Account
-                - paymentMethodType: Visa
-                - paymentMethodType: MasterCard
-                - paymentMethodType: American Express
-              active: false
-            - businessAccountId: GBYP
-              name: Goodlife Balwyn - PT
-              business:
-                businessId: 14232
-                name: Goodlife Balwyn
-              penaltyFee:
-                amount: 10
-                payer: No Fee
-              establishmentFee:
-                amount: 0
-                percent: 0
-                payer: No Fee
-              CommissionFee:
-                - paymentType: Casual Credit Card Payments
-                  commissionPercentage: 0
-                  commissionTransactionCharge: 5
-                  commissionChargeType: Percentage
-                  minimumnimumTransactionCharge: 0
-                  retainCommissionOnReversedTransaction: true
-                  commissionPayerType: Customer Pays
-                - paymentType: Casual Credit Other Payments
-                  commissionPercentage: 0
-                  commissionTransactionCharge: 5
-                  commissionChargeType: Percentage
-                  minimumnimumTransactionCharge: 0
-                  retainCommissionOnReversedTransaction: false
-                  commissionPayerType: Facility Pays
-              supportedPaymentMethods:
-                - paymentMethodType: Bank Account
-                - paymentMethodType: Visa
-                - paymentMethodType: MasterCard
-                - paymentMethodType: American Express
-                - paymentMethodType: Discover
-                - paymentMethodType: JCB
-              active: false
-            - businessAccountId: '9835'
-              name: 'CFM/Kawana Fitness #2'
-              business:
-                businessId: 4290
-                name: Creative Fitness Marketing Australia
-              penaltyFee:
-                amount: 10
-                payer: No Fee
-              establishmentFee:
-                amount: 10
-                percent: 0
-                payer: Customer Pays
-              CommissionFee:
-                - paymentType: Casual Credit Card Payments
-                  commissionPercentage: 0
-                  commissionTransactionCharge: 5
-                  commissionChargeType: Percentage
-                  minimumnimumTransactionCharge: 0
-                  retainCommissionOnReversedTransaction: true
-                  commissionPayerType: Customer Pays
-                - paymentType: Casual Credit Other Payments
-                  commissionPercentage: 0
-                  commissionTransactionCharge: 5
-                  commissionChargeType: Percentage
-                  minimumnimumTransactionCharge: 0
-                  retainCommissionOnReversedTransaction: false
-                  commissionPayerType: Facility Pays
-              supportedPaymentMethods:
-                - paymentMethodType: Bank Account
-                - paymentMethodType: Visa
-                - paymentMethodType: MasterCard
-                - paymentMethodType: American Express
-              active: false
-          responseMetadata:
-            nextCursor: MTY5NQ==
-            hasNext: true
+        businessAccounts:
+          - businessAccountId: HGCO
+            name: The Hastings Golf Club Inc - OMG
+            business:
+              businessId: 10605
+              name: The Hastings Golf Club Inc
+            penaltyFee:
+              amount: 10
+              payer: Customer Pays
+            establishmentFee:
+              amount: 15
+              percent: 0
+              payer: Customer Pays
+            CommissionFee:
+              - paymentType: Casual Credit Card Payments
+                commissionPercentage: 0
+                commissionTransactionCharge: 5
+                commissionChargeType: Percentage
+                minimumnimumTransactionCharge: 0
+                retainCommissionOnReversedTransaction: true
+                commissionPayerType: Customer Pays
+              - paymentType: Casual Credit Other Payments
+                commissionPercentage: 0
+                commissionTransactionCharge: 5
+                commissionChargeType: Percentage
+                minimumnimumTransactionCharge: 0
+                retainCommissionOnReversedTransaction: false
+                commissionPayerType: Facility Pays
+            supportedPaymentMethods:
+              - paymentMethodType: Bank Account
+              - paymentMethodType: American Express
+              - paymentMethodType: Discover
+              - paymentMethodType: JCB
+              - paymentMethodType: Diners
+            active: true
+          - businessAccountId: '9474'
+            name: 'CFM/ Fresh Start Fitness #2'
+            business:
+              businessId: 4290
+              name: Creative Fitness Marketing Australia
+            penaltyFee:
+              amount: 10
+              payer: No Fee
+            establishmentFee:
+              amount: 20
+              percent: 50
+              payer: Customer Pays
+            CommissionFee:
+              - paymentType: Casual Credit Card Payments
+                commissionPercentage: 0
+                commissionTransactionCharge: 5
+                commissionChargeType: Percentage
+                minimumnimumTransactionCharge: 0
+                retainCommissionOnReversedTransaction: 0
+                commissionPayerType: Customer Pays
+              - paymentType: Casual Credit Other Payments
+                commissionPercentage: 0
+                commissionTransactionCharge: 5
+                commissionChargeType: Percentage
+                minimumnimumTransactionCharge: 0
+                retainCommissionOnReversedTransaction: true
+                commissionPayerType: Facility Pays
+            supportedPaymentMethods:
+              - paymentMethodType: Bank Account
+              - paymentMethodType: Visa
+              - paymentMethodType: MasterCard
+              - paymentMethodType: American Express
+            active: false
+          - businessAccountId: '9895'
+            name: 'CFM/Fitwitz Health & Fitness #3'
+            business:
+              businessId: 4290
+              name: Creative Fitness Marketing Australia
+            penaltyFee:
+              amount: 10
+              payer: No Fee
+            establishmentFee:
+              amount: 10
+              percent: 0
+              payer: Customer Pays
+            CommissionFee:
+              - paymentType: Casual Credit Card Payments
+                commissionPercentage: 0
+                commissionTransactionCharge: 5
+                commissionChargeType: Percentage
+                minimumnimumTransactionCharge: 0
+                retainCommissionOnReversedTransaction: 0
+                commissionPayerType: Customer Pays
+              - paymentType: Casual Credit Other Payments
+                commissionPercentage: 0
+                commissionTransactionCharge: 5
+                commissionChargeType: Percentage
+                minimumnimumTransactionCharge: 0
+                retainCommissionOnReversedTransaction: false
+                commissionPayerType: Facility Pays
+            supportedPaymentMethods:
+              - paymentMethodType: Bank Account
+              - paymentMethodType: Visa
+              - paymentMethodType: MasterCard
+              - paymentMethodType: American Express
+            active: false
+          - businessAccountId: GBYP
+            name: Goodlife Balwyn - PT
+            business:
+              businessId: 14232
+              name: Goodlife Balwyn
+            penaltyFee:
+              amount: 10
+              payer: No Fee
+            establishmentFee:
+              amount: 0
+              percent: 0
+              payer: No Fee
+            CommissionFee:
+              - paymentType: Casual Credit Card Payments
+                commissionPercentage: 0
+                commissionTransactionCharge: 5
+                commissionChargeType: Percentage
+                minimumnimumTransactionCharge: 0
+                retainCommissionOnReversedTransaction: true
+                commissionPayerType: Customer Pays
+              - paymentType: Casual Credit Other Payments
+                commissionPercentage: 0
+                commissionTransactionCharge: 5
+                commissionChargeType: Percentage
+                minimumnimumTransactionCharge: 0
+                retainCommissionOnReversedTransaction: false
+                commissionPayerType: Facility Pays
+            supportedPaymentMethods:
+              - paymentMethodType: Bank Account
+              - paymentMethodType: Visa
+              - paymentMethodType: MasterCard
+              - paymentMethodType: American Express
+              - paymentMethodType: Discover
+              - paymentMethodType: JCB
+            active: false
+          - businessAccountId: '9835'
+            name: 'CFM/Kawana Fitness #2'
+            business:
+              businessId: 4290
+              name: Creative Fitness Marketing Australia
+            penaltyFee:
+              amount: 10
+              payer: No Fee
+            establishmentFee:
+              amount: 10
+              percent: 0
+              payer: Customer Pays
+            CommissionFee:
+              - paymentType: Casual Credit Card Payments
+                commissionPercentage: 0
+                commissionTransactionCharge: 5
+                commissionChargeType: Percentage
+                minimumnimumTransactionCharge: 0
+                retainCommissionOnReversedTransaction: true
+                commissionPayerType: Customer Pays
+              - paymentType: Casual Credit Other Payments
+                commissionPercentage: 0
+                commissionTransactionCharge: 5
+                commissionChargeType: Percentage
+                minimumnimumTransactionCharge: 0
+                retainCommissionOnReversedTransaction: false
+                commissionPayerType: Facility Pays
+            supportedPaymentMethods:
+              - paymentMethodType: Bank Account
+              - paymentMethodType: Visa
+              - paymentMethodType: MasterCard
+              - paymentMethodType: American Express
+            active: false
+        responseMetadata:
+          nextCursor: MTY5NQ==
+          hasNext: true
       properties:
         businessAccounts:
           type: array
