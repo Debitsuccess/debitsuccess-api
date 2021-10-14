@@ -23,22 +23,22 @@ GET [Business Account(s)](https://debitsuccess.stoplight.io/docs/debitsuccess-ap
 GET [PaymentHistory](https://debitsuccess.stoplight.io/docs/debitsuccess-api/b3A6MTc2MTM5MTk-get-payment-history) is enhanced to return commission amount in the response. 
 
 ## Jul 13, 2021
-This release introduces a new boolean field named `assignExistingGuarantor` in [POST Account](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1accounts/post) to allow users to assign an existing Guarantor to the new account when the account is created.
+This release introduces a new boolean field named `assignExistingGuarantor` in [POST Account](https://debitsuccess.stoplight.io/docs/debitsuccess-api/b3A6MTc2MTM4ODM-create-account) to allow users to assign an existing Guarantor to the new account when the account is created.
 
 ## Jul 08, 2021
 Introduced new endpoints:
-* [PUT Guarantor](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1accounts~1%7BaccountId%7D~1guarantors/put) - allows users to update Guarantor details for existing active accounts
-* [GET Guarantor](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1accounts~1%7BaccountId%7D~1guarantors/get) - allows users to get Guarantor details for existing active accounts
+* [PUT Guarantor](https://debitsuccess.stoplight.io/docs/debitsuccess-api/b3A6MTc2MTM5MzA-update-guarantor) - allows users to update Guarantor details for existing active accounts
+* [GET Guarantor](https://debitsuccess.stoplight.io/docs/debitsuccess-api/b3A6MTc2MTM5MzE-get-guarantor) - allows users to get Guarantor details for existing active accounts
 
 ## Jul 06, 2021
-Implemented a new endpoint i.e., [POST Guarantor](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1accounts~1%7BaccountId%7D~1guarantors/post) which allows users to create Guarantor record for existing active accounts.
+Implemented a new endpoint i.e., [POST Guarantor](https://debitsuccess.stoplight.io/docs/debitsuccess-api/b3A6MTc2MTM5Mjk-create-guarantor) which allows users to create Guarantor record for existing active accounts.
 
 ## Jun 17, 2021
-* Introduced a new endpoint for customer services API will be used to [transfer an account](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1accounts~1%7BaccountId%7D~1transfers/post) from one business account to another.
+* Introduced a new endpoint for customer services API will be used to [transfer an account](https://debitsuccess.stoplight.io/docs/debitsuccess-api/b3A6MTc2MTM5Mjg-transfer-account) from one business account to another.
 
-* Enhanced the existing REST API endpoint [PUT Account](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1accounts~1%7BaccountId%7D/put):
+* Enhanced the existing REST API endpoint [PUT Account](https://debitsuccess.stoplight.io/docs/debitsuccess-api/b3A6MTc2MTM4ODY-update-account):
 
-  * The `collectionStopReason` in [GET Account(s)](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1accounts/get) response defaults to *Manual Payment Stop* when `paymentStopped` is set to *true* in PUT Account.
+  * The `collectionStopReason` in [GET Account(s)](https://debitsuccess.stoplight.io/docs/debitsuccess-api/b3A6MTc2MTM4ODQ-list-accounts) response defaults to *Manual Payment Stop* when `paymentStopped` is set to *true* in PUT Account.
 
   * New Error 400 introduced to reject PUT Account request if `collectionStopReason` is not *Manual Payment Stop*.
 
@@ -48,8 +48,8 @@ Enhancement to populate standardized 403 error messages when client attempts to 
 
 ## May 20, 2021 
 
-* Introduced a new endpoint for customer services API that will retrieve customer [payment schedule statuses](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1businesses~1%7BbusinessID%7D~1paymentstatuses/get) and other details for Gateway Model accounts.
-* Implemented multilevel permission checks for [GET Payment History](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1payments/get) endpoints by filter off all records that the client do not have access to.
+* Introduced a new endpoint for customer services API that will retrieve customer [payment schedule statuses](https://debitsuccess.stoplight.io/docs/debitsuccess-api/b3A6MTc2MTM5Mjc-get-payment-status) and other details for Gateway Model accounts.
+* Implemented multilevel permission checks for [GET Payment History](https://debitsuccess.stoplight.io/docs/debitsuccess-api/b3A6MTc2MTM5MTk-get-payment-history) endpoints by filter off all records that the client do not have access to.
 * Fix to stop 'Overdue' mail if Account has a new schedule created (via POST Account/POST Schedule) to start immediately but after the billing cycle for the day has completed. This is to prevent sending an overdue email to the customer.
 
 ## May 11, 2021
@@ -57,26 +57,26 @@ Enhancement to populate standardized 403 error messages when client attempts to 
 The [Real Time Payment Widget](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Widgets/Real-time-payment-widget.md) allows you to securely make real-time payments to businesses (Casual Payments). Integration partners can embed this widget into their website and customize it to match their product theme. Widget is essentially an iframe to capture credit card details and use Debitsuccess [Payments API](https://debitsuccess.stoplight.io/docs/debitsuccess-api/PaymentsAPI.v1.json) to make payments. 
 
 ##  Mar 23, 2021
-The RestAPI [GET Account(s)](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1accounts/get) is enhanced to return the DD Stop reason field in the API Response. If the account status ‘PaymentStopped’ is set to true and has a `CollectionStopReason` assigned, then it will be shown in the GET Account(s) API response CollectionStopReason field, else an empty string will be returned.
+The RestAPI [GET Account(s)](https://debitsuccess.stoplight.io/docs/debitsuccess-api/b3A6MTc2MTM4ODQ-list-accounts) is enhanced to return the DD Stop reason field in the API Response. If the account status ‘PaymentStopped’ is set to true and has a `CollectionStopReason` assigned, then it will be shown in the GET Account(s) API response CollectionStopReason field, else an empty string will be returned.
 
 ## Mar 16, 2010
 
-Introduced a new field `Active` as an input parameter for [GET BusinessAccounts](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1businessAccounts/get). This field will act as a filter to allow users to retrieve Active or non-Active Business Accounts. Leaving this field as null/empty will retrieve all Business Accounts.
+Introduced a new field `Active` as an input parameter for [GET BusinessAccounts](https://debitsuccess.stoplight.io/docs/debitsuccess-api/b3A6MTc2MTM4ODE-list-business-accounts). This field will act as a filter to allow users to retrieve Active or non-Active Business Accounts. Leaving this field as null/empty will retrieve all Business Accounts.
 
 ## Feb 23, 2021
-Implemented a new REST API[Get Payment Token(for Casual Payment)](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1businessAccounts~1%7BbusinessAccountId%7D~1paymentTokens/post) that generates and returns a PayNow URL link so that integrators can access the link to make a casual payment for a business account.
+Implemented a new REST API[Get Payment Token(for Casual Payment)](https://debitsuccess.stoplight.io/docs/debitsuccess-api/b3A6MTc2MTM5MjY-generate-payment-token-for-casual-payment) that generates and returns a PayNow URL link so that integrators can access the link to make a casual payment for a business account.
 
 
 ## Feb 11, 2021
-A new REST API [Get PaymentToken (for Account Payment)](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1accounts~1%7BaccountId%7D~1paymentTokens/post) has been implemented to generate and return a PayNow URL link so that integrators can access the link to make payment to an account.
+A new REST API [Get PaymentToken (for Account Payment)](https://debitsuccess.stoplight.io/docs/debitsuccess-api/b3A6MTc2MTM5MjU-generate-payment-token-for-account-payment) has been implemented to generate and return a PayNow URL link so that integrators can access the link to make payment to an account.
 
 
 ## Jan 26, 2021
 
-* The [GET Account(s)](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1accounts/get) response message now includes AccountNotes and PaymentMethodToken to be consistent with the POST Account API response.
+* The [GET Account(s)](https://debitsuccess.stoplight.io/docs/debitsuccess-api/b3A6MTc2MTM4ODQ-list-accounts) response message now includes AccountNotes and PaymentMethodToken to be consistent with the POST Account API response.
 
 
-* The [POST Account](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1accounts/post) response message has been updated with additional 23 fields similar to response for GET Account.
+* The [POST Account](https://debitsuccess.stoplight.io/docs/debitsuccess-api/b3A6MTc2MTM4ODM-create-account) response message has been updated with additional 23 fields similar to response for GET Account.
 
 
 
@@ -86,7 +86,7 @@ All [Debitsuccess REST APIs](../Introduction/1-REST-APIs.md) are now available i
 
 ## Oct 22, 2020
 
-Customer Services REST API is now available in the production environment. [Customer API](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml) allows the integrator to create, delete, and update the personal and contact detail information of a customer. Fetch specific customer information and list all customers’ details. 
+Customer Services REST API is now available in the production environment. [Customer API](https://debitsuccess.stoplight.io/docs/debitsuccess-api/YXBpOjE3NjEzNzQ4-customer-services-api) allows the integrator to create, delete, and update the personal and contact detail information of a customer. Fetch specific customer information and list all customers’ details. 
 
 ******
 
