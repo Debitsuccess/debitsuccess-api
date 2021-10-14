@@ -8,7 +8,6 @@ title: Widgets
 -->
 
 ![](https://drive.google.com/uc?export=view&id=1VrjRQqDmjB5tNIJZL9kgfODk8XvEECmP)
-
 Easily embed these widgets into your website and customize it to match your product theme. 
 
 
@@ -22,8 +21,7 @@ title: Customer Sign-up API
 -->
 
 
-![](https://drive.google.com/uc?export=view&id=1wPPYU8jy4qL02sUMw4plbrFeC_uTDF_E) 
-
+![](https://drive.google.com/uc?export=view&id=1wPPYU8jy4qL02sUMw4plbrFeC_uTDF_E)
 Use this API to Sign up new customers.
 
 **Host URL:** https://oc-test.debitsuccess.com/DirectEntry/api/v1.0
@@ -40,7 +38,6 @@ title: Customer Services API
 -->
 
 ![](https://drive.google.com/uc?export=view&id=1gmkI7FnAhla_QJXDPIksTD10vdrS_hU3)
-
 Use this API to manage customer account, customer details, schedules get payment history etc.
 
 **Host URL:** https://oc-test.debitsuccess.com/payments/v1.0
@@ -57,7 +54,6 @@ title: Payments API
 -->
 
 ![](https://drive.google.com/uc?export=view&id=1JayBpSpqPi6tTsozcnd2D7KesIjHALd6)
-
 Use this API to Process casual payments, set up direct debits, capture new payment details, process real-time payment, and collect payments at clubs.
 
 **Host URL:** https://oc-test.debitsuccess.com/payments/v1.0
@@ -87,6 +83,6 @@ Use this API to Process casual payments, set up direct debits, capture new payme
 
 ### Something missing?
 
-If you find issues with the documentation or have suggestions on how to improve the documentation or for new feature requests, please [file an issue](https://github.com/chitra-borker/debitsuccess-api/issues) for us.
+If you find issues with the documentation or have suggestions on how to improve the documentation or for new feature requests, please [file an issue](https://github.com/Debitsuccess/debitsuccess-api/issues) for us.
 
 

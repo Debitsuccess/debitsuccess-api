@@ -1,9 +1,13 @@
 # Payment Method Capture Widget
 
-The Payment Method Capture Widget allows you to securely capture payment details (credit card and bank account) by embedding it in your website and save payment details in Debitsuccess systems. This widget triggers the internal [Create PaymentMethod](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1businessAccounts~1%7BbusinessAccountId%7D~1paymentMethods/post) API to create the payment method into Debitsuccess.
+The Payment Method Capture Widget allows you to securely capture payment details (credit card and bank account) by embedding it in your website and save payment details in Debitsuccess systems. This widget triggers the internal Create PaymentMethod API to create the payment method into Debitsuccess.
 
+There are two possible flows for assigning the payment method to a customer:
+* **Flow 1:** Capture the payment method first using the Payment Method Capture widget, [create customer](https://debitsuccess.stoplight.io/docs/debitsuccess-api/b3A6MTc2MTM4NzU-create-customer), and then associate the payment method to the customer using the [patch customer](https://debitsuccess.stoplight.io/docs/debitsuccess-api/b3A6MTc2MTM5MjI-patch-customer) method. 
 
-> The [Create PaymentMethod](https://debitsuccess.stoplight.io/docs/debitsuccess-api/CustomerServicesApi.yaml/paths/~1businessAccounts~1%7BbusinessAccountId%7D~1paymentMethods/post) API is intended for internal use only. If you decide to capture credit cards yourself and pass them through the API then you would be required to be PCI certified as opposed to doing a PCI self-assessment.
+* **Flow 2:** Load the [customer](https://debitsuccess.stoplight.io/docs/debitsuccess-api/b3A6MTc2MTM4NzU-create-customer), create an [account](https://debitsuccess.stoplight.io/docs/debitsuccess-api/b3A6MTc2MTM4ODM-create-account), and then capture the payment method using this widget.
+
+> The Create PaymentMethod API is intended for internal use only. If you decide to capture credit cards yourself and pass them through the API then you would be required to be PCI certified as opposed to doing a PCI self-assessment.
 
 
 ## Adding Payment Method Capture widget
@@ -343,9 +347,7 @@ If the payment method was successfully saved, based on you the widget parameters
 }
 ```
 
-* If  **customerId** is not provided, you will get a one time token as shown below. To get a permanent token, you need to use [PATCH customer API](https://debitsuccess.stoplight.io/docs/debitsuccess-api/b3A6ODQ0Nzk3NA-patch-customer) and provide this `OneTimePaymentMethodToken`:
-
-
+* If  **customerId** is not provided, you will get a one time token as shown below. Use this `oneTimePaymentMethodToken` in the [PATCH customer API](https://debitsuccess.stoplight.io/docs/debitsuccess-api/b3A6ODQ0Nzk3NA-patch-customer. Once the payment method is successfully assigned to the customer, a permanent payment method token will be associated to the customer:
 
 
 ```json

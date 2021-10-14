@@ -25,8 +25,7 @@ Add a link to the Debitsuccess javascript library on the page where the widget w
 
 In JavaScript code, the widget can be initialized as follows. 
 
->
-It is recommended to initialize the widget once DOM has been fully loaded.
+> It is recommended to initialize the widget once DOM has been fully loaded.
 
 
 ```json
@@ -157,8 +156,7 @@ dsPaymentWidget
 
 When the makeCasualPayment widget returns a successful payment response in the `Then catch block` use the `externalPaymentIdentifier` and call [GET- Casual Payment Status](https://debitsuccess.stoplight.io/docs/debitsuccess-api/PaymentsAPI.v1.json/paths/~1casual~1creditcard~1%7BexternalPaymentIdentifier%7D/get) to retrieve the payment response on the server-side.
 
->
-We strongly recommend that GET- Casual Payment Status is called on the server-side. This will prevent any client-side response spoofing issues. The `externalPaymentIdentifier` should be store on the server-side and used to check for payment status.
+> We strongly recommend that GET- Casual Payment Status is called on the server-side. This will prevent any client-side response spoofing issues. The `externalPaymentIdentifier` should be store on the server-side and used to check for payment status.
 
 ```json
 {
