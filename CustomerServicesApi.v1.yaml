@@ -14511,7 +14511,9 @@ components:
           pattern: YYYY-MM-DD
         installment:
           type: number
-          description: Recurring schedule installment amount
+          description: |-
+            Recurring schedule installment amount
+            Note: By default the billing system will not process payments automatically which are above $3,000. If you expect to be processing payments for more than this please contact us.
         frequency:
           enum:
             - weekly
@@ -14522,7 +14524,7 @@ components:
             - quarterly
           type: string
           description: Recurring schedule installment frequency
-        sheduleDescription:
+        scheduleDescription:
           type: string
           description: Description of the recurring schedule
           maxLength: 50
