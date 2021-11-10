@@ -15125,7 +15125,9 @@ components:
           description: 'dueDate field must be in a date only format i.e., YYYY-MM-DD and is treated as local time.'
         amount:
           type: number
-          description: Amount to be paid for this schedule. Must be >= $1
+          description: |-
+            Amount to be paid for this schedule. Must be >= $1
+            Note: By default the billing system will not process payments automatically which are above $3,000. If you expect to be processing payments for more than this please contact us.
         scheduleDescription:
           type: string
           description: Description associated to this schedule
