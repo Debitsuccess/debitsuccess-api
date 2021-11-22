@@ -14729,7 +14729,14 @@ components:
     201CreateOneOffSchedule:
       type: object
       x-examples:
-        example-1:
+        example with commission 5.50 added to the original amount:
+          scheduleId: '12345678'
+          accountId: CWAUS999999
+          dueDate: '2020-01-31'
+          amount: 55.5
+          scheduleDescription: Recurring schedule Jan-Dec
+          externalScheduleId: T125810
+        example-2:
           scheduleId: string
           accountId: string
           dueDate: string
@@ -15166,6 +15173,17 @@ components:
       required:
         - dueDate
         - amount
+      x-examples:
+        example-1:
+          dueDate: string
+          amount: 0
+          scheduleDescription: string
+          externalScheduleId: string
+        example-2:
+          dueDate: string
+          amount: 0
+          scheduleDescription: string
+          externalScheduleId: string
     200PatchCustomer:
       type: object
       x-examples: {}
