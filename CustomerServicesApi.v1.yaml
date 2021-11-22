@@ -4807,6 +4807,15 @@ paths:
                 amount: 50
                 scheduleDescription: Recurring schedule Jan-Dec
                 externalScheduleId: T125810
+              examples:
+                example-1:
+                  value:
+                    scheduleId: string
+                    accountId: string
+                    dueDate: string
+                    amount: 0
+                    scheduleDescription: string
+                    externalScheduleId: string
         '400':
           description: 'Bad Request - Request failed due to validation errors, the response lists the field in the request that did not pass the validation. The client can directly show these errors to the end users.'
           headers:
@@ -14719,6 +14728,14 @@ components:
           description: Null if accountId is not provided
     201CreateOneOffSchedule:
       type: object
+      x-examples:
+        example-1:
+          scheduleId: string
+          accountId: string
+          dueDate: string
+          amount: 0
+          scheduleDescription: string
+          externalScheduleId: string
       properties:
         scheduleId:
           type: string
@@ -14728,6 +14745,7 @@ components:
           type: string
         amount:
           type: number
+          description: 'If the business account of the provided {accountId} is configured to pass the commission amount to their customer, then this field will be populated with original amount + commission amount'
         scheduleDescription:
           type: string
         externalScheduleId:
