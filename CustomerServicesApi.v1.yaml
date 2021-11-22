@@ -4775,6 +4775,8 @@ paths:
 
 
           > Note:  If a new schedule is created to start immediately but after the billing cut-off, then the customer will be billed the next working day.
+
+          > Note:  If the business account of the provided {accountId} is configured to pass the commission amount to their customer, then the amounnt provided in the request body will be processed to include the commission amount and the total value i.e. original amount + commission amount will be returned in the response.
         content:
           application/json:
             schema:
@@ -4784,6 +4786,13 @@ paths:
               amount: 50
               scheduleDescription: Maintenance charges FY20
               externalScheduleId: T125810
+            examples:
+              example-1:
+                value:
+                  dueDate: string
+                  amount: 0
+                  scheduleDescription: string
+                  externalScheduleId: string
       responses:
         '201':
           description: One-off schedule has been successfully created.
