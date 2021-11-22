@@ -14760,7 +14760,7 @@ components:
           type: string
         amount:
           type: number
-          description: 'If the business account of the provided {accountId} is configured to pass the commission amount to their customer, then this field will be populated with original amount + commission amount'
+          description: 'This field is normally populated with the original amount of the one-off schedule except if the business account is configured to pass the commission cost to their customers, then this field will be populated with original amount + commission amount'
         scheduleDescription:
           type: string
         externalScheduleId:
