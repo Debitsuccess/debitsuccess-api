@@ -4776,7 +4776,7 @@ paths:
 
           > Note:  If a new schedule is created to start immediately but after the billing cut-off, then the customer will be billed the next working day.
 
-          > Note:  If the business account of the provided {accountId} is configured to pass the commission amount to their customer, then the amount provided in the request body will be processed to include the commission amount and the total value i.e. original amount + commission amount will be returned in the response.
+          > Note:  If the business account of the provided {accountId} is configured to pass the commission amount to their customer, then the amount returned in the Response will include the commission amount i.e. original amount from request + commission amount 
         content:
           application/json:
             schema:
