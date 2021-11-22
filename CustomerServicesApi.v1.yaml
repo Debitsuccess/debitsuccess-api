@@ -4808,6 +4808,14 @@ paths:
                 scheduleDescription: Recurring schedule Jan-Dec
                 externalScheduleId: T125810
               examples:
+                example-amount includes additional 0.50 commission:
+                  value:
+                    scheduleId: '12345678'
+                    accountId: CWAUS999999
+                    dueDate: '2020-01-31'
+                    amount: 50.5
+                    scheduleDescription: Recurring schedule Jan-Dec
+                    externalScheduleId: T125810
                 example-1:
                   value:
                     scheduleId: string
@@ -4816,14 +4824,6 @@ paths:
                     amount: 0
                     scheduleDescription: string
                     externalScheduleId: string
-                example-amount with 0.50 commission added to the original amount from the request (i.e. 50.00):
-                  value:
-                    scheduleId: '12345678'
-                    accountId: CWAUS999999
-                    dueDate: '2020-01-31'
-                    amount: 50.5
-                    scheduleDescription: Recurring schedule Jan-Dec
-                    externalScheduleId: T125810
         '400':
           description: 'Bad Request - Request failed due to validation errors, the response lists the field in the request that did not pass the validation. The client can directly show these errors to the end users.'
           headers:
