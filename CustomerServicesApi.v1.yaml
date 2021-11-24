@@ -4982,9 +4982,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/422DeleteOneOffSchedule'
+                $ref: '#/components/schemas/422CreateOneOffSchedule'
               example:
-                message: Unable to process this request as the schedule is due for billing today. 
+                message: Unable to create one off schedule as the Business Account is configured to add a commission amount to the installment based on payment method. No payment method has been supplied.
         '429':
           description: Too Many Requests - Occurs when user has sent too many requests in a given amount of time.
           headers:
@@ -14860,6 +14860,11 @@ components:
         message:
           type: string
     422DeleteOneOffSchedule:
+      type: object
+      properties:
+        message:
+          type: string
+    422CreateOneOffSchedule:
       type: object
       properties:
         message:
