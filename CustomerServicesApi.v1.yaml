@@ -14876,6 +14876,11 @@ components:
       properties:
         message:
           type: string
+      x-examples:
+        example-1:
+          message: Unable to create one off schedule as the Business Account is configured to add a commission amount to the installment based on payment method. No payment method has been supplied.
+        example-2:
+          message: Unable to create one off schedule as the Business Account is configured to add a commission amount to the installment but the CommissionChargeType is configured incorrectly.
     200GetTermsAndConditions:
       type: object
       properties:
