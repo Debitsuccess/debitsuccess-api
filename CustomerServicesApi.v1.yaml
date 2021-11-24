@@ -4985,7 +4985,13 @@ paths:
                 $ref: '#/components/schemas/422CreateOneOffSchedule'
               example:
                 message: Unable to create one off schedule as the Business Account is configured to add a commission amount to the installment based on payment method. No payment method has been supplied.
-              examples: {}
+              examples:
+                example-1:
+                  value:
+                    message: string
+                example-2:
+                  value:
+                    message: string
         '429':
           description: Too Many Requests - Occurs when user has sent too many requests in a given amount of time.
           headers:
