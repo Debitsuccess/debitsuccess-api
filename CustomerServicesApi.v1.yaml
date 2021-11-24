@@ -4775,6 +4775,8 @@ paths:
 
 
           > Note:  If a new schedule is created to start immediately but after the billing cut-off, then the customer will be billed the next working day.
+
+          > Note:  If the business account is configured to pass the commission cost to their customers, then the amount returned in the Response will include the commission amount, i.e. original amount from request + commission amount. 
         content:
           application/json:
             schema:
@@ -4784,6 +4786,13 @@ paths:
               amount: 50
               scheduleDescription: Maintenance charges FY20
               externalScheduleId: T125810
+            examples:
+              example-1:
+                value:
+                  dueDate: string
+                  amount: 0
+                  scheduleDescription: string
+                  externalScheduleId: string
       responses:
         '201':
           description: One-off schedule has been successfully created.
@@ -4798,6 +4807,23 @@ paths:
                 amount: 50
                 scheduleDescription: Recurring schedule Jan-Dec
                 externalScheduleId: T125810
+              examples:
+                example-amount includes additional 0.50 commission:
+                  value:
+                    scheduleId: '12345678'
+                    accountId: CWAUS999999
+                    dueDate: '2020-01-31'
+                    amount: 50.5
+                    scheduleDescription: Recurring schedule Jan-Dec
+                    externalScheduleId: T125810
+                example-1:
+                  value:
+                    scheduleId: string
+                    accountId: string
+                    dueDate: string
+                    amount: 0
+                    scheduleDescription: string
+                    externalScheduleId: string
         '400':
           description: 'Bad Request - Request failed due to validation errors, the response lists the field in the request that did not pass the validation. The client can directly show these errors to the end users.'
           headers:
@@ -14710,6 +14736,21 @@ components:
           description: Null if accountId is not provided
     201CreateOneOffSchedule:
       type: object
+      x-examples:
+        example with commission 5.50 added to the original amount:
+          scheduleId: '12345678'
+          accountId: CWAUS999999
+          dueDate: '2020-01-31'
+          amount: 55.5
+          scheduleDescription: Recurring schedule Jan-Dec
+          externalScheduleId: T125810
+        example-2:
+          scheduleId: string
+          accountId: string
+          dueDate: string
+          amount: 0
+          scheduleDescription: string
+          externalScheduleId: string
       properties:
         scheduleId:
           type: string
@@ -14719,6 +14760,7 @@ components:
           type: string
         amount:
           type: number
+          description: 'This field is normally populated with the original amount of the one-off schedule except if the business account is configured to pass the commission cost to their customers, then this field will be populated with original amount + commission amount'
         scheduleDescription:
           type: string
         externalScheduleId:
@@ -15139,6 +15181,17 @@ components:
       required:
         - dueDate
         - amount
+      x-examples:
+        example-1:
+          dueDate: string
+          amount: 0
+          scheduleDescription: string
+          externalScheduleId: string
+        example-2:
+          dueDate: string
+          amount: 0
+          scheduleDescription: string
+          externalScheduleId: string
     200PatchCustomer:
       type: object
       x-examples: {}
