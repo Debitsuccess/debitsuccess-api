@@ -4940,7 +4940,7 @@ paths:
                   value:
                     errorCode: access_denied
                     message: New payment schedules cannot be created as the account is currently set to stop on payments.
-         '404':
+        '404':
           description: Not Found - Occurs when the resource provided is not found
           headers:
             X-Notification:
@@ -4984,7 +4984,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/422DeleteOneOffSchedule'
               example:
-                message: Unable to process this request as the schedule is due for billing today.
+                message: Unable to process this request as the schedule is due for billing today. 
         '429':
           description: Too Many Requests - Occurs when user has sent too many requests in a given amount of time.
           headers:
