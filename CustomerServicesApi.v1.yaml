@@ -12705,7 +12705,7 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-  '/accounts/{accountId}/transfers':
+  '/accounts/{accountId}/transfer':
     parameters:
       - schema:
           type: string
@@ -12802,7 +12802,7 @@ paths:
                   value:
                     errorCode: business_group_not_allowed
                     message: The business group associated with this account does not allow a transfer account request.
-      operationId: post-accounts-accountId-Transfers
+      operationId: post-accounts-accountId-Transfer
       description: |
         Transfers an active account from a business to another business within the same business group. Upon the successful transfer of an account, the original account will be closed and a new account will be created with the information inherited from the closed account.
 
