@@ -4940,6 +4940,58 @@ paths:
                   value:
                     errorCode: access_denied
                     message: New payment schedules cannot be created as the account is currently set to stop on payments.
+        '404':
+          description: Not Found - Occurs when the resource provided is not found
+          headers:
+            X-Notification:
+              description: This header will be included in all responses when there is important information about the API that will be valuable for all consumers. For example - Information such as system outage will be passed through this header.
+              required: true
+              schema:
+                enum:
+                  - 'Scheduled Api outage - 2017-01-01 22:00:00 to 2017-01-01 22:10:00'
+                type: string
+            X-RateLimit-Limit:
+              description: The maximum number of requests you're permitted to make per hour.
+              required: true
+              schema:
+                enum:
+                  - 60
+                type: integer
+            X-RateLimit-Remaining:
+              description: The number of requests remaining in the current rate limit window.
+              required: true
+              schema:
+                enum:
+                  - 10
+                type: integer
+            X-RateLimit-Reset:
+              description: The time at which the current rate limit window resets in UTC epoch seconds.
+              required: true
+              schema:
+                enum:
+                  - 1377013266
+                type: integer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404NotFound'
+              example:
+                message: The requested resource could not be found.
+        '422':
+          description: 422 - Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/422CreateOneOffSchedule'
+              example:
+                message: Unable to create one off schedule as the Business Account is configured to add a commission amount to the installment based on payment method. No payment method has been supplied.
+              examples:
+                example-1:
+                  value:
+                    message: Unable to create one off schedule as the Business Account is configured to add a commission amount to the installment based on payment method. No payment method has been supplied.
+                example-2:
+                  value:
+                    message: Unable to create one off schedule as the Business Account is configured to add a commission amount to the installment but the CommissionChargeType is configured incorrectly.
         '429':
           description: Too Many Requests - Occurs when user has sent too many requests in a given amount of time.
           headers:
@@ -14819,6 +14871,16 @@ components:
       properties:
         message:
           type: string
+    422CreateOneOffSchedule:
+      type: object
+      properties:
+        message:
+          type: string
+      x-examples:
+        example-1:
+          message: Unable to create one off schedule as the Business Account is configured to add a commission amount to the installment based on payment method. No payment method has been supplied.
+        example-2:
+          message: Unable to create one off schedule as the Business Account is configured to add a commission amount to the installment but the CommissionChargeType is configured incorrectly.
     200GetTermsAndConditions:
       type: object
       properties:
