@@ -12660,7 +12660,7 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-  '/accounts/{accountId}/transfer':
+  '/accounts/{accountId}/transfers':
     parameters:
       - schema:
           type: string
@@ -16547,6 +16547,11 @@ components:
         newAccountExternalId:
           type: string
           description: New external ID
+      x-examples:
+        example-1:
+          value:
+            newAccountId: DEA22345435
+            newAccountExternalId: DEA22345435
     400AccountTransferResponse:
       description: ''
       type: object
@@ -16593,6 +16598,23 @@ components:
           - field: newAccountExternalId
             message: newAccountExternalId is required.
       title: ''
+      x-examples:
+        example-1:
+          errorCode: string
+          message: string
+          errors:
+            - field: destBusinessAccountId
+              message: DestBusinessAccountId is required.
+            - field: destBusinessAccountId
+              message: DestBusinessAccountId is invalid.
+            - field: newAccountExternalId
+              message: NewAccountExternalId must not exceed 50 characters.
+            - field: newAccountExternalId
+              message: The newAccountExternalId is invalid.
+            - field: newAccountExternalId
+              message: The newAccountExternalId is not unique and has been used for an account previously. Please retry with a different newAccountExternalId.
+            - field: newAccountExternalId
+              message: newAccountExternalId is required.
     403AccountTransferResponse:
       description: ''
       type: object
@@ -16609,6 +16631,10 @@ components:
       example:
         errorCode: access_denied
         message: Unable to process this request as you do not have access to the account associated to this request.
+      x-examples:
+        example-1:
+          errorCode: access_denied
+          message: Unable to process this request as you do not have access to the account associated to this request.
     404AccountTransferResponse:
       description: ''
       type: object
@@ -16621,6 +16647,9 @@ components:
       example:
         message: The resource provided could not be found.
       title: ''
+      x-examples:
+        example-1:
+          message: The resource provided could not be found.
     422AccountTransferResonse:
       title: 422AccountTransferResonse
       type: object
