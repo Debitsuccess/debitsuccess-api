@@ -14970,10 +14970,10 @@ components:
                 description: Batch number of the transaction
               paymentAmount:
                 description: Amount of transaction
-                type: integer
+                type: number
               commissionAmount:
                 description: The amount of commission Debitsuccess charged on the payment.
-                type: integer
+                type: number
               paymentDateTime:
                 type: string
                 description: Date time in UTC when the transaction was made
