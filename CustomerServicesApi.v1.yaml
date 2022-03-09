@@ -1557,11 +1557,11 @@ paths:
                 active: true
                 penaltyFee:
                   amount: 10
-                  payer: Facility Pays
+                  payer: Facility
                 establishmentFee:
                   amount: 10
                   percent: 50
-                  payer: Customer Pays
+                  payer: Customer
                 commissionFee:
                   paymentType: Casual Credit Card Payments
                   commissionPercentage: 0
@@ -1569,7 +1569,7 @@ paths:
                   commissionChargeType: Percentage
                   minimumnimumTransactionCharge: 0
                   retainCommissionOnReversedTransaction: false
-                  commissionPayerType: Customer Pays
+                  commissionPayerType: Customer
                 supportedPaymentMethods:
                   - paymentMethodType: MasterCard
                   - paymentMethodType: Visa
@@ -13889,11 +13889,11 @@ components:
               name: The Hastings Golf Club Inc
             penaltyFee:
               amount: 10
-              payer: Customer Pays
+              payer: Customer
             establishmentFee:
               amount: 15
               percent: 0
-              payer: Customer Pays
+              payer: Customer
             CommissionFee:
               - paymentType: Casual Credit Card Payments
                 commissionPercentage: 0
@@ -13901,14 +13901,14 @@ components:
                 commissionChargeType: Percentage
                 minimumnimumTransactionCharge: 0
                 retainCommissionOnReversedTransaction: true
-                commissionPayerType: Customer Pays
+                commissionPayerType: Customer
               - paymentType: Casual Credit Other Payments
                 commissionPercentage: 0
                 commissionTransactionCharge: 5
                 commissionChargeType: Percentage
                 minimumnimumTransactionCharge: 0
                 retainCommissionOnReversedTransaction: false
-                commissionPayerType: Facility Pays
+                commissionPayerType: Facility
             supportedPaymentMethods:
               - paymentMethodType: Bank Account
               - paymentMethodType: American Express
@@ -13927,7 +13927,7 @@ components:
             establishmentFee:
               amount: 20
               percent: 50
-              payer: Customer Pays
+              payer: Customer
             CommissionFee:
               - paymentType: Casual Credit Card Payments
                 commissionPercentage: 0
@@ -13935,14 +13935,14 @@ components:
                 commissionChargeType: Percentage
                 minimumnimumTransactionCharge: 0
                 retainCommissionOnReversedTransaction: 0
-                commissionPayerType: Customer Pays
+                commissionPayerType: Customer
               - paymentType: Casual Credit Other Payments
                 commissionPercentage: 0
                 commissionTransactionCharge: 5
                 commissionChargeType: Percentage
                 minimumnimumTransactionCharge: 0
                 retainCommissionOnReversedTransaction: true
-                commissionPayerType: Facility Pays
+                commissionPayerType: Facility
             supportedPaymentMethods:
               - paymentMethodType: Bank Account
               - paymentMethodType: Visa
@@ -13960,7 +13960,7 @@ components:
             establishmentFee:
               amount: 10
               percent: 0
-              payer: Customer Pays
+              payer: Customer
             CommissionFee:
               - paymentType: Casual Credit Card Payments
                 commissionPercentage: 0
@@ -13968,14 +13968,14 @@ components:
                 commissionChargeType: Percentage
                 minimumnimumTransactionCharge: 0
                 retainCommissionOnReversedTransaction: 0
-                commissionPayerType: Customer Pays
+                commissionPayerType: Customer
               - paymentType: Casual Credit Other Payments
                 commissionPercentage: 0
                 commissionTransactionCharge: 5
                 commissionChargeType: Percentage
                 minimumnimumTransactionCharge: 0
                 retainCommissionOnReversedTransaction: false
-                commissionPayerType: Facility Pays
+                commissionPayerType: Facility
             supportedPaymentMethods:
               - paymentMethodType: Bank Account
               - paymentMethodType: Visa
@@ -14001,14 +14001,14 @@ components:
                 commissionChargeType: Percentage
                 minimumnimumTransactionCharge: 0
                 retainCommissionOnReversedTransaction: true
-                commissionPayerType: Customer Pays
+                commissionPayerType: Customer
               - paymentType: Casual Credit Other Payments
                 commissionPercentage: 0
                 commissionTransactionCharge: 5
                 commissionChargeType: Percentage
                 minimumnimumTransactionCharge: 0
                 retainCommissionOnReversedTransaction: false
-                commissionPayerType: Facility Pays
+                commissionPayerType: Facility
             supportedPaymentMethods:
               - paymentMethodType: Bank Account
               - paymentMethodType: Visa
@@ -14028,7 +14028,7 @@ components:
             establishmentFee:
               amount: 10
               percent: 0
-              payer: Customer Pays
+              payer: Customer
             CommissionFee:
               - paymentType: Casual Credit Card Payments
                 commissionPercentage: 0
@@ -14036,14 +14036,14 @@ components:
                 commissionChargeType: Percentage
                 minimumnimumTransactionCharge: 0
                 retainCommissionOnReversedTransaction: true
-                commissionPayerType: Customer Pays
+                commissionPayerType: Customer
               - paymentType: Casual Credit Other Payments
                 commissionPercentage: 0
                 commissionTransactionCharge: 5
                 commissionChargeType: Percentage
                 minimumnimumTransactionCharge: 0
                 retainCommissionOnReversedTransaction: false
-                commissionPayerType: Facility Pays
+                commissionPayerType: Facility
             supportedPaymentMethods:
               - paymentMethodType: Bank Account
               - paymentMethodType: Visa
@@ -14081,8 +14081,8 @@ components:
                     minLength: 1
                     description: |-
                       Penalty fee payer:  
-                      * Customer Pays
-                      * Facility Pays
+                      * Customer
+                      * Facility
                       * No Fee
               establishmentFee:
                 type: object
@@ -14097,8 +14097,8 @@ components:
                     type: string
                     description: |-
                       Establishment fee payer:  
-                      * Customer pays
-                      * Facility pays
+                      * Customer
+                      * Facility
                       * No Fee
               supportedPaymentMethods:
                 type: array
@@ -14166,8 +14166,8 @@ components:
                     commissionPayerType:
                       type: string
                       enum:
-                        - Customer Pays
-                        - Facility Pays
+                        - Customer
+                        - Facility
                       description: Defines who pays the commission.
         responseMetadata:
           type: object
@@ -16327,8 +16327,8 @@ components:
             payer:
               type: string
               enum:
-                - Facility Pays
-                - Customer Pays
+                - Facility
+                - Customer
                 - No Fee
               description: Defines who pays the penalty fee
         establishmentFee:
@@ -16345,7 +16345,7 @@ components:
               description: Defines who pays the establishment fee.
               enum:
                 - Client pays
-                - Facility pays
+                - Facility
                 - No establishment fee
         supportedPaymentMethods:
           type: array
@@ -16416,8 +16416,8 @@ components:
                 type: string
                 description: Defines who pays the commission.
                 enum:
-                  - Customer Pays
-                  - Facility Pays
+                  - Customer
+                  - Facility
     400PatchCustomer:
       type: object
       properties:
