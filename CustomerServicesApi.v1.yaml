@@ -14990,7 +14990,7 @@ components:
                 maxLength: 30
               paymentErrorCode:
                 type: string
-                description: Transaction payment method
+                description: Description of the [Payment Error Code](https://debitsuccess.stoplight.io/docs/debitsuccess-api/ZG9jOjg5Njk0NTE-reference#paymenterrorcode)
               paymentMethod:
                 type: string
                 description: Transaction payment method
