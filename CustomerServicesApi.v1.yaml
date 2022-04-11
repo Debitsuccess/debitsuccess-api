@@ -16241,7 +16241,7 @@ components:
                 type: number
                 description: Account one off payment outstanding amount.
               outstandingFeeAmount:
-                type: integer
+                type: number
                 description: Account fee outstanding amount.
               projectedFinishDate:
                 type: string
