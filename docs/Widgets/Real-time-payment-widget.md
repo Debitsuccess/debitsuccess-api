@@ -6,13 +6,13 @@ The Real Time Payment Widget allows customers to securely make real-time payment
 
 The default casual payment form:
 
-![](https://drive.google.com/uc?export=view&id=1tkN8CSBIXyYfwYgeQgmE_TxZNvspc6fj) 
+![](https://drive.google.com/uc?export=view&id=1tkN8CSBIXyYfwYgeQgmE_TxZNvspc6fj)
 
 ## Adding Real Time Payment Widget to a Web Page
 
 The following steps will walk you through collecting payment using the casual payment widget.
 
-### Step 1 - JavaScript library 
+### Step 1 - JavaScript library
 
 Add a link to the Debitsuccess javascript library on the page where the widget will be used, like:
 
@@ -20,13 +20,11 @@ Add a link to the Debitsuccess javascript library on the page where the widget w
 <script src="https://oc.debitsuccess.com/dspaymentwidget/dsRealTimePaymentWidget.js"></script>
 ```
 
-
 ### Step 2 - Initializing the Widget
 
-In JavaScript code, the widget can be initialized as follows. 
+In JavaScript code, the widget can be initialized as follows.
 
 > It is recommended to initialize the widget once DOM has been fully loaded.
-
 
 ```json
 var dsPaymentWidget;
@@ -41,11 +39,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
 `DsRealTimePaymentWidget` requires the following parameters when initialized.
 
-|  **Parameter**  |  **Required**  |  **Description**  | 
-|  --- |  --- |  --- | 
-|  _authToken_  |  | get this token from [Debitsuccess Identity Server](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/2-Authentication.md) using your  _client secret_  and  _client ID_  | 
-|  _businessAccountId_  |  | a unique identifier (string, Debitsuccess contract prefix) of the business customer belongs to | 
-|  _domain_  | Optional | describes the environment the widget will be used against, possible values:  **OC-Test** https://oc-test.debitsuccess.com  **OC-Production** https://oc.debitsuccess.com (default) |
+| **Parameter**       | **Required** | **Description**                                                                                                                                                                                 |
+| ------------------- | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| _authToken_         |              | get this token from [Debitsuccess Identity Server](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Introduction/2-Authentication.md) using your  _client secret_  and  _client ID_ |
+| _businessAccountId_ |              | a unique identifier (string, Debitsuccess contract prefix) of the business customer belongs to                                                                                                  |
+| _domain_            | Optional     | describes the environment the widget will be used against, possible values:  **OC-Test** <https://oc-test.debitsuccess.com>  **OC-Production** <https://oc.debitsuccess.com> (default)          |
 
 ### Step 3 - Initialize casual payments form
 
@@ -61,27 +59,27 @@ dsWidget.createCasualPaymentForm(casualPaymentOptions ,"payment-container", styl
 
 #### InitializeCasualPaymentForm
 
-In initialize `CasualPaymentForm(casualPaymentOptions,containerElementId, styles, labels, width)` 
+In initialize `CasualPaymentForm(casualPaymentOptions,containerElementId, styles, labels, width)`
 
 Where:
 
-- *casualpaymentoptions* - javascript object with populated with casual payment API attributes.
+- _casualpaymentoptions_ - javascript object with populated with casual payment API attributes.
 
-- *containerElementId* - id of the parent element for iframe with the form;
+- _containerElementId_ - id of the parent element for iframe with the form;
 
-- *styles* *(optional) - a string of custom CSS styles for the form;
+- _styles_ \*(optional) - a string of custom CSS styles for the form;
 
-- *labels* *(optional) - a JSON object with key-value pairs label id - label text;
+- _labels_ \*(optional) - a JSON object with key-value pairs label id - label text;
 
-- *width* *(optional) -  Maximum width of iframe in pixels, if it’s not provided default value is 350 px. Should be provided as an integer value
+- _width_ \*(optional) -  Maximum width of iframe in pixels, if it’s not provided default value is 350 px. Should be provided as an integer value
 
 #### Casual Payment Options
 
-Parameter | Required | Description
----------|----------|---------
- externalPaymentIdentifier | Required | A unique external payment identifier can later be used to retrieve the status of the payment ([Get - Casual Payment Status](https://debitsuccess.stoplight.io/docs/debitsuccess-api/PaymentsAPI.v1.json/paths/~1casual~1creditcard~1%7BexternalPaymentIdentifier%7D/get)). This identifier must be unique for every request. 
- paymentDescription | Optional | A free text field allows to store up to 40 characters.
- amount | required | Amount to be charged to the customer.
+| Parameter                 | Required | Description                                                                                                                                                                                                                                                                                                                                                                                  |
+| ------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| externalPaymentIdentifier | Required | A unique external payment identifier can later be used to retrieve the status of the payment ([Get - Casual Payment Status](https://debitsuccess.stoplight.io/docs/debitsuccess-api/PaymentsAPI.v1.json/paths/~1casual~1creditcard~1%7BexternalPaymentIdentifier%7D/get)). This identifier must be unique for every request. Alowable character are alphanumeric (a-z, A-Z, 0-9) and hyphen. |
+| paymentDescription        | Optional | A free text field allows to store up to 40 characters.                                                                                                                                                                                                                                                                                                                                       |
+| amount                    | required | Amount to be charged to the customer.                                                                                                                                                                                                                                                                                                                                                        |
 
 #### Form Style
 
@@ -99,6 +97,7 @@ For style customization, Debitsuccess accepts the following CSS properties:
 "height", "min-height", "max-height"
 
 ```
+
 When you create a form and want to apply custom styles, they should be provided as the second parameter in the string representation, like so:
 
 ```json
@@ -108,9 +107,11 @@ dsPaymentWidget.createCasualPaymentForm(
           ".form-control{border:1px solid green;background:red;position:absolute;} #card-number{background:green;padding1:10px;}", 
           "");
 ```
+
 #### Labels text replacement
 
 The labels with the following IDs can be replaced as follows:
+
 ```json
 "lbl-card-form-header",
 "lbl-card-holder-name",
@@ -120,6 +121,7 @@ The labels with the following IDs can be replaced as follows:
 "lbl-card-amount"
 "lbl-card-description"
 ```
+
 When you create a form and want to replace labels' text with the custom ones, the information should be provided in JSON representation in the third parameter. Where the key is a label id and the value of the text you want to display, like so:
 
 ```json
@@ -137,9 +139,10 @@ dsPaymentWidget.createCasualPaymentForm(
               "lbl-card-description": "Desc"                          
           });
 ```
+
 ### Step 4 - Process Casual Payment
 
-The widget provides the `MakeCasualPayment` to process casual payments for a business. This method returns a promise, which must be handled by the client. 
+The widget provides the `MakeCasualPayment` to process casual payments for a business. This method returns a promise, which must be handled by the client.
 
 ```json
 dsPaymentWidget
@@ -152,9 +155,10 @@ dsPaymentWidget
 	// Show errors returned from server to user.
    });
 ```
+
 ### Step 5 - Retrieve Payment Status
 
-When the makeCasualPayment widget returns a successful payment response in the `Then catch block` use the `externalPaymentIdentifier` and call [GET- Casual Payment Status](https://debitsuccess.stoplight.io/docs/debitsuccess-api/PaymentsAPI.v1.json/paths/~1casual~1creditcard~1%7BexternalPaymentIdentifier%7D/get) to retrieve the payment response on the server-side.
+When the makeCasualPayment widget returns a successful payment response in the `Then catch block` use the `externalPaymentIdentifier` and call [GET- Casual Payment Status](https://debitsuccess.stoplight.io/docs/debitsuccess-api/PaymentsAPI.v1.json/paths/\~1casual\~1creditcard\~1%7BexternalPaymentIdentifier%7D/get) to retrieve the payment response on the server-side.
 
 > We strongly recommend that GET- Casual Payment Status is called on the server-side. This will prevent any client-side response spoofing issues. The `externalPaymentIdentifier` should be store on the server-side and used to check for payment status.
 
@@ -165,20 +169,21 @@ When the makeCasualPayment widget returns a successful payment response in the `
 }
 ```
 
-Status Code | Description | 
----------|----------|
- authorized | Successful Transaction | 
- declined | Transaction declined | 
- declined_insufficient_funds | Insufficient funds is an issue that occurs when an account does not have adequate capital to satisfy a payment demand | 
- declined_card_expired | Payment has been declined due to an expired card.
-declined_refer_to_card_issuer |Refer to Issuer. The customer's bank (Card Issuer) has indicated there is a problem with the card number. The customer should contact their bank or the customer should use an alternate card. |
- processing |Payment has been accepted for processing. But the processing has not been completed. The request might or might not eventually be acted upon, as it might be disallowed when processing actually takes place. In this scenario, you must poll the Get Casual Payment status endpoint (Step 5 - Retrieve Payment Status) to retrieve the payment status code. It is recommend to retry retrieving the status code 5 times within a 2-minute duration. If the status code still is processing after retrying, please contact Debitsuccess support. |
+| Status Code                   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| authorized                    | Successful Transaction                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| declined                      | Transaction declined                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| declined_insufficient_funds   | Insufficient funds is an issue that occurs when an account does not have adequate capital to satisfy a payment demand                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| declined_card_expired         | Payment has been declined due to an expired card.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| declined_refer_to_card_issuer | Refer to Issuer. The customer's bank (Card Issuer) has indicated there is a problem with the card number. The customer should contact their bank or the customer should use an alternate card.                                                                                                                                                                                                                                                                                                                                                   |
+| processing                    | Payment has been accepted for processing. But the processing has not been completed. The request might or might not eventually be acted upon, as it might be disallowed when processing actually takes place. In this scenario, you must poll the Get Casual Payment status endpoint (Step 5 - Retrieve Payment Status) to retrieve the payment status code. It is recommend to retry retrieving the status code 5 times within a 2-minute duration. If the status code still is processing after retrying, please contact Debitsuccess support. |
 
 ## Response Simulation
 
 NZ/AU: The following cards can be used to generate different types of status for testing purpose.
 
 **authorised**
+
 - Card Type: Visa
 
 - Card Number: 4444333322221111
@@ -188,6 +193,7 @@ NZ/AU: The following cards can be used to generate different types of status for
 - Card Holder: AUTHORISED
 
 **declined**
+
 - Card Type: Visa
 
 - Card Number: 4444333322221111
@@ -197,6 +203,7 @@ NZ/AU: The following cards can be used to generate different types of status for
 - Card Holder: REFUSED
 
 **declined_insufficient_funds**
+
 - Card Type: AmericanExpress
 
 - Card Number: 343434343434343
@@ -205,7 +212,7 @@ NZ/AU: The following cards can be used to generate different types of status for
 
 - Card Holder: REFUSED51
 
-** declined_refer_to_card_issuer**
+\*\* declined_refer_to_card_issuer\*\*
 
 - Card Type: AmericanExpress
 
@@ -216,23 +223,29 @@ NZ/AU: The following cards can be used to generate different types of status for
 - Card Holder: REFUSED5
 
 ## Handling Error Message
-The widget does not perform any client-side validation. Validation occurs on the server-side when the makeCasualPayment function is called. The widget returns error messages in the catch block. The integrator must review all the error messages returned and handle them accordingly. 
+
+The widget does not perform any client-side validation. Validation occurs on the server-side when the makeCasualPayment function is called. The widget returns error messages in the catch block. The integrator must review all the error messages returned and handle them accordingly.
 
 ### HTTP 201
+
 Successful Transaction
+
 ```json
 {
   "status": "authorised",
   "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
 }
 ```
+
 Transaction declined
+
 ```json
 {
   "status": "declined",
   "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc",
 }
 ```
+
 Insufficient funds is an issue that occurs when an account does not have adequate capital to satisfy a payment demand
 
 ```json
@@ -241,6 +254,7 @@ Insufficient funds is an issue that occurs when an account does not have adequat
   "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc",
 }
 ```
+
 Payment has been declined due to an expired card
 
 ```json
@@ -249,13 +263,16 @@ Payment has been declined due to an expired card
   "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
 }
 ```
+
 Do not honour means that the customer's card issuing bank has declined the transaction. This is the most common message provided by card-issuing banks when a transaction fails their authorisation process. Ask your customer to contact their bank to check there are no issues with their card.
+
 ```json
 {
   "status": "declined_do_not_honour", 
   "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
 }
 ```
+
 Refer to Issuer. The customer's bank (Card Issuer) has indicated there is a problem with the card number. The customer should contact their bank or the customer should use an alternate card.
 
 ```json
@@ -264,6 +281,7 @@ Refer to Issuer. The customer's bank (Card Issuer) has indicated there is a prob
   "externalPaymentIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
 }
 ```
+
 ### HTTP 202
 
 Payment has been accepted for processing. But the processing has not been completed. The request might or might not eventually be acted upon, as it might be disallowed when processing actually takes place. In this scenario, the client must poll the URL returned in the "location" header of the response to retrieve the payment status code. The client must retry retrieving the status code 5 times within a 2-minute duration. If the status code still is processing after retrying. The client should contact Debitsuccess support.
@@ -274,8 +292,11 @@ Payment has been accepted for processing. But the processing has not been comple
   "externalIdentifier": "ABC-b5645c56-943f-4562-ab2c-9aedf3c0b1dc"
 }
 ```
+
 ### HTTP 403
+
 Occurs when you don't have access to the endpoint.
+
 ```json
 {
     "errorCode": "required_claims",   
@@ -287,13 +308,16 @@ Occurs when you don't have access to the endpoint.
     ]
 }
 ```
+
 Occurs when the identity server-client does not have access to the business Id provided in the request
+
 ```json
 {
   "errorCode": "business_permission",   
   "message": "Unable to process this request due to insufficient business permission."   
 }
 ```
+
 ### HTTP 422- Unprocessable Entity
 
 ```json
@@ -322,7 +346,9 @@ Occurs when the identity server-client does not have access to the business Id p
   "message": "The selected payment method is not supported by this business."
 }
 ```
+
 ### HTTP 400- Validation errors
+
 ```json
 {
   "field": "CardHolderName", 
@@ -391,6 +417,7 @@ Occurs when the identity server-client does not have access to the business Id p
 ```
 
 ## Related Articles
+
 - [Data for Test Environment](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/989890688/Data+for+Test+Environment)
 
 - [Create customer accounts for testing](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/1549369452/Create+customer+accounts+for+testing)
