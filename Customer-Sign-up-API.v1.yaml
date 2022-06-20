@@ -151,19 +151,52 @@ paths:
 components:
   schemas:
     AccountTemplate:
-      required:
-        - benefits
-        - businessId
-        - ddrTemplate
-        - defaultFrequency
-        - description
-        - firstPaymentDateMin
-        - installment
-        - isTerm
-        - name
-        - term
-        - termType
       type: object
+      example:
+        name: 1 month membership $10
+        paymentOption: '1'
+        term: '1'
+        termType: M
+        isTerm: false
+        accountCode: Sale 3209
+        totalAmount: 10
+        overrideEstFee: false
+        ddrTemplate: '10.00'
+        businessId: TST4
+        isCustomFrequency: false
+        installment: 10
+        allowableFrequencies: 'WK,FN,MN'
+        defaultFrequency: WK
+        billingFee: 10
+        additionalOneOffPayment: 0
+        joiningFeeIsFirstInstalment: false
+        contractStartDate: string
+        firstPaymentDateMin: 0
+        benefits: benefit
+        description: Account template for 2017.1 sales
+        specialConditions: specialConditions
+        templateEndDate: 12/12/2018
+        promoCode: Promocode
+        isProRata: false
+        AllowMinors: false
+        externalAccountReferenceNo: eba09c3c-3f67-11e8-b467-0ed5f89f718b
+        customerDetails:
+          firstName: John
+          lastName: Doe
+          dob: '1991-12-19'
+          gender: 1
+          driversLicenseOrMedicareNumber: SD9999
+          streetAddress: 5 The warehouse road
+          suburb: NorthCote
+          postcode: '5685'
+          city: Auckland
+          state: Auck
+          email: John.Doe@gmail.com
+          phoneHome: 09-1111111
+          phoneWork: '094213422'
+          phoneMobile: '021324223'
+          phoneEmergency: '233341221'
+          emergencyContactName: John Doe
       properties:
         name:
           type: string
@@ -241,7 +274,9 @@ components:
           description: 'The date in this field will be treated as the date of the first payment, establishment fee will be taken if applicable.'
         firstPaymentDateMin:
           type: number
-          description: The Days until first instalment and it reflects the First payment date ContractStartDate = Current Date + FirstPaymentDateMin. If customer is allowed to choose start date and frequency (isCustomFrequency = true) then the date may not be before Current Date + FirstPaymentDateMin.
+          description: |-
+            The Days until first instalment and it reflects the First payment date ContractStartDate = Current Date + FirstPaymentDateMin. If customer is allowed to choose start date and frequency (isCustomFrequency = true) then the date may not be before Current Date + FirstPaymentDateMin.
+            Note: ContractStartDate overrides FirstPaymentDateMin if both fields are supplied.
           example: 1
         benefits:
           type: string
@@ -276,51 +311,17 @@ components:
           example: eba09c3c-3f67-11e8-b467-0ed5f89f718b
         customerDetails:
           $ref: '#/components/schemas/CustomerDetails'
-      example:
-        name: 1 month membership $10
-        paymentOption: '1'
-        term: '1'
-        termType: M
-        isTerm: false
-        accountCode: Sale 3209
-        totalAmount: 10
-        overrideEstFee: false
-        ddrTemplate: '10.00'
-        businessId: TST4
-        isCustomFrequency: false
-        installment: 10
-        allowableFrequencies: 'WK,FN,MN'
-        defaultFrequency: WK
-        billingFee: 10
-        additionalOneOffPayment: 0
-        joiningFeeIsFirstInstalment: false
-        contractStartDate: string
-        firstPaymentDateMin: 0
-        benefits: benefit
-        description: Account template for 2017.1 sales
-        specialConditions: specialConditions
-        templateEndDate: 12/12/2018
-        promoCode: Promocode
-        isProRata: false
-        AllowMinors: false
-        externalAccountReferenceNo: eba09c3c-3f67-11e8-b467-0ed5f89f718b
-        customerDetails:
-          firstName: John
-          lastName: Doe
-          dob: '1991-12-19'
-          gender: 1
-          driversLicenseOrMedicareNumber: SD9999
-          streetAddress: 5 The warehouse road
-          suburb: NorthCote
-          postcode: '5685'
-          city: Auckland
-          state: Auck
-          email: John.Doe@gmail.com
-          phoneHome: 09-1111111
-          phoneWork: '094213422'
-          phoneMobile: '021324223'
-          phoneEmergency: '233341221'
-          emergencyContactName: John Doe
+      required:
+        - name
+        - term
+        - termType
+        - isTerm
+        - ddrTemplate
+        - businessId
+        - installment
+        - defaultFrequency
+        - benefits
+        - description
     CustomerDetails:
       required:
         - dob
