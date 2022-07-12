@@ -332,7 +332,7 @@ components:
         accountCode: Sale 3209
         totalAmount: 10
         overrideEstFee: false
-        ddrTemplate: '10.00'
+        ddrTemplate: '8afc3d5a-e647-402d-89de-7ad9c99529d9'
         businessId: TST4
         isCustomFrequency: false
         installment: 10
