@@ -1527,13 +1527,13 @@ paths:
         - BusinessAccounts
       summary: Get Business Account
       description: |
-       Retrieves a specific business account(FacilityAccount) based on the businessAccount ID provided.
+        Retrieves a specific business account(FacilityAccount) based on the businessAccount ID provided.
 
-       > **Note** : The value returned in commission percentage depends on the CommissionPayerType. 
-       >* When the facility is paying commission, CommissionPayerType = Facility the percentage returned is deducted from the transaction amount.
-       >* For example, when commissionChargeType = Percentage and commissionPercentage = 3%, for a $100 payment, Debitsucess deducted $3 from the payout to the business (or invoiced separately depending on your configuration).
-       >* When the customer is paying commission, CommissionPayerType = Customer then the percentage returned is added to the transaction amount.
-       >* For example, when commissionChargeType = Percentage and commissionPercentage = 3%, for a $100 payment request, Debitsuccess debits $103 from the customer and settles $100 to the business.
+        > **Note** : The value returned in commission percentage depends on the CommissionPayerType. 
+        >* When the facility is paying commission, CommissionPayerType = Facility the percentage returned is deducted from the transaction amount.
+        >* For example, when commissionChargeType = Percentage and commissionPercentage = 3%, for a $100 payment, Debitsucess deducted $3 from the payout to the business (or invoiced separately depending on your configuration).
+        >* When the customer is paying commission, CommissionPayerType = Customer then the percentage returned is added to the transaction amount.
+        >* For example, when commissionChargeType = Percentage and commissionPercentage = 3%, for a $100 payment request, Debitsuccess debits $103 from the customer and settles $100 to the business.
       operationsID: 5d9fd01f7ae4e8d58728be50
       parameters:
         - name: businessAccountId
@@ -14990,7 +14990,7 @@ components:
                 maxLength: 30
               paymentErrorCode:
                 type: string
-                description: Description of the [Payment Error Code](https://debitsuccess.stoplight.io/docs/debitsuccess-api/ZG9jOjg5Njk0NTE-reference#paymenterrorcode)
+                description: 'Description of the [Payment Error Code](https://debitsuccess.stoplight.io/docs/debitsuccess-api/ZG9jOjg5Njk0NTE-reference#paymenterrorcode)'
               paymentMethod:
                 type: string
                 description: Transaction payment method
@@ -17590,6 +17590,30 @@ components:
         message:
           type: string
       example: null
+    200GetSurchargeConfigurations:
+      type: array
+      x-examples:
+        example-1:
+          - paymentTypeDescription: CreditCard
+            paymentType: CC
+            maxSurchargePercentage: 2.95
+            maxSurchargeAmount: 10
+          - paymentTypeDescription: CreditCardOther
+            paymentType: CO
+            maxSurchargePercentage: 3.95
+            maxSurchargeAmount: 100
+      items:
+        type: object
+        properties:
+          paymentTypeDescription:
+            type: string
+          paymentType:
+            type: string
+          maxSurchargePercentage:
+            type: number
+          maxSurchargeAmount:
+            type: integer
+      description: A new endpoint GetSurchargeConfiguration to return the maxSurchargePercentage and maxSurchargeAmount for a facility account(grouped by Paymenttype)
   securitySchemes:
     apiKeyHeader:
       type: apiKey
