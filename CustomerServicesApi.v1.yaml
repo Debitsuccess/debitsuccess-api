@@ -1705,6 +1705,42 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
+    get:
+      tags:
+       -SurchargeConfigurations
+      summary: Get Surcharge Configurations
+      description: |
+       Returns the maxSurchargePercentage and maxSurchargeAmount for a facility account(grouped by Paymenttype)
+      parameters:
+        -name: businessAccountId
+        in: path
+        description: Contract Prefix associated to the business account to be extracted
+        required: True
+        schema:
+          enum:
+            -DSFit1
+          type: string
+      responses:
+        '200':
+          description: |
+          Successful response returned by the business account.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/200GetSurchargeConfigurations'
+            example:
+             paymentTypeDescription: Credit card
+             paymentType: CC
+             maxSurchargePercentage: 3.95
+             maxSurchargeAmount: 100
+        '404':
+          description: Not Found - Occurs when the resource provided is not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/404NotFound'
+              example:
+                message: The requested resource could not be found.
   /accounts:
     post:
       tags:
@@ -17605,14 +17641,18 @@ components:
       items:
         type: object
         properties:
-          paymentTypeDescription:
+          paymentTypeDescription: 
             type: string
+            description: Method used for payment, for example, cash or card
           paymentType:
             type: string
+            description: Type of card used
           maxSurchargePercentage:
             type: number
+            decsription: Maximum Surcharge percentage the business acoount can implement
           maxSurchargeAmount:
             type: integer
+            description: Maxium Surcharge amountthe business account can implement
       description: A new endpoint GetSurchargeConfiguration to return the maxSurchargePercentage and maxSurchargeAmount for a facility account(grouped by Paymenttype)
   securitySchemes:
     apiKeyHeader:
