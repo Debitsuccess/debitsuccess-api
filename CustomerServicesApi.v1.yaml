@@ -1705,6 +1705,94 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
+  /businessAccounts/DSFit1/SurchargeConfigurations:
+    get:
+      tags:
+        - BusinessAccounts
+      summary: Get Surcharge Configurations
+      description: |
+        Return the maxSurchargePercentage and maxSurchargeAmount for a facility account(grouped by Paymenttype)
+      operationsID: 5d9fd01f7ae4e8d58728be50
+      parameters:
+        - name: businessAccountId
+          in: path
+          description: Contract Prefix associated to the business account to be extracted
+          required: true
+          schema:
+            enum:
+              - DSFit1
+            type: string
+        - name: Authorization
+          in: header
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: |
+            Successful response with the business account (Facility Account) based on the businessAccount ID provided. 
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  paymentTypeDescription:
+                    type: string
+                  paymentType:
+                    type: string
+                  maxSurchargePercentage:
+                    type: number
+                  maxSurchargeAmount:
+                    type: integer
+                x-examples:
+                  example-1:
+                    paymentTypeDescription: CreditCard
+                    paymentType: CC
+                    maxSurchargePercentage: 2.95
+                    maxSurchargeAmount: 10
+              example:
+                businessAccountId: DSFit1
+                name: Northshore - Debitsuccess 24/7 Fitness
+                active: true
+                penaltyFee:
+                  amount: 10
+                  payer: Facility
+                establishmentFee:
+                  amount: 10
+                  percent: 50
+                  payer: Customer
+                commissionFee:
+                  paymentType: Casual Credit Card Payments
+                  commissionPercentage: 0
+                  commissionTransactionCharge: 5
+                  commissionChargeType: Percentage
+                  minimumnimumTransactionCharge: 0
+                  retainCommissionOnReversedTransaction: false
+                  commissionPayerType: Customer
+                supportedPaymentMethods:
+                  - paymentMethodType: MasterCard
+                  - paymentMethodType: Visa
+                  - paymentMethodType: BankAccount
+                business:
+                  businessId: '3333333'
+                  name: 24/7 fitness
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                x-examples:
+                  example-1:
+                    message: string
+        '':
+          description: Successful response with the business account (Facility Account) based on the businessAccount ID provided.
+      x-internal: true
+    parameters: []
   /accounts:
     post:
       tags:
