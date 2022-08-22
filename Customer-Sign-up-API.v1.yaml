@@ -332,7 +332,7 @@ components:
         accountCode: Sale 3209
         totalAmount: 10
         overrideEstFee: false
-        ddrTemplate: '8afc3d5a-e647-402d-89de-7ad9c99529d9'
+        ddrTemplate: 8afc3d5a-e647-402d-89de-7ad9c99529d9
         businessId: TST4
         isCustomFrequency: false
         installment: 10
@@ -415,16 +415,6 @@ components:
             phoneEmergency: '233341221'
             emergencyContactName: John Doe
     CustomerDetails:
-      required:
-        - dob
-        - email
-        - firstName
-        - gender
-        - lastName
-        - postcode
-        - state
-        - streetAddress
-        - suburb
       type: object
       properties:
         firstName:
@@ -461,6 +451,7 @@ components:
           example: '5685'
         city:
           type: string
+          description: Optional for Australia
           example: Auckland
         state:
           maximum: 4
@@ -471,15 +462,15 @@ components:
           example: John.Doe@gmail.com
         phoneHome:
           type: string
-          description: 'One of phoneHome, phoneWork, phoneMobile , phoneEmergency is required.'
+          description: 'One of phoneHome, phoneWork, phoneMobile , phoneEmergency is required. Note that for New Zealand phone prefix must be from 03/04/06/07/09 '
           example: 09-1111111
         phoneWork:
           type: string
-          description: 'One of phoneHome, phoneWork, phoneMobile , phoneEmergency is required.'
+          description: 'One of phoneHome, phoneWork, phoneMobile , phoneEmergency is required. Note that for New Zealand phone prefix must be from 03/04/06/07/09'
           example: '094213422'
         phoneMobile:
           type: string
-          description: 'One of phoneHome, phoneWork, phoneMobile , phoneEmergency is required.'
+          description: 'One of phoneHome, phoneWork, phoneMobile , phoneEmergency is required. Note that for New Zealand mobile prefix must be from 020/021/022/025/026/027/028/029'
           example: '021324223'
         phoneEmergency:
           type: string
@@ -487,7 +478,21 @@ components:
           example: '233341221'
         emergencyContactName:
           type: string
+          description: 'Optional for Australia'
           example: John Doe
+      required:
+        - firstName
+        - lastName
+        - dob
+        - gender
+        - streetAddress
+        - suburb
+        - postcode
+        - city
+        - state
+        - email
+        - phoneEmergency
+        - emergencyContactName
     inline_response_200:
       type: object
       properties:
