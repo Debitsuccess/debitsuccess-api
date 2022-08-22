@@ -8,7 +8,7 @@ info:
 
     ## Online Management Gateway API
     **Test Environment**
-    https://oc-test.debitsuccess.com/DirectEntry/api/v1.0/
+    https://oc-sbox.debitsuccess.com/DirectEntry/api/v1.0/
 
     **Live Environment**
     https://oc.debitsuccess.com/DirectEntry/api/v1.0/
@@ -17,7 +17,7 @@ info:
     Online management gateway web application can be launched by using the below link and appending the account template ID at the end of the link. 
 
     **Test Envrionment**
-    https://oc-test.debitsuccess.com/DirectEntry/DirectDebitRequest/Form?templateid={accountTemplateId}
+    https://oc-sbox.debitsuccess.com/DirectEntry/DirectDebitRequest/Form?templateid={accountTemplateId}
 
     **Live Envrionment**
     https://oc.debitsuccess.com/DirectEntry/DirectDebitRequest/Form?templateid={accountTemplateId}
@@ -34,7 +34,7 @@ info:
     email: TestAPI.Support@debitsuccess.com
   version: v1.0
 servers:
-  - url: 'https://oc-test.debitsuccess.com/DirectEntry/api/v1.0'
+  - url: 'https://oc-sbox.debitsuccess.com/DirectEntry/api/v1.0'
 tags:
   - name: Account Template
 paths:

@@ -6,7 +6,7 @@ info:
     The Customer Services API has end points that allows you to manage customer details, payment schedules, account information, view payment history, and much more.
 
     ## Environments
-    **Test Environment**    https://oc-test.debitsuccess.com/CustomerServices/v1.0
+    **Test Environment**    https://oc-sbox.debitsuccess.com/CustomerServices/v1.0
 
     **Live Environment**    https://oc.debitsuccess.com/CustomerServices/v1.0
 
@@ -40,7 +40,7 @@ info:
     name: Debitsuccess Developer Documentation
   version: v1.0
 servers:
-  - url: 'https://oc-test.debitsuccess.com/CustomerServices/v1.0'
+  - url: 'https://oc-sbox.debitsuccess.com/CustomerServices/v1.0'
 tags:
   - name: Accounts
   - name: Account Transfer
