@@ -1734,7 +1734,7 @@ paths:
             Successful response with the business account (Facility Account) based on the businessAccount ID provided. 
           content:
             application/json:
-              schema:
+              schema: 
                 type: object
                 properties:
                   paymentMethodDescription:
