@@ -1737,9 +1737,9 @@ paths:
               schema:
                 type: object
                 properties:
-                  paymentTypeDescription:
+                  paymentMethodDescription:
                     type: string
-                  paymentType:
+                  paymentMethod:
                     type: string
                   maxSurchargePercentage:
                     type: number
@@ -1747,8 +1747,8 @@ paths:
                     type: integer
                 x-examples:
                   example-1:
-                    paymentTypeDescription: CreditCard
-                    paymentType: CC
+                    paymentMethodDescription: CreditCard
+                    paymentMethod: CC
                     maxSurchargePercentage: 2.95
                     maxSurchargeAmount: 10
               example:
