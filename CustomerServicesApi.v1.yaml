@@ -1751,32 +1751,6 @@ paths:
                     paymentMethod: CC
                     maxSurchargePercentage: 2.95
                     maxSurchargeAmount: 10
-              example:
-                businessAccountId: DSFit1
-                name: Northshore - Debitsuccess 24/7 Fitness
-                active: true
-                penaltyFee:
-                  amount: 10
-                  payer: Facility
-                establishmentFee:
-                  amount: 10
-                  percent: 50
-                  payer: Customer
-                commissionFee:
-                  paymentType: Casual Credit Card Payments
-                  commissionPercentage: 0
-                  commissionTransactionCharge: 5
-                  commissionChargeType: Percentage
-                  minimumnimumTransactionCharge: 0
-                  retainCommissionOnReversedTransaction: false
-                  commissionPayerType: Customer
-                supportedPaymentMethods:
-                  - paymentMethodType: MasterCard
-                  - paymentMethodType: Visa
-                  - paymentMethodType: BankAccount
-                business:
-                  businessId: '3333333'
-                  name: 24/7 fitness
         '404':
           description: Not Found
           content:
@@ -1789,9 +1763,6 @@ paths:
                 x-examples:
                   example-1:
                     message: string
-        '':
-          description: Successful response with the business account (Facility Account) based on the businessAccount ID provided.
-      x-internal: true
     parameters: []
   /accounts:
     post:
