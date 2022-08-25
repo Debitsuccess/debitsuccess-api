@@ -1734,23 +1734,27 @@ paths:
             Successful response with the business account (Facility Account) based on the businessAccount ID provided. 
           content:
             application/json:
-              schema: 
+              schema:
                 type: object
-                properties:
-                  paymentMethodDescription:
-                    type: string
-                  paymentMethod:
-                    type: string
-                  maxSurchargePercentage:
-                    type: number
-                  maxSurchargeAmount:
-                    type: integer
                 x-examples:
                   example-1:
                     paymentMethodDescription: CreditCard
                     paymentMethod: CC
                     maxSurchargePercentage: 2.95
                     maxSurchargeAmount: 10
+                properties:
+                  paymentMethodDescription:
+                    type: string
+                    description: 'Decsription of the payment method done for the transcation. For example Credit card, Card other etc.'
+                  paymentMethod:
+                    type: string
+                    description: Transaction payment method
+                  maxSurchargePercentage:
+                    type: number
+                    description: 'This is the % surcharge that will be applied to a payment using this payment method. It is possible to set different percentages depending on the type of payment (e.g. batch payment vs casual payment), but generally all payment types will have the same surcharge percentage'
+                  maxSurchargeAmount:
+                    type: integer
+                    description: This is the maximum surcharge that will be charged to a customer irrespective of the amount of the payment and the surcharge percentage
         '404':
           description: Not Found
           content:
