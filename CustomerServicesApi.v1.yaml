@@ -1755,8 +1755,8 @@ paths:
                   maxSurchargeAmount:
                     type: integer
                     description: This is the maximum surcharge that will be charged to a customer irrespective of the amount of the payment and the surcharge percentage
-        '404':
-          description: Not Found
+        '422':
+          description: Unprocessable Entity
           content:
             application/json:
               schema:
@@ -1764,9 +1764,6 @@ paths:
                 properties:
                   message:
                     type: string
-                x-examples:
-                  example-1:
-                    message: string
     parameters: []
   /accounts:
     post:
