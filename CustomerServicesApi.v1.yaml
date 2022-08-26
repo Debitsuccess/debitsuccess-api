@@ -1764,6 +1764,10 @@ paths:
                 properties:
                   message:
                     type: string
+              examples:
+                example-1:
+                  value:
+                    message: Invalid payment method
     parameters: []
   /accounts:
     post:
