@@ -1755,8 +1755,32 @@ paths:
                   maxSurchargeAmount:
                     type: integer
                     description: This is the maximum surcharge that will be charged to a customer irrespective of the amount of the payment and the surcharge percentage
+        '401':
+          description: Unauthorized - Occurs when the authorization token provided is either expired or invalid.
+        '403':
+          description: Forbidden - Occurs when the client does not have sufficient claims to access this endpoint. Or when the identity server client does not have access to the business this request is being made for.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                  message:
+                    type: string
         '422':
-          description: Unprocessable Entity
+          description: Unprocessable Entity - Occurs when the client application or the facility account is not configured appropriately for payment
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: string
+                  message:
+                    type: string
+        '500':
+          description: Internal Server Error
           content:
             application/json:
               schema:
@@ -1764,10 +1788,6 @@ paths:
                 properties:
                   message:
                     type: string
-              examples:
-                example-1:
-                  value:
-                    message: Invalid payment method
     parameters: []
   /accounts:
     post:
