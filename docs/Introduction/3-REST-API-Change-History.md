@@ -1,21 +1,11 @@
 # Change Log
 
-## Upcoming APIs and Features
-Debitsuccess is always improving how we deliver our service. As part of delivering updated features, we may make some changes that impact how some of our existing APIs return data.
-
-<!-- theme: success -->
-
-> Please note that these features are in our roadmap for the next three months but we do not have a definite ETA.
-
-* New REST API to retrieve the surcharge amount for real-time payment for accounts that belong to facilities that support surcharge model.
-* Webhook notifications for the Suspension Schedule events will be available soon. 
-* Enhancement to the [Real Time Payment Widget](https://debitsuccess.stoplight.io/docs/debitsuccess-api/docs/Widgets/Real-time-payment-widget.md) to support account payments.
-* Enhancement to the [close account](https://debitsuccess.stoplight.io/docs/debitsuccess-api/b3A6ODQ0Nzk0MA-close-account) endpoint with additional cancellation options.
-* ~~New customer services API endpoint to create, get, and update guarantor details will soon be available.~~
-* ~~Expose commisson fee in GET Business Account and Payment History endpoints.~~
-
+All notable changes to Debitsuccess REST APIs are documented below.
 
 *****
+## Sept 6, 2022
+Implemented a new endpoint i.e., [GET Surcharge Configurations](https://debitsuccess.stoplight.io/docs/debitsuccess-api/a35250ea5005c-get-surcharge-configurations) which returns surcharge percentage and amount for a facility account.
+
 ## Sept 21, 2021
 GET [Business Account(s)](https://debitsuccess.stoplight.io/docs/debitsuccess-api/b3A6MTc2MTM4ODE-list-business-accounts) response message now includes `Commission fee` details for each payment type configured for the business account.
 
