@@ -1794,7 +1794,6 @@ paths:
         name: businessAccountID
         in: path
         required: true
-        description: businessAccountsID
   /accounts:
     post:
       tags:
