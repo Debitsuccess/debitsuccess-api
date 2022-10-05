@@ -1541,8 +1541,6 @@ paths:
           description: Contract Prefix associated to the business account to be extracted
           required: true
           schema:
-            enum:
-              - DSFit1
             type: string
         - name: Authorization
           in: header
@@ -1705,7 +1703,7 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-  /businessAccounts/SurchargeConfigurations:
+  '/businessAccounts/{businessAccountID}/SurchargeConfigurations':
     get:
       tags:
         - BusinessAccounts
@@ -1714,14 +1712,6 @@ paths:
         Return the maxSurchargePercentage and maxSurchargeAmount for a facility account(grouped by Paymenttype)
       operationsID: get-surchargeconfigurations
       parameters:
-        - name: businessAccountId
-          in: path
-          description: Contract Prefix associated to the business account to be extracted
-          required: true
-          schema:
-            enum:
-              - DSFit1
-            type: string
         - name: Authorization
           in: header
           description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
@@ -1788,7 +1778,13 @@ paths:
                 properties:
                   message:
                     type: string
-    parameters: []
+    parameters:
+      - schema:
+          type: string
+        name: businessAccountID
+        in: path
+        description: Contract Prefix associated to the business account to be extracted
+        required: true
   /accounts:
     post:
       tags:
