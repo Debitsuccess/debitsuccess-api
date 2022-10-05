@@ -1705,7 +1705,7 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-  '/businessAccounts/{businessAccounts}':
+  '/businessAccounts/{businessAccountID}':
     get:
       tags:
         - BusinessAccounts
@@ -1791,7 +1791,7 @@ paths:
     parameters:
       - schema:
           type: string
-        name: businessAccounts
+        name: businessAccountID
         in: path
         required: true
         description: businessAccountsID
