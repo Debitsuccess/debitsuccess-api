@@ -1705,14 +1705,14 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
-  '/businessAccounts/{businessAccountID}/SurchargeConfigurations':
+  /businessAccounts/SurchargeConfigurations:
     get:
       tags:
         - BusinessAccounts
       summary: Get Surcharge Configurations
       description: |
         Return the maxSurchargePercentage and maxSurchargeAmount for a facility account(grouped by Paymenttype)
-      operationsID: 5d9fd01f7ae4e8d58728be50
+      operationsID: get-surchargeconfigurations
       parameters:
         - name: businessAccountId
           in: path
@@ -1788,13 +1788,7 @@ paths:
                 properties:
                   message:
                     type: string
-    parameters:
-      - schema:
-          type: string
-        name: businessAccountID
-        in: path
-        required: true
-        description: business Account ID
+    parameters: []
   /accounts:
     post:
       tags:
@@ -13294,6 +13288,12 @@ paths:
                 $ref: '#/components/schemas/500InternalServerError'
               example:
                 message: Something went wrong while processing your request. We’re sorry for the trouble. We’ve been notified of the error and will correct it as soon as possible. Please try your request again in a moment.
+  /abc:
+    get:
+      summary: GetSurcharge
+      tags: []
+      responses: {}
+      operationId: get-abc
 components:
   schemas:
     400AddAddress:
