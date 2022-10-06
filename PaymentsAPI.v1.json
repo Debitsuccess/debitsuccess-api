@@ -1796,7 +1796,7 @@
             }
           },
           "422": {
-            "description": "The requested resource could not be found."
+            "description": "Cannot find business that matches the BusinessId/BusinessAccountId provided."
           }
         },
         "operationId": "get-businessAccount-casual-creditcard-paymentRef",
