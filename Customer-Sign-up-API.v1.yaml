@@ -23,7 +23,7 @@ info:
     https://oc.debitsuccess.com/DirectEntry/DirectDebitRequest/Form?templateid={accountTemplateId}
 
     ## Authentication 
-    Please visit [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) 
+    Please visit [Debitsuccess Identity Service](https://debitsuccess.stoplight.io/docs/debitsuccess-api/ZG9jOjg5Njk0NDc-authentication) 
 
     ## Resources 
     |  Resources  | Supported Methods   | Purpose |
@@ -122,7 +122,7 @@ paths:
         - schema:
             type: string
           in: header
-          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](https://debitsuccess.stoplight.io/docs/debitsuccess-api/ZG9jOjg5Njk0NDc-authentication) on how to generate the authorization token.'
           required: true
           name: Authorization
   '/accounttemplates/{accountTemplateId}':
@@ -142,7 +142,7 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](https://debitsuccess.stoplight.io/docs/debitsuccess-api/ZG9jOjg5Njk0NDc-authentication) on how to generate the authorization token.'
           required: true
           style: simple
           explode: false
@@ -176,7 +176,7 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](../docs/Introduction/2-Authentication.md) on how to generate the authorization token.'
+          description: 'JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](https://debitsuccess.stoplight.io/docs/debitsuccess-api/ZG9jOjg5Njk0NDc-authentication) on how to generate the authorization token.'
           required: true
           style: simple
           explode: false
