@@ -331,7 +331,7 @@ Occurs when the identity server-client does not have access to the business Id p
 },
 {
   "errorCode": "business_id", 
-  "message": "Cannot find business that matches the business id provided."
+  "message": "Cannot find business that matches the BusinessId/BusinessAccountId provided."
 },
 {
   "errorCode": "business_commission", 
