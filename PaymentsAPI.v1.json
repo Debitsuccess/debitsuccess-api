@@ -1787,7 +1787,8 @@
                       "type": "string"
                     },
                     "externalPaymentIdentifier": {
-                      "type": "string"
+                      "type": "string",
+                      "description": "A unique external payment identifier. Note, this is unique across all Debitsuccess customers. The Api consumer is responsible for generating unique identifier."
                     }
                   }
                 }
