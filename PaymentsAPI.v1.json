@@ -1702,6 +1702,117 @@
         "x-internal": true
       }
     },
+    "/{businessAccount}/casual/creditcard/{paymentRef}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "businessAccount",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "paymentRef",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get Casual Payment by Payment Reference ",
+        "tags": [
+          "Casual Payments"
+        ],
+        "responses": {
+          "200": {
+            "description": "The payment request was successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "Example 1": {
+                      "paymentRef": "string",
+                      "description": "String",
+                      "paymentAmount": "decimal(10,2)",
+                      "paymentDate": "datetime",
+                      "paymentId": "Integer",
+                      "paymentStatus": "Cleared,Pending,Failed,Settled",
+                      "paymentType": "CasualCreditCard,CasualCreditCardOther",
+                      "receipt": "String",
+                      "commissionAmount": "Decimal (10, 2)",
+                      "settlementDate": "datetime",
+                      "externalPaymentIdentifier": "string"
+                    }
+                  },
+                  "properties": {
+                    "paymentRef": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "Description of transaction"
+                    },
+                    "paymentAmount": {
+                      "type": "string",
+                      "description": "Payment amount provided in the request."
+                    },
+                    "paymentDate": {
+                      "type": "string",
+                      "description": "Date when the transaction was made."
+                    },
+                    "paymentId": {
+                      "type": "string",
+                      "description": "Unique identifier for the payment"
+                    },
+                    "paymentStatus": {
+                      "type": "string",
+                      "description": "Payment status associated to the payment schedule."
+                    },
+                    "paymentType": {
+                      "type": "string",
+                      "description": "Definition of the PaymentTypeCode."
+                    },
+                    "receipt": {
+                      "type": "string",
+                      "description": "Transaction receipt number"
+                    },
+                    "commissionAmount": {
+                      "type": "string"
+                    },
+                    "settlementDate": {
+                      "type": "string"
+                    },
+                    "externalPaymentIdentifier": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The requested resource could not be found."
+          }
+        },
+        "operationId": "get-businessAccount-casual-creditcard-paymentRef",
+        "description": "This endpoint can be used to retrieve the casual payment details by providing the initial PaymentRef. ",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "description": "JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/986809101/Authentication) on how to generate the authorization token.",
+            "required": true
+          }
+        ]
+      }
+    },
     "/casual/creditcard": {
       "post": {
         "tags": [
