@@ -1807,7 +1807,7 @@
             },
             "in": "header",
             "name": "Authorization",
-            "description": "JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](https://debitsuccess.atlassian.net/wiki/spaces/DDE/pages/986809101/Authentication) on how to generate the authorization token.",
+            "description": "JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](https://debitsuccess.stoplight.io/docs/debitsuccess-api/ZG9jOjg5Njk0NDc-authentication) on how to generate the authorization token.",
             "required": true
           }
         ]
