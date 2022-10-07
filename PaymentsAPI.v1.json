@@ -399,7 +399,7 @@
                   },
                   "example-1": {
                     "value": {
-                      "message": "Cannot find business that matches the business id provided."
+                      "message": "Cannot find business that matches the BusinessId/BusinessAccountId provided."
                     }
                   }
                 }
@@ -2601,7 +2601,7 @@
         "type": "object",
         "example": {
           "errorCode": "business_id",
-          "message": "Cannot find business that matches the business id provided."
+          "message": "Cannot find business that matches the BusinessId/BusinessAccountId provided.."
         },
         "properties": {
           "errorCode": {
