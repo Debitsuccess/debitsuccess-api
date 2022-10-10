@@ -1702,15 +1702,17 @@
         "x-internal": true
       }
     },
-    "/{businessAccount}/casual/creditcard/{paymentRef}": {
+    "/{businessAccountID}/casual/creditcard/{paymentRef}": {
       "parameters": [
         {
           "schema": {
-            "type": "string"
+            "type": "string",
+            "example": "DEA234"
           },
-          "name": "businessAccount",
+          "name": "businessAccountID",
           "in": "path",
-          "required": true
+          "required": true,
+          "description": "Contract Prefix associated to the business account making this casual payment"
         },
         {
           "schema": {
@@ -1718,7 +1720,8 @@
           },
           "name": "paymentRef",
           "in": "path",
-          "required": true
+          "required": true,
+          "description": "PaymentRef can either be the Payment reference used in the Post casualPaymentTokens call or the externalPaymentIdentifier used in the Post Casual/creditcard call."
         }
       ],
       "get": {
@@ -1750,45 +1753,110 @@
                   },
                   "properties": {
                     "paymentRef": {
-                      "type": "string"
+                      "type": "string",
+                      "description": "PaymentRef can either be the Payment reference used in the Post casualPaymentTokens call or the externalPaymentIdentifier used in the Post Casual/creditcard call."
                     },
                     "description": {
                       "type": "string",
-                      "description": "Description of transaction"
+                      "description": "Description of the transaction"
                     },
                     "paymentAmount": {
-                      "type": "string",
-                      "description": "Payment amount provided in the request."
+                      "description": "Payment amount provided in the request.",
+                      "type": "number"
                     },
                     "paymentDate": {
                       "type": "string",
                       "description": "Date when the transaction was made."
                     },
                     "paymentId": {
-                      "type": "string",
+                      "type": "integer",
                       "description": "Unique identifier for the payment"
                     },
                     "paymentStatus": {
                       "type": "string",
-                      "description": "Payment status associated to the payment schedule."
+                      "enum": [
+                        "Cleared",
+                        "Pending",
+                        "Failed",
+                        "Settled"
+                      ],
+                      "description": "The status of the payment."
                     },
                     "paymentType": {
                       "type": "string",
-                      "description": "Definition of the PaymentTypeCode."
+                      "description": "Definition of the PaymentTypeCode.",
+                      "enum": [
+                        "CasualCreditCard",
+                        "CasualCreditCardOther"
+                      ]
                     },
                     "receipt": {
                       "type": "string",
                       "description": "Transaction receipt number"
                     },
                     "commissionAmount": {
-                      "type": "string"
+                      "type": "number",
+                      "description": "Amount of commision charged for the transaction."
                     },
                     "settlementDate": {
-                      "type": "string"
+                      "type": "string",
+                      "description": "Date/time message when the Settlement was processed. Note: In any case if a settlement is not performed then the SettlementDate = NULL"
                     },
                     "externalPaymentIdentifier": {
                       "type": "string",
                       "description": "A unique external payment identifier. Note, this is unique across all Debitsuccess customers. The Api consumer is responsible for generating unique identifier."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "errorCode": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "errorCode": {
+                      "type": "string"
+                    },
+                    "Message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found- The requested resource could not be found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "The Card Type provided does not match any credit card networks."
                     }
                   }
                 }
@@ -1803,11 +1871,42 @@
                   "type": "object",
                   "properties": {
                     "errorCode": {
-                      "type": "string"
+                      "type": "string",
+                      "description": "external_payment_identifier"
                     },
                     "message": {
                       "type": "string",
                       "example": "Cannot find business that matches the BusinessId/BusinessAccountId provided."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
                     }
                   }
                 }
@@ -1827,7 +1926,8 @@
             "description": "JWT token using Bearer authorization scheme. See [Debitsuccess Identity Service](https://debitsuccess.stoplight.io/docs/debitsuccess-api/ZG9jOjg5Njk0NDc-authentication) on how to generate the authorization token.",
             "required": true
           }
-        ]
+        ],
+        "x-internal": true
       }
     },
     "/casual/creditcard": {
