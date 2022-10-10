@@ -1915,7 +1915,7 @@
           }
         },
         "operationId": "get-businessAccount-casual-creditcard-paymentRef",
-        "description": "This endpoint can be used to retrieve the casual payment details by providing the initial PaymentRef. ",
+        "description": "This endpoint can be used to retrieve the casual payment details by providing the initial PaymentRef. The PaymentRef used may be the paymentRef provided to Post CasualPaymentTokens endpoint or externalPaymentIdentifier provided to the Post casual/creditCard endpoint.",
         "parameters": [
           {
             "schema": {
