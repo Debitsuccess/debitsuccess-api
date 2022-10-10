@@ -1754,23 +1754,28 @@
                   "properties": {
                     "paymentRef": {
                       "type": "string",
-                      "description": "PaymentRef can either be the Payment reference used in the Post casualPaymentTokens call or the externalPaymentIdentifier used in the Post Casual/creditcard call."
+                      "description": "PaymentRef can either be the Payment reference used in the Post casualPaymentTokens call or the externalPaymentIdentifier used in the Post Casual/creditcard call.",
+                      "example": "DEA2000001"
                     },
                     "description": {
                       "type": "string",
-                      "description": "Description of the transaction"
+                      "description": "Description of the transaction",
+                      "example": "First casual payment"
                     },
                     "paymentAmount": {
+                      "type": "number",
                       "description": "Payment amount provided in the request.",
-                      "type": "number"
+                      "example": " 3.3300"
                     },
                     "paymentDate": {
                       "type": "string",
-                      "description": "Date when the transaction was made."
+                      "description": "Date when the transaction was made.",
+                      "example": "2022-08-16T19:21:42.537"
                     },
                     "paymentId": {
                       "type": "integer",
-                      "description": "Unique identifier for the payment"
+                      "description": "Unique identifier for the payment",
+                      "example": 1530464810
                     },
                     "paymentStatus": {
                       "type": "string",
@@ -1792,19 +1797,22 @@
                     },
                     "receipt": {
                       "type": "string",
-                      "description": "Transaction receipt number"
+                      "description": "Transaction receipt number",
+                      "example": "6048788"
                     },
                     "commissionAmount": {
                       "type": "number",
-                      "description": "Amount of commision charged for the transaction."
+                      "description": "Amount of commision charged for the transaction.",
+                      "example": " 0.17"
                     },
                     "settlementDate": {
                       "type": "string",
-                      "description": "Date/time message when the Settlement was processed. Note: In any case if a settlement is not performed then the SettlementDate = NULL"
+                      "description": "Date/time message when the Settlement was processed. Note: In any case if a settlement is not performed then the settlementDate = NULL"
                     },
                     "externalPaymentIdentifier": {
                       "type": "string",
-                      "description": "A unique external payment identifier. Note, this is unique across all Debitsuccess customers. The Api consumer is responsible for generating unique identifier."
+                      "description": "A unique external payment identifier. Note, this is unique across all Debitsuccess customers. The Api consumer is responsible for generating unique identifier.",
+                      "example": "DEA2-22081607214154"
                     }
                   }
                 }
