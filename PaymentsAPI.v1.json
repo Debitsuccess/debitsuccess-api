@@ -1935,7 +1935,7 @@
             "required": true
           }
         ],
-        "x-internal": true
+        "x-internal": false
       }
     },
     "/casual/creditcard": {
