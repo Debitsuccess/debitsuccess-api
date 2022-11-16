@@ -473,6 +473,127 @@
         }
       }
     },
+    "/account/creditcard/surcharge": {
+      "get": {
+        "summary": "Account Surcharge",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "PaymentAmount": {
+                      "type": "number",
+                      "description": "Payment amount provided in the request"
+                    },
+                    "SurchargeAmount": {
+                      "type": "number",
+                      "description": "Total surcharge amount for the payment."
+                    },
+                    "TotalPaymentAmount": {
+                      "type": "number",
+                      "description": "Total amount (PaymentAmount + SurchargeAmount ) which will be charged from customer’s card when a payment request will be processed."
+                    },
+                    "externalTransactionIdentifier": {
+                      "type": "string",
+                      "description": "Returns the externalTransactionIdentifier"
+                    },
+                    "Currency": {
+                      "type": "string",
+                      "description": "NZD or AUD",
+                      "enum": [
+                        "NZD",
+                        "AUD"
+                      ]
+                    }
+                  }
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "PaymentAmount": "70.00",
+                      "SurchargeAmount": "0.66",
+                      "TotalPaymentAmount": "70.66",
+                      "externalTransactionIdentifier": "externalRef-001",
+                      "Currency": "AUD"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-https:-oc-sbox.debitsuccess.com-payments-v1.0-account-creditcard-surcharge",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "description": "JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string",
+              "example": "\"63f0aaba18ec0b49f1e81c3fb99580dc\""
+            },
+            "in": "header",
+            "name": "Md5 Checksum",
+            "description": "An Md5 checksum is a 32-character hexadecimal number. It is calculated based on GET Surcharge results. It is used to make sure that POST request is same as the GET Surcharge result and ensuring it has not changed between displaying to customer and submission. It helps prevent any modification and check the validity for the GET Surcharge call. Note: The field is required if the Facility has a Surcharge policy activated.",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "CardType": {
+                    "type": "string",
+                    "description": "The type of card will be used for the payment in 2 letters representation."
+                  },
+                  "Token": {
+                    "type": "string",
+                    "description": "Token will be used to identify card and provide surcharge in absence of cardtype"
+                  },
+                  "PaymentAmount": {
+                    "type": "number",
+                    "description": "Amount must be provided in order to calculate surcharge."
+                  },
+                  "AccountId": {
+                    "type": "string",
+                    "description": "AdfitNo of the account surcharge should be calculated for."
+                  },
+                  "CreateOneOffCharge": {
+                    "type": "boolean",
+                    "description": "The flag controls will create a one-off payment schedule or not."
+                  },
+                  "externalTranscationIdentifier": {
+                    "type": "string",
+                    "description": "External Identifier to indicate a unique transaction. This could be the PayNow token or another identifier. This will be used to ensure idempotency for a transaction and to provide a salt to ensure uniqueness for the message digest."
+                  }
+                },
+                "required": [
+                  "CardType",
+                  "Token",
+                  "PaymentAmount",
+                  "AccountId",
+                  "CreateOneOffCharge",
+                  "externalTranscationIdentifier"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "parameters": []
+    },
     "/businessCollectedPayments": {
       "post": {
         "tags": [
