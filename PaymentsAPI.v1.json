@@ -476,7 +476,6 @@
     "/account/creditcard/surcharge": {
       "get": {
         "summary": "Account Surcharge",
-        "tags": [],
         "responses": {
           "200": {
             "description": "OK",
@@ -590,7 +589,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "Account Payments"
+        ]
       },
       "parameters": []
     },
