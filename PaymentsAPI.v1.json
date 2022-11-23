@@ -2731,20 +2731,15 @@
                         "NZD",
                         "AUD"
                       ]
+                    },
+                    "allocation": {
+                      "type": "array",
+                      "items": {}
                     }
                   }
                 },
                 "examples": {
                   "Example 1": {
-                    "value": {
-                      "PaymentAmount": 0,
-                      "SurchargeAmount": 0,
-                      "TotalPaymentAmount": 0,
-                      "externalTransactionIdentifier": "string",
-                      "Currency": "NZD"
-                    }
-                  },
-                  "Example 2": {
                     "value": {
                       "PaymentAmount": 0,
                       "SurchargeAmount": 0,
