@@ -640,7 +640,8 @@
         },
         "tags": [
           "Account Payments"
-        ]
+        ],
+        "description": "Retrieves surcharge amount for an account."
       },
       "parameters": []
     },
@@ -2639,109 +2640,7 @@
         "summary": "Get Casual Payment Status"
       }
     },
-    "/account/surcharge": {
-      "get": {
-        "summary": "Get Surcharge",
-        "tags": [
-          "Surcharge"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/200GetSurcharge"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized - Occurs when the authorization token provided is either expired or invalid."
-          },
-          "403": {
-            "description": "Forbidden - Occurs the client does not have access to the endpoint.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/403GetSurcharge"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Entity",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/422GetSurcharge"
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "Too Many Requests"
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/500InternalServerError"
-                }
-              }
-            }
-          }
-        },
-        "operationId": "get-account-surcharge",
-        "description": "Retrieves surcharge amount for an account.",
-        "parameters": [
-          {
-            "schema": {
-              "type": "string",
-              "maxLength": 2,
-              "enum": [
-                "CC",
-                "CO"
-              ],
-              "minLength": 2
-            },
-            "in": "query",
-            "name": "CardType",
-            "required": true,
-            "description": "The type of card will be used for the payment in 2 letters representation. Visa, Mastercard - CC  Other credit card type - CO"
-          },
-          {
-            "schema": {
-              "type": "number"
-            },
-            "in": "query",
-            "name": "PaymentAmount",
-            "required": true,
-            "description": "Amount must be provided in order to calculate surcharge."
-          },
-          {
-            "schema": {
-              "type": "string",
-              "maxLength": 15
-            },
-            "in": "query",
-            "name": "AccountId",
-            "required": true,
-            "description": "System generated reference id associated to the Account extracted."
-          },
-          {
-            "schema": {
-              "type": "boolean"
-            },
-            "in": "query",
-            "name": "CreateOneOffCharge",
-            "required": true,
-            "description": "the flag controls will create a one-off payment schedule or not. "
-          }
-        ]
-      }
-    },
+    "/account/surcharge": {},
     "/account/creditcard/surchargeAllocation": {
       "get": {
         "summary": "Internal Get Surcharge Allocation",
