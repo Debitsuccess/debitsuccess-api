@@ -2655,35 +2655,73 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "PaymentAmount": {
-                      "type": "number",
-                      "description": "Payment amount provided in the request"
+                    "paymentAmount": {
+                      "type": "integer"
                     },
-                    "SurchargeAmount": {
-                      "type": "number",
-                      "description": "Total surcharge amount for the payment."
+                    "surchargeAmount": {
+                      "type": "number"
                     },
-                    "TotalPaymentAmount": {
-                      "type": "number",
-                      "description": "Total amount (PaymentAmount + SurchargeAmount ) which will be charged from customer’s card when a payment request will be processed."
+                    "totalPaymentAmount": {
+                      "type": "number"
+                    },
+                    "currency": {
+                      "type": "string"
                     },
                     "externalTransactionIdentifier": {
-                      "type": "string",
-                      "description": "Returns the ExternalTransactionIdentifier"
+                      "type": "string"
                     },
-                    "Currency": {
-                      "type": "string",
-                      "description": "NZD or AUD",
-                      "enum": [
-                        "NZD",
-                        "AUD"
-                      ]
-                    },
-                    "allocation": {
+                    "allocations": {
                       "type": "array",
                       "items": {
-                        "type": "string"
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "transcode": {
+                            "type": "string"
+                          },
+                          "amount": {
+                            "type": "integer"
+                          },
+                          "surcharge": {
+                            "type": "number"
+                          },
+                          "surchargeconfiguration": {
+                            "type": "string"
+                          }
+                        }
                       }
+                    }
+                  },
+                  "x-examples": {
+                    "Example 1": {
+                      "paymentAmount": 70,
+                      "surchargeAmount": 0.66,
+                      "totalPaymentAmount": 70.66,
+                      "currency": "AUD",
+                      "externalTransactionIdentifier": "externalRef-001",
+                      "allocations": [
+                        {
+                          "name": "One Off Payment",
+                          "transcode": "OP",
+                          "amount": 20,
+                          "surcharge": 0.11,
+                          "surchargeconfiguration": "D7568B4E-2236-40C7-B07C-FD0ED42A8BEB"
+                        },
+                        {
+                          "name": "Payment",
+                          "transcode": "PY",
+                          "amount": 40,
+                          "surcharge": 0.55,
+                          "surchargeconfiguration": "A5A0F8A2-90B6-42C0-99BD-E0442A73D580"
+                        },
+                        {
+                          "name": "Setup Fee",
+                          "transcode": "SF",
+                          "amount": 10
+                        }
+                      ]
                     }
                   }
                 },
@@ -2781,46 +2819,6 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "properties": {
-                  "paymentAmount": {
-                    "type": "integer"
-                  },
-                  "surchargeAmount": {
-                    "type": "number"
-                  },
-                  "totalPaymentAmount": {
-                    "type": "number"
-                  },
-                  "currency": {
-                    "type": "string"
-                  },
-                  "externalTransactionIdentifier": {
-                    "type": "string"
-                  },
-                  "allocations": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "name": {
-                          "type": "string"
-                        },
-                        "transcode": {
-                          "type": "string"
-                        },
-                        "amount": {
-                          "type": "integer"
-                        },
-                        "surcharge": {
-                          "type": "number"
-                        },
-                        "surchargeconfiguration": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                },
                 "x-examples": {
                   "Example 1": {
                     "paymentAmount": 70,
@@ -2850,7 +2848,36 @@
                       }
                     ]
                   }
-                }
+                },
+                "properties": {
+                  "cardType": {
+                    "type": "string",
+                    "description": "The type of card will be used for the payment in 2 letters representation."
+                  },
+                  "PaymentAmount": {
+                    "type": "integer",
+                    "description": "Amount must be provided in order to calculate surcharge."
+                  },
+                  "AccountID": {
+                    "type": "string",
+                    "description": "AdfitNo of the account surcharge should be calculated for."
+                  },
+                  "CreateOneOffCharges": {
+                    "type": "boolean",
+                    "description": "The flag controls will create a one-off payment schedule or not."
+                  },
+                  "externalTransactionIdentifier": {
+                    "type": "string",
+                    "description": "External Identifier to indicate a unique transaction. This could be the PayNow token or another identifier. This will be used to ensure idempotency for a transaction and to provide a salt to ensure uniqueness for the message digest."
+                  }
+                },
+                "required": [
+                  "cardType",
+                  "PaymentAmount",
+                  "AccountID",
+                  "CreateOneOffCharges",
+                  "externalTransactionIdentifier"
+                ]
               }
             }
           }
