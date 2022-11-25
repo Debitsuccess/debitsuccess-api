@@ -64,8 +64,7 @@
             },
             "in": "header",
             "name": "Md5 Checksum",
-            "description": "An Md5 checksum is a 32-character hexadecimal number. It is calculated based on GET Surcharge results. It is used to make sure that POST request is same as the GET Surcharge result and ensuring it has not changed between displaying to customer and submission. It helps prevent any modification and check the validity for the GET Surcharge call. Note: The field is required if the Facility has a Surcharge policy activated.",
-            "required": true
+            "description": "An Md5 checksum is a 32-character hexadecimal number. It is calculated based on GET Surcharge results. It is used to make sure that POST request is same as the GET Surcharge result and ensuring it has not changed between displaying to customer and submission. It helps prevent any modification and check the validity for the GET Surcharge call. Note: The field is only required if the Facility has a Surcharge policy activated."
           }
         ],
         "requestBody": {
@@ -475,7 +474,7 @@
     },
     "/account/creditcard/surcharge": {
       "get": {
-        "summary": "Account Surcharge",
+        "summary": "Get Account Payment Surcharge",
         "responses": {
           "200": {
             "description": "OK",
@@ -521,6 +520,14 @@
                     }
                   }
                 }
+              }
+            },
+            "headers": {
+              "Md5 Checksum": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "An Md5 checksum is a 32-character hexadecimal number. It is calculated based on GET Surcharge results. It is used to make sure that POST request is same as the GET Surcharge result and ensuring it has not changed between displaying to customer and submission. It helps prevent any modification and check the validity for the GET Surcharge call. Note: The field is required only if the Facility has a Surcharge policy activated."
               }
             }
           },
@@ -585,16 +592,6 @@
             "in": "header",
             "name": "Authorization",
             "description": "JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string",
-              "example": "\"63f0aaba18ec0b49f1e81c3fb99580dc\""
-            },
-            "in": "header",
-            "name": "Md5 Checksum",
-            "description": "An Md5 checksum is a 32-character hexadecimal number. It is calculated based on GET Surcharge results. It is used to make sure that POST request is same as the GET Surcharge result and ensuring it has not changed between displaying to customer and submission. It helps prevent any modification and check the validity for the GET Surcharge call. Note: The field is required if the Facility has a Surcharge policy activated.",
             "required": true
           }
         ],
@@ -2747,7 +2744,7 @@
     },
     "/account/creditcard/surchargeAllocation": {
       "get": {
-        "summary": "Surcharge Allocation",
+        "summary": "Internal Get Surcharge Allocation",
         "tags": [
           "Internal API"
         ],
