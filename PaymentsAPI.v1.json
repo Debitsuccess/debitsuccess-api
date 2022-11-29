@@ -523,7 +523,7 @@
               }
             },
             "headers": {
-              "Md5 Checksum": {
+              "Md5Checksum": {
                 "schema": {
                   "type": "string"
                 },
@@ -593,51 +593,63 @@
             "name": "Authorization",
             "description": "JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.",
             "required": true
+          },
+          {
+            "schema": {
+              "type": "string",
+              "example": "MasterCard, Visa"
+            },
+            "in": "query",
+            "name": "CardType",
+            "description": "The type of card will be used for the payment in 2 letters representation.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "Token",
+            "description": "Token will be used to identify card and provide surcharge in absence of card type",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "number"
+            },
+            "in": "query",
+            "name": "PaymentAmount",
+            "description": "Amount must be provided in order to calculate surcharge.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "AccountID",
+            "description": "Adfit number of the account surcharge should be calculated for.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
+            "name": "CreateOneOffCharge",
+            "description": "The flag controls will create a one-off payment schedule or not.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "externalTranscationIdentifier",
+            "description": "External Identifier to indicate a unique transaction. This could be the PayNow token or another identifier. This will be used to ensure idempotency for a transaction and to provide a salt to ensure uniqueness for the message digest.",
+            "required": true
           }
         ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "CardType": {
-                    "type": "string",
-                    "description": "The type of card will be used for the payment in 2 letters representation."
-                  },
-                  "Token": {
-                    "type": "string",
-                    "description": "Token will be used to identify card and provide surcharge in absence of cardtype"
-                  },
-                  "PaymentAmount": {
-                    "type": "number",
-                    "description": "Amount must be provided in order to calculate surcharge."
-                  },
-                  "AccountId": {
-                    "type": "string",
-                    "description": "AdfitNo of the account surcharge should be calculated for."
-                  },
-                  "CreateOneOffCharge": {
-                    "type": "boolean",
-                    "description": "The flag controls will create a one-off payment schedule or not."
-                  },
-                  "externalTranscationIdentifier": {
-                    "type": "string",
-                    "description": "External Identifier to indicate a unique transaction. This could be the PayNow token or another identifier. This will be used to ensure idempotency for a transaction and to provide a salt to ensure uniqueness for the message digest."
-                  }
-                },
-                "required": [
-                  "CardType",
-                  "Token",
-                  "PaymentAmount",
-                  "AccountId",
-                  "CreateOneOffCharge",
-                  "externalTranscationIdentifier"
-                ]
-              }
-            }
-          }
-        },
         "tags": [
           "Account Payments"
         ],
