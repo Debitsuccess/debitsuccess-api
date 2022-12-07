@@ -2744,7 +2744,7 @@
                       "SurchargeAmount": 0,
                       "TotalPaymentAmount": 0,
                       "externalTransactionIdentifier": "string",
-                      "Currency": "NZD"
+                      "Currency": "NZD/AUD"
                     }
                   }
                 }
@@ -2823,77 +2823,53 @@
             "name": "Authorization",
             "description": "JWT token using Bearer authorization scheme. See Debitsuccess Identity Service on how to generate the authorization token.",
             "required": true
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "x-examples": {
-                  "Example 1": {
-                    "paymentAmount": 70,
-                    "surchargeAmount": 0.66,
-                    "totalPaymentAmount": 70.66,
-                    "currency": "AUD",
-                    "externalTransactionIdentifier": "externalRef-001",
-                    "allocations": [
-                      {
-                        "name": "One Off Payment",
-                        "transcode": "OP",
-                        "amount": 20,
-                        "surcharge": 0.11,
-                        "surchargeconfiguration": "D7568B4E-2236-40C7-B07C-FD0ED42A8BEB"
-                      },
-                      {
-                        "name": "Payment",
-                        "transcode": "PY",
-                        "amount": 40,
-                        "surcharge": 0.55,
-                        "surchargeconfiguration": "A5A0F8A2-90B6-42C0-99BD-E0442A73D580"
-                      },
-                      {
-                        "name": "Setup Fee",
-                        "transcode": "SF",
-                        "amount": 10
-                      }
-                    ]
-                  }
-                },
-                "properties": {
-                  "cardType": {
-                    "type": "string",
-                    "description": "The type of card will be used for the payment in 2 letters representation."
-                  },
-                  "PaymentAmount": {
-                    "type": "integer",
-                    "description": "Amount must be provided in order to calculate surcharge."
-                  },
-                  "AccountID": {
-                    "type": "string",
-                    "description": "AdfitNo of the account surcharge should be calculated for."
-                  },
-                  "CreateOneOffCharges": {
-                    "type": "boolean",
-                    "description": "The flag controls will create a one-off payment schedule or not."
-                  },
-                  "externalTransactionIdentifier": {
-                    "type": "string",
-                    "description": "External Identifier to indicate a unique transaction. This could be the PayNow token or another identifier. This will be used to ensure idempotency for a transaction and to provide a salt to ensure uniqueness for the message digest."
-                  }
-                },
-                "required": [
-                  "cardType",
-                  "PaymentAmount",
-                  "AccountID",
-                  "CreateOneOffCharges",
-                  "externalTransactionIdentifier"
-                ]
-              }
-            }
           },
-          "description": ""
-        }
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "CardType",
+            "description": "The type of card will be used for the payment in 2 letters representation.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "number"
+            },
+            "in": "query",
+            "name": "PaymentAmount",
+            "description": "Amount must be provided in order to calculate surcharge.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "AccountID",
+            "description": "AdfitNo of the account surcharge should be calculated for.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
+            "name": "CreateOneOffCharges",
+            "description": "The flag controls will create a one-off payment schedule or not.",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "externalTransactionIdentifier",
+            "description": "External Identifier to indicate a unique transaction. This could be the PayNow token or another identifier. This will be used to ensure idempotency for a transaction and to provide a salt to ensure uniqueness for the message digest.",
+            "required": true
+          }
+        ]
       }
     }
   },
