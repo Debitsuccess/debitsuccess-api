@@ -2740,11 +2740,32 @@
                 "examples": {
                   "Example 1": {
                     "value": {
-                      "PaymentAmount": 0,
-                      "SurchargeAmount": 0,
-                      "TotalPaymentAmount": 0,
-                      "externalTransactionIdentifier": "string",
-                      "Currency": "NZD/AUD"
+                      "paymentAmount": 70,
+                      "surchargeAmount": 0.66,
+                      "totalPaymentAmount": 70.66,
+                      "currency": "AUD",
+                      "externalTransactionIdentifier": "externalRef-001",
+                      "allocations": [
+                        {
+                          "name": "One Off Payment",
+                          "transcode": "OP",
+                          "amount": 20,
+                          "surcharge": 0.11,
+                          "surchargeconfiguration": "D7568B4E-2236-40C7-B07C-FD0ED42A8BEB"
+                        },
+                        {
+                          "name": "Payment",
+                          "transcode": "PY",
+                          "amount": 40,
+                          "surcharge": 0.55,
+                          "surchargeconfiguration": "A5A0F8A2-90B6-42C0-99BD-E0442A73D580"
+                        },
+                        {
+                          "name": "Setup Fee",
+                          "transcode": "SF",
+                          "amount": 10
+                        }
+                      ]
                     }
                   }
                 }
