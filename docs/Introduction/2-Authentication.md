@@ -30,7 +30,7 @@ Ensure that you have your `client_id` and `client secret` provided by our Debits
 
 To check whether the identity server is up and running navigate to the configuration endpoint.
 
-[https://oc-test.debitsuccess.com/identity/.well-known/openid-configuration](https://oc-test.debitsuccess.com/identity/.well-known/openid-configuration)
+[https://oc-sbox.debitsuccess.com/identity/.well-known/openid-configuration](https://oc-sbox.debitsuccess.com/identity/.well-known/openid-configuration)
 
 
 ### 1. Retrieve an access token
@@ -40,7 +40,7 @@ To receive an access token, the client POSTs an API call to Debitsuccess Identit
 * Method: <span style="background-color:skyblue; color:white">  POST</span>
 
 
-* URL: https://oc-test.debitsuccess.com/identity/connect/token
+* URL: https://oc-sbox.debitsuccess.com/identity/connect/token
 
 
 * Content-Type: application/x-www-form-urlencoded
@@ -61,7 +61,7 @@ To receive an access token, the client POSTs an API call to Debitsuccess Identit
 
 
 ```json
-POST https://oc-test.debitsuccess.com/identity/connect/token
+POST https://oc-sbox.debitsuccess.com/identity/connect/token
 
 Headers:
 
@@ -126,7 +126,7 @@ To call the API, the token should be added to the request in the Authorization h
 
 
 ```json
-GET https://oc-test.debitsuccess.com/customerservice/accounts/{accountId}
+GET https://oc-sbox.debitsuccess.com/customerservice/accounts/{accountId}
 
 Headers:
 
@@ -141,7 +141,7 @@ K3QsDwjYlgwAWUBH7IxKDJCAXXqf4PqZY53jr1tjMDBgINRsl0iCjG83X9pvzf0pa9i5bLfFHmDLgagG
 
 *******
 
-**JWT Token validation**  JSON Web Token (JWT) is an open standard that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed. JWTs can be signed using a secret (with the HMAC algorithm) or a public/private key pair using RSA. We will be using RSA to sign the token. RS256 (RSA Signature with SHA-256) is an asymmetric algorithm, and it uses a public/private key pair: the identity server provider has a private (secret) key used to generate the signature, and the consumer of the JWT gets a public key to validate the signature. Since the public key, as opposed to the private key, doesn't need to be kept secured, the identity server makes it easily available for consumers to obtain from the [https://oc-test.debitsuccess.com/identity/.well-known/openid-configuration/jwks](https://oc-test.debitsuccess.com/identity/.well-known/openid-configuration/jwks) URL. To read more about JWT tokens please visit [https://jwt.io/introduction/](https://jwt.io/introduction/).
+**JWT Token validation**  JSON Web Token (JWT) is an open standard that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed. JWTs can be signed using a secret (with the HMAC algorithm) or a public/private key pair using RSA. We will be using RSA to sign the token. RS256 (RSA Signature with SHA-256) is an asymmetric algorithm, and it uses a public/private key pair: the identity server provider has a private (secret) key used to generate the signature, and the consumer of the JWT gets a public key to validate the signature. Since the public key, as opposed to the private key, doesn't need to be kept secured, the identity server makes it easily available for consumers to obtain from the [https://oc-sbox.debitsuccess.com/identity/.well-known/openid-configuration/jwks](https://oc-sbox.debitsuccess.com/identity/.well-known/openid-configuration/jwks) URL. To read more about JWT tokens please visit [https://jwt.io/introduction/](https://jwt.io/introduction/).
 
 
 

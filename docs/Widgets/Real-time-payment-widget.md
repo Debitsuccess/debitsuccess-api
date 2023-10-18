@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
     dsPaymentWidget = new DsRealTimePaymentWidget(
                       "auth_token_xxx",
                       "XXXX",  // Business Account ID
-                      "https://oc-test.debitsuccess.com" // ds domain                     
+                      "https://oc-sbox.debitsuccess.com" // ds domain                     
                   );
 });
 ```

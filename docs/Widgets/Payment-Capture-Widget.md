@@ -39,7 +39,7 @@ var dsWidget = new DsPaymentFormWidget(
                         "XXXX",  // Business Account ID
                         {
                             "customerId": "123456" // your Customer ID
-                            "domain": "https://oc-test.debitsuccess.com",
+                            "domain": "https://oc-sbox.debitsuccess.com",
                             "accountId": DEMO888999
                         }
                     );
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
                       "XXXX",  // Business Account ID
                       {
                           "customerId": "123456" // your Customer ID
-                          "domain": "https://oc-test.debitsuccess.com",
+                          "domain": "https://oc-sbox.debitsuccess.com",
                           "accountId": DEMO888999
                       }
                   );
@@ -374,7 +374,7 @@ xhr.addEventListener("readystatechange", function() {
   }
 });
 
-xhr.open("PATCH", "https://oc-test.debitsuccess.com/customerservices/v1.0/customers/{{yourCustomerId}}/paymentMethods");
+xhr.open("PATCH", "https://oc-sbox.debitsuccess.com/customerservices/v1.0/customers/{{yourCustomerId}}/paymentMethods");
 xhr.setRequestHeader("Content-Type", "application/json");
 xhr.setRequestHeader("Authorization", "Bearer authToken");
 
